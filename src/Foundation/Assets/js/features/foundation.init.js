@@ -1,37 +1,91 @@
-﻿$(document).ready(function () {
+﻿import Locations from "./selective/Locations"
+import People from "./selective/People"
+import BlockTracking from "./BlockTracking"
+import Blog from "./Blog"
+import Dropdown from "./Dropdown"
+import FoundationCms from "./foundation.cms"
+import Header from "./Header"
+import MobileNavigation from "./mobile-navigation"
+import PdfPreview from "./PdfPreview"
+import { ProductSearch, NewProductsSearch, SalesSearch } from "./Search";
+import SearchBox from "./SearchBox"
+import Selection from "./Selection"
 
-    // convert json to formdata and append __RequestVerificationToken key for CORS
-    window.convertFormData = function (data, containerToken) {
-        var formData = new FormData();
-        var isAddedToken = false;
-        for (var key in data) {
-            if (key == "__RequestVerificationToken") {
-                isAddedToken = true;
+export class FoundationInit{
+    init() {
+        // convert json to formdata and append __RequestVerificationToken key for CORS
+        window.convertFormData = function (data, containerToken) {
+            var formData = new FormData();
+            var isAddedToken = false;
+            for (var key in data) {
+                if (key == "__RequestVerificationToken") {
+                    isAddedToken = true;
+                }
+                formData.append(key, data[key]);
             }
-            formData.append(key, data[key]);
-        }
-
-        if (!isAddedToken) {
-            if (containerToken) {
-                formData.append("__RequestVerificationToken", $(containerToken + ' input[name=__RequestVerificationToken]').val());
-            } else {
-                formData.append("__RequestVerificationToken", $('input[name=__RequestVerificationToken]').val());
+    
+            if (!isAddedToken) {
+                if (containerToken) {
+                    formData.append("__RequestVerificationToken", $(containerToken + ' input[name=__RequestVerificationToken]').val());
+                } else {
+                    formData.append("__RequestVerificationToken", $('input[name=__RequestVerificationToken]').val());
+                }
             }
+    
+            return formData;
+        };
+    
+        window.serializeObject = function (form) {
+            var datas = form.serializeArray();
+            var jsonData = {};
+            for (var d in datas) {
+                jsonData[datas[d].name] = datas[d].value;
+            }
+    
+            return jsonData;
+        };
+
+        PdfPreview();
+
+        let header = new Header();
+        header.init();
+
+        let params = {
+            searchBoxId: "#mobile-searchbox",
+            openSearchBoxId: "#open-searh-box",
+            closeSearchBoxId: "#close-search-box",
+            sideBarId: "#offside-menu-mobile",
+            openSideBarId: "#open-offside-menu"
         }
 
-        return formData;
-    };
+        var mobileNavigation = new MobileNavigation(params);
+        mobileNavigation.init();
 
-    window.serializeObject = function (form) {
-        var datas = form.serializeArray();
-        var jsonData = {};
-        for (var d in datas) {
-            jsonData[datas[d].name] = datas[d].value;
-        }
+        var blockTracking = new BlockTracking();
+        blockTracking.init();
 
-        return jsonData;
-    };
+        var selection = new Selection();
+        selection.init();
 
-    var cms = new FoundationCms();
-    cms.init();
-});
+        var dropdown = new Dropdown();
+        dropdown.init();
+
+        var searchBox = new SearchBox();
+        searchBox.init();
+
+        var blog = new Blog();
+        blog.init();
+        
+        var productSearch = new ProductSearch();
+        productSearch.init();
+
+        var locations = new Locations();
+        locations.init();
+
+        var people = new People();
+        people.init();
+    
+        var cms = new FoundationCms();
+        cms.init();
+    }       
+}
