@@ -1,15 +1,17 @@
-﻿import Locations from "./selective/Locations"
-import People from "./selective/People"
-import BlockTracking from "./BlockTracking"
-import Blog from "./Blog"
-import Dropdown from "./Dropdown"
+﻿import PDFPreview from "./pdf-preview";
+import NotificationHelper from "./notification-helper";
+import Locations from "./selective/locations"
+import People from "./selective/people"
+import BlockTracking from "./block-tracking"
+import Blog from "./blog"
+import Dropdown from "./dropdown"
 import FoundationCms from "./foundation.cms"
-import Header from "./Header"
+import Header from "./header"
 import MobileNavigation from "./mobile-navigation"
-import PdfPreview from "./PdfPreview"
-import { ProductSearch, NewProductsSearch, SalesSearch } from "./Search";
-import SearchBox from "./SearchBox"
-import Selection from "./Selection"
+import PdfPreview from "./pdf-preview"
+import { ProductSearch, NewProductsSearch, SalesSearch } from "./search";
+import SearchBox from "./search-box"
+import Selection from "./selection"
 
 export class FoundationInit{
     init() {
@@ -45,7 +47,9 @@ export class FoundationInit{
             return jsonData;
         };
 
-        PdfPreview();
+        window.notification = new NotificationHelper();
+
+        PDFPreview();
 
         let header = new Header();
         header.init();

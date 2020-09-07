@@ -1,17 +1,17 @@
 const path = require("path");
 const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const node_sass_glob_importer = require('node-sass-glob-importer');
+const NodeSassGlobImporter = require('node-sass-glob-importer');
 
 module.exports = {
     entry: {
-        main : path.join(__dirname, 'Assets/js', 'index.webpack'),
+        main: path.join(__dirname, 'Assets/js', 'main.js'),
     },
     resolve: {
         modules: [__dirname, "node_modules"],
     },
     output: {
-        filename: "[name].webpack.min.js",
+        filename: "[name].min.js",
         path: path.resolve(__dirname, "Assets/js"),
     },
     plugins: [
@@ -22,7 +22,7 @@ module.exports = {
             axios: "axios",
         }),
         new MiniCssExtractPlugin({
-            filename: "../scss/[name].webpack.min.css",
+            filename: "../scss/[name].min.css",
         }),
     ],
     module: {
@@ -38,7 +38,7 @@ module.exports = {
                         loader: 'sass-loader',
                         options: {
                             sassOptions: {
-                                importer: node_sass_glob_importer()
+                                importer: NodeSassGlobImporter()
                             }
                         }
                     }
