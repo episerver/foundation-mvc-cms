@@ -1,58 +1,10 @@
-﻿export class Header {
+﻿export default class Header {
     constructor() {
         this.Popovers = [];
     }
 
     init() {
-        var inst = this;
-        $('.js-popover').each($.proxy(function (index, value) {
-            const referenceId = $(value).attr('id');
-            let options = {};
-
-            if (referenceId === 'js-wishlist') {
-                options = {
-                    offset: {
-                        offset: '242px, 2px'
-                    }
-                };
-            } else if (referenceId === 'js-cart') {
-                options = {
-                    offset: {
-                        offset: '162px, 2px'
-                    }
-                };
-            }
-        }, this));
-
-     
-      
-
-        $('.regular').slick({
-            dots: true,
-            infinite: false,
-            speed: 300,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                },
-                {
-                    breakpoint: 540,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
-                }
-                // You can unslick at a given breakpoint now by adding:
-                // settings: "unslick"
-                // instead of a settings object
-            ]
-        });
+        let inst = this;
 
         $(document)
             .on('click', '#jsBookmarkToggle', this.bookmark)
@@ -72,7 +24,6 @@
             });
         });
         this.megaMenu();
-        this.setMarket();
     }
 
     bookmark(e) {
@@ -112,7 +63,7 @@
 
     removeBookmark(e) {
         e.preventDefault();
-        var contentGuid = e.currentTarget.attributes["contentguid"].value;
+        let contentGuid = e.currentTarget.attributes["contentguid"].value;
         axios({
             method: 'post',
             url: "/Bookmarks/Remove",
@@ -120,7 +71,7 @@
                 contentGuid: contentGuid
             }
         }).then(function (response) {
-            var rowId = '#bookmark-' + contentGuid;
+            let rowId = '#bookmark-' + contentGuid;
             $(rowId).remove();
         }).catch(function (response) {
             console.log(response);
@@ -131,8 +82,8 @@
     megaMenu() {
         $('.navigation__left .navigation__item').each(function (i, e) {
             $(e).mouseenter(function () {
-                var dropdown = $(e).find('.mega-container').first();
-                var top = $(e)[0].getBoundingClientRect();
+                let dropdown = $(e).find('.mega-container').first();
+                let top = $(e)[0].getBoundingClientRect();
                 $(dropdown).css('top', top.bottom + 1 + 'px');
                 $(dropdown).css('left', '0px');
             })
@@ -156,11 +107,11 @@
         })
             .then(function (response) {
                 if (response.data.success == false) {
-                    var errorMessage = document.getElementById('login-signin-errormessage');
+                    let errorMessage = document.getElementById('login-signin-errormessage');
                     if (errorMessage) {
                         errorMessage.innerText = '';
                         errorMessage.style.display = "block";
-                        for (var error in response.data.errors) {
+                        for (let error in response.data.errors) {
                             $('#login-signin-errormessage').append(response.data.errors[error] + '<br />');
                         }
                     }
@@ -182,7 +133,7 @@
     }
 
     convertToJsonObject(arrayData) {
-        var indexed_array = {};
+        let indexed_array = {};
 
         $.map(arrayData, function (n, i) {
             indexed_array[n['name']] = n['value'];
@@ -212,7 +163,7 @@
         } else {
             bodyFormData.set('Address.CountryRegion.Region', $('input[name="RegisterAccountViewModel.Address.CountryRegion.Region"]', form).val());
         }
-        
+
         bodyFormData.set('__RequestVerificationToken', $("input[name=__RequestVerificationToken]", form).val());
 
         $('.loading-box').show();
@@ -224,11 +175,11 @@
         })
             .then(function (response) {
                 if (response.data) {
-                    var errorMessage = document.getElementById('login-signup-errormessage');
+                    let errorMessage = document.getElementById('login-signup-errormessage');
                     if (errorMessage) {
                         errorMessage.innerText = '';
                         errorMessage.style.display = "block";
-                        for (var error in response.data.errors) {
+                        for (let error in response.data.errors) {
                             $('#login-signup-errormessage').append(response.data.errors[error] + '<br />');
                         }
                     }
@@ -238,7 +189,7 @@
                 }
             })
             .catch(function (response) {
-                var errorPanel = document.getElementById('login-signup-errormessage');
+                let errorPanel = document.getElementById('login-signup-errormessage');
                 errorPanel.innerText = response;
                 errorPanel.style.display = "block";
             })
@@ -248,11 +199,11 @@
     }
 
     setRegion() {
-        var $countryCode = $(this).val();
-        var $addressRegionContainer = $(".address-region");
-        var $region = $(".address-region-input", $addressRegionContainer).val();
-        var $htmlPrefix = $("input[name='address-htmlfieldprefix']", $(this).parent()).val();
-        var $url = "/AddressBook/GetRegionsForCountry/";
+        let $countryCode = $(this).val();
+        let $addressRegionContainer = $(".address-region");
+        let $region = $(".address-region-input", $addressRegionContainer).val();
+        let $htmlPrefix = $("input[name='address-htmlfieldprefix']", $(this).parent()).val();
+        let $url = "/AddressBook/GetRegionsForCountry/";
         axios.post($url, { countryCode: $countryCode, region: $region, htmlPrefix: $htmlPrefix })
             .then(function (response) {
                 $addressRegionContainer.replaceWith($(result));

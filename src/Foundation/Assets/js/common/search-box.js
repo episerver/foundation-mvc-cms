@@ -1,11 +1,11 @@
-﻿export class SearchBox {
+﻿export default class SearchBox {
     constructor() {
-        this.ApiUrl = "https://eastus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description";
-        this.AuthKey = "38192ad9dc5647d1b4d6328d420ac505";
-        this.ImageSizeLimit = 5;
+        this.apiUrl = "https://eastus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description";
+        this.authKey = "38192ad9dc5647d1b4d6328d420ac505";
+        this.imageSizeLimit = 5;
     }
 
-    Init() {
+    init() {
         const inst = this;
         this.btn = document.getElementById("js-searchbutton");
         this.box = document.getElementById("js-searchbox");
@@ -17,15 +17,15 @@
         var typingTimer;
 
         $("#js-searchbutton").click(function () {
-            inst.ExpandSearchBox();
+            inst.expandSearchBox();
         });
         $("#js-searchbox-close").click(function () {
-            inst.CollapseSearchBox();
+            inst.collapseSearchBox();
         });
         $(".jsSearchText").each(function (i, e) {
             inst.boxContent = $($(e).data('result-container'))[0];
 
-            inst.AutoSearch(e);
+            inst.autoSearch(e);
             $(e).on("keyup", function () {
                 clearTimeout(typingTimer);
                 const val = $(this).val();
@@ -57,33 +57,33 @@
                     return;
                 }
 
-                inst.HidePopover();
-                inst.CollapseSearchBox();
+                inst.hidePopover();
+                inst.collapseSearchBox();
             }
         });
 
-        inst.ProcessImage();
+        inst.processImage();
     }
 
-    ExpandSearchBox() {
+    expandSearchBox() {
         this.box.style.width = "560px";
         this.box.style.visibility = "visible";
         this.boxInput.focus();
     }
 
-    CollapseSearchBox() {
+    collapseSearchBox() {
         this.box.style.width = "80px";
         const inst = this;
         setTimeout(
             function () {
                 inst.box.style.visibility = "hidden";
-                inst.HidePopover();
+                inst.hidePopover();
             },
             200
         );
     }
 
-    Search(val, divInputElement, containerPopover) {
+    search(val, divInputElement, containerPopover) {
         var waitTimer;
         clearTimeout(waitTimer);
         waitTimer = setTimeout(function () {
@@ -142,13 +142,13 @@
                     }
                 });
 
-            this.ShowPopover(containerPopover);
+            this.showPopover(containerPopover);
         } else {
-            this.HidePopover();
+            this.hidePopover();
         }
     }
 
-    AutoSearch(e) {
+    autoSearch(e) {
         var options = {
             url: function (phrase) {
                 return "/find_v2/_autocomplete?prefix=" + phrase;
@@ -178,16 +178,16 @@
         $(e).easyAutocomplete(options);
     }
 
-    ShowPopover(containerPopover) {
+    showPopover(containerPopover) {
         $(containerPopover).show();
     }
 
-    HidePopover() {
+    hidePopover() {
         $('.searchbox-popover').hide();
     }
 
     // Search Image
-    ProcessImage() {
+    processImage() {
         var inst = this;
         $('.jsSearchImage').each(function (i, e) {
             var fileId = $(e).data('input');
@@ -200,7 +200,7 @@
                     $('.loading-box').show();
                     var files = this.files;
                     $(".validateErrorMsg").hide();
-                    inst.InputValidation(files);
+                    inst.inputValidation(files);
                 } catch (e) {
                     console.log(e);
                 }
@@ -208,14 +208,14 @@
         });
     }
 
-    InputValidation(files) {
+    inputValidation(files) {
         const inst = this;
         if (files.length == 1) {
             var regexForExtension = /(?:\.([^.]+))?$/;
             var extension = regexForExtension.exec(files[0].name)[1];
             var size = files[0].size / 1024 / 1024;
-            if ((size > inst.ImageSizeLimit)) {
-                errorMessage = "Image Size Should be lesser than " + inst.ImageSizeLimit + "MB";
+            if ((size > inst.imageSizeLimit)) {
+                errorMessage = "Image Size Should be lesser than " + inst.imageSizeLimit + "MB";
                 $(".validateErrorMsg").text(errorMessage).show();
                 return false;
             } else if ((extension != "jpg" && extension != "png" && extension != "jpeg")) {
@@ -225,24 +225,24 @@
             }
             var reader = new FileReader();
             reader.onload = function () {
-                inst.ProcessImage.imageData = reader.result;
+                inst.processImage.imageData = reader.result;
                 var arrayBuffer = this.result, array = new Uint8Array(arrayBuffer);
-                if (typeof (inst.ProcessImage.imageData) == "undefined") {
+                if (typeof (inst.processImage.imageData) == "undefined") {
                     errorMessage = "Upload File A Vaild Image";
                     $(".validateErrorMsg").text(errorMessage).show();
                 }
-                inst.ImageProcess(inst.ProcessImage.imageData);
+                inst.imageProcess(inst.processImage.imageData);
             };
             reader.readAsDataURL(files[0]);
         }
     }
 
-    ImageProcess(DataURL) {
+    imageProcess(DataURL) {
         const inst = this;
         var request = new XMLHttpRequest();
-        request.open('POST', inst.ApiUrl);
+        request.open('POST', inst.apiUrl);
         request.setRequestHeader('Content-Type', 'application/octet-stream');
-        request.setRequestHeader('Ocp-Apim-Subscription-Key', inst.AuthKey);
+        request.setRequestHeader('Ocp-Apim-Subscription-Key', inst.authKey);
         request.onreadystatechange = function () {
             if (this.readyState === 4) {
                 var result = JSON.parse(this.response);
@@ -262,10 +262,10 @@
             'image': DataURL,
             'locale': 'en_US'
         };
-        var response = request.send(inst.Makeblob(DataURL));
+        var response = request.send(inst.makeblob(DataURL));
     }
 
-    Makeblob(dataURL) {
+    makeblob(dataURL) {
         var BASE64_MARKER = ';base64,';
         if (dataURL.indexOf(BASE64_MARKER) == -1) {
             var parts = dataURL.split(',');

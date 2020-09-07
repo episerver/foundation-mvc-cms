@@ -1,11 +1,11 @@
-﻿export class Selection {
-    Init() {
-        this.Expand();
-        this.Collapse();
-        this.ItemClick();
+﻿export default class Selection {
+    init() {
+        this.expand();
+        this.collapse();
+        this.itemClick();
     }
 
-    Expand() {
+    expand() {
         var selections = $('.selection--cm');
         selections.each(function (i, e) {
             $(e).find('.selection--cm__expand').each(function (j, s) {
@@ -33,7 +33,7 @@
         });
     }
 
-    Collapse() {
+    collapse() {
         var selections = $('.selection--cm');
         selections.each(function (i, e) {
             $(e).find('.selection--cm__collapse').each(function (j, s) {
@@ -46,7 +46,7 @@
         });
     }
 
-    ItemClick() {
+    itemClick() {
         $('.selection--cm').each(function (i, e) {
             $(e).children('li').each(function (j, s) {
                 $(s).click(function (event) {

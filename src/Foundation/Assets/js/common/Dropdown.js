@@ -1,4 +1,4 @@
-﻿export class Dropdown {
+﻿export default class Dropdown {
     constructor(divId) {
         if (divId) {
             this.DivContainer = divId;
@@ -7,7 +7,14 @@
         }
     }
 
-    ExpandCollapse() {
+    init() {
+        this.expandCollapse();
+        this.initShowSelectedText();
+        this.selectItem();
+        this.customizeDropdownMenu();
+    }
+
+    expandCollapse() {
         $(this.DivContainer).find('.dropdown').each(function (i, e) {
             $(e).children('.dropdown__selected').first().click(function () {
                 var dropdown = $(this).siblings('.dropdown__group');
@@ -25,7 +32,7 @@
         });
     }
 
-    ShowSelected(e) {
+    showSelected(e) {
         var selectedText = "";
         $(e).find('input:checked').each(function (j, s) {
             selectedText += $(s).parents('label').text() + ", ";
@@ -35,26 +42,26 @@
         $(e).find('.dropdown__selected .current').first().html(selectedText);
     }
 
-    InitShowSelectedText() {
+    initShowSelectedText() {
         var inst = this;
         $(this.DivContainer).find('.dropdown').each(function (i, e) {
-            inst.ShowSelected(e);
+            inst.showSelected(e);
         });
     }
 
-    SelectItem() {
+    selectItem() {
         var inst = this;
         $(this.DivContainer).find('.dropdown').each(function (i, e) {
             $(e).find('input').each(function (j, s) {
                 $(s).change(function () {
-                    inst.ShowSelected(e);
+                    inst.showSelected(e);
                     $('.dropdown__group').hide();
                 });
             });
         });
     }
 
-    CustomizeDropdownMenu() {
+    customizeDropdownMenu() {
         // Prevent Bootstrap dropdown from closing when clicking inside it
         $('.dropdown-menu.dropdown-menu--customized').on('click', (e) => {
             e.stopPropagation();
@@ -65,12 +72,5 @@
             event.stopPropagation();
             $(this).tab('show');
         });
-    }
-
-    Init() {
-        this.ExpandCollapse();
-        this.InitShowSelectedText();
-        this.SelectItem();
-        this.CustomizeDropdownMenu();
     }
 }

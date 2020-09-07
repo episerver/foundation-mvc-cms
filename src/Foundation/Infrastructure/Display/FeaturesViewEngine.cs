@@ -3,19 +3,17 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
 
-namespace Foundation.Cms.Display
+namespace Foundation.Infrastructure.Display
 {
     public class FeaturesViewEngine : RazorViewEngine
     {
         private static readonly string[] AdditionalPartialViewFormats =
         {
             "~/Features/Blocks/{0}.cshtml",
-            "~/Features/Blocks/Views/{0}.cshtml",
-            "~/Features/Blocks/Views/{1}/{0}.cshtml",
-            "~/Features/Shared/{0}.cshtml",
-            "~/Features/Shared/Foundation/{0}.cshtml",
-            "~/Features/Shared/Foundation/{1}/{0}.cshtml",
-            "~/Features/Shared/Foundation/Header/{0}.cshtml"
+            "~/Features/Blocks/{1}/{0}.cshtml",
+            "~/Features/Shared/Views/{0}.cshtml",
+            "~/Features/Shared/Views/{1}/{0}.cshtml",
+            "~/Features/Shared/Views/Header/{0}.cshtml"
         };
 
         public FeaturesViewEngine()

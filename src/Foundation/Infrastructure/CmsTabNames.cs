@@ -3,7 +3,7 @@ using EPiServer.DataAnnotations;
 using EPiServer.Security;
 using System.ComponentModel.DataAnnotations;
 
-namespace Foundation.Cms
+namespace Foundation.Infrastructure
 {
     [GroupDefinitions]
     public static class CmsTabNames

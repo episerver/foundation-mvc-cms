@@ -1,19 +1,16 @@
 ﻿import PDFPreview from "./pdf-preview";
 import NotificationHelper from "./notification-helper";
-import Locations from "./selective/locations"
-import People from "./selective/people"
-import BlockTracking from "./block-tracking"
-import Blog from "./blog"
-import Dropdown from "./dropdown"
-import FoundationCms from "./foundation.cms"
-import Header from "./header"
-import MobileNavigation from "./mobile-navigation"
-import PdfPreview from "./pdf-preview"
-import { ProductSearch, NewProductsSearch, SalesSearch } from "./search";
-import SearchBox from "./search-box"
-import Selection from "./selection"
+import Header from "./header";
+import MobileNavigation from "./mobile-navigation";
+import Selection from "./selection";
+import Dropdown from "./dropdown";
+import SearchBox from "./search-box";
+import ContentSearch from "./search";
+//import PdfPreview from "./pdf-preview"
+//import SearchBox from "./search-box"
+//import Selection from "./selection"
 
-export class FoundationInit{
+export default class FoundationCms {
     init() {
         // convert json to formdata and append __RequestVerificationToken key for CORS
         window.convertFormData = function (data, containerToken) {
@@ -50,6 +47,7 @@ export class FoundationInit{
         window.notification = new NotificationHelper();
 
         PDFPreview();
+        axios.defaults.headers.common['Accept'] = '*/*';
 
         let header = new Header();
         header.init();
@@ -65,9 +63,6 @@ export class FoundationInit{
         var mobileNavigation = new MobileNavigation(params);
         mobileNavigation.init();
 
-        var blockTracking = new BlockTracking();
-        blockTracking.init();
-
         var selection = new Selection();
         selection.init();
 
@@ -76,6 +71,12 @@ export class FoundationInit{
 
         var searchBox = new SearchBox();
         searchBox.init();
+
+        var contentSearch = new ContentSearch();
+        contentSearch.Init();
+
+        //=====lam den day
+
 
         var blog = new Blog();
         blog.init();
@@ -89,7 +90,24 @@ export class FoundationInit{
         var people = new People();
         people.init();
     
-        var cms = new FoundationCms();
-        cms.init();
+        axios.defaults.headers.common['Accept'] = '*/*';
+        window.notification = new NotifyHelper();
+        feather.replace();
+
+        var header = new Header();
+        header.init();
+
+        // Mobile Navgition
+        var params = { searchBoxId: "#mobile-searchbox", openSearchBoxId: "#open-searh-box", closeSearchBoxId: "#close-search-box", sideBarId: "#offside-menu-mobile", openSideBarId: "#open-offside-menu" }
+        var mobileNav = new MobileNavigation(params);
+        mobileNav.Init();
+        //--- End
+
+
+        // Blog
+        var blog = new Blog();
+        blog.init();
+        // --- End
+
     }       
 }

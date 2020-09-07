@@ -1,7 +1,7 @@
 ﻿using EPiServer.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 
-namespace Foundation.Cms
+namespace Foundation.Infrastructure
 {
     [GroupDefinitions]
     public static class CmsGroupNames
