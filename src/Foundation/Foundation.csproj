@@ -844,6 +844,7 @@
     <Content Include="Assets\js\features\selective\People.js" />
     <Content Include="Assets\js\features\selective\Locations.js" />
     <Content Include="Assets\js\footer.min.js" />
+    <Content Include="Assets\js\index.webpack.js" />
     <Content Include="Assets\js\main.min.js" />
     <Content Include="Assets\js\plugins\fontawesomeicons.js" />
     <Content Include="Assets\js\features\notifyHelper.js" />
@@ -1345,6 +1346,10 @@
     <Content Include="modules\_protected\episerver-labs-grid-view\web.config" />
     <Content Include="modules\_protected\episerver-labs-grid-view\episerver-labs-grid-view.zip" />
     <Content Include="modules\_protected\Geta.SEO.Sitemaps\Geta.SEO.Sitemaps.zip" />
+    <Content Include="webpack.common.js" />
+    <Content Include="webpack.dev.js" />
+    <Content Include="webpack.prod.js" />
+    <Content Include="Assets\scss\test.scss" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
