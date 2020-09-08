@@ -5,10 +5,12 @@ using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using Foundation.Cms.Extensions;
 using Foundation.Find.Cms;
+using Foundation.Infrastructure.Display;
 using System;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Owin;
+using System.Web.Mvc;
 
 namespace Foundation.Infrastructure
 {
@@ -43,11 +45,12 @@ namespace Foundation.Infrastructure
 
         public void Initialize(InitializationEngine context)
         {
-            context.InitializeFoundationCms();
             context.InitializeFoundationFindCms();
 
             var handler = GlobalConfiguration.Configuration.MessageHandlers
                 .FirstOrDefault(x => x.GetType() == typeof(PassiveAuthenticationMessageHandler));
+
+            ViewEngines.Engines.Insert(0, new FeaturesViewEngine());
 
             if (handler != null)
             {

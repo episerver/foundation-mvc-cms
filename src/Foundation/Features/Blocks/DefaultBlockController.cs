@@ -2,8 +2,7 @@
 using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web.Mvc;
-using Foundation.Cms.Blocks;
-using Foundation.Cms.ViewModels;
+using Foundation.Features.Shared;
 using System;
 using System.Web.Mvc;
 
