@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Foundation.Cms.ViewModels.Header
+namespace Foundation.Features.Header
 {
     public class MegaMenuModel
     {

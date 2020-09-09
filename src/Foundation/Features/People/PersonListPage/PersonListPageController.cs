@@ -1,34 +1,31 @@
-﻿using EPiServer;
-using EPiServer.Core;
-using EPiServer.DataAbstraction;
+﻿using EPiServer.Core;
 using EPiServer.Find;
 using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
 using EPiServer.Web.Mvc;
 using Foundation.Cms;
-using Foundation.Find.Cms;
-using Foundation.Find.Cms.Models.Pages;
-using Foundation.Find.Cms.People.ViewModels;
+using Foundation.Cms.Settings;
+using Foundation.Features.People.PersonItemPage;
+using Foundation.Features.Settings;
+using Foundation.Find;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 namespace Foundation.Features.People.PersonListPage
 {
-    public class PersonListPageController : PageController<Find.Cms.Models.Pages.PersonListPage>
+    public class PersonListPageController : PageController<PersonList>
     {
-        private readonly IContentLoader _contentLoader;
-        private readonly IContentTypeRepository _contentTypeRepository;
+        private readonly ISettingsService _settingsService;
 
-        public PersonListPageController(IContentLoader contentLoader, IContentTypeRepository contentTypeRepository)
+        public PersonListPageController(ISettingsService settingsService)
         {
-            _contentLoader = contentLoader;
-            _contentTypeRepository = contentTypeRepository;
+            _settingsService = settingsService;
         }
 
-        public ActionResult Index(Find.Cms.Models.Pages.PersonListPage currentPage)
+        public ActionResult Index(PersonList currentPage)
         {
             var queryString = Request.QueryString;
-            var query = SearchClient.Instance.Search<Find.Cms.Models.Pages.PersonItemPage>();
+            var query = SearchClient.Instance.Search<PersonPage>();
 
             if (!string.IsNullOrWhiteSpace(queryString.Get("name")))
             {
@@ -49,7 +46,7 @@ namespace Foundation.Features.People.PersonListPage
                                     .Take(500)
                                     .GetContentResult();
 
-            var settingPage = _contentLoader.Get<CmsHomePage>(ContentReference.StartPage);
+            var settingPage = _settingsService.GetSiteSettings<CollectionSettings>();
 
             var model = new PersonListViewModel(currentPage)
             {
@@ -62,9 +59,9 @@ namespace Foundation.Features.People.PersonListPage
             return View(model);
         }
 
-        public List<string> GetNames(IContentResult<PersonItemPage> persons)
+        public List<string> GetNames(IContentResult<PersonPage> persons)
         {
-            List<string> lstNames = new List<string>();
+            var lstNames = new List<string>();
             foreach (var person in persons)
             {
                 lstNames.Add(person.Name);

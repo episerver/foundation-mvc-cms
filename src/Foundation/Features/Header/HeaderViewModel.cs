@@ -1,13 +1,15 @@
 ﻿using EPiServer.Core;
 using EPiServer.SpecializedProperties;
+using Foundation.Features.Blocks.MenuItemBlock;
+using Foundation.Features.Home;
 using System;
 using System.Collections.Generic;
 
-namespace Foundation.Cms.ViewModels.Header
+namespace Foundation.Features.Header
 {
     public class HeaderViewModel
     {
-        public virtual CmsHomePage HomePage { get; set; }
+        public virtual HomePage HomePage { get; set; }
         public int LogoHeight { get; set; }
         public ContentReference CurrentContentLink { get; set; }
         public Guid CurrentContentGuid { get; set; }

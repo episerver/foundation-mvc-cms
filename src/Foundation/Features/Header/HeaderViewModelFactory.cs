@@ -15,9 +15,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Foundation.Cms.ViewModels.Header
+namespace Foundation.Features.Header
 {
-    public class CmsHeaderViewModelFactory : IHeaderViewModelFactory
+    public class HeaderViewModelFactory : IHeaderViewModelFactory
     {
         private const string MenuCacheKey = "MenuItemsCacheKey";
         private readonly IUrlResolver _urlResolver;
@@ -26,7 +26,7 @@ namespace Foundation.Cms.ViewModels.Header
         private readonly LocalizationService _localizationService;
         private readonly IDatabaseMode _databaseMode;
 
-        public CmsHeaderViewModelFactory(IUrlResolver urlResolver,
+        public HeaderViewModelFactory(IUrlResolver urlResolver,
             IContentCacheKeyCreator contentCacheKeyCreator,
             IContentLoader contentLoader,
             LocalizationService localizationService,

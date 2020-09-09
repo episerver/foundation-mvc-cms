@@ -6,7 +6,6 @@ using EPiServer.Find.UnifiedSearch;
 using EPiServer.Globalization;
 using EPiServer.Web;
 using Foundation.Cms.Extensions;
-using Foundation.Cms.Media;
 using Foundation.Find.Cms.ViewModels;
 using Geta.EpiCategories;
 using Geta.EpiCategories.Find.Extensions;

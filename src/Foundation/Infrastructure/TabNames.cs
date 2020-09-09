@@ -37,6 +37,12 @@ namespace Foundation.Infrastructure
         [RequiredAccess(AccessLevel.Edit)]
         public const string Tags = "Tags";
 
+        [Display(Order = 100)]
+        public const string Location = "Location";
+
+        [Display(Order = 200)]
+        public const string Person = "Person";
+
         [Display(Order = 250)]
         public const string Teaser = "Teaser";
 

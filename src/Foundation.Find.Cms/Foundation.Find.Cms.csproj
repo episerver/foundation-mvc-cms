@@ -12,12 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\EditorDescriptors\**" />
-    <EmbeddedResource Remove="Models\EditorDescriptors\**" />
-    <None Remove="Models\EditorDescriptors\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="EPiServer.CMS.AspNet" Version="11.17.0" />
     <PackageReference Include="EPiServer.CMS.Core" Version="11.17.0" />
     <PackageReference Include="EPiServer.CMS.UI.Core" Version="11.28.0" />

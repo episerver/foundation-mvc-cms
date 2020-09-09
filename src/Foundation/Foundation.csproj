@@ -620,6 +620,7 @@
   <ItemGroup>
     <Compile Include="Attributes\OnlyAnonymousAttribute.cs" />
     <Compile Include="Features\Api\AuthorizedApiController.cs" />
+    <Compile Include="Features\Api\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Features\Api\PublicApiController.cs" />
     <Compile Include="Features\Blocks\BreadcrumbBlock\BreadCrumbBlock.cs" />
     <Compile Include="Features\Blocks\BreadcrumbBlock\BreadcrumbBlockController.cs" />
@@ -667,6 +668,10 @@
     <Compile Include="Features\Blog\BlogListPage\BlogListPage.cs" />
     <Compile Include="Features\Blog\BlogListPage\BlogListPageController.cs" />
     <Compile Include="Features\Blog\BlogListPage\BlogListPageViewModel.cs" />
+    <Compile Include="Features\Category\CategoryFoundationPageViewModel.cs" />
+    <Compile Include="Features\Category\CategorySearchViewModel.cs" />
+    <Compile Include="Features\Category\StandardCategory.cs" />
+    <Compile Include="Features\Category\StandardCategoryViewModel.cs" />
     <Compile Include="Features\Events\CalendarBlock\CalendarBlock.cs" />
     <Compile Include="Features\Events\CalendarBlock\CalendarBlockViewModel.cs" />
     <Compile Include="Features\Events\CalendarBlock\CalendarViewModeSelectionFactory.cs" />
@@ -692,17 +697,42 @@
     <Compile Include="Features\Locations\Blocks\ProductFilters\FilterUIDescriptor.cs" />
     <Compile Include="Features\Locations\Blocks\ProductFilters\NumericFilterBlock.cs" />
     <Compile Include="Features\Locations\Blocks\ProductFilters\StringFilterBlock.cs" />
+    <Compile Include="Features\Locations\IFilterBlock.cs" />
     <Compile Include="Features\Locations\LocationItemPage\LocationItemPage.cs" />
+    <Compile Include="Features\Locations\LocationItemPage\LocationItemViewModel.cs" />
     <Compile Include="Features\Locations\LocationListPage\LocationListPage.cs" />
+    <Compile Include="Features\Locations\LocationListPage\LocationListViewModel.cs" />
+    <Compile Include="Features\Locations\LocationsPartialRouting.cs" />
     <Compile Include="Features\Locations\TagPage\TagPage.cs" />
+    <Compile Include="Features\Locations\TagPage\TagsCarouselViewModel.cs" />
+    <Compile Include="Features\Locations\TagPage\TagsViewModel.cs" />
+    <Compile Include="Features\Locations\TagsPartialRouting.cs" />
+    <Compile Include="Features\Login\LoginViewModel.cs" />
+    <Compile Include="Features\Login\RegisterAccountViewModel.cs" />
+    <Compile Include="Features\Media\CodingFile.cs" />
+    <Compile Include="Features\Media\FoundationPdfFile.cs" />
+    <Compile Include="Features\Media\FoundationPdfFileViewModel.cs" />
+    <Compile Include="Features\Media\ImageMediaData.cs" />
+    <Compile Include="Features\Media\ImageMediaDataAlignmentSelectionFactory.cs" />
+    <Compile Include="Features\Media\ImageMediaDataViewModel.cs" />
+    <Compile Include="Features\Media\MediaController.cs" />
+    <Compile Include="Features\Media\StandardFile.cs" />
+    <Compile Include="Features\Media\VideoFile.cs" />
+    <Compile Include="Features\Media\VideoFileViewModel.cs" />
     <Compile Include="Features\MyAccount\Bookmarks\BookmarksPage.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ForgotPasswordViewModel.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\MailBasePage.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordMailPage.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordPage.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordViewModel.cs" />
+    <Compile Include="Features\People\LocationsSelectionFactory.cs" />
+    <Compile Include="Features\People\PersonItemPage\PersonPage.cs" />
+    <Compile Include="Features\People\PersonItemPage\PersonViewModel.cs" />
+    <Compile Include="Features\People\PersonListPage\PersonList.cs" />
     <Compile Include="Features\People\PersonListPage\PersonListPageController.cs" />
     <Compile Include="Features\People\PersonItemPage\PersonItemPageController.cs" />
+    <Compile Include="Features\People\PersonListPage\PersonListViewModel.cs" />
+    <Compile Include="Features\People\SectorsSelectionFactory.cs" />
     <Compile Include="Features\Preview\PartialViewDisplayChannel.cs" />
     <Compile Include="Features\Preview\PagePartialPreviewController.cs" />
     <Compile Include="Features\Preview\PreviewControllerHelper.cs" />
@@ -714,12 +744,16 @@
     <Compile Include="Features\Locations\TagPage\TagPageController.cs" />
     <Compile Include="Features\Login\UserViewModel.cs" />
     <Compile Include="Features\Login\UserController.cs" />
-    <Compile Include="Features\Media\MediaController.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordController.cs" />
     <Compile Include="Features\Blocks\DefaultBlockController.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
     <Compile Include="Features\Search\Search\SearchPageUIDescriptor.cs" />
     <Compile Include="Features\Search\Search\SearchResultPage.cs" />
+    <Compile Include="Features\Shared\EditorDescriptors\HideContentAreaActionsContainer.cs" />
+    <Compile Include="Features\Shared\EditorDescriptors\MoveCategoryEditorDescriptor.cs" />
+    <Compile Include="Features\Shared\EditorDescriptors\NumericOperatorSelectionFactory.cs" />
+    <Compile Include="Features\Shared\EditorDescriptors\PreviewOptionSelectionFactory.cs" />
+    <Compile Include="Features\Shared\EditorDescriptors\SearchOptionSelectionFactory.cs" />
     <Compile Include="Features\Shared\SelectionFactories\HeaderMenuSelectionFactory.cs" />
     <Compile Include="Features\StandardPage\StandardPage.cs" />
     <Compile Include="Features\StandardPage\StandardPageController.cs" />
@@ -745,7 +779,7 @@
     <Compile Include="Features\Shared\SelectionFactories\PreviewOptionSelectionFactory.cs" />
     <Compile Include="Features\Shared\SelectionFactories\TeaserSelectionFactory.cs" />
     <Compile Include="Features\Shared\SelectionFactories\TemplateListSelectionFactory.cs" />
-    <Compile Include="Features\Shared\Views\ErrorController.cs" />
+    <Compile Include="Features\ErrorPage\ErrorController.cs" />
     <Compile Include="Features\StandardPage\StandardPageTopPaddingModeSelectionFactory.cs" />
     <Compile Include="Features\StandardPage\StandardPageViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -756,7 +790,17 @@
     <Compile Include="Helpers\OpenGraphHelpers.cs" />
     <Compile Include="Helpers\ImageUrlHelpers.cs" />
     <Compile Include="Helpers\WebPHelper.cs" />
+    <Compile Include="Infrastructure\Display\DisplayResolution.cs" />
+    <Compile Include="Infrastructure\Display\DisplayResolutionBase.cs" />
+    <Compile Include="Infrastructure\Display\FoundationContentAreaRenderer.cs" />
+    <Compile Include="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
+    <Compile Include="Infrastructure\Display\FoundationQuickNavigatorItemProvider.cs" />
+    <Compile Include="Infrastructure\Display\MobileChannel.cs" />
+    <Compile Include="Infrastructure\Display\ViewTemplateModelRegistrator.cs" />
+    <Compile Include="Infrastructure\Display\WebChannel.cs" />
     <Compile Include="Infrastructure\GroupNames.cs" />
+    <Compile Include="Infrastructure\SchemaMarkup\BlogItemPageSchemaMapper.cs" />
+    <Compile Include="Infrastructure\SchemaMarkup\HomePageSchemaMapper.cs" />
     <Compile Include="Infrastructure\TabNames.cs" />
     <Compile Include="Infrastructure\Display\FeaturesViewEngine.cs" />
     <Compile Include="Infrastructure\Jobs\BlobJob.cs" />
@@ -770,8 +814,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\scss\templates\forms\" />
     <Folder Include="Assets\scss\templates\media\" />
-    <Folder Include="Features\MyAccount\ProfilePage\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>
   <ItemGroup>
@@ -993,6 +1037,7 @@
     <Content Include="Assets\js\vendors\slick\slick.min.js" />
     <Content Include="Assets\js\vendors\spur-admin\spur.js" />
     <Content Include="Features\Blocks\HeroBlock\_hero-block.scss" />
+    <Content Include="Features\People\people.js" />
     <Content Include="Features\StandardPage\_standard-page.scss" />
     <Content Include="Features\Locations\_location.scss" />
     <Content Include="Assets\scss\templates\pages\_my-account-pages.scss" />
@@ -1026,7 +1071,7 @@
     <Content Include="Features\Blog\BlogListPage\_GridTemplate.cshtml" />
     <Content Include="Features\Blog\BlogListPage\Preview.cshtml" />
     <Content Include="Features\Blocks\PageListBlock\_PageListPreview.cshtml" />
-    <Content Include="Assets\scss\templates\pages\_login.scss" />
+    <Content Include="Features\Login\_login.scss" />
     <Content Include="Features\Blocks\NavigationBlock\NavigationBlock.cshtml" />
     <Content Include="Features\Events\CalendarBlock\calendar-block.js" />
     <Content Include="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.ascx" />
@@ -1139,7 +1184,7 @@
     <Content Include="Assets\scss\layout\_footer.scss" />
     <Content Include="Assets\scss\layout\_header.scss" />
     <Content Include="Assets\scss\layout\_navigation-bar.scss" />
-    <Content Include="Assets\scss\templates\pages\_home.scss" />
+    <Content Include="Features\Home\_home.scss" />
     <Content Include="Assets\scss\themes\_default.scss" />
     <Content Include="Assets\scss\templates\widgets\_profile-sidebar.scss" />
     <Content Include="Assets\scss\vendors\font-awesome-5.9.0\webfonts\fa-brands-400.eot" />
@@ -1156,7 +1201,7 @@
     <Content Include="Assets\scss\vendors\font-awesome-5.9.0\webfonts\fa-solid-900.woff2" />
     <Content Include="Assets\scss\vendors\font-awesome-5.9.0\font-awesome-list.json" />
     <Content Include="Assets\scss\templates\widgets\_teaser.scss" />
-    <Content Include="Assets\scss\templates\forms\_form.scss" />
+    <Content Include="Assets\scss\components\widgets\_form.scss" />
     <Content Include="Assets\scss\templates\widgets\_breadcrumb.scss" />
     <Content Include="Features\Blog\BlogItemPage\_blog-item.scss" />
     <Content Include="Features\Blog\BlogListPage\_blog-list.scss" />
@@ -1224,7 +1269,6 @@
     <Content Include="Features\Locations\LocationListPage\FilterDistancesBlock.cshtml" />
     <Content Include="Features\Locations\LocationListPage\FilterTemperaturesBlock.cshtml" />
     <Content Include="Features\Shared\Views\_MasterLayout.cshtml" />
-    <Content Include="Features\Media\ImageMedia.cshtml" />
     <Content Include="Features\MyAccount\ResetPassword\ForgotPassword.cshtml" />
     <Content Include="Features\MyAccount\ResetPassword\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Features\MyAccount\ResetPassword\ResetPassword.cshtml" />
@@ -1242,12 +1286,8 @@
     <Content Include="Features\Login\Register.cshtml" />
     <Content Include="Features\Blocks\TextBlock\_text-block.scss" />
     <Content Include="Features\Blocks\CarouselBlock\CarouselBlock.cshtml" />
-    <Content Include="Assets\scss\templates\blocks\_category-block.scss" />
-    <Content Include="Features\Media\VideoFile.cshtml" />
-    <Content Include="Features\Media\Index.cshtml" />
-    <Content Include="Assets\scss\templates\pages\_search-page.scss" />
+    <Content Include="Features\Category\_category-block.scss" />
     <Content Include="Assets\scss\templates\widgets\_searchbox.scss" />
-    <Content Include="Features\Media\PdfFile.cshtml" />
     <Content Include="modules\_protected\CmsAudit\Views\web.config" />
     <Content Include="modules\_protected\CmsAudit\Views\VisitorGroups\Index.cshtml" />
     <Content Include="modules\_protected\CmsAudit\Views\Shared\_layout.cshtml" />
@@ -1274,11 +1314,10 @@
     <Content Include="modules\_protected\BVNetwork.404Handler\BVNetwork.404Handler.zip" />
     <Content Include="Features\Blocks\PageListBlock\_CarouselTemplate.cshtml" />
     <Content Include="Features\Blocks\Healthbot\HealthChatBotBlock.cshtml" />
-    <Content Include="Features\Shared\Views\ErrorPage.cshtml" />
-    <Content Include="Assets\scss\templates\pages\_error.scss" />
+    <Content Include="Features\ErrorPage\ErrorPage.cshtml" />
+    <Content Include="Features\ErrorPage\_error.scss" />
     <Content Include="modules\_protected\EPiServer.Forms.Samples\Views\ElementBlocks\Web.config" />
     <Content Include="modules\_protected\EPiServer.Forms.Samples\module.config" />
-    <Content Include="Assets\scss\templates\pages\_people.scss" />
     <Content Include="Features\People\PersonItemPage\Index.cshtml" />
     <Content Include="Features\People\PersonListPage\Index.cshtml" />
     <Content Include="modules\_protected\AdvancedTask\AdvancedTask.zip" />
@@ -1358,6 +1397,12 @@
     <Content Include="Features\Blocks\BreadcrumbBlock\_breadcrumb-block.scss" />
     <Content Include="Features\Blocks\BreadcrumbBlock\BreadcrumbBlock.cshtml" />
     <Content Include="Features\Blocks\PageListBlock\_TopImageTemplate.cshtml" />
+    <Content Include="Features\People\_people.scss" />
+    <Content Include="Features\Media\ImageMedia.cshtml" />
+    <Content Include="Features\Media\Index.cshtml" />
+    <Content Include="Features\Media\PdfFile.cshtml" />
+    <Content Include="Features\Media\VideoFile.cshtml" />
+    <Content Include="Features\Media\_video-file.scss" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

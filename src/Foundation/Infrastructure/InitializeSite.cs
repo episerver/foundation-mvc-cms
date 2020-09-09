@@ -3,9 +3,15 @@ using EPiServer.ContentApi.Search;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
+using Foundation.Cms;
 using Foundation.Cms.Extensions;
+using Foundation.Cms.SchemaMarkup;
+using Foundation.Features.Blog.BlogItemPage;
+using Foundation.Features.Header;
+using Foundation.Features.Home;
 using Foundation.Find.Cms;
 using Foundation.Infrastructure.Display;
+using Foundation.Infrastructure.SchemaMarkup;
 using System;
 using System.Linq;
 using System.Web.Http;
@@ -41,6 +47,11 @@ namespace Foundation.Infrastructure
                 .SetMaximumSearchResults(200)
                 .SetSearchCacheDuration(TimeSpan.FromMinutes(60));
             });
+
+            context.Services.AddSingleton<IHeaderViewModelFactory, HeaderViewModelFactory>();
+            context.Services.AddSingleton<BlogTagFactory>();
+            context.Services.AddSingleton<ISchemaDataMapper<BlogItemPage>, BlogItemPageSchemaMapper>();
+            context.Services.AddSingleton<ISchemaDataMapper<HomePage>, HomePageSchemaMapper>();
         }
 
         public void Initialize(InitializationEngine context)

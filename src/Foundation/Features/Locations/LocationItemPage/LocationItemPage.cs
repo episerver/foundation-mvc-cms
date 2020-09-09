@@ -6,16 +6,18 @@ using EPiServer.Find;
 using EPiServer.Labs.ContentManager.Cards;
 using EPiServer.Web;
 using Foundation.Cms.Categories;
+using Foundation.Features.Shared;
+using Foundation.Infrastructure;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Foundation.Find.Cms.Models.Pages
+namespace Foundation.Features.Locations.LocationItemPage
 {
     [ContentType(DisplayName = "Location Item Page",
         GUID = "ac26ee4b-104f-4719-8aab-ad6d3fcb0d75",
         Description = "Used to display the details of a location",
-        GroupName = FindTabNames.Location)]
+        GroupName = TabNames.Location)]
     [ImageUrl("~/assets/icons/cms/pages/cms-icon-page-27.png")]
     public class LocationItemPage : FoundationPageData
     {
@@ -43,30 +45,30 @@ namespace Foundation.Find.Cms.Models.Pages
 
         [Required]
         [BackingType(typeof(PropertyString))]
-        [Display(GroupName = FindTabNames.Location, Order = 10)]
+        [Display(GroupName = TabNames.Location, Order = 10)]
         public virtual string Continent { get; set; }
 
         [Required]
         [BackingType(typeof(PropertyString))]
-        [Display(GroupName = FindTabNames.Location, Order = 20)]
+        [Display(GroupName = TabNames.Location, Order = 20)]
         public virtual string Country { get; set; }
 
         [Required]
-        [Display(GroupName = FindTabNames.Location, Order = 30)]
+        [Display(GroupName = TabNames.Location, Order = 30)]
         public virtual double Latitude { get; set; }
 
         [Required]
-        [Display(GroupName = FindTabNames.Location, Order = 40)]
+        [Display(GroupName = TabNames.Location, Order = 40)]
         public virtual double Longitude { get; set; }
 
-        [Display(Name = "Average temperature", GroupName = FindTabNames.Location, Order = 50)]
+        [Display(Name = "Average temperature", GroupName = TabNames.Location, Order = 50)]
         public virtual double? AvgTemp { get; set; }
 
         [BackingType(typeof(PropertyString))]
-        [Display(Name = "Airport initials", GroupName = FindTabNames.Location, Order = 60)]
+        [Display(Name = "Airport initials", GroupName = TabNames.Location, Order = 60)]
         public virtual string AirportInitials { get; set; }
 
-        [Display(Name = "Yearly passengers", GroupName = FindTabNames.Location, Order = 70)]
+        [Display(Name = "Yearly passengers", GroupName = TabNames.Location, Order = 70)]
         public virtual int YearlyPassengers { get; set; }
 
         [Ignore]

@@ -38,14 +38,13 @@ namespace Foundation.Cms
             _services.AddTransient<IsInEditModeAccessor>(locator => () => PageEditing.PageIsInEditMode);
             _services.AddSingleton<ServiceAccessor<IContentRouteHelper>>(locator => locator.GetInstance<IContentRouteHelper>);
             _services.AddTransient<IModelBinderProvider, ModelBinderProvider>();
-            _services.AddSingleton<CookieService>();
-            _services.AddSingleton<BlogTagFactory>();
+            
             _services.AddTransient<IQuickNavigatorItemProvider, FoundationQuickNavigatorItemProvider>();
             _services.AddTransient<IViewTemplateModelRegistrator, ViewTemplateModelRegistrator>();
-            _services.AddSingleton<ISchemaDataMapper<BlogItemPage>, BlogItemPageSchemaMapper>();
-            _services.AddSingleton<ISchemaDataMapper<CmsHomePage>, CmsHomePageSchemaMapper>();
+
             _services.AddSingleton<IUserService, UserService>();
-            _services.AddSingleton<IHeaderViewModelFactory, HeaderViewModelFactory>();
+            
+            _services.AddSingleton<CookieService>();
         }
 
         void IInitializableModule.Initialize(InitializationEngine context)

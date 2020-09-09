@@ -1,6 +1,7 @@
 ﻿using EPiServer.SpecializedProperties;
+using Foundation.Features.Home;
 
-namespace Foundation.Cms.ViewModels.Header
+namespace Foundation.Features.Header
 {
     public class MobileHeaderViewModel
     {
@@ -8,6 +9,6 @@ namespace Foundation.Cms.ViewModels.Header
 
         public LinkItemCollection Pages { get; set; }
 
-        public CmsHomePage StartPage { get; set; }
+        public HomePage StartPage { get; set; }
     }
 }

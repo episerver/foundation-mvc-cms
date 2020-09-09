@@ -1,16 +1,11 @@
 ﻿using EPiServer.Core;
+using Foundation.Features.Home;
 
-namespace Foundation.Cms.ViewModels.Header
+namespace Foundation.Features.Header
 {
     public interface IHeaderViewModelFactory
     {
-        THeaderViewModel CreateHeaderViewModel<THeaderViewModel>(IContent content,
-            CmsHomePage home)
-            where THeaderViewModel : HeaderViewModel, new();
-
-        void AddMyAccountMenu<THomePage, THeaderViewModel>(THomePage homePage,
-            THeaderViewModel viewModel)
-            where THeaderViewModel : HeaderViewModel, new()
-            where THomePage : CmsHomePage;
+        HeaderViewModel CreateHeaderViewModel(IContent content, HomePage home);
+        void AddMyAccountMenu(HomePage homePage, HeaderViewModel viewModel);
     }
 }

@@ -253,7 +253,5 @@ namespace Foundation.Features.Api
             return returnUrl;
 
         }
-
-
     }
 }

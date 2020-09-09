@@ -1,4 +1,5 @@
 using EPiServer.Core;
+using Foundation.Features.Home;
 using System.Web;
 
 namespace Foundation.Features.Shared
@@ -6,7 +7,7 @@ namespace Foundation.Features.Shared
     public interface IContentViewModel<out TContent> where TContent : IContent
     {
         TContent CurrentContent { get; }
-        CmsHomePage StartPage { get; }
+        HomePage StartPage { get; }
         HtmlString SchemaMarkup { get; }
     }
 }
