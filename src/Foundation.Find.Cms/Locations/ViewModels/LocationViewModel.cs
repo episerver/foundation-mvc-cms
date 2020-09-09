@@ -1,7 +1,5 @@
 using EPiServer.Core;
 using Foundation.Cms.Categories;
-using Foundation.Cms.ViewModels;
-using Foundation.Find.Cms.Models.Pages;
 using System.Collections.Generic;
 using System.Linq;
 

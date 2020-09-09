@@ -4,7 +4,6 @@ using EPiServer.Editor;
 using EPiServer.Globalization;
 using EPiServer.ServiceLocation;
 using Foundation.Cms.Extensions;
-using Foundation.Cms.Pages;
 using Foundation.Cms.SchemaMarkup;
 using System.Web;
 

@@ -1,5 +1,4 @@
 ﻿using Foundation.Cms.Categories;
-using Foundation.Cms.Pages;
 using System.Collections.Generic;
 
 namespace Foundation.Cms.ViewModels.Categories

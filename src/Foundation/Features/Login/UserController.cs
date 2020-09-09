@@ -2,7 +2,6 @@
 using EPiServer.Core;
 using EPiServer.Web.Mvc.Html;
 using Foundation.Attributes;
-using Foundation.Cms.Pages;
 using Foundation.Helpers;
 using System.Web.Mvc;
 

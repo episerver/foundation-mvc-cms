@@ -1,7 +1,6 @@
 ﻿using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
-using Foundation.Cms.Pages;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Specialized;

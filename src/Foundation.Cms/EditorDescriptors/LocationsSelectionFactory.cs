@@ -2,7 +2,6 @@
 using EPiServer.Core;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.ObjectEditing;
-using Foundation.Cms.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;

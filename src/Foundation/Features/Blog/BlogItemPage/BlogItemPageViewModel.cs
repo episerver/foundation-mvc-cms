@@ -7,7 +7,7 @@ namespace Foundation.Features.Blog.BlogItemPage
 {
     public class BlogItemPageViewModel : ContentViewModel<BlogItemPage>
     {
-        public BlogItemPageViewModel(BlogItemPage currentPage) : base(currentPage) 
+        public BlogItemPageViewModel(BlogItemPage currentPage) : base(currentPage)
         {
         }
 

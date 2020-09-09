@@ -1,6 +1,5 @@
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using Foundation.Cms.Pages;
 
 namespace Foundation.Find.Cms.Models.Pages
 {

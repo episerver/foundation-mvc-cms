@@ -3,7 +3,6 @@ using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
 using EPiServer.Web.Routing;
 using Foundation.Cms.Pages;
-using Foundation.Find.Cms.Models.Pages;
 
 namespace Foundation.Find.Cms
 {

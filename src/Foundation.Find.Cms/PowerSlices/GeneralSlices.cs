@@ -5,7 +5,6 @@ using EPiServer.DataAbstraction;
 using EPiServer.Find;
 using EPiServer.Shell.Rest;
 using EPiServer.Shell.Services.Rest;
-using Foundation.Cms.Pages;
 using PowerSlice;
 using System.Linq;
 using System.Web;

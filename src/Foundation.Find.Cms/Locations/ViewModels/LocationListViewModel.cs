@@ -1,7 +1,5 @@
 using EPiServer.Find.Cms;
 using EPiServer.Personalization;
-using Foundation.Cms.ViewModels;
-using Foundation.Find.Cms.Models.Pages;
 using System.Collections.Specialized;
 
 namespace Foundation.Find.Cms.Locations.ViewModels

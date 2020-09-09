@@ -3,7 +3,6 @@ using EPiServer.Core;
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web.Mvc;
 using Foundation.Cms.Media;
-using Foundation.Cms.ViewModels.Blocks;
 using Foundation.Features.Shared;
 using System.Web.Mvc;
 

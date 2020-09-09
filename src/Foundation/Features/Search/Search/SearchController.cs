@@ -3,13 +3,12 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
-using Foundation.Cms.Pages;
 using Foundation.Find.Cms;
 using Foundation.Find.Cms.ViewModels;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Foundation.Features.Search
+namespace Foundation.Features.Search.Search
 {
     public class SearchController : PageController<SearchResultPage>
     {

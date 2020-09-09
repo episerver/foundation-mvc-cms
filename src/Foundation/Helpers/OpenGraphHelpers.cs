@@ -7,8 +7,10 @@ using EPiServer.Web;
 using EPiServer.Web.Routing;
 using Foundation.Cms.Categories;
 using Foundation.Cms.Pages;
-using Foundation.Cms.ViewModels;
+using Foundation.Features.Blog.BlogItemPage;
+using Foundation.Features.Home;
 using Foundation.Features.Shared;
+using Foundation.Features.StandardPage;
 using Foundation.Find.Cms.Models.Pages;
 using Foundation.Infrastructure.OpenGraph;
 using System;
@@ -62,7 +64,7 @@ namespace Foundation.Helpers
 
             switch (contentViewModel.CurrentContent)
             {
-                case CmsHomePage homePage:
+                case HomePage homePage:
                     var openGraphHomePage = new OpenGraphHomePage(metaTitle, new OpenGraphImage(imageUrl), GetUrl(homePage.ContentLink))
                     {
                         Description = homePage.PageDescription,

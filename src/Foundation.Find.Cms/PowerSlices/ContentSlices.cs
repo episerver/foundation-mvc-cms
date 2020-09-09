@@ -1,6 +1,4 @@
 ﻿using EPiServer.Core;
-using Foundation.Cms.Blocks;
-using Foundation.Cms.Pages;
 using PowerSlice;
 
 namespace Foundation.Find.Cms.PowerSlices

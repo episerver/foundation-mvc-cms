@@ -5,7 +5,6 @@ using EPiServer.Labs.ContentManager.Cards;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
 using Foundation.Cms.EditorDescriptors;
-using Foundation.Cms.Pages;
 using Foundation.Find.Cms.Facets.Config;
 using System.ComponentModel.DataAnnotations;
 

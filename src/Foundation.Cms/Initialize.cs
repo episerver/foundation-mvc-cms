@@ -12,10 +12,8 @@ using EPiServer.Web.Routing;
 using Foundation.Cms.Display;
 using Foundation.Cms.Identity;
 using Foundation.Cms.ModelBinders;
-using Foundation.Cms.Pages;
 using Foundation.Cms.SchemaMarkup;
 using Foundation.Cms.Users;
-using Foundation.Cms.ViewModels.Header;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using System;
@@ -47,7 +45,7 @@ namespace Foundation.Cms
             _services.AddSingleton<ISchemaDataMapper<BlogItemPage>, BlogItemPageSchemaMapper>();
             _services.AddSingleton<ISchemaDataMapper<CmsHomePage>, CmsHomePageSchemaMapper>();
             _services.AddSingleton<IUserService, UserService>();
-            _services.AddSingleton<IHeaderViewModelFactory, CmsHeaderViewModelFactory>();
+            _services.AddSingleton<IHeaderViewModelFactory, HeaderViewModelFactory>();
         }
 
         void IInitializableModule.Initialize(InitializationEngine context)

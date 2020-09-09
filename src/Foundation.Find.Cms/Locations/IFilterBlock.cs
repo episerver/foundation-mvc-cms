@@ -1,5 +1,4 @@
 using EPiServer.Find;
-using Foundation.Find.Cms.Models.Pages;
 using System.Collections.Specialized;
 
 namespace Foundation.Find.Cms.Locations

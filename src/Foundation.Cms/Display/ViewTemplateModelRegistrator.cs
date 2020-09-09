@@ -1,7 +1,6 @@
 ﻿using EPiServer.DataAbstraction;
 using EPiServer.Framework.Web;
 using EPiServer.Web.Mvc;
-using Foundation.Cms.Pages;
 
 namespace Foundation.Cms.Display
 {

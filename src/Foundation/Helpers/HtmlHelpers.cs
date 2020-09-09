@@ -5,7 +5,6 @@ using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using EPiServer.Web.Mvc.Html;
 using EPiServer.Web.Routing;
-using Foundation.Cms.Pages;
 using Foundation.Features.Shared;
 using System;
 using System.Collections.Generic;

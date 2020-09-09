@@ -1,7 +1,6 @@
 ﻿using EPiServer;
 using EPiServer.Core;
 using EPiServer.Filters;
-using Foundation.Cms.Pages;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

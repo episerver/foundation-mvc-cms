@@ -1,5 +1,4 @@
 using EPiServer.Core;
-using Foundation.Cms.Pages;
 using System.Web;
 
 namespace Foundation.Features.Shared

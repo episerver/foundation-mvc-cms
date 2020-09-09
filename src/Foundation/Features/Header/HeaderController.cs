@@ -1,6 +1,5 @@
 ﻿using EPiServer;
 using EPiServer.Web.Routing;
-using Foundation.Cms.Pages;
 using Foundation.Cms.ViewModels.Header;
 using System.Web.Mvc;
 

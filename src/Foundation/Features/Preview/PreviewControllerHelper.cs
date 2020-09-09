@@ -2,7 +2,6 @@
 using EPiServer.Core;
 using EPiServer.Framework.Web;
 using EPiServer.Web;
-using Foundation.Cms.Pages;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;

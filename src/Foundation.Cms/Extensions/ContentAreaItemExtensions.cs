@@ -1,7 +1,6 @@
 ﻿using EPiServer;
 using EPiServer.Core;
 using EPiServer.ServiceLocation;
-using Foundation.Cms.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

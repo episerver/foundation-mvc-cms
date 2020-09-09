@@ -9,7 +9,6 @@ using EPiServer.Web.Routing;
 using Foundation.Cms.SchemaMarkup;
 using Foundation.Find.Cms.Facets;
 using Foundation.Find.Cms.Facets.Config;
-using Foundation.Find.Cms.Models.Pages;
 using Foundation.Find.Cms.PowerSlices;
 using Foundation.Find.Cms.SchemaDataMappers;
 using Foundation.Find.Cms.ViewModels;

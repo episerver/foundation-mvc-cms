@@ -6,7 +6,6 @@ using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
 using EPiServer.Web.Mvc;
 using Foundation.Cms;
-using Foundation.Cms.Pages;
 using Foundation.Find.Cms;
 using Foundation.Find.Cms.Models.Pages;
 using Foundation.Find.Cms.People.ViewModels;

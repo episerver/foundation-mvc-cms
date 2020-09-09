@@ -1,6 +1,4 @@
 using EPiServer.Core;
-using Foundation.Cms.Pages;
-using Foundation.Cms.ViewModels;
 using System.Collections.Generic;
 
 namespace Foundation.Features.Preview

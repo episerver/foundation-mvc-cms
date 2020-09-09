@@ -1,5 +1,4 @@
 ﻿using EPiServer.Shell;
-using Foundation.Cms.Pages;
 
 namespace Foundation.Cms.EditorDescriptors
 {

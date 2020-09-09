@@ -8,7 +8,6 @@ using EPiServer.Find.Helpers;
 using EPiServer.ServiceLocation;
 using Foundation.Cms.Categories;
 using Foundation.Find.Cms.Facets;
-using Foundation.Find.Cms.Models.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,8 +1,6 @@
 ﻿using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using Foundation.Cms;
-using Foundation.Cms.Blocks;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using System.ComponentModel.DataAnnotations;

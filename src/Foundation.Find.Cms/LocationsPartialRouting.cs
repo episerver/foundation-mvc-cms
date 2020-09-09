@@ -4,7 +4,6 @@ using EPiServer.Find.Framework;
 using EPiServer.Web.Routing;
 using EPiServer.Web.Routing.Segments;
 using Foundation.Cms.Pages;
-using Foundation.Find.Cms.Models.Pages;
 using System.Collections.Generic;
 using System.Linq;
 

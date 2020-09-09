@@ -1,5 +1,4 @@
 ﻿using Foundation.Cms.SchemaMarkup;
-using Foundation.Find.Cms.Models.Pages;
 using Schema.NET;
 
 namespace Foundation.Find.Cms.SchemaDataMappers

@@ -2,7 +2,6 @@
 using EPiServer.Core;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc.Html;
-using Foundation.Cms.Pages;
 using Foundation.Features.Login;
 using System;
 using System.Web.Mvc;

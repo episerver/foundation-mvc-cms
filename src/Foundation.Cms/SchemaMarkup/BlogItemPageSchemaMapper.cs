@@ -1,6 +1,5 @@
 ﻿using EPiServer.Core;
 using Foundation.Cms.Extensions;
-using Foundation.Cms.Pages;
 using Schema.NET;
 using System;
 
