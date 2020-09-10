@@ -1,10 +1,15 @@
-﻿using Foundation.Cms.Categories;
+﻿using Foundation.Features.Shared;
 
-namespace Foundation.Cms.ViewModels.Categories
+namespace Foundation.Features.Category
 {
     public class StandardCategoryViewModel : ContentViewModel<StandardCategory>
     {
-        public StandardCategoryViewModel() { }
-        public StandardCategoryViewModel(StandardCategory category) : base(category) { }
+        public StandardCategoryViewModel()
+        {
+        }
+
+        public StandardCategoryViewModel(StandardCategory category) : base(category)
+        {
+        }
     }
 }

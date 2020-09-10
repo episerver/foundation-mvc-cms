@@ -9,6 +9,8 @@ using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using Foundation.Cms;
 using Foundation.Features.Blocks.MenuItemBlock;
+using Foundation.Features.MyAccount.ResetPassword;
+using Foundation.Features.Search.Search;
 using Foundation.Features.Shared;
 using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;

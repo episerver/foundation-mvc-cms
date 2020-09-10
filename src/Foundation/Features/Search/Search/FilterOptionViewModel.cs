@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Foundation.Find.Cms.ViewModels
+namespace Foundation.Features.Search
 {
-    public class CmsFilterOptionViewModel
+    public class FilterOptionViewModel
     {
         public string SelectedFacet { get; set; }
         public IEnumerable<SelectListItem> Sorting { get; set; }
@@ -14,7 +14,6 @@ namespace Foundation.Find.Cms.ViewModels
         public string Q { get; set; }
         public int TotalCount { get; set; }
         public int PageSize { get; set; } = 15;
-        public string ViewSwitcher { get; set; }
         public decimal Confidence { get; set; }
         public bool HighlightTitle { get; set; }
         public bool HighlightExcerpt { get; set; }
@@ -31,13 +30,16 @@ namespace Foundation.Find.Cms.ViewModels
                 {
                     return new List<int>();
                 }
+
                 var totalPages = (TotalCount + PageSize - 1) / PageSize;
                 var pages = new List<int>();
                 var startPage = Page > 2 ? Page - 2 : 1;
+
                 for (var page = startPage; page < Math.Min((totalPages >= 5 ? startPage + 5 : startPage + totalPages), totalPages + 1); page++)
                 {
                     pages.Add(page);
                 }
+
                 return pages;
             }
         }

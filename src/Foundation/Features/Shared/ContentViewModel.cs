@@ -3,8 +3,9 @@ using EPiServer.Core;
 using EPiServer.Editor;
 using EPiServer.Globalization;
 using EPiServer.ServiceLocation;
-using Foundation.Cms.Extensions;
-using Foundation.Cms.SchemaMarkup;
+using Foundation.Cms;
+using Foundation.Features.Home;
+using Foundation.Infrastructure;
 using System.Web;
 
 namespace Foundation.Features.Shared
@@ -13,7 +14,7 @@ namespace Foundation.Features.Shared
     {
         private Injected<IContentLoader> _contentLoader;
         private Injected<IContentVersionRepository> _contentVersion;
-        private CmsHomePage _startPage;
+        private HomePage _startPage;
 
         public ContentViewModel() : this(default)
         {
@@ -26,7 +27,7 @@ namespace Foundation.Features.Shared
 
         public TContent CurrentContent { get; set; }
 
-        public virtual CmsHomePage StartPage
+        public virtual HomePage StartPage
         {
             get
             {
@@ -43,16 +44,16 @@ namespace Foundation.Features.Shared
                         var startPageRef = _contentVersion.Service.LoadCommonDraft(currentStartPageLink, ContentLanguage.PreferredCulture.Name);
                         if (startPageRef == null)
                         {
-                            _startPage = _contentLoader.Service.Get<CmsHomePage>(currentStartPageLink);
+                            _startPage = _contentLoader.Service.Get<HomePage>(currentStartPageLink);
                         }
                         else
                         {
-                            _startPage = _contentLoader.Service.Get<CmsHomePage>(startPageRef.ContentLink);
+                            _startPage = _contentLoader.Service.Get<HomePage>(startPageRef.ContentLink);
                         }
                     }
                     else
                     {
-                        _startPage = _contentLoader.Service.Get<CmsHomePage>(currentStartPageLink);
+                        _startPage = _contentLoader.Service.Get<HomePage>(currentStartPageLink);
                     }
                 }
 
@@ -72,7 +73,6 @@ namespace Foundation.Features.Shared
                 return new HtmlString(string.Empty);
             }
         }
-
     }
 
     public static class ContentViewModel

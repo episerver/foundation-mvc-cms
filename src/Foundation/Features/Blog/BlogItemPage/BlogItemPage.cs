@@ -16,14 +16,5 @@ namespace Foundation.Features.Blog.BlogItemPage
     {
         [Display(GroupName = SystemTabNames.Content, Order = 10)]
         public virtual string Author { get; set; }
-
-        /// <summary>
-        /// The comment section of the page. Local comment block will display comments only for this page
-        /// </summary>
-        [Display(Name = "Comment block",
-            Description = "The comment section of the page. Local comment block will display comments only for this page",
-            GroupName = SystemTabNames.Content,
-            Order = 210)]
-        public virtual BlogCommentBlock Comments { get; set; }
     }
 }

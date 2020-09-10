@@ -5,11 +5,12 @@ using EPiServer.DataAbstraction;
 using EPiServer.Find;
 using EPiServer.Shell.Rest;
 using EPiServer.Shell.Services.Rest;
+using Foundation.Features.Shared;
 using PowerSlice;
 using System.Linq;
 using System.Web;
 
-namespace Foundation.Find.Cms.PowerSlices
+namespace Foundation.Infrastructure.PowerSlices
 {
     public class EverythingSlice : ContentSliceBase<IContent>
     {

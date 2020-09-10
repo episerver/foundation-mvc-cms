@@ -1,7 +1,7 @@
-using Foundation.Cms.Pages;
+using Foundation.Features.Shared;
 using System.Collections.Generic;
 
-namespace Foundation.Find.Cms.Locations.ViewModels
+namespace Foundation.Features.Locations.TagPage
 {
     public class TagsViewModel : ContentViewModel<TagPage>
     {
@@ -15,6 +15,6 @@ namespace Foundation.Find.Cms.Locations.ViewModels
 
         public TagsCarouselViewModel Carousel { get; set; }
 
-        public List<LocationItemPage> Locations { get; set; }
+        public List<LocationItemPage.LocationItemPage> Locations { get; set; }
     }
 }

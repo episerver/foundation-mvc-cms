@@ -6,7 +6,6 @@ namespace Foundation.Features.Events.CalendarEvent
 {
     public class CalendarEventController : PageController<CalendarEventPage>
     {
-        [PageViewTracking]
         public ActionResult Index(CalendarEventPage currentPage) => View(ContentViewModel.Create(currentPage));
     }
 }

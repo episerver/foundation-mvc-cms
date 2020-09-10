@@ -1,7 +1,7 @@
 ﻿using EPiServer.Core;
 using System.Collections.Generic;
 
-namespace Foundation.Find.Cms.Locations.ViewModels
+namespace Foundation.Features.Locations.TagPage
 {
     public class TagsCarouselViewModel
     {

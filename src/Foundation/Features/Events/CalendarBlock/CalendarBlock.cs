@@ -2,6 +2,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
+using Foundation.Features.Folder;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using System.ComponentModel.DataAnnotations;

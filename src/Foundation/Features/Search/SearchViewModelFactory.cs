@@ -7,17 +7,24 @@ using System.Linq;
 using System.Web;
 using System.Web.WebPages;
 
-namespace Foundation.Find.Cms.ViewModels
+namespace Foundation.Features.Search
 {
-    public class CmsSearchViewModelFactory : ISearchViewModelFactory
+    public interface ISearchViewModelFactory
     {
-        private readonly ICmsSearchService _searchService;
+        SearchViewModel<TContent> Create<TModel, TContent>(TContent currentContent,
+            string selectedFacets, FilterOptionViewModel filterOption)
+            where TContent : IContent;
+    }
+
+    public class SearchViewModelFactory : ISearchViewModelFactory
+    {
+        private readonly ISearchService _searchService;
         private readonly LocalizationService _localizationService;
         private readonly HttpContextBase _httpContextBase;
         private readonly IClient _findClient;
 
-        public CmsSearchViewModelFactory(LocalizationService localizationService,
-            ICmsSearchService searchService,
+        public SearchViewModelFactory(LocalizationService localizationService,
+            ISearchService searchService,
             HttpContextBase httpContextBase,
             IClient findClient)
         {
@@ -27,32 +34,25 @@ namespace Foundation.Find.Cms.ViewModels
             _findClient = findClient;
         }
 
-        public TModel Create<TModel, TContent>(TContent currentContent, IArgs args)
+        public SearchViewModel<TContent> Create<TModel, TContent>(TContent currentContent, string selectedFacets, FilterOptionViewModel filterOption)
             where TContent : IContent
-            where TModel : CmsSearchViewModel<TContent>, new()
         {
-            var model = new TModel();
-            model.CurrentContent = currentContent;
+            var model = new SearchViewModel<TContent>(currentContent);
 
-            var cmsArgs = args as CmsArgs;
-            if (args == null)
-            {
-                return null;
-            }
-
-            if (cmsArgs.FilterOption.Q != null && (cmsArgs.FilterOption.Q.StartsWith("*") || cmsArgs.FilterOption.Q.StartsWith("?")))
+            if (filterOption.Q != null && (filterOption.Q.StartsWith("*") || filterOption.Q.StartsWith("?")))
             {
                 model.CurrentContent = currentContent;
-                model.FilterOption = cmsArgs.FilterOption;
+                model.FilterOption = filterOption;
                 model.HasError = true;
                 model.ErrorMessage = _localizationService.GetString("/Search/BadFirstCharacter");
+
                 return model;
             }
 
-            model.ContentSearchResult = _searchService.SearchContent(cmsArgs.FilterOption);
+            model.ContentSearchResult = _searchService.SearchContent(filterOption);
             model.CurrentContent = currentContent;
-            model.FilterOption = cmsArgs.FilterOption;
-            model.Query = cmsArgs.FilterOption.Q;
+            model.FilterOption = filterOption;
+            model.Query = filterOption.Q;
             model.IsMobile = _httpContextBase.GetOverriddenBrowser().IsMobileDevice;
 
             if (!model.ContentSearchResult.Hits.Any() && model.FilterOption.Q.IsNullOrEmpty())

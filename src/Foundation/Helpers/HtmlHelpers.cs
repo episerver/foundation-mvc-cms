@@ -5,6 +5,8 @@ using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using EPiServer.Web.Mvc.Html;
 using EPiServer.Web.Routing;
+using Foundation.Cms.Extensions;
+using Foundation.Features.Home;
 using Foundation.Features.Shared;
 using System;
 using System.Collections.Generic;
@@ -40,11 +42,11 @@ namespace Foundation.Helpers
             }
 
             var outputCss = new StringBuilder(string.Empty);
-            var startPage = _contentLoader.Value.Get<CmsHomePage>(ContentReference.StartPage);
+            var startPage = _contentLoader.Value.Get<HomePage>(ContentReference.StartPage);
 
             // Extended Css file
             AppendFiles(startPage.CssFiles, outputCss, _cssFormat);
-            if (!(sitePageData is CmsHomePage))
+            if (!(sitePageData is HomePage))
             {
                 AppendFiles(sitePageData.CssFiles, outputCss, _cssFormat);
             }
@@ -54,7 +56,7 @@ namespace Foundation.Helpers
             {
                 outputCss.AppendLine("<style>");
                 outputCss.AppendLine(!string.IsNullOrWhiteSpace(startPage.Css) ? startPage.Css : "");
-                outputCss.AppendLine(!string.IsNullOrWhiteSpace(sitePageData.Css) && !(sitePageData is CmsHomePage) ? sitePageData.Css : "");
+                outputCss.AppendLine(!string.IsNullOrWhiteSpace(sitePageData.Css) && !(sitePageData is HomePage) ? sitePageData.Css : "");
                 outputCss.AppendLine("</style>");
             }
 
@@ -69,11 +71,11 @@ namespace Foundation.Helpers
             }
 
             var outputScript = new StringBuilder(string.Empty);
-            var startPage = _contentLoader.Value.Get<CmsHomePage>(ContentReference.StartPage);
+            var startPage = _contentLoader.Value.Get<HomePage>(ContentReference.StartPage);
 
             // Extended Javascript file
             AppendFiles(startPage.ScriptFiles, outputScript, _scriptFormat);
-            if (!(sitePageData is CmsHomePage))
+            if (!(sitePageData is HomePage))
             {
                 AppendFiles(sitePageData.ScriptFiles, outputScript, _scriptFormat);
             }
@@ -83,7 +85,7 @@ namespace Foundation.Helpers
             {
                 outputScript.AppendLine("<script type=\"text/javascript\">");
                 outputScript.AppendLine(!string.IsNullOrWhiteSpace(startPage.Scripts) ? startPage.Scripts : "");
-                outputScript.AppendLine(!string.IsNullOrWhiteSpace(sitePageData.Scripts) && !(sitePageData is CmsHomePage) ? sitePageData.Scripts : "");
+                outputScript.AppendLine(!string.IsNullOrWhiteSpace(sitePageData.Scripts) && !(sitePageData is HomePage) ? sitePageData.Scripts : "");
                 outputScript.AppendLine("</script>");
             }
 
@@ -119,7 +121,7 @@ namespace Foundation.Helpers
             return new MvcHtmlString(output.ToString());
         }
 
-        //public static ContentReference GetSearchPage(this HtmlHelper helper) => ContentLoader.Value.Get<CmsHomePage>(ContentReference.StartPage).SearchPage;
+        //public static ContentReference GetSearchPage(this HtmlHelper helper) => ContentLoader.Value.Get<HomePage>(ContentReference.StartPage).SearchPage;
 
         private static void AppendFiles(LinkItemCollection files, StringBuilder outputString, string formatString)
         {

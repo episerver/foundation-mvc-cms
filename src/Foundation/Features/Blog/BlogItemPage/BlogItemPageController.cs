@@ -3,7 +3,6 @@ using EPiServer.Cms.Shell;
 using EPiServer.Core.Html;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Routing;
-using Foundation.Cms.Categories;
 using Foundation.Features.Shared;
 using System;
 using System.Collections.Generic;

@@ -38,7 +38,7 @@ namespace Foundation.Features.Blocks.CallToActionBlock
         public virtual string BackgroundImageSetting { get; set; }
 
         [Display(GroupName = SystemTabNames.Content, Order = 50)]
-        public virtual ButtonBlock Button { get; set; }
+        public virtual ButtonBlock.ButtonBlock Button { get; set; }
 
         public override void SetDefaultValues(ContentType contentType)
         {

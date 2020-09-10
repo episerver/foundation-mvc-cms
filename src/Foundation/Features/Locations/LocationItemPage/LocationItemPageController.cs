@@ -4,15 +4,13 @@ using EPiServer.Find;
 using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
 using EPiServer.Web.Mvc;
-using Foundation.Cms.Categories;
-using Foundation.Find.Cms.Locations.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
 namespace Foundation.Features.Locations.LocationItemPage
 {
-    public class LocationItemPageController : PageController<Find.Cms.Models.Pages.LocationItemPage>
+    public class LocationItemPageController : PageController<LocationItemPage>
     {
         private readonly IContentRepository _contentRepository;
 
@@ -21,7 +19,7 @@ namespace Foundation.Features.Locations.LocationItemPage
             _contentRepository = contentRepository;
         }
 
-        public ActionResult Index(Find.Cms.Models.Pages.LocationItemPage currentPage)
+        public ActionResult Index(LocationItemPage currentPage)
         {
             var model = new LocationItemViewModel(currentPage);
             if (!ContentReference.IsNullOrEmpty(currentPage.Image))
@@ -30,7 +28,7 @@ namespace Foundation.Features.Locations.LocationItemPage
             }
 
             model.LocationNavigation.ContinentLocations = SearchClient.Instance
-                .Search<Find.Cms.Models.Pages.LocationItemPage>()
+                .Search<LocationItemPage>()
                 .Filter(x => x.Continent.Match(currentPage.Continent))
                 .PublishedInCurrentLanguage()
                 .OrderBy(x => x.PageName)
@@ -40,7 +38,7 @@ namespace Foundation.Features.Locations.LocationItemPage
                 .GetContentResult();
 
             model.LocationNavigation.CloseBy = SearchClient.Instance
-                .Search<Find.Cms.Models.Pages.LocationItemPage>()
+                .Search<LocationItemPage>()
                 .Filter(x => x.Continent.Match(currentPage.Continent)
                              & !x.PageLink.Match(currentPage.PageLink))
                 .PublishedInCurrentLanguage()
@@ -56,17 +54,17 @@ namespace Foundation.Features.Locations.LocationItemPage
                 model.Tags = currentPage.Categories.Select(x => _contentRepository.Get<StandardCategory>(x));
             }
 
-            var editingHints = ViewData.GetEditHints<LocationItemViewModel, Find.Cms.Models.Pages.LocationItemPage>();
+            var editingHints = ViewData.GetEditHints<LocationItemViewModel, LocationItemPage>();
             editingHints.AddFullRefreshFor(p => p.Image);
             editingHints.AddFullRefreshFor(p => p.Categories);
 
             return View(model);
         }
 
-        private IEnumerable<Find.Cms.Models.Pages.LocationItemPage> GetRelatedLocations(Find.Cms.Models.Pages.LocationItemPage currentPage)
+        private IEnumerable<LocationItemPage> GetRelatedLocations(LocationItemPage currentPage)
         {
-            IQueriedSearch<Find.Cms.Models.Pages.LocationItemPage> query = SearchClient.Instance
-                .Search<Find.Cms.Models.Pages.LocationItemPage>()
+            IQueriedSearch<LocationItemPage> query = SearchClient.Instance
+                .Search<LocationItemPage>()
                 .MoreLike(SearchTextFly(currentPage))
                 .BoostMatching(x =>
                     x.Country.Match(currentPage.Country ?? ""), 2)
@@ -89,12 +87,9 @@ namespace Foundation.Features.Locations.LocationItemPage
                 .GetPagesResult();
         }
 
-        public virtual string SearchTextFly(Find.Cms.Models.Pages.LocationItemPage currentPage)
+        public virtual string SearchTextFly(LocationItemPage currentPage)
         {
-            var searchText = "";
-
-            return searchText;
+            return "";
         }
-
     }
 }

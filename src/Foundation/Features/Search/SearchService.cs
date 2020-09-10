@@ -6,20 +6,29 @@ using EPiServer.Find.UnifiedSearch;
 using EPiServer.Globalization;
 using EPiServer.Web;
 using Foundation.Cms.Extensions;
-using Foundation.Find.Cms.ViewModels;
+using Foundation.Features.Category;
+using Foundation.Features.Media;
+using Foundation.Features.Shared;
 using Geta.EpiCategories;
 using Geta.EpiCategories.Find.Extensions;
 using System.Collections.Generic;
 
-namespace Foundation.Find.Cms
+namespace Foundation.Features.Search
 {
-    public class CmsSearchService : ICmsSearchService
+    public interface ISearchService
+    {
+        ContentSearchViewModel SearchContent(FilterOptionViewModel filterOptions);
+        CategorySearchResults SearchByCategory(Pagination pagination);
+        ITypeSearch<T> FilterByCategories<T>(ITypeSearch<T> query, IEnumerable<ContentReference> categories) where T : ICategorizableContent;
+    }
+
+    public class SearchService : ISearchService
     {
         private readonly IClient _findClient;
 
-        public CmsSearchService(IClient findClient) => _findClient = findClient;
+        public SearchService(IClient findClient) => _findClient = findClient;
 
-        public ContentSearchViewModel SearchContent(CmsFilterOptionViewModel filterOptions)
+        public ContentSearchViewModel SearchContent(FilterOptionViewModel filterOptions)
         {
             var model = new ContentSearchViewModel
             {

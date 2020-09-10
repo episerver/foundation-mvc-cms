@@ -4,10 +4,10 @@ using EPiServer.Find.Api.Querying;
 using EPiServer.Find.Api.Querying.Filters;
 using EPiServer.Find.Framework;
 using EPiServer.Shell.ObjectEditing;
-using Foundation.Cms.EditorDescriptors;
+using Foundation.Find.Cms;
 using System.ComponentModel.DataAnnotations;
 
-namespace Foundation.Find.Cms.Models.Blocks.ProductFilters
+namespace Foundation.Features.Locations.Blocks.ProductFilters
 {
     [ContentType(DisplayName = "Numeric Filter Block",
         GUID = "7747D13C-D029-4CB5-B020-549676123AC4",

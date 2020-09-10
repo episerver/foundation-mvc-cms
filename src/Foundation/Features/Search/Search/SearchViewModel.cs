@@ -1,11 +1,12 @@
 ﻿using EPiServer.Core;
 using EPiServer.Find.Statistics.Api;
+using Foundation.Features.Shared;
 
-namespace Foundation.Find.Cms.ViewModels
+namespace Foundation.Features.Search
 {
-    public class CmsSearchViewModel<T> : ContentViewModel<T> where T : IContent
+    public class SearchViewModel<T> : ContentViewModel<T> where T : IContent
     {
-        public CmsFilterOptionViewModel FilterOption { get; set; }
+        public FilterOptionViewModel FilterOption { get; set; }
         public bool HasError { get; set; }
         public string ErrorMessage { get; set; }
         public DidYouMeanResult DidYouMeans { get; set; }
@@ -14,12 +15,12 @@ namespace Foundation.Find.Cms.ViewModels
         public string RedirectUrl { get; set; }
         public ContentSearchViewModel ContentSearchResult { get; set; }
 
-        public CmsSearchViewModel()
+        public SearchViewModel()
         {
 
         }
 
-        public CmsSearchViewModel(T currentContent) : base(currentContent)
+        public SearchViewModel(T currentContent) : base(currentContent)
         {
 
         }

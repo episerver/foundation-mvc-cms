@@ -1,8 +1,7 @@
 using EPiServer.Shell.ObjectEditing;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace Foundation.Cms.EditorDescriptors
+namespace Foundation.Features.Locations.Blocks.ProductFilters
 {
     public class NumericOperatorSelectionFactory : ISelectionFactory
     {
@@ -15,14 +14,12 @@ namespace Foundation.Cms.EditorDescriptors
 
         public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
         {
-            var dic = new Dictionary<string, string>()
+            return new ISelectItem[]
             {
-                {"Equals", OperatorNames.Equal},
-                {"Greater Than", OperatorNames.GreaterThan},
-                {"Less Than", OperatorNames.LessThan}
+                new SelectItem { Text = "Equals", Value = OperatorNames.Equal },
+                new SelectItem { Text = "Greater Than", Value = OperatorNames.GreaterThan },
+                new SelectItem { Text = "Less Than", Value = OperatorNames.LessThan },
             };
-
-            return dic.Select(x => new SelectItem() { Text = x.Key, Value = x.Value });
         }
     }
 }

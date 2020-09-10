@@ -3,22 +3,23 @@ using EPiServer.DataAnnotations;
 using EPiServer.Find;
 using EPiServer.Find.Api.Facets;
 using EPiServer.Find.Framework;
-using Foundation.Find.Cms.Locations;
-using Foundation.Find.Cms.Models.Pages;
+using Foundation.Features.Shared;
+using Foundation.Find.Cms;
+using Foundation.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace Foundation.Find.Cms.Models.Blocks
+namespace Foundation.Features.Locations.Blocks
 {
     [ContentType(DisplayName = "Filter Distances Block",
         GUID = "eab40a8c-9006-4766-a87e-1dec153e735f",
         Description = "Distance facets for locations",
-        GroupName = FindTabNames.Location)]
+        GroupName = TabNames.Location)]
     [ImageUrl("~/assets/icons/cms/blocks/map.png")]
-    [AvailableContentTypes(Include = new Type[] { typeof(LocationListPage) })]
+    [AvailableContentTypes(Include = new Type[] { typeof(LocationListPage.LocationListPage) })]
     public class FilterDistancesBlock : FoundationBlockData, IFilterBlock
     {
         [CultureSpecific]
@@ -29,7 +30,7 @@ namespace Foundation.Find.Cms.Models.Blocks
         [Display(Name = "All condition text")]
         public virtual string AllConditionText { get; set; }
 
-        public ITypeSearch<LocationItemPage> AddFilter(ITypeSearch<LocationItemPage> query)
+        public ITypeSearch<LocationItemPage.LocationItemPage> AddFilter(ITypeSearch<LocationItemPage.LocationItemPage> query)
         {
             return query.GeoDistanceFacetFor(x => x.Coordinates, GeoPosition.GetUsersLocation().ToFindLocation(),
                 new NumericRange { From = 0, To = 1000 },
@@ -39,7 +40,7 @@ namespace Foundation.Find.Cms.Models.Blocks
                 new NumericRange { From = 10000, To = 25000 });
         }
 
-        public ITypeSearch<LocationItemPage> ApplyFilter(ITypeSearch<LocationItemPage> query, NameValueCollection filters)
+        public ITypeSearch<LocationItemPage.LocationItemPage> ApplyFilter(ITypeSearch<LocationItemPage.LocationItemPage> query, NameValueCollection filters)
         {
             var filterString = filters["d"];
             if (!string.IsNullOrWhiteSpace(filterString))
@@ -49,7 +50,7 @@ namespace Foundation.Find.Cms.Models.Blocks
                 {
                     var userLocation = GeoPosition.GetUsersLocation().ToFindLocation();
                     var distances = ParseDistances(stringDistances);
-                    var distancesFilter = SearchClient.Instance.BuildFilter<LocationItemPage>();
+                    var distancesFilter = SearchClient.Instance.BuildFilter<LocationItemPage.LocationItemPage>();
                     distancesFilter = distances.Aggregate(distancesFilter,
                                                           (current, distance) =>
                                                           current.Or(x => x.Coordinates.WithinDistanceFrom(

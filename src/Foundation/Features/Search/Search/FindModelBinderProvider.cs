@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 
-namespace Foundation.Find.Cms.ViewModels
+namespace Foundation.Features.Search
 {
-    public class FindCmsModelBinderProvider : IModelBinderProvider
+    public class FindModelBinderProvider : IModelBinderProvider
     {
         private static readonly IDictionary<Type, Type> ModelBinderTypeMappings = new Dictionary<Type, Type>
         {
-            {typeof(CmsFilterOptionViewModel), typeof(CmsFilterOptionViewModelBinder)},
+            {typeof(FilterOptionViewModel), typeof(FilterOptionViewModelBinder)},
         };
 
         public IModelBinder GetBinder(Type modelType)

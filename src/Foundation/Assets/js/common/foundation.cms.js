@@ -75,39 +75,33 @@ export default class FoundationCms {
         var contentSearch = new ContentSearch();
         contentSearch.Init();
 
-        //=====lam den day
+        //TODO: update js
 
 
-        var blog = new Blog();
-        blog.init();
+        //var blog = new Blog();
+        //blog.init();
         
-        var productSearch = new ProductSearch();
-        productSearch.init();
+        //var productSearch = new ProductSearch();
+        //productSearch.init();
 
-        var locations = new Locations();
-        locations.init();
+        //var locations = new Locations();
+        //locations.init();
 
-        var people = new People();
-        people.init();
+        //var people = new People();
+        //people.init();
     
-        axios.defaults.headers.common['Accept'] = '*/*';
-        window.notification = new NotifyHelper();
-        feather.replace();
 
-        var header = new Header();
-        header.init();
-
-        // Mobile Navgition
-        var params = { searchBoxId: "#mobile-searchbox", openSearchBoxId: "#open-searh-box", closeSearchBoxId: "#close-search-box", sideBarId: "#offside-menu-mobile", openSideBarId: "#open-offside-menu" }
-        var mobileNav = new MobileNavigation(params);
-        mobileNav.Init();
-        //--- End
+        //// Mobile Navgition
+        //var params = { searchBoxId: "#mobile-searchbox", openSearchBoxId: "#open-searh-box", closeSearchBoxId: "#close-search-box", sideBarId: "#offside-menu-mobile", openSideBarId: "#open-offside-menu" }
+        //var mobileNav = new MobileNavigation(params);
+        //mobileNav.Init();
+        ////--- End
 
 
-        // Blog
-        var blog = new Blog();
-        blog.init();
-        // --- End
+        //// Blog
+        //var blog = new Blog();
+        //blog.init();
+        //// --- End
 
     }       
 }

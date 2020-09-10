@@ -1,6 +1,7 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.Shell.ObjectEditing;
+using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
 using Geta.EpiCategories;
 using Geta.EpiCategories.DataAnnotations;

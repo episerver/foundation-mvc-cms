@@ -10,6 +10,8 @@ using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
 using Foundation.Cms.Extensions;
+using Foundation.Features.Blocks.MenuItemBlock;
+using Foundation.Features.Home;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +41,7 @@ namespace Foundation.Features.Header
             _databaseMode = databaseMode;
         }
 
-        public THeaderViewModel CreateHeaderViewModel<THeaderViewModel>(IContent currentContent, CmsHomePage homePage)
-            where THeaderViewModel : HeaderViewModel, new()
+        public virtual HeaderViewModel CreateHeaderViewModel(IContent currentContent, HomePage homePage)
         {
             var menuItems = new List<MenuItemViewModel>();
             var homeLanguage = homePage.Language.DisplayName;
@@ -93,7 +94,7 @@ namespace Foundation.Features.Header
                 }
             }).ToList();
 
-            return new THeaderViewModel
+            return new HeaderViewModel
             {
                 HomePage = homePage,
                 LogoHeight = homePage.LogoHeight,
@@ -106,10 +107,7 @@ namespace Foundation.Features.Header
             };
         }
 
-        public virtual void AddMyAccountMenu<THomePage, THeaderViewModel>(THomePage homePage,
-            THeaderViewModel viewModel)
-            where THeaderViewModel : HeaderViewModel, new()
-            where THomePage : CmsHomePage
+        public virtual void AddMyAccountMenu(HomePage homePage, HeaderViewModel viewModel)
         {
             if (HttpContext.Current != null && !HttpContext.Current.Request.IsAuthenticated)
             {

@@ -8,6 +8,7 @@ using EPiServer.Web.Routing;
 using Foundation.Cms;
 using Foundation.Cms.Extensions;
 using Foundation.Features.Blog.BlogItemPage;
+using Foundation.Features.Category;
 using Foundation.Features.Shared.SelectionFactories;
 using Geta.EpiCategories;
 using System;

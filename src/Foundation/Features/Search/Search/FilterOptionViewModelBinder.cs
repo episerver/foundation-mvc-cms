@@ -3,25 +3,26 @@ using EPiServer.Core;
 using EPiServer.Web.Routing;
 using System.Web.Mvc;
 
-namespace Foundation.Find.Cms.ViewModels
+namespace Foundation.Features.Search
 {
-    public class CmsFilterOptionViewModelBinder : DefaultModelBinder
+    public class FilterOptionViewModelBinder : DefaultModelBinder
     {
         private readonly IContentLoader _contentLoader;
 
-        public CmsFilterOptionViewModelBinder(IContentLoader contentLoader) => _contentLoader = contentLoader;
+        public FilterOptionViewModelBinder(IContentLoader contentLoader) => _contentLoader = contentLoader;
 
         public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
         {
             bindingContext.ModelName = "FilterOption";
-            CmsFilterOptionViewModel model = null;
+            FilterOptionViewModel model;
+            
             try
             {
-                model = (CmsFilterOptionViewModel)base.BindModel(controllerContext, bindingContext);
+                model = (FilterOptionViewModel)base.BindModel(controllerContext, bindingContext);
             }
             catch
             {
-                model = new CmsFilterOptionViewModel();
+                model = new FilterOptionViewModel();
             }
 
             if (model == null)
@@ -41,11 +42,13 @@ namespace Foundation.Find.Cms.ViewModels
             var section = controllerContext.HttpContext.Request.QueryString["t"];
             var page = controllerContext.HttpContext.Request.QueryString["p"];
             var confidence = controllerContext.HttpContext.Request.QueryString["confidence"];
+            
             SetupModel(model, query, sort, section, page, content, confidence);
+            
             return model;
         }
 
-        protected virtual void SetupModel(CmsFilterOptionViewModel model, string q, string sort, string section, string page, IContent content, string confidence)
+        protected virtual void SetupModel(FilterOptionViewModel model, string q, string sort, string section, string page, IContent content, string confidence)
         {
             EnsurePage(model, page);
             EnsureQ(model, q);
@@ -54,7 +57,7 @@ namespace Foundation.Find.Cms.ViewModels
             model.Confidence = decimal.TryParse(confidence, out var confidencePercentage) ? confidencePercentage : 0;
         }
 
-        protected virtual void EnsurePage(CmsFilterOptionViewModel model, string page)
+        protected virtual void EnsurePage(FilterOptionViewModel model, string page)
         {
             if (model.Page < 1)
             {
@@ -69,7 +72,7 @@ namespace Foundation.Find.Cms.ViewModels
             }
         }
 
-        protected virtual void EnsureQ(CmsFilterOptionViewModel model, string q)
+        protected virtual void EnsureQ(FilterOptionViewModel model, string q)
         {
             if (string.IsNullOrEmpty(model.Q))
             {
@@ -77,7 +80,7 @@ namespace Foundation.Find.Cms.ViewModels
             }
         }
 
-        protected virtual void EnsureSection(CmsFilterOptionViewModel model, string section)
+        protected virtual void EnsureSection(FilterOptionViewModel model, string section)
         {
             if (string.IsNullOrEmpty(model.SectionFilter))
             {
@@ -85,7 +88,7 @@ namespace Foundation.Find.Cms.ViewModels
             }
         }
 
-        protected virtual void EnsureSort(CmsFilterOptionViewModel model, string sort)
+        protected virtual void EnsureSort(FilterOptionViewModel model, string sort)
         {
             if (string.IsNullOrEmpty(model.Sort))
             {

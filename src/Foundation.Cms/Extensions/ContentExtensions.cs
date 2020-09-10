@@ -94,18 +94,6 @@ namespace Foundation.Cms.Extensions
                 .ToList();
         }
 
-        public static ContentReference GetRelativeStartPage(this IContent content)
-        {
-            if (content is CmsHomePage)
-            {
-                return content.ContentLink;
-            }
-
-            var ancestors = _contentLoader.Value.GetAncestors(content.ContentLink);
-            var startPage = ancestors.FirstOrDefault(x => x is CmsHomePage) as CmsHomePage;
-            return startPage == null ? ContentReference.StartPage : startPage.ContentLink;
-        }
-
         /// <summary>
         /// Helper method to get a URL string for an IContent
         /// </summary>

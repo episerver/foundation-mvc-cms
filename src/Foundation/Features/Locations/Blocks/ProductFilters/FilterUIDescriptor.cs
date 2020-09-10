@@ -1,7 +1,7 @@
 using EPiServer.Shell;
 using System.Collections.Generic;
 
-namespace Foundation.Find.Cms.Models.Blocks.ProductFilters
+namespace Foundation.Features.Locations.Blocks.ProductFilters
 {
     [UIDescriptorRegistration]
     public class FilterUIDescriptor : UIDescriptor<FilterBaseBlock>

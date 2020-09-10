@@ -3,8 +3,6 @@ using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
-using Foundation.Find.Cms;
-using Foundation.Find.Cms.ViewModels;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,7 +11,7 @@ namespace Foundation.Features.Search.Search
     public class SearchController : PageController<SearchResultPage>
     {
         private readonly ISearchViewModelFactory _viewModelFactory;
-        private readonly ICmsSearchService _cmsSearchService;
+        private readonly ISearchService _cmsSearchService;
         private readonly HttpContextBase _httpContextBase;
         private readonly IContentLoader _contentLoader;
 
@@ -21,7 +19,7 @@ namespace Foundation.Features.Search.Search
             ISearchViewModelFactory viewModelFactory,
             HttpContextBase httpContextBase,
             IContentLoader contentLoader,
-            ICmsSearchService cmsSearchService)
+            ISearchService cmsSearchService)
         {
             _viewModelFactory = viewModelFactory;
             _httpContextBase = httpContextBase;
@@ -31,23 +29,15 @@ namespace Foundation.Features.Search.Search
 
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
-        public ActionResult Index(SearchResultPage currentPage, CmsFilterOptionViewModel filterOptions)
+        public ActionResult Index(SearchResultPage currentPage, FilterOptionViewModel filterOptions)
         {
             if (filterOptions == null || filterOptions.Q.IsNullOrEmpty())
             {
                 return Redirect(Url.ContentUrl(ContentReference.StartPage));
             }
 
-            if (string.IsNullOrEmpty(filterOptions.ViewSwitcher))
-            {
-                filterOptions.ViewSwitcher = "List";
-            }
-
-            var viewModel = _viewModelFactory.Create<CmsSearchViewModel<SearchResultPage>, SearchResultPage>(currentPage, new CmsArgs
-            {
-                FilterOption = filterOptions,
-                SelectedFacets = HttpContext.Request.QueryString["facets"],
-            });
+            var selectedFacets = HttpContext.Request.QueryString["facets"];
+            var viewModel = _viewModelFactory.Create<SearchViewModel<SearchResultPage>, SearchResultPage>(currentPage, selectedFacets, filterOptions);
 
             return View(viewModel);
         }
@@ -56,8 +46,8 @@ namespace Foundation.Features.Search.Search
         [ValidateInput(false)]
         public ActionResult QuickSearch(string search = "")
         {
-            var model = new CmsSearchViewModel<SearchResultPage>();
-            var contentResult = _cmsSearchService.SearchContent(new CmsFilterOptionViewModel()
+            var model = new SearchViewModel<SearchResultPage>();
+            var contentResult = _cmsSearchService.SearchContent(new FilterOptionViewModel()
             {
                 Q = search,
                 PageSize = 5,
@@ -70,8 +60,7 @@ namespace Foundation.Features.Search.Search
         }
 
         [ChildActionOnly]
-        public ActionResult Facet(SearchResultPage currentPage, CmsFilterOptionViewModel viewModel) => PartialView("_Facet", viewModel);
-
+        public ActionResult Facet(SearchResultPage currentPage, FilterOptionViewModel viewModel) => PartialView("_Facet", viewModel);
 
         public class AssetPreloadLink
         {

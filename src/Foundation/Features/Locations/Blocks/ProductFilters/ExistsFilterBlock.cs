@@ -3,8 +3,9 @@ using EPiServer.DataAnnotations;
 using EPiServer.Find.Api.Querying;
 using EPiServer.Find.Api.Querying.Filters;
 using EPiServer.Find.Framework;
+using Foundation.Find.Cms;
 
-namespace Foundation.Find.Cms.Models.Blocks.ProductFilters
+namespace Foundation.Features.Locations.Blocks.ProductFilters
 {
     [ContentType(DisplayName = "Exists Filter Block",
         GUID = "E93C9A50-4B62-4116-8E56-1DF84AB93EF7",

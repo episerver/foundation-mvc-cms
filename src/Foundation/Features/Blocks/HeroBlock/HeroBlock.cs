@@ -7,6 +7,7 @@ using EPiServer.Labs.ContentManager.Dashboard;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
 using Foundation.Features.Shared;
+using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
 using System.ComponentModel.DataAnnotations;
 

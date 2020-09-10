@@ -1,6 +1,6 @@
 ﻿using EPiServer.Core;
 using EPiServer.DataAnnotations;
-using Foundation.Cms.Media;
+using Foundation.Features.Media;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using System.ComponentModel.DataAnnotations;

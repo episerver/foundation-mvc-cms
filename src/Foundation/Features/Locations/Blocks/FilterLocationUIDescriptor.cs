@@ -1,8 +1,7 @@
 ﻿using EPiServer.Shell;
-using Foundation.Find.Cms.Locations;
 using System.Collections.Generic;
 
-namespace Foundation.Cms.EditorDescriptors
+namespace Foundation.Features.Locations.Blocks
 {
     [UIDescriptorRegistration]
     public class FilterLocationUIDescriptor : UIDescriptor<IFilterBlock>

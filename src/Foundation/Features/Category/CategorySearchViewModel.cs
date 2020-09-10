@@ -1,9 +1,8 @@
 ﻿using EPiServer.Core;
-using Foundation.Cms.Categories;
-using Foundation.Cms.ViewModels.Categories;
+using Foundation.Features.Shared;
 using System.Collections.Generic;
 
-namespace Foundation.Find.Cms.ViewModels
+namespace Foundation.Features.Category
 {
     public class CategorySearchViewModel : StandardCategoryViewModel
     {

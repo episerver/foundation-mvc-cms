@@ -1,7 +1,8 @@
-﻿using Foundation.Cms.SchemaMarkup;
+﻿using Foundation.Cms;
+using Foundation.Features.Locations.LocationItemPage;
 using Schema.NET;
 
-namespace Foundation.Find.Cms.SchemaDataMappers
+namespace Foundation.Infrastructure.SchemaMarkup
 {
     /// <summary>
     /// Map LocationItemPage to Schema.org location objects

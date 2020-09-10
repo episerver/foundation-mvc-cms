@@ -6,8 +6,6 @@ using EPiServer.Web.Mvc;
 using Foundation.Cms;
 using Foundation.Cms.Settings;
 using Foundation.Features.People.PersonItemPage;
-using Foundation.Features.Settings;
-using Foundation.Find;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
