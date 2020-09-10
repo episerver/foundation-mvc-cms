@@ -4,6 +4,7 @@ using EPiServer.Find;
 using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
 using EPiServer.Web.Mvc;
+using Foundation.Features.Category;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;

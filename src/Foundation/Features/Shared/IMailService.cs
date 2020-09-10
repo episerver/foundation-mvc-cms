@@ -4,7 +4,7 @@ using System.Collections.Specialized;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace Foundation.Cms.Mail
+namespace Foundation.Features.Shared
 {
     public interface IMailService : IIdentityMessageService
     {

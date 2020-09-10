@@ -756,10 +756,19 @@
     <Compile Include="Features\Search\Search\SearchViewModel.cs" />
     <Compile Include="Features\Search\Search\SearchPageUIDescriptor.cs" />
     <Compile Include="Features\Search\Search\SearchResultPage.cs" />
+    <Compile Include="Features\Settings\CollectionSettings.cs" />
+    <Compile Include="Features\Settings\LabelSettings.cs" />
+    <Compile Include="Features\Settings\LayoutSettings.cs" />
+    <Compile Include="Features\Settings\ReferencePageSettings.cs" />
+    <Compile Include="Features\Settings\SearchSettings.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\HideContentAreaActionsContainer.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\MoveCategoryEditorDescriptor.cs" />
     <Compile Include="Features\Locations\Blocks\ProductFilters\NumericOperatorSelectionFactory.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\SearchOptionSelectionFactory.cs" />
+    <Compile Include="Features\Shared\HtmlDownloader.cs" />
+    <Compile Include="Features\Shared\IHtmlDownloader.cs" />
+    <Compile Include="Features\Shared\IMailService.cs" />
+    <Compile Include="Features\Shared\MailService.cs" />
     <Compile Include="Features\Shared\SelectionFactories\HeaderMenuSelectionFactory.cs" />
     <Compile Include="Features\StandardPage\StandardPage.cs" />
     <Compile Include="Features\StandardPage\StandardPageController.cs" />
@@ -1418,9 +1427,9 @@
       <Project>{c9638f52-7402-446d-bf89-993686e26a52}</Project>
       <Name>Foundation.Cms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Foundation.Find.Cms\Foundation.Find.Cms.csproj">
+    <ProjectReference Include="..\Foundation.Find.Cms\Foundation.Find.csproj">
       <Project>{07c19549-7028-4cba-ba73-fadd93be8e5a}</Project>
-      <Name>Foundation.Find.Cms</Name>
+      <Name>Foundation.Find</Name>
     </ProjectReference>
   </ItemGroup>
   <ProjectExtensions>

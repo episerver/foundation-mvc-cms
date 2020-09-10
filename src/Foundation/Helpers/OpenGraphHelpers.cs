@@ -6,7 +6,10 @@ using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
 using Foundation.Features.Blog.BlogItemPage;
+using Foundation.Features.Category;
 using Foundation.Features.Home;
+using Foundation.Features.Locations.LocationItemPage;
+using Foundation.Features.Locations.TagPage;
 using Foundation.Features.Shared;
 using Foundation.Features.StandardPage;
 using Foundation.Infrastructure.OpenGraph;
@@ -153,7 +156,7 @@ namespace Foundation.Helpers
 
         private static string GetDefaultImageUrl()
         {
-            var startPage = _contentLoader.Value.Get<CmsHomePage>(ContentReference.StartPage);
+            var startPage = _contentLoader.Value.Get<HomePage>(ContentReference.StartPage);
             var siteUrl = SiteDefinition.Current.SiteUrl;
             var url = new Uri(siteUrl, UrlResolver.Current.GetUrl(startPage.SiteLogo));
 

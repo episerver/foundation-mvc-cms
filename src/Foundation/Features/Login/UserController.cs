@@ -2,6 +2,7 @@
 using EPiServer.Core;
 using EPiServer.Web.Mvc.Html;
 using Foundation.Attributes;
+using Foundation.Features.Home;
 using Foundation.Helpers;
 using System.Web.Mvc;
 
@@ -25,7 +26,7 @@ namespace Foundation.Features.Login
         public ActionResult Register()
         {
             var model = new UserViewModel();
-            var homePage = _contentLoader.Get<PageData>(ContentReference.StartPage) as CmsHomePage;
+            var homePage = _contentLoader.Get<PageData>(ContentReference.StartPage) as HomePage;
             model.Logo = Url.ContentUrl(homePage?.SiteLogo);
             model.Title = "Register";
             return View(model);

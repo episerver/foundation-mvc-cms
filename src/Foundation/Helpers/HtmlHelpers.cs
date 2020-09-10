@@ -65,7 +65,7 @@ namespace Foundation.Helpers
 
         public static MvcHtmlString RenderExtendedScripts(this HtmlHelper helper, IContent content)
         {
-            if (content == null || ContentReference.StartPage == PageReference.EmptyReference || !(content is IFoundationContent sitePageData))
+            if (content == null || ContentReference.StartPage == PageReference.EmptyReference || !(content is FoundationPageData sitePageData))
             {
                 return new MvcHtmlString("");
             }

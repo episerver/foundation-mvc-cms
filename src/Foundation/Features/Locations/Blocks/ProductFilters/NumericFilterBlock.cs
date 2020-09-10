@@ -4,7 +4,7 @@ using EPiServer.Find.Api.Querying;
 using EPiServer.Find.Api.Querying.Filters;
 using EPiServer.Find.Framework;
 using EPiServer.Shell.ObjectEditing;
-using Foundation.Find.Cms;
+using Foundation.Find;
 using System.ComponentModel.DataAnnotations;
 
 namespace Foundation.Features.Locations.Blocks.ProductFilters

@@ -1,6 +1,7 @@
 ﻿using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
+using Foundation.Features.MyAccount.ResetPassword;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Specialized;
@@ -8,7 +9,7 @@ using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Foundation.Cms.Mail
+namespace Foundation.Features.Shared
 {
     public class MailService : IMailService
     {

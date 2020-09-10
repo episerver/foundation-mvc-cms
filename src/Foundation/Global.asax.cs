@@ -1,4 +1,5 @@
 ﻿using Foundation.Cms.Attributes;
+using Foundation.Features.ErrorPage;
 using System;
 using System.Web;
 using System.Web.Mvc;

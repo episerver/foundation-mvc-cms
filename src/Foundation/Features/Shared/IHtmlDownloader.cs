@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Foundation.Cms.Mail
+namespace Foundation.Features.Shared
 {
     public interface IHtmlDownloader
     {

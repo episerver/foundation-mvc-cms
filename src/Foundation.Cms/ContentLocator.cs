@@ -90,24 +90,5 @@ namespace Foundation.Cms
 
             return _pageCriteriaQueryService.FindPagesWithCriteria(pageLink, criteria);
         }
-
-        public IEnumerable<T> FindPagesRecursively<T>(PageReference pageLink) where T : PageData
-        {
-            var children = _contentLoader.GetChildren<T>(pageLink);
-            foreach (var child in children)
-            {
-                yield return child;
-            }
-
-            var folders = _contentLoader.GetChildren<FolderPage>(pageLink);
-            foreach (var folder in folders)
-            {
-                var nestedChildren = FindPagesRecursively<T>(folder.PageLink);
-                foreach (var nestedChild in nestedChildren)
-                {
-                    yield return nestedChild;
-                }
-            }
-        }
     }
 }

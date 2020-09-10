@@ -4,7 +4,7 @@ using EPiServer.Find;
 using EPiServer.Find.Api.Facets;
 using EPiServer.Find.Framework;
 using Foundation.Features.Shared;
-using Foundation.Find.Cms;
+using Foundation.Find;
 using Foundation.Infrastructure;
 using System;
 using System.Collections.Generic;

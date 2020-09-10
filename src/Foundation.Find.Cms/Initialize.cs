@@ -1,11 +1,11 @@
 ﻿using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
-using Foundation.Find.Cms.Facets;
-using Foundation.Find.Cms.Facets.Config;
+using Foundation.Find.Facets;
+using Foundation.Find.Facets.Config;
 using System.Collections.Generic;
 
-namespace Foundation.Find.Cms
+namespace Foundation.Find
 {
     [ModuleDependency(typeof(Foundation.Cms.Initialize))]
     public class Initialize : IConfigurableModule

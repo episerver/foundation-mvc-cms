@@ -5,6 +5,7 @@ using EPiServer.DataAnnotations;
 using EPiServer.Find;
 using EPiServer.Labs.ContentManager.Cards;
 using EPiServer.Web;
+using Foundation.Features.Category;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using System.Collections.Generic;

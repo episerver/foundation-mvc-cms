@@ -25,9 +25,27 @@ namespace Foundation.Infrastructure
         [RequiredAccess(AccessLevel.Edit)]
         public const string Footer = "Footer";
 
+        [Display(Name = "Search settings", Order = 65)]
+        public const string SearchSettings = "SearchSettings";
+
         [Display(Order = 70)]
         [RequiredAccess(AccessLevel.Edit)]
         public const string Menu = "Menu";
+
+        [Display(Name = "Site labels", Order = 75)]
+        [RequiredAccess(AccessLevel.Edit)]
+        public const string SiteLabels = "SiteLabels";
+
+        [Display(Order = 76)]
+        public const string Manufacturer = "Manufacturer";
+
+        [Display(Name = "Site structure", Order = 77)]
+        [RequiredAccess(AccessLevel.Edit)]
+        public const string SiteStructure = "SiteStructure";
+
+        [Display(Name = "Mail templates", Order = 78)]
+        [RequiredAccess(AccessLevel.Edit)]
+        public const string MailTemplates = "MailTemplates";
 
         [Display(Order = 80)]
         [RequiredAccess(AccessLevel.Edit)]
@@ -67,12 +85,7 @@ namespace Foundation.Infrastructure
         [Display(Name = "Settings", Order = 290)]
         public const string Settings = SystemTabNames.Settings;
 
-        [Display(Name = "Site structure", Order = 77)]
-        [RequiredAccess(AccessLevel.Edit)]
-        public const string SiteStructure = "SiteStructure";
-
-        [Display(Name = "Mail templates", Order = 78)]
-        [RequiredAccess(AccessLevel.Edit)]
-        public const string MailTemplates = "MailTemplates";
+        [Display(Name = "Colors", Order = 300)]
+        public const string Colors = "Colors";
     }
 }

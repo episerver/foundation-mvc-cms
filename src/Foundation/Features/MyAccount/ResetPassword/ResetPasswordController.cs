@@ -6,7 +6,8 @@ using EPiServer.Web.Mvc;
 using Foundation.Cms.Attributes;
 using Foundation.Cms.Extensions;
 using Foundation.Cms.Identity;
-using Foundation.Cms.Mail;
+using Foundation.Features.Home;
+using Foundation.Features.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
@@ -59,7 +60,7 @@ namespace Foundation.Features.MyAccount.ResetPassword
                 return RedirectToAction("ForgotPasswordConfirmation");
             }
 
-            var startPage = _contentLoader.Get<CmsHomePage>(ContentReference.StartPage);
+            var startPage = _contentLoader.Get<HomePage>(ContentReference.StartPage);
             //var body = _mailService.GetHtmlBodyForMail(startPage.ResetPasswordMail, new NameValueCollection(), language);
             var mailPage = _contentLoader.Get<MailBasePage>(startPage.ResetPasswordMail);
             var body = mailPage.MainBody.ToHtmlString();
@@ -78,7 +79,7 @@ namespace Foundation.Features.MyAccount.ResetPassword
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
-            var homePage = _contentLoader.Get<PageData>(ContentReference.StartPage) as CmsHomePage;
+            var homePage = _contentLoader.Get<PageData>(ContentReference.StartPage) as HomePage;
             var model = ContentViewModel.Create(homePage);
             return View("ForgotPasswordConfirmation", model);
         }
@@ -123,7 +124,7 @@ namespace Foundation.Features.MyAccount.ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
-            var homePage = _contentLoader.Get<PageData>(ContentReference.StartPage) as CmsHomePage;
+            var homePage = _contentLoader.Get<PageData>(ContentReference.StartPage) as HomePage;
             var model = ContentViewModel.Create(homePage);
             return View("ResetPasswordConfirmation", model);
         }

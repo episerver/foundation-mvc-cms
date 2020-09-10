@@ -20,7 +20,7 @@ using Foundation.Features.Home;
 using Foundation.Features.Locations.LocationItemPage;
 using Foundation.Features.Locations.LocationListPage;
 using Foundation.Features.Search;
-using Foundation.Find.Cms;
+using Foundation.Find;
 using Foundation.Infrastructure.Display;
 using Foundation.Infrastructure.PowerSlices;
 using Foundation.Infrastructure.SchemaMarkup;
@@ -43,9 +43,9 @@ namespace Foundation.Infrastructure
 
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-
+            _services = context.Services;
             context.ConfigureFoundationCms();
-            context.Services.Configure<ContentApiConfiguration>(c =>
+            _services.Configure<ContentApiConfiguration>(c =>
             {
                 c.EnablePreviewFeatures = true;
                 c.Default(RestVersion.Version_3_0)
@@ -56,46 +56,46 @@ namespace Foundation.Infrastructure
                     .SetRequiredRole(string.Empty);
             });
 
-            context.Services.Configure<ContentApiSearchConfiguration>(config =>
+            _services.Configure<ContentApiSearchConfiguration>(config =>
             {
                 config.Default()
                 .SetMaximumSearchResults(200)
                 .SetSearchCacheDuration(TimeSpan.FromMinutes(60));
             });
 
-            context.Services.AddSingleton<IDisplayModeFallbackProvider, FoundationDisplayModeProvider>();
-            context.Services.AddTransient<IQuickNavigatorItemProvider, FoundationQuickNavigatorItemProvider>();
-            context.Services.AddTransient<IViewTemplateModelRegistrator, ViewTemplateModelRegistrator>();
-            context.Services.AddSingleton<IHeaderViewModelFactory, HeaderViewModelFactory>();
-            context.Services.AddSingleton<BlogTagFactory>();
-            context.Services.AddSingleton<ISearchService, SearchService>();
-            context.Services.AddSingleton<ISearchViewModelFactory, SearchViewModelFactory>();
-            context.Services.AddSingleton<IModelBinderProvider, FindModelBinderProvider>();
-            context.Services.AddTransient<IContentQuery, LandingPagesSlice>();
-            context.Services.AddTransient<IContentSlice, LandingPagesSlice>();
-            context.Services.AddTransient<IContentQuery, StandardPagesSlice>();
-            context.Services.AddTransient<IContentSlice, StandardPagesSlice>();
-            context.Services.AddTransient<IContentQuery, BlogsSlice>();
-            context.Services.AddTransient<IContentSlice, BlogsSlice>();
-            context.Services.AddTransient<IContentQuery, BlocksSlice>();
-            context.Services.AddTransient<IContentSlice, BlocksSlice>();
-            context.Services.AddTransient<IContentQuery, MediaSlice>();
-            context.Services.AddTransient<IContentSlice, MediaSlice>();
-            context.Services.AddTransient<IContentQuery, ImagesSlice>();
-            context.Services.AddTransient<IContentSlice, ImagesSlice>();
-            context.Services.AddTransient<IContentQuery, EverythingSlice>();
-            context.Services.AddTransient<IContentSlice, EverythingSlice>();
-            context.Services.AddTransient<IContentQuery, MyContentSlice>();
-            context.Services.AddTransient<IContentSlice, MyContentSlice>();
-            context.Services.AddTransient<IContentQuery, MyPagesSlice>();
-            context.Services.AddTransient<IContentSlice, MyPagesSlice>();
-            context.Services.AddTransient<IContentQuery, UnusedMediaSlice>();
-            context.Services.AddTransient<IContentSlice, UnusedMediaSlice>();
-            context.Services.AddTransient<IContentQuery, UnusedBlocksSlice>();
-            context.Services.AddTransient<IContentSlice, UnusedBlocksSlice>();
-            context.Services.AddSingleton<ISchemaDataMapper<BlogItemPage>, BlogItemPageSchemaMapper>();
-            context.Services.AddSingleton<ISchemaDataMapper<HomePage>, HomePageSchemaMapper>();
-            context.Services.AddSingleton<ISchemaDataMapper<LocationItemPage>, LocationItemPageSchemaDataMapper>();
+            _services.AddSingleton<IDisplayModeFallbackProvider, FoundationDisplayModeProvider>();
+            _services.AddTransient<IQuickNavigatorItemProvider, FoundationQuickNavigatorItemProvider>();
+            _services.AddTransient<IViewTemplateModelRegistrator, ViewTemplateModelRegistrator>();
+            _services.AddSingleton<IHeaderViewModelFactory, HeaderViewModelFactory>();
+            _services.AddSingleton<BlogTagFactory>();
+            _services.AddSingleton<ISearchService, SearchService>();
+            _services.AddSingleton<ISearchViewModelFactory, SearchViewModelFactory>();
+            _services.AddSingleton<IModelBinderProvider, FindModelBinderProvider>();
+            _services.AddTransient<IContentQuery, LandingPagesSlice>();
+            _services.AddTransient<IContentSlice, LandingPagesSlice>();
+            _services.AddTransient<IContentQuery, StandardPagesSlice>();
+            _services.AddTransient<IContentSlice, StandardPagesSlice>();
+            _services.AddTransient<IContentQuery, BlogsSlice>();
+            _services.AddTransient<IContentSlice, BlogsSlice>();
+            _services.AddTransient<IContentQuery, BlocksSlice>();
+            _services.AddTransient<IContentSlice, BlocksSlice>();
+            _services.AddTransient<IContentQuery, MediaSlice>();
+            _services.AddTransient<IContentSlice, MediaSlice>();
+            _services.AddTransient<IContentQuery, ImagesSlice>();
+            _services.AddTransient<IContentSlice, ImagesSlice>();
+            _services.AddTransient<IContentQuery, EverythingSlice>();
+            _services.AddTransient<IContentSlice, EverythingSlice>();
+            _services.AddTransient<IContentQuery, MyContentSlice>();
+            _services.AddTransient<IContentSlice, MyContentSlice>();
+            _services.AddTransient<IContentQuery, MyPagesSlice>();
+            _services.AddTransient<IContentSlice, MyPagesSlice>();
+            _services.AddTransient<IContentQuery, UnusedMediaSlice>();
+            _services.AddTransient<IContentSlice, UnusedMediaSlice>();
+            _services.AddTransient<IContentQuery, UnusedBlocksSlice>();
+            _services.AddTransient<IContentSlice, UnusedBlocksSlice>();
+            _services.AddSingleton<ISchemaDataMapper<BlogItemPage>, BlogItemPageSchemaMapper>();
+            _services.AddSingleton<ISchemaDataMapper<HomePage>, HomePageSchemaMapper>();
+            _services.AddSingleton<ISchemaDataMapper<LocationItemPage>, LocationItemPageSchemaDataMapper>();
         }
 
         public void Initialize(InitializationEngine context)
