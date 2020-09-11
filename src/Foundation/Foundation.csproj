@@ -633,7 +633,7 @@
     <Compile Include="Features\Blocks\CarouselBlock\CarouselBlockController.cs" />
     <Compile Include="Features\Blocks\CarouselBlock\CarouselBlockViewModel.cs" />
     <Compile Include="Features\Blocks\ContainerBlock\ContainerBlock.cs" />
-    <Compile Include="Features\Blocks\GoogleMapsEmbedBlock\GoogleMapsEmbedBlock.cs" />
+    <Compile Include="Features\Blocks\GoogleMapsBlock\GoogleMapsBlock.cs" />
     <Compile Include="Features\Blocks\Healthbot\HealthBotBlockController.cs" />
     <Compile Include="Features\Blocks\Healthbot\HealthChatbotBlock.cs" />
     <Compile Include="Features\Blocks\HeroBlock\HeroBlock.cs" />
@@ -1307,7 +1307,7 @@
     <Content Include="modules\_protected\CmsAudit\Views\BlockTypes\Index.cshtml" />
     <Content Include="modules\_protected\CmsAudit\Views\BlockTypes\BlockTypeAudit.cshtml" />
     <Content Include="modules\_protected\CmsAudit\module.config" />
-    <Content Include="Features\Blocks\GoogleMapsEmbedBlock\GoogleMapsEmbedBlock.cshtml" />
+    <Content Include="Features\Blocks\GoogleMapsBlock\GoogleMapsBlock.cshtml" />
     <Content Include="Features\Blog\BlogListPage\_CardTemplate.cshtml" />
     <Content Include="Features\Blog\BlogListPage\_InsightTemplate.cshtml" />
     <Content Include="Features\Blog\BlogListPage\_Paging.cshtml" />

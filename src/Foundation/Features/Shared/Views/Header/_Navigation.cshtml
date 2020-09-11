@@ -1,7 +1,11 @@
-﻿@model Foundation.Cms.ViewModels.Header.HeaderViewModel
+﻿@using Foundation.Features.Header
+@using Foundation.Features.Blocks.MenuItemBlock
+
+@model HeaderViewModel 
+    
 @Html.FullRefreshPropertiesMetaData(new[] { "MainMenu", "SiteLogo" })
 
-@{ 
+@{
     var navigationHeight = Model.LogoHeight + 30;
 }
 

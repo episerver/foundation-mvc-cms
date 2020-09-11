@@ -1,4 +1,6 @@
-﻿@model Foundation.Cms.Blocks.HeroBlockCallout
+﻿@using Foundation.Features.Blocks.HeroBlock
+
+@model HeroBlockCallout
 
 <div class="hero-block__callout-content">
     @Html.PropertyFor(model => model.CalloutContent)

@@ -1,7 +1,7 @@
 @model IContentViewModel<IContent>
 
 @{
-    Layout = "~/Features/Shared/Foundation/_MasterLayout.cshtml";
+    Layout = "~/Features/Shared/Views/_MasterLayout.cshtml";
     var foundationPageData = Model.CurrentContent as IFoundationContent;
 }
 
@@ -29,9 +29,7 @@
     @Html.Partial("_Footer", Model)
 }
 
-@Html.Partial("_QuickViewModal")
-
-<script src="~/Assets/js/footer.min.js" type="text/javascript" async></script>
+<script src="~/Assets/js/main.min.js"></script>
 
 @RenderSection("AdditionalScripts", required: false)
 @Html.RequiredClientResources("Footer")

@@ -73,7 +73,7 @@ export default class FoundationCms {
         searchBox.init();
 
         var contentSearch = new ContentSearch();
-        contentSearch.Init();
+        contentSearch.init();
 
         //TODO: update js
 

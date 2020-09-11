@@ -1,4 +1,4 @@
-﻿export class NotifyHelper {
+﻿export default class NotifyHelper {
     Success(message, encodeMess) {
         var options = this.setOptions("success", encodeMess);
         $.notify(message, options);

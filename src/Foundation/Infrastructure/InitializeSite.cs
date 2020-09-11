@@ -45,15 +45,12 @@ namespace Foundation.Infrastructure
         {
             _services = context.Services;
             context.ConfigureFoundationCms();
+
             _services.Configure<ContentApiConfiguration>(c =>
             {
                 c.EnablePreviewFeatures = true;
-                c.Default(RestVersion.Version_3_0)
-                    .SetMinimumRoles(string.Empty)
-                    .SetRequiredRole(string.Empty);
-                c.Default(RestVersion.Version_2_0)
-                    .SetMinimumRoles(string.Empty)
-                    .SetRequiredRole(string.Empty);
+                c.Default(RestVersion.Version_3_0).SetMinimumRoles(string.Empty).SetRequiredRole(string.Empty);
+                c.Default(RestVersion.Version_2_0).SetMinimumRoles(string.Empty).SetRequiredRole(string.Empty);
             });
 
             _services.Configure<ContentApiSearchConfiguration>(config =>

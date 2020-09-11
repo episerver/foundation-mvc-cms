@@ -1,5 +1,6 @@
 import "bootstrap";
 import "../scss/main.scss";
+require("easy-autocomplete");
 import feather from "feather-icons";
 import "lazysizes";
 import "lazysizes/plugins/bgset/ls.bgset";

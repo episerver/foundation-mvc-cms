@@ -1,4 +1,6 @@
-﻿@model Foundation.Cms.ViewModels.Header.HeaderViewModel
+﻿@using Foundation.Features.Header
+
+@model HeaderViewModel
 
 <!-- Navigation bar for Mobile -->
 <div class="mobile-navigation-wrapper">
@@ -18,11 +20,11 @@
                     <a href="/" class="mobile-navigation__logo">
                         <picture class="img-fluid">
                             <source data-srcset="@Url.ContentUrl(Model.HomePage.SiteLogo)?format=webp&width=225" type="image/webp">
-                            <img data-src="@Url.ContentUrl(Model.HomePage.SiteLogo)?width=225" class="img-fluid lazyload" @Html.EditAttributes(x => x.HomePage.SiteLogo)/>
+                            <img data-src="@Url.ContentUrl(Model.HomePage.SiteLogo)?width=225" class="img-fluid lazyload" @Html.EditAttributes(x => x.HomePage.SiteLogo) />
                         </picture>
                     </a>
                 </div>
-                
+
                 <!-- Search box -->
                 <div class="mobile-navigation__search-box" style="display: none" id="mobile-searchbox">
                     <div class="icon-menu">
@@ -116,6 +118,5 @@
             </div>
         </div>
     </div>
-    <!-- END - Side menu of Navigation bar for Mobile -->
 </div>
 <!-- END - Navigation bar for Mobile -->
