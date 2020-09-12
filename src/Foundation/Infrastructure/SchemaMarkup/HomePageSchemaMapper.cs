@@ -9,7 +9,7 @@ using System.Linq;
 namespace Foundation.Infrastructure.SchemaMarkup
 {
     /// <summary>
-    /// Create Schema website and organization objects from CmsHomePage
+    /// Create Schema website and organization objects from HomePage
     /// </summary>
     public class HomePageSchemaMapper : ISchemaDataMapper<HomePage>
     {

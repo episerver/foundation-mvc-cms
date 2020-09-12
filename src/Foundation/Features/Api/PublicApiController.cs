@@ -92,7 +92,7 @@ namespace Foundation.Features.Api
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> InternalLogin(LoginViewModel viewModel)
+        public async Task<ActionResult> InternalLogin(UserViewModel viewModel)
         {
             var returnUrl = GetSafeReturnUrl(Request.UrlReferrer);
 
@@ -100,10 +100,10 @@ namespace Foundation.Features.Api
             {
                 return View("~/Features/Login/Index.cshtml", Url.GetUserViewModel(returnUrl));
             }
-            var user = _userService.GetSiteUser(viewModel.Email);
+            var user = _userService.GetSiteUser(viewModel.LoginViewModel.Email);
             if (user != null)
             {
-                var result = await _userService.SignInManager().PasswordSignInAsync(user.UserName, viewModel.Password, viewModel.RememberMe, shouldLockout: true);
+                var result = await _userService.SignInManager().PasswordSignInAsync(user.UserName, viewModel.LoginViewModel.Password, viewModel.LoginViewModel.RememberMe, shouldLockout: true);
                 switch (result)
                 {
                     case SignInStatus.Success:
