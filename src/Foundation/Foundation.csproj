@@ -1420,7 +1420,7 @@
       <Project>{c9638f52-7402-446d-bf89-993686e26a52}</Project>
       <Name>Foundation.Cms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Foundation.Find.Cms\Foundation.Find.csproj">
+    <ProjectReference Include="..\Foundation.Find\Foundation.Find.csproj">
       <Project>{07c19549-7028-4cba-ba73-fadd93be8e5a}</Project>
       <Name>Foundation.Find</Name>
     </ProjectReference>
