@@ -748,6 +748,7 @@
     <Compile Include="Features\Settings\CollectionSettings.cs" />
     <Compile Include="Features\Settings\LabelSettings.cs" />
     <Compile Include="Features\Settings\LayoutSettings.cs" />
+    <Compile Include="Features\Settings\ReferencePageSettings.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\HideContentAreaActionsContainer.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\MoveCategoryEditorDescriptor.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\SearchOptionSelectionFactory.cs" />
