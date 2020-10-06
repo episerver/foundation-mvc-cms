@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using System.Web;
 using System.Web.Mvc;
+using Foundation.Cms.Settings;
 
 namespace Foundation.Cms
 {
@@ -32,11 +33,10 @@ namespace Foundation.Cms
             _services.AddTransient<IModelBinderProvider, ModelBinderProvider>();
             _services.AddSingleton<IUserService, UserService>();
             _services.AddSingleton<CookieService>();
+            _services.AddSingleton<ISettingsService, SettingsService>();
         }
 
-        void IInitializableModule.Initialize(InitializationEngine context)
-        {
-        }
+        void IInitializableModule.Initialize(InitializationEngine context) => context.InitComplete += (sender, eventArgs) => context.Locate.Advanced.GetInstance<ISettingsService>().InitializeSettings();
 
         void IInitializableModule.Uninitialize(InitializationEngine context)
         {

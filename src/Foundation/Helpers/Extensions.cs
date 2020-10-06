@@ -18,7 +18,7 @@ namespace Foundation.Helpers
         {
             var model = new UserViewModel();
             ContentLoader.Value.TryGet(ContentReference.StartPage, out HomePage homePage);
-            model.Logo = urlHelper.ContentUrl(homePage?.SiteLogo);
+            // model.Logo = urlHelper.ContentUrl(homePage?.SiteLogo);
             model.ResetPasswordUrl = urlHelper.ContentUrl(homePage?.ResetPasswordPage);
             model.Title = title;
             model.LoginViewModel.ReturnUrl = returnUrl;

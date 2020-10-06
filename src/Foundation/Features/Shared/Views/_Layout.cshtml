@@ -1,3 +1,4 @@
+@using EPiServer.Framework.Web.Mvc.Html
 @model IContentViewModel<IContent>
 
 @{
@@ -19,6 +20,11 @@
 {
     { Html.RenderAction("GetHeader", "Header", new { homePage = Model.StartPage }); }
 }
+else
+{
+    Html.RenderAction("GetHeaderLogoOnly", "Header");
+}
+
 
 <div class="container">
     @RenderBody()

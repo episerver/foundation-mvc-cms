@@ -7,5 +7,6 @@ namespace Foundation.Features.Header
     {
         HeaderViewModel CreateHeaderViewModel(IContent content, HomePage home);
         void AddMyAccountMenu(HomePage homePage, HeaderViewModel viewModel);
+        HeaderLogoViewModel CreateHeaderLogoViewModel();
     }
 }

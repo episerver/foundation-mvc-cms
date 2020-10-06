@@ -27,7 +27,7 @@ namespace Foundation.Features.Login
         {
             var model = new UserViewModel();
             var homePage = _contentLoader.Get<PageData>(ContentReference.StartPage) as HomePage;
-            model.Logo = Url.ContentUrl(homePage?.SiteLogo);
+            // model.Logo = Url.ContentUrl(homePage?.SiteLogo);
             model.Title = "Register";
             return View(model);
         }

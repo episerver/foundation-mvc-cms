@@ -678,6 +678,7 @@
     <Compile Include="Features\Events\CalendarEvent\CalendarEventPage.cs" />
     <Compile Include="Features\Folder\FolderPage.cs" />
     <Compile Include="Features\Folder\FolderPageUIDescriptor.cs" />
+    <Compile Include="Features\Header\HeaderLogoViewModel.cs" />
     <Compile Include="Features\Header\HeaderViewModel.cs" />
     <Compile Include="Features\Header\HeaderViewModelFactory.cs" />
     <Compile Include="Features\Header\IHeaderViewModelFactory.cs" />
@@ -744,6 +745,9 @@
     <Compile Include="Features\Search\Search\SearchViewModel.cs" />
     <Compile Include="Features\Search\Search\SearchPageUIDescriptor.cs" />
     <Compile Include="Features\Search\Search\SearchResultPage.cs" />
+    <Compile Include="Features\Settings\CollectionSettings.cs" />
+    <Compile Include="Features\Settings\LabelSettings.cs" />
+    <Compile Include="Features\Settings\LayoutSettings.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\HideContentAreaActionsContainer.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\MoveCategoryEditorDescriptor.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\SearchOptionSelectionFactory.cs" />
@@ -1408,6 +1412,7 @@
     <Content Include="Features\Blog\BlogListPage\_ImageLeftTemplate.cshtml" />
     <Content Include="Features\Blog\BlogListPage\_ImageTopTemplate.cshtml" />
     <Content Include="Features\Blog\BlogListPage\_NoImageTemplate.cshtml" />
+    <Content Include="Features\Shared\Views\Header\_HeaderLogo.cshtml" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
