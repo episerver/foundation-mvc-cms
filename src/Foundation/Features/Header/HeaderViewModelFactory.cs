@@ -55,10 +55,13 @@ namespace Foundation.Features.Header
         {
             var layoutSettings = _settingsService.GetSiteSettings<LayoutSettings>();
             var viewModel = CreateViewModel(currentContent, homePage);
-            viewModel.LayoutSettings = layoutSettings;
+           
             viewModel.LargeHeaderMenu = layoutSettings?.LargeHeaderMenu ?? true;
             viewModel.ShowCommerceControls = layoutSettings?.ShowCommerceHeaderComponents ?? true;
+
+            viewModel.LayoutSettings = layoutSettings;
             viewModel.LabelSettings = _settingsService.GetSiteSettings<LabelSettings>();
+            viewModel.ReferencePageSettings = _settingsService.GetSiteSettings<ReferencePageSettings>();
             return viewModel;
         }
 

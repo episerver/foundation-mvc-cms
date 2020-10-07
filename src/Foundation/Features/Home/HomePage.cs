@@ -27,14 +27,6 @@ namespace Foundation.Features.Home
     [ImageUrl("~/assets/icons/cms/pages/home.png")]
     public class HomePage : FoundationPageData
     {
-        [Display(GroupName = TabNames.CustomSettings, Order = 100)]
-        [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<SelectionItem>))]
-        public virtual IList<SelectionItem> Sectors { get; set; }
-
-        [Display(GroupName = TabNames.CustomSettings, Order = 200)]
-        [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<SelectionItem>))]
-        public virtual IList<SelectionItem> Locations { get; set; }
-
         [CultureSpecific]
         [Display(Name = "Top content area", GroupName = SystemTabNames.Content, Order = 190)]
         public virtual ContentArea TopContentArea { get; set; }
