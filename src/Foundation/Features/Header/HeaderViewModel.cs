@@ -15,6 +15,7 @@ namespace Foundation.Features.Header
         public virtual HomePage HomePage { get; set; }
         public virtual LayoutSettings LayoutSettings { get; set; }
         public virtual LabelSettings LabelSettings { get; set; }
+        public virtual ReferencePageSettings ReferencePageSettings { get; set; }
         public ContentReference CurrentContentLink { get; set; }
         public Guid CurrentContentGuid { get; set; }
         public LinkItemCollection UserLinks { get; set; }
