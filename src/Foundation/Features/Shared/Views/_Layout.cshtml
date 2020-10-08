@@ -30,10 +30,10 @@ else
     @RenderBody()
 </div>
 
-@* @if (!foundationPageData?.HideSiteFooter ?? false) *@
-@* { *@
-@*     @Html.Partial("_Footer", Model) *@
-@* } *@
+@if (!foundationPageData?.HideSiteFooter ?? false)
+{
+    @Html.Partial("_Footer", Html.GetLayoutSettings())
+}
 
 <script src="~/Assets/js/main.min.js"></script>
 
