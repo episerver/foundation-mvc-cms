@@ -57,8 +57,6 @@ namespace Foundation.Features.Header
             var viewModel = CreateViewModel(currentContent, homePage);
            
             viewModel.LargeHeaderMenu = layoutSettings?.LargeHeaderMenu ?? true;
-            viewModel.ShowCommerceControls = layoutSettings?.ShowCommerceHeaderComponents ?? true;
-
             viewModel.LayoutSettings = layoutSettings;
             viewModel.LabelSettings = _settingsService.GetSiteSettings<LabelSettings>();
             viewModel.ReferencePageSettings = _settingsService.GetSiteSettings<ReferencePageSettings>();
