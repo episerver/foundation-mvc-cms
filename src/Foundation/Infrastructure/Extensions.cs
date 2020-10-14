@@ -71,23 +71,32 @@ namespace Foundation.Infrastructure
 
             var siteDefinition = new SiteDefinition
             {
-                Name = "foundation",
+                Name =  HostingEnvironment.SiteName,
                 SiteUrl = new Uri(VirtualPathUtility.AppendTrailingSlash((string)urlBuilder)),
                 Hosts = new List<HostDefinition>()
+                {
+                    new HostDefinition()
                     {
-                        new HostDefinition { Name = "*", Type = HostDefinitionType.Undefined }
+                        Name = "*", 
+                        Type = HostDefinitionType.Undefined
+                    },
+                    new HostDefinition()
+                    {
+                        Name = urlBuilder.Uri.Authority,
+                        Type = HostDefinitionType.Primary
+                    },
+                    new HostDefinition()
+                    {
+                        Name = HostDefinition.WildcardHostName
                     }
+                }
             };
 
-            siteDefinition.Hosts.Add(new HostDefinition()
-            {
-                Name = urlBuilder.Uri.Authority,
-                Type = HostDefinitionType.Primary
-            });
-            siteDefinition.Hosts.Add(new HostDefinition() { Name = HostDefinition.WildcardHostName });
-
-
-            CreateSite(new FileStream(HostingEnvironment.MapPath("~/App_Data/foundation.episerverdata"), FileMode.Open, FileAccess.Read, FileShare.Read),
+            CreateSite(new FileStream(
+                    HostingEnvironment.MapPath("~/App_Data/foundation.episerverdata") ?? throw new InvalidOperationException(),
+                    FileMode.Open, 
+                    FileAccess.Read, 
+                    FileShare.Read),
                 siteDefinition,
                 ContentReference.RootPage);
 
