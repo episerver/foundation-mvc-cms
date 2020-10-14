@@ -125,6 +125,7 @@ namespace Foundation.Infrastructure
         private void ContextOnInitComplete(object sender, EventArgs eventArgs)
         {
             _services.AddTransient<ContentAreaRenderer, FoundationContentAreaRenderer>();
+            Extensions.InstallDefaultContent();
         }
     }
 }
