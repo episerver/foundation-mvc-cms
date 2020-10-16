@@ -30,6 +30,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Owin;
 using System.Web.Mvc;
+using Foundation.Cms.Settings;
 
 namespace Foundation.Infrastructure
 {
@@ -126,6 +127,7 @@ namespace Foundation.Infrastructure
         {
             _services.AddTransient<ContentAreaRenderer, FoundationContentAreaRenderer>();
             Extensions.InstallDefaultContent();
+            ServiceLocator.Current.GetInstance<ISettingsService>().InitializeSettings();
         }
     }
 }

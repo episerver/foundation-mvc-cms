@@ -66,31 +66,22 @@ namespace Foundation.Infrastructure
                 return;
             }
 
-            var urlBuilder = new UrlBuilder(HttpContext.Current.Request.Url);
-            urlBuilder.Path = WebHostingEnvironment.Instance.WebRootVirtualPath;
-
             var siteDefinition = new SiteDefinition
             {
-                Name =  HostingEnvironment.SiteName,
-                SiteUrl = new Uri(VirtualPathUtility.AppendTrailingSlash((string)urlBuilder)),
-                Hosts = new List<HostDefinition>()
-                {
-                    new HostDefinition()
-                    {
-                        Name = "*", 
-                        Type = HostDefinitionType.Undefined
-                    },
-                    new HostDefinition()
-                    {
-                        Name = urlBuilder.Uri.Authority,
-                        Type = HostDefinitionType.Primary
-                    },
-                    new HostDefinition()
-                    {
-                        Name = HostDefinition.WildcardHostName
-                    }
-                }
+                Name =  "foundation-mvc-cms",
+                SiteUrl = new Uri($"http://{HostingEnvironment.SiteName}/"),
             };
+
+            siteDefinition.Hosts.Add(new HostDefinition()
+            {
+                Name = HostingEnvironment.SiteName,
+                Type = HostDefinitionType.Primary
+            });
+
+            siteDefinition.Hosts.Add(new HostDefinition() { 
+                Name = HostDefinition.WildcardHostName,
+                Type = HostDefinitionType.Undefined
+            });
 
             CreateSite(new FileStream(
                     HostingEnvironment.MapPath("~/App_Data/foundation.episerverdata") ?? throw new InvalidOperationException(),
@@ -101,7 +92,8 @@ namespace Foundation.Infrastructure
                 ContentReference.RootPage);
 
             var config = Configuration.GetConfiguration();
-            if (!config.ServiceUrl.Equals("https://es-us-api01.episerver.com/9IKGqgMZaTD9KP4Op3ygsVB6JeJzR0N6") && !config.DefaultIndex.Equals("episerverab_index55794"))
+            if (!config.ServiceUrl.Equals("https://es-us-api01.episerver.com/9IKGqgMZaTD9KP4Op3ygsVB6JeJzR0N6") 
+                && !config.DefaultIndex.Equals("episerverab_index55794"))
             {
                 RunIndexJob(ServiceLocator.Current.GetInstance<IScheduledJobExecutor>(),
                     ServiceLocator.Current.GetInstance<IScheduledJobRepository>(), new Guid("8EB257F9-FF22-40EC-9958-C1C5BA8C2A53"));

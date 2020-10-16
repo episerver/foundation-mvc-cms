@@ -36,7 +36,11 @@ namespace Foundation.Cms
             _services.AddSingleton<ISettingsService, SettingsService>();
         }
 
-        void IInitializableModule.Initialize(InitializationEngine context) => context.InitComplete += (sender, eventArgs) => context.Locate.Advanced.GetInstance<ISettingsService>().InitializeSettings();
+        void IInitializableModule.Initialize(InitializationEngine context)
+        {
+            context.InitComplete += (sender, eventArgs) =>
+                context.Locate.Advanced.GetInstance<ISettingsService>().InitializeSettings();
+        }
 
         void IInitializableModule.Uninitialize(InitializationEngine context)
         {
