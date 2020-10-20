@@ -1,29 +1,39 @@
-﻿@using Foundation.Features.Header
+﻿@using EPiServer.Web
+@using EPiServer.Web.Routing
+@using Foundation.Features.Header
 @using Foundation.Features.Blocks.MenuItemBlock
 
-@model HeaderViewModel 
-    
+@model HeaderViewModel
+
 @Html.FullRefreshPropertiesMetaData(new[] { "MainMenu", "SiteLogo" })
-
 @{
-    var navigationHeight = Model.LogoHeight + 30;
+    var navigationHeight = Model.LayoutSettings.LogoHeight + 20;
 }
-
 <!-- Navigation bar for Desktop -->
 <div class="d-none d-lg-block">
     <nav class="container">
         <div class="row no-gutters">
             <div class="navigation" style="height:@(navigationHeight)px">
-                <div class="navigation__logo @(Model.HomePage.HeaderMenuStyle == "LeftLogo" ? "flex-start" : "flex-center")"
-                     style="@(Model.HomePage.HeaderMenuStyle == "LeftLogo" ? "order: -1; width: 75%;" : "")">
+                <div class="navigation__logo @(Model.LayoutSettings.HeaderMenuStyle == "LeftLogo" ? "flex-start" : "flex-center")"
+                     style="@(Model.LayoutSettings.HeaderMenuStyle == "LeftLogo" ? "order: -1; width: 75%;" : "")">
                     <a href="/">
-                        <picture>
-                            <source data-srcset="@Url.ContentUrl(Model.HomePage.SiteLogo)?format=webp&height=@(Model.LogoHeight)" type="image/webp">
-                            <img style="max-height: @(Model.LogoHeight)px" data-src="@Url.ContentUrl(Model.HomePage.SiteLogo)?height=@(Model.LogoHeight)" class="img-fluid lazyload" @Html.EditAttributes(x => x.HomePage.SiteLogo) />
-                        </picture>
+                        @if (PageEditing.PageIsInEditMode)
+                        {
+                            <div @Html.EditAttributes(x => x.LayoutSettings.SiteLogo)>
+                                <img data-src="@Url.ContentUrl(Model.LayoutSettings.SiteLogo)?format=webp" 
+                                     style="max-height: @(Model.LayoutSettings.LogoHeight)px"
+                                     class="img-fluid lazyload" @Html.EditAttributes(x => x.LayoutSettings.SiteLogo) />
+                            </div>
+                        }
+                        else
+                        {
+                            <img data-src="@Url.ContentUrl(Model.LayoutSettings.SiteLogo)?format=webp" 
+                                 style="max-height: @(Model.LayoutSettings.LogoHeight)px"
+                                 class="img-fluid lazyload" @Html.EditAttributes(x => x.LayoutSettings.SiteLogo) />
+                        }
                     </a>
                 </div>
-                <div class="navigation__main" @Html.EditAttributes(x => x.HomePage.MainMenu)>
+                <div class="navigation__main" @Html.EditAttributes(x => x.LayoutSettings.MainMenu)>
                     @Html.Partial("_Menu", Model.MenuItems ?? new List<MenuItemViewModel>())
                 </div>
                 <ul class="navigation__right">
@@ -31,10 +41,10 @@
                         <div class="icon-menu" id="js-searchbutton">
                             <i data-feather="search"></i>
                         </div>
-                        <div class="searchbox" style="height:@(navigationHeight)px" id="js-searchbox">
+                        <div class="searchbox" id="js-searchbox">
                             <i class="icon-left" data-feather="search"></i>
                             <input placeholder="Search" id="js-searchbox-input" class="jsSearchText"
-                                   data-search="@Url.ContentUrl(Model.HomePage.SearchPage)"
+                                   data-search="@Url.ContentUrl(Model.ReferencePageSettings.SearchPage)"
                                    data-result-container="#jsResultSearch" />
                             <input type="hidden" id="searchConfidence" value="1" />
                             <input class="hidden" type="file" id="fileSearchInput" />
