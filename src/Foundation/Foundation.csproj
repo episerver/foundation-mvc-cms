@@ -722,6 +722,14 @@
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordMailPage.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordPage.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordViewModel.cs" />
+    <Compile Include="Features\People\LocationsSelectionFactory.cs" />
+    <Compile Include="Features\People\PersonItemPage\PersonItemPageController.cs" />
+    <Compile Include="Features\People\PersonItemPage\PersonPage.cs" />
+    <Compile Include="Features\People\PersonItemPage\PersonViewModel.cs" />
+    <Compile Include="Features\People\PersonListPage\PersonList.cs" />
+    <Compile Include="Features\People\PersonListPage\PersonListPageController.cs" />
+    <Compile Include="Features\People\PersonListPage\PersonListViewModel.cs" />
+    <Compile Include="Features\People\SectorsSelectionFactory.cs" />
     <Compile Include="Features\Preview\PartialViewDisplayChannel.cs" />
     <Compile Include="Features\Preview\PagePartialPreviewController.cs" />
     <Compile Include="Features\Preview\PreviewControllerHelper.cs" />
@@ -984,6 +992,7 @@
     <Content Include="Assets\js\common\notification-helper.js" />
     <Content Include="Assets\js\common\pdf-preview.js" />
     <Content Include="ClientResources\Styles\fontawesome.min.css" />
+    <Content Include="Features\People\people.js" />
     <Content Include="Features\Search\search.js" />
     <Content Include="Features\Search\search-box.js" />
     <Content Include="Assets\js\common\selection.js" />
@@ -1414,6 +1423,9 @@
     <Content Include="Features\Blog\BlogListPage\_ImageTopTemplate.cshtml" />
     <Content Include="Features\Blog\BlogListPage\_NoImageTemplate.cshtml" />
     <Content Include="Features\Shared\Views\Header\_HeaderLogo.cshtml" />
+    <Content Include="Features\People\PersonItemPage\Index.cshtml" />
+    <Content Include="Features\People\PersonListPage\Index.cshtml" />
+    <Content Include="Features\People\_people.scss" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
