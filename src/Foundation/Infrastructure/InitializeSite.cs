@@ -126,8 +126,8 @@ namespace Foundation.Infrastructure
         private void ContextOnInitComplete(object sender, EventArgs eventArgs)
         {
             _services.AddTransient<ContentAreaRenderer, FoundationContentAreaRenderer>();
-            ServiceLocator.Current.GetInstance<ISettingsService>().InitializeSettings();
             Extensions.InstallDefaultContent();
+            ServiceLocator.Current.GetInstance<ISettingsService>().InitializeSettings();
         }
     }
 }
