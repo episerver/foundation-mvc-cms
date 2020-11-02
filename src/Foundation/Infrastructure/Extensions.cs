@@ -91,13 +91,8 @@ namespace Foundation.Infrastructure
                 siteDefinition,
                 ContentReference.RootPage);
 
-            var config = Configuration.GetConfiguration();
-            if (!config.ServiceUrl.Equals("https://es-us-api01.episerver.com/9IKGqgMZaTD9KP4Op3ygsVB6JeJzR0N6") 
-                && !config.DefaultIndex.Equals("episerverab_index55794"))
-            {
-                RunIndexJob(ServiceLocator.Current.GetInstance<IScheduledJobExecutor>(),
+            RunIndexJob(ServiceLocator.Current.GetInstance<IScheduledJobExecutor>(),
                     ServiceLocator.Current.GetInstance<IScheduledJobRepository>(), new Guid("8EB257F9-FF22-40EC-9958-C1C5BA8C2A53"));
-            }
         }
 
         private static void RunIndexJob(IScheduledJobExecutor scheduledJobExecutor, IScheduledJobRepository scheduledJobRepository, Guid jobId)
