@@ -1300,7 +1300,6 @@
     <Content Include="Features\Blog\BlogListPage\_CardTemplate.cshtml" />
     <Content Include="Features\Blog\BlogListPage\_InsightTemplate.cshtml" />
     <Content Include="Features\Blog\BlogListPage\_Paging.cshtml" />
-    <Content Include="App_Data\DefaultSiteContent.episerverdata" />
     <Content Include="modules\_protected\BVNetwork.404Handler\web.config" />
     <Content Include="modules\_protected\BVNetwork.404Handler\BVNetwork.404Handler.zip" />
     <Content Include="Features\Blocks\Healthbot\HealthChatBotBlock.cshtml" />
