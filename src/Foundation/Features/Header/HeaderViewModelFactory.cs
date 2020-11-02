@@ -60,6 +60,7 @@ namespace Foundation.Features.Header
             viewModel.LayoutSettings = layoutSettings;
             viewModel.LabelSettings = _settingsService.GetSiteSettings<LabelSettings>();
             viewModel.ReferencePageSettings = _settingsService.GetSiteSettings<ReferencePageSettings>();
+            viewModel.SearchSettings = _settingsService.GetSiteSettings<SearchSettings>();
             return viewModel;
         }
 

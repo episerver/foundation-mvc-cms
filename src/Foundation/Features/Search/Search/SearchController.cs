@@ -56,7 +56,7 @@ namespace Foundation.Features.Search.Search
             });
             model.ContentSearchResult = contentResult;
 
-            return View("_QuickSearchAll", model);
+            return View("_QuickSearchContent", model);
         }
 
         [ChildActionOnly]
@@ -119,6 +119,7 @@ namespace Foundation.Features.Search.Search
                     }
                     return output;
                 }
+
                 return string.Empty;
             }
         }

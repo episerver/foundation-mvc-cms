@@ -14,12 +14,10 @@ namespace Foundation.Features.Search
         public bool IsMobile { get; set; }
         public string RedirectUrl { get; set; }
         public ContentSearchViewModel ContentSearchResult { get; set; }
-
         public SearchViewModel()
         {
 
         }
-
         public SearchViewModel(T currentContent) : base(currentContent)
         {
 
