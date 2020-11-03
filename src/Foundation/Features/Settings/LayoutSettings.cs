@@ -103,10 +103,6 @@ namespace Foundation.Features.Settings
         public virtual bool LargeHeaderMenu { get; set; }
 
         [CultureSpecific]
-        [Display(Name = "Show commerce header components", GroupName = TabNames.Header, Order = 40)]
-        public virtual bool ShowCommerceHeaderComponents { get; set; }
-
-        [CultureSpecific]
         [Display(Name = "Sticky header", GroupName = TabNames.Header, Order = 50)]
         public virtual bool StickyTopHeader { get; set; }
 
