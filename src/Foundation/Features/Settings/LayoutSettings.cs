@@ -77,10 +77,6 @@ namespace Foundation.Features.Settings
             Order = 40)]
         public virtual LinkItemCollection MyAccountCmsMenu { get; set; }
 
-        [CultureSpecific]
-        [Display(Name = "Organization menu", GroupName = TabNames.Menu, Order = 50)]
-        public virtual LinkItemCollection OrganizationMenu { get; set; }
-
         #endregion
 
         #region Header
