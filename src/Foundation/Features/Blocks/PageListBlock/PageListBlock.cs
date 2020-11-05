@@ -97,13 +97,13 @@ namespace Foundation.Features.Blocks.PageListBlock
         {
             if (block.Template == TemplateSelections.Card || block.Template == TemplateSelections.Insight)
             {
-                if (block.Count % 6 != 0)
+                if (block.Count % 3 != 0)
                 {
                     return new ValidationError[]
                     {
                         new ValidationError()
                         {
-                             ErrorMessage = "The property Count must be divisible by 6 (with Template is Card or Insight)",
+                             ErrorMessage = "The property Count must be divisible by 3 (with Template is Card or Insight)",
                              PropertyName = block.GetPropertyName(p => p.Count),
                              Severity = ValidationErrorSeverity.Error,
                              ValidationType = ValidationErrorType.StorageValidation
