@@ -2,12 +2,14 @@
 using EPiServer.Core;
 using EPiServer.DataAnnotations;
 using EPiServer.PlugIn;
+using EPiServer.ServiceLocation;
 using EPiServer.Shell.ObjectEditing;
 using Foundation.Cms;
 using Foundation.Cms.Settings;
 using Foundation.Infrastructure;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Foundation.Features.Settings
 {
@@ -90,5 +92,38 @@ namespace Foundation.Features.Settings
     [PropertyDefinitionTypePlugIn]
     public class SelectionItemProperty : PropertyList<SelectionItem>
     {
+    }
+
+    public class BackgroundColorSelectionFactory : ISelectionFactory
+    {
+        public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+
+            return collectionSettings.BackgroundColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+        }
+    }
+
+    public class ButtonBackgroundColorSelectionFactory : ISelectionFactory
+    {
+        public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+
+            return collectionSettings.ButtonBackgrounColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+        }
+    }
+
+    public class ButtonTextSelectionFactory : ISelectionFactory
+    {
+        public IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+
+            return collectionSettings.ButtonTextColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+        }
     }
 }
