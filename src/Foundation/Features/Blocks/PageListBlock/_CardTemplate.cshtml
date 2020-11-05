@@ -5,18 +5,15 @@
 @model PageListBlockViewModel
 
 @{
-    int index = 1;
-    int col = 12;
+    //Set the right column width based on PreviewOption
+    int col = Model.PreviewOption;
 }
 
 <div class="row">
     @foreach (var blog in Model.Pages)
     {
         var foundationPage = blog.Page as FoundationPageData;
-        if (index % 6 < 4) { col = 4; }
-        if (index % 6 >= 4) { col = 6; }
-        if (index % 6 == 0) { col = 12; }
-        index++;
+
         <div class="col-xs-12 col-sm-6 col-md-@col">
             <div class="page-list-block-preview__card">
                 <div class="page-list-block-preview__card--show">
@@ -56,5 +53,5 @@
                 </div>
             </div>
         </div>
-     }
+    }
 </div>
