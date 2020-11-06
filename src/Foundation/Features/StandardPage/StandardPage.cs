@@ -16,20 +16,7 @@ namespace Foundation.Features.StandardPage
     [ImageUrl("~/assets/icons/cms/pages/CMS-icon-page-23.png")]
     public class StandardPage : FoundationPageData
     {
-        [CultureSpecific]
-        [Searchable(false)]
-        [ClientEditor(ClientEditingClass = "dijit/ColorPalette")]
-        [Display(Name = "Title color", GroupName = SystemTabNames.Content, Order = 203)]
-        public virtual string TitleColor
-        {
-            get { return this.GetPropertyValue(page => page.TitleColor) ?? "white"; }
-            set { this.SetPropertyValue(page => page.TitleColor, value); }
-        }
-
-        [CultureSpecific]
-        [UIHint(UIHint.Image)]
-        [Display(Name = "Background image", GroupName = SystemTabNames.Content, Order = 206)]
-        public virtual ContentReference BackgroundImage { get; set; }
+        
 
         [CultureSpecific]
         [UIHint(UIHint.Video)]
@@ -44,31 +31,46 @@ namespace Foundation.Features.StandardPage
             Order = 220)]
         public virtual string TopPaddingMode { get; set; }
 
+        [CultureSpecific]
         [Searchable(false)]
-        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
-        [Display(Name = "Background color", GroupName = SystemTabNames.Content, Order = 204)]
+        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [Display(Name = "Title color", GroupName = SystemTabNames.Content, Order = 230)]
+        public virtual string TitleColor
+        {
+            get { return this.GetPropertyValue(page => page.TitleColor) ?? "#ffffffff"; }
+            set { this.SetPropertyValue(page => page.TitleColor, value); }
+        }
+
+        [Searchable(false)]
+        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [Display(Name = "Background color", GroupName = SystemTabNames.Content, Order = 240)]
         public virtual string BackgroundColor
         {
-            get { return this.GetPropertyValue(page => page.BackgroundColor) ?? "transparent"; }
+            get { return this.GetPropertyValue(page => page.BackgroundColor) ?? "#ffffffff"; }
             set { this.SetPropertyValue(page => page.BackgroundColor, value); }
         }
 
         [Searchable(false)]
         [Range(0, 1.0, ErrorMessage = "Opacity only allows value between 0 and 1")]
-        [Display(Name = "Title opacity (0 to 1)", GroupName = SystemTabNames.Content, Order = 205)]
+        [Display(Name = "Title opacity (0 to 1)", GroupName = SystemTabNames.Content, Order = 250)]
         public virtual double? BackgroundOpacity
         {
             get { return this.GetPropertyValue(page => page.BackgroundOpacity) ?? 1; }
             set { this.SetPropertyValue(page => page.BackgroundOpacity, value); }
         }
 
+        [CultureSpecific]
+        [UIHint(UIHint.Image)]
+        [Display(Name = "Background image", GroupName = SystemTabNames.Content, Order = 260)]
+        public virtual ContentReference BackgroundImage { get; set; }
+
         public override void SetDefaultValues(ContentType contentType)
         {
             base.SetDefaultValues(contentType);
 
-            BackgroundColor = "transparent";
+            BackgroundColor = "#ffffffff";
             BackgroundOpacity = 1;
-            TitleColor = "Light";
+            TitleColor = "#ffffffff";
             TopPaddingMode = StandardPageTopPaddingModeSelectionFactory.TopPaddingModes.Half;
         }
     }
