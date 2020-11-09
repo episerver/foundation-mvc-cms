@@ -37,7 +37,7 @@ namespace Foundation.Features.Blocks.TeaserBlock
         [Display(Name = "Heading color", GroupName = SystemTabNames.Content, Order = 13)]
         public virtual string HeadingColor
         {
-            get { return this.GetPropertyValue(page => page.HeadingColor) ?? "#000000"; }
+            get { return this.GetPropertyValue(page => page.HeadingColor) ?? "#000000ff"; }
             set { this.SetPropertyValue(page => page.HeadingColor, value); }
         }
 
@@ -74,7 +74,7 @@ namespace Foundation.Features.Blocks.TeaserBlock
         [Display(Name = "Text color", GroupName = SystemTabNames.Content, Order = 50)]
         public virtual string TextColor
         {
-            get { return this.GetPropertyValue(page => page.TextColor) ?? "#000000"; }
+            get { return this.GetPropertyValue(page => page.TextColor) ?? "#000000ff"; }
             set { this.SetPropertyValue(page => page.TextColor, value); }
         }
 
@@ -88,11 +88,11 @@ namespace Foundation.Features.Blocks.TeaserBlock
 
             HeadingSize = 28;
             HeadingStyle = "none";
-            HeadingColor = "#000000";
+            HeadingColor = "#000000ff";
             ImageSize = 100;
             SecondImageSize = 100;
             BackgroundColor = "transparent";
-            TextColor = "#000000";
+            TextColor = "#000000ff";
         }
 
         public void SetItem(ItemModel itemModel)
