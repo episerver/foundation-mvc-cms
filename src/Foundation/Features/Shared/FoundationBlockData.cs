@@ -36,7 +36,7 @@ namespace Foundation.Features.Shared
         [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
         public virtual string BackgroundColor
         {
-            get { return this.GetPropertyValue(page => page.BackgroundColor) ?? "white"; }
+            get { return this.GetPropertyValue(page => page.BackgroundColor) ?? "#00000000"; }
             set { this.SetPropertyValue(page => page.BackgroundColor, value); }
         }
 
@@ -52,7 +52,7 @@ namespace Foundation.Features.Shared
         {
             Padding = "p-1";
             Margin = "m-0";
-            BackgroundColor = "white";
+            BackgroundColor = "#00000000";
             BlockOpacity = 1;
             base.SetDefaultValues(contentType);
         }

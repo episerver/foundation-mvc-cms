@@ -13,28 +13,28 @@
 <div class="d-none d-lg-block">
     <nav class="container">
         <div class="row no-gutters">
-            <div class="navigation" style="height:@(navigationHeight)px">
+            <div class="navigation" style="height: @(navigationHeight)px">
+                <div class="navigation__left" @Html.EditAttributes(x => x.LayoutSettings.MainMenu)>
+                    @Html.Partial("_Menu", Model.MenuItems ?? new List<MenuItemViewModel>())
+                </div>
                 <div class="navigation__logo @(Model.LayoutSettings.HeaderMenuStyle == "LeftLogo" ? "flex-start" : "flex-center")"
                      style="@(Model.LayoutSettings.HeaderMenuStyle == "LeftLogo" ? "order: -1; width: 75%;" : "")">
                     <a href="/">
                         @if (PageEditing.PageIsInEditMode)
                         {
                             <div @Html.EditAttributes(x => x.LayoutSettings.SiteLogo)>
-                                <img data-src="@Url.ContentUrl(Model.LayoutSettings.SiteLogo)?format=webp" 
+                                <img data-src="@Url.ContentUrl(Model.LayoutSettings.SiteLogo)?format=webp"
                                      style="max-height: @(Model.LayoutSettings.LogoHeight)px"
                                      class="img-fluid lazyload" @Html.EditAttributes(x => x.LayoutSettings.SiteLogo) />
                             </div>
                         }
                         else
                         {
-                            <img data-src="@Url.ContentUrl(Model.LayoutSettings.SiteLogo)?format=webp" 
+                            <img data-src="@Url.ContentUrl(Model.LayoutSettings.SiteLogo)?format=webp"
                                  style="max-height: @(Model.LayoutSettings.LogoHeight)px"
                                  class="img-fluid lazyload" @Html.EditAttributes(x => x.LayoutSettings.SiteLogo) />
                         }
                     </a>
-                </div>
-                <div class="navigation__main" @Html.EditAttributes(x => x.LayoutSettings.MainMenu)>
-                    @Html.Partial("_Menu", Model.MenuItems ?? new List<MenuItemViewModel>())
                 </div>
                 <ul class="navigation__right">
                     <li>

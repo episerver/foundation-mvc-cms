@@ -15,19 +15,7 @@ namespace Foundation.Features.Settings
         public virtual string MyAccountLabel { get; set; }
 
         [CultureSpecific]
-        [Display(Name = "Shopping cart", GroupName = TabNames.SiteLabels, Order = 20)]
-        public virtual string CartLabel { get; set; }
-
-        [CultureSpecific]
         [Display(Name = "Search", GroupName = TabNames.SiteLabels, Order = 30)]
         public virtual string SearchLabel { get; set; }
-
-        [CultureSpecific]
-        [Display(Name = "Wishlist", GroupName = TabNames.SiteLabels, Order = 40)]
-        public virtual string WishlistLabel { get; set; }
-
-        [CultureSpecific]
-        [Display(Name = "Shared cart", GroupName = TabNames.SiteLabels, Order = 50)]
-        public virtual string SharedCartLabel { get; set; }
     }
 }

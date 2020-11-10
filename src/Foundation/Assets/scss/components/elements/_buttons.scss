@@ -42,6 +42,10 @@
     }
 }
 
+.button-origin {
+    @extend %button-base;
+}
+
 .button-transparent-black {
     @extend %button-base;
     background: transparent;

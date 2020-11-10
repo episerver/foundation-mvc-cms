@@ -77,10 +77,6 @@ namespace Foundation.Features.Settings
             Order = 40)]
         public virtual LinkItemCollection MyAccountCmsMenu { get; set; }
 
-        [CultureSpecific]
-        [Display(Name = "Organization menu", GroupName = TabNames.Menu, Order = 50)]
-        public virtual LinkItemCollection OrganizationMenu { get; set; }
-
         #endregion
 
         #region Header
@@ -101,10 +97,6 @@ namespace Foundation.Features.Settings
         [CultureSpecific]
         [Display(Name = "Large header menu", GroupName = TabNames.Header, Order = 35)]
         public virtual bool LargeHeaderMenu { get; set; }
-
-        [CultureSpecific]
-        [Display(Name = "Show commerce header components", GroupName = TabNames.Header, Order = 40)]
-        public virtual bool ShowCommerceHeaderComponents { get; set; }
 
         [CultureSpecific]
         [Display(Name = "Sticky header", GroupName = TabNames.Header, Order = 50)]

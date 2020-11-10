@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
 
-    &__main {
+    &__left {
         padding-left: 0;
         width: 40%;
         display: flex;
@@ -27,7 +27,7 @@
 
     &__right {
         margin: 0;
-        width: 10%;
+        width: 40%;
         display: flex;
         position: relative;
         justify-content: flex-end;
