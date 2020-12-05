@@ -22,14 +22,17 @@ namespace Foundation.Infrastructure
 {
     public static class Extensions
     {
-        private static readonly Lazy<IContentLoader> _contentLoader =
-            new Lazy<IContentLoader>(() => ServiceLocator.Current.GetInstance<IContentLoader>());
+        private static readonly Lazy<IContentRepository> _contentRepository =
+            new Lazy<IContentRepository>(() => ServiceLocator.Current.GetInstance<IContentRepository>());
 
         private static readonly Lazy<IUrlResolver> _urlResolver =
             new Lazy<IUrlResolver>(() => ServiceLocator.Current.GetInstance<IUrlResolver>());
 
         private static readonly Lazy<ISiteDefinitionRepository> _siteDefinitionRepository =
             new Lazy<ISiteDefinitionRepository>(() => ServiceLocator.Current.GetInstance<ISiteDefinitionRepository>());
+
+        private static readonly Lazy<ContentRootService> _contentRootService =
+            new Lazy<ContentRootService>(() => ServiceLocator.Current.GetInstance<ContentRootService>());
 
         public static ContentReference GetRelativeStartPage(this IContent content)
         {
@@ -38,7 +41,7 @@ namespace Foundation.Infrastructure
                 return content.ContentLink;
             }
 
-            var ancestors = _contentLoader.Value.GetAncestors(content.ContentLink);
+            var ancestors = _contentRepository.Value.GetAncestors(content.ContentLink);
             var startPage = ancestors.FirstOrDefault(x => x is HomePage) as HomePage;
             return startPage == null ? ContentReference.StartPage : startPage.ContentLink;
         }
@@ -82,6 +85,14 @@ namespace Foundation.Infrastructure
                 Name = HostDefinition.WildcardHostName,
                 Type = HostDefinitionType.Undefined
             });
+
+            var registeredRoots = _contentRepository.Value.GetItems(_contentRootService.Value.List(), new LoaderOptions());
+            var settingsRootRegistered = registeredRoots.Any(x => x.ContentGuid == SettingsFolder.SettingsRootGuid && x.Name.Equals(SettingsFolder.SettingsRootName));
+
+            if (!settingsRootRegistered)
+            {
+                _contentRootService.Value.Register<SettingsFolder>(SettingsFolder.SettingsRootName + "IMPORT", SettingsFolder.SettingsRootGuid, ContentReference.RootPage);
+            }
 
             CreateSite(new FileStream(
                     HostingEnvironment.MapPath("~/App_Data/foundation.episerverdata") ?? throw new InvalidOperationException(),
