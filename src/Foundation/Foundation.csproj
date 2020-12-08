@@ -643,7 +643,6 @@
     <Compile Include="Features\Blocks\NavigationBlock\NavigationBlockController.cs" />
     <Compile Include="Features\Blocks\CallToActionBlock\CallToActionBlock.cs" />
     <Compile Include="Features\Blocks\FacebookBlock\FacebookBlock.cs" />
-    <Compile Include="Features\Blocks\LinkedInCompanyBlock\LinkedInCompanyBlock.cs" />
     <Compile Include="Features\Blocks\NavigationBlock\NavigationBlock.cs" />
     <Compile Include="Features\Blocks\NavigationBlock\NavigationBlockViewModel.cs" />
     <Compile Include="Features\Blocks\PageListBlock\PageListBlock.cs" />
@@ -1244,7 +1243,6 @@
     <Content Include="Features\Blocks\ContainerBlock\ContainerBlock.cshtml" />
     <Content Include="Features\Blocks\FacebookBlock\FacebookBlock.cshtml" />
     <Content Include="Features\Blocks\HeroBlock\HeroBlock.cshtml" />
-    <Content Include="Features\Blocks\LinkedInCompanyBlock\LinkedInCompanyBlock.cshtml" />
     <Content Include="Features\Blocks\RssReaderBlock\RssReaderBlock.cshtml" />
     <Content Include="Features\Blocks\TeaserBlock\TeaserBlock.cshtml" />
     <Content Include="Features\Blocks\TextBlock\TextBlock.cshtml" />
