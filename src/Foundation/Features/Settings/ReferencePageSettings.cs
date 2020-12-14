@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using EPiServer.Core;
+﻿using EPiServer.Core;
 using EPiServer.DataAnnotations;
 using Foundation.Cms.Settings;
 using Foundation.Features.MyAccount.ResetPassword;
 using Foundation.Features.Search.Search;
 using Foundation.Infrastructure;
+using System.ComponentModel.DataAnnotations;
 
 namespace Foundation.Features.Settings
 {

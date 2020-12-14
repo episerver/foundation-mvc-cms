@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using EPiServer.DataAnnotations;
+﻿using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
 using Foundation.Cms.Settings;
-using Foundation.Find.Facets;
-using Foundation.Find.Facets.Config;
 using Foundation.Infrastructure;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Foundation.Features.Settings
 {

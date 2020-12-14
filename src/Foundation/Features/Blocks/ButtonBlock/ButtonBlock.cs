@@ -1,18 +1,12 @@
-using System;
-using System.Collections.Generic;
 using EPiServer;
+using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using EPiServer.Core;
-using EPiServer.ServiceLocation;
-using Foundation.Cms.Settings;
-using Foundation.Features.People;
-using Foundation.Features.Settings;
 
 namespace Foundation.Features.Blocks.ButtonBlock
 {
@@ -32,14 +26,18 @@ namespace Foundation.Features.Blocks.ButtonBlock
         [Display(Name = "Link", Order = 20, GroupName = SystemTabNames.Content)]
         public virtual Url ButtonLink { get; set; }
 
+        [SelectOne(SelectionFactoryType = typeof(ButtonBlockStyleSelectionFactory))]
+        [Display(Name = "Style", Order = 30, GroupName = SystemTabNames.Content)]
+        public virtual string ButtonStyle { get; set; }
+
         [CultureSpecific]
-        [Display(Name = "Reassuring caption", Order = 30, GroupName = SystemTabNames.Content, Prompt = "Cancel anytime...")]
+        [Display(Name = "Reassuring caption", Order = 40, GroupName = SystemTabNames.Content, Prompt = "Cancel anytime...")]
         public virtual string ButtonCaption { get; set; }
 
         [CultureSpecific]
         [Searchable(false)]
         [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
-        [Display(Name = "Button Text color", GroupName = SystemTabNames.Content, Order = 40)]
+        [Display(Name = "Button Text color", GroupName = SystemTabNames.Content, Order = 50)]
         public virtual string ButtonTextColor
         {
             get { return this.GetPropertyValue(page => page.ButtonTextColor) ?? "#000000ff"; }
@@ -50,7 +48,7 @@ namespace Foundation.Features.Blocks.ButtonBlock
 
         #region Button Background
         [CultureSpecific]
-        [Display(Name = "Use transparent background", GroupName = TabNames.Background, 
+        [Display(Name = "Use transparent background", GroupName = TabNames.Background,
             Description = "This will determine whether or not to use transparent background", Order = 10)]
         public virtual bool ShowTransparentBackground { get; set; }
 

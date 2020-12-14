@@ -1,12 +1,11 @@
 ﻿using EPiServer.Core;
 using EPiServer.SpecializedProperties;
+using Foundation.Cms.Users;
 using Foundation.Features.Blocks.MenuItemBlock;
 using Foundation.Features.Home;
-using Foundation.Features.Login;
 using Foundation.Features.Settings;
 using System;
 using System.Collections.Generic;
-using Foundation.Cms.Users;
 
 namespace Foundation.Features.Header
 {

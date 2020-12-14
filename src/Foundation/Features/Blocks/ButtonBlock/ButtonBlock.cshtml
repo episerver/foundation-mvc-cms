@@ -19,10 +19,10 @@
     }
 }
 
-    <div style="background-color: @Model.CurrentBlock.BackgroundColor; opacity:@Model.CurrentBlock.BlockOpacity;" 
+<div style="background-color: @Model.CurrentBlock.BackgroundColor; opacity:@Model.CurrentBlock.BlockOpacity;"
      class="@(Model.CurrentBlock.Padding + " " + Model.CurrentBlock.Margin)">
-    <a style="@style" 
-       title="@Model.CurrentBlock.ButtonText" class="button-origin"
+    <a style="@style"
+       title="@Model.CurrentBlock.ButtonText" class="button-origin @Model.CurrentBlock.ButtonStyle"
        href="@Url.ContentUrl(Model.CurrentBlock.ButtonLink)" @Html.EditAttributes(m => m.CurrentBlock.ButtonText)>
         @{
             var buttonText = string.IsNullOrWhiteSpace(Model.CurrentBlock.ButtonText)

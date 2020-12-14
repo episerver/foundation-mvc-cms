@@ -6,14 +6,14 @@ using EPiServer.Web.Mvc;
 using Foundation.Cms.Attributes;
 using Foundation.Cms.Extensions;
 using Foundation.Cms.Identity;
+using Foundation.Cms.Settings;
 using Foundation.Features.Home;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Foundation.Cms.Settings;
-using Foundation.Features.Settings;
 
 namespace Foundation.Features.MyAccount.ResetPassword
 {

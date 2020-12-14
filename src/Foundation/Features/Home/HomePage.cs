@@ -1,20 +1,10 @@
-using EPiServer.Cms.Shell.UI.ObjectEditing.EditorDescriptors;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using EPiServer.Framework.DataAnnotations;
 using EPiServer.PlugIn;
-using EPiServer.Shell.ObjectEditing;
-using EPiServer.SpecializedProperties;
-using EPiServer.Web;
 using Foundation.Cms;
-using Foundation.Features.Blocks.MenuItemBlock;
-using Foundation.Features.MyAccount.ResetPassword;
-using Foundation.Features.Search.Search;
 using Foundation.Features.Shared;
-using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Foundation.Features.Home

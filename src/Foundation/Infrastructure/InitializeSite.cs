@@ -14,6 +14,7 @@ using EPiServer.Web.PageExtensions;
 using EPiServer.Web.Routing;
 using Foundation.Cms;
 using Foundation.Cms.Extensions;
+using Foundation.Cms.Settings;
 using Foundation.Features.Blog.BlogItemPage;
 using Foundation.Features.Header;
 using Foundation.Features.Home;
@@ -30,7 +31,6 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Owin;
 using System.Web.Mvc;
-using Foundation.Cms.Settings;
 
 namespace Foundation.Infrastructure
 {

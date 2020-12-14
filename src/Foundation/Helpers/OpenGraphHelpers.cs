@@ -5,11 +5,14 @@ using EPiServer.DataAbstraction;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
+using Foundation.Cms.Extensions;
+using Foundation.Cms.Settings;
 using Foundation.Features.Blog.BlogItemPage;
 using Foundation.Features.Category;
 using Foundation.Features.Home;
 using Foundation.Features.Locations.LocationItemPage;
 using Foundation.Features.Locations.TagPage;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using Foundation.Features.StandardPage;
 using Foundation.Infrastructure.OpenGraph;
@@ -18,9 +21,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Foundation.Cms.Extensions;
-using Foundation.Cms.Settings;
-using Foundation.Features.Settings;
 
 namespace Foundation.Helpers
 {

@@ -1,16 +1,16 @@
 ﻿using EPiServer.Web;
 using Foundation.Cms;
 using Foundation.Cms.Extensions;
+using Foundation.Cms.Settings;
 using Foundation.Features.Home;
+using Foundation.Features.Settings;
 using Schema.NET;
 using System;
 using System.Linq;
-using Foundation.Cms.Settings;
-using Foundation.Features.Settings;
 
 namespace Foundation.Infrastructure.SchemaMarkup
 {
-    
+
     /// <summary>
     /// Create Schema website and organization objects from HomePage
     /// </summary>

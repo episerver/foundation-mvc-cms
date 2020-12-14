@@ -2,18 +2,18 @@
 using EPiServer.Core;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc.Html;
+using Foundation.Cms.Settings;
 using Foundation.Features.Home;
 using Foundation.Features.Login;
+using Foundation.Features.Settings;
 using System;
 using System.Web.Mvc;
-using Foundation.Cms.Settings;
-using Foundation.Features.Settings;
 
 namespace Foundation.Helpers
 {
     public static class Extensions
     {
-        private static readonly Lazy<ISettingsService> _settingsService = 
+        private static readonly Lazy<ISettingsService> _settingsService =
             new Lazy<ISettingsService>(() => ServiceLocator.Current.GetInstance<ISettingsService>());
 
         private static readonly Lazy<IContentLoader> ContentLoader =

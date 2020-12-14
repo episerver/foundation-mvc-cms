@@ -1,22 +1,20 @@
 ﻿using EPiServer;
 using EPiServer.Core;
+using EPiServer.DataAbstraction;
+using EPiServer.Enterprise;
+using EPiServer.Logging;
+using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
+using EPiServer.Web;
+using EPiServer.Web.Routing;
+using Foundation.Cms.Settings;
 using Foundation.Features.Folder;
 using Foundation.Features.Home;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Hosting;
-using EPiServer.DataAbstraction;
-using EPiServer.Enterprise;
-using EPiServer.Find;
-using EPiServer.Logging;
-using EPiServer.Scheduler;
-using EPiServer.Web;
-using EPiServer.Web.Routing;
-using Foundation.Cms.Settings;
 
 namespace Foundation.Infrastructure
 {
@@ -71,7 +69,7 @@ namespace Foundation.Infrastructure
 
             var siteDefinition = new SiteDefinition
             {
-                Name =  "foundation-mvc-cms",
+                Name = "foundation-mvc-cms",
                 SiteUrl = new Uri($"http://{HostingEnvironment.SiteName}/"),
             };
 
@@ -81,7 +79,8 @@ namespace Foundation.Infrastructure
                 Type = HostDefinitionType.Primary
             });
 
-            siteDefinition.Hosts.Add(new HostDefinition() { 
+            siteDefinition.Hosts.Add(new HostDefinition()
+            {
                 Name = HostDefinition.WildcardHostName,
                 Type = HostDefinitionType.Undefined
             });
@@ -96,8 +95,8 @@ namespace Foundation.Infrastructure
 
             CreateSite(new FileStream(
                     HostingEnvironment.MapPath("~/App_Data/foundation.episerverdata") ?? throw new InvalidOperationException(),
-                    FileMode.Open, 
-                    FileAccess.Read, 
+                    FileMode.Open,
+                    FileAccess.Read,
                     FileShare.Read),
                 siteDefinition,
                 ContentReference.RootPage);

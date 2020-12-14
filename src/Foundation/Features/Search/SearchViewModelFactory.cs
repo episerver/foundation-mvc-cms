@@ -2,7 +2,6 @@
 using EPiServer.Find;
 using EPiServer.Find.Statistics;
 using EPiServer.Framework.Localization;
-using Foundation.Cms.Extensions;
 using System.Linq;
 using System.Web;
 using System.Web.WebPages;

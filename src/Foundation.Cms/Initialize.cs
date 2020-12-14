@@ -7,12 +7,12 @@ using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
 using Foundation.Cms.Identity;
 using Foundation.Cms.ModelBinders;
+using Foundation.Cms.Settings;
 using Foundation.Cms.Users;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using System.Web;
 using System.Web.Mvc;
-using Foundation.Cms.Settings;
 
 namespace Foundation.Cms
 {

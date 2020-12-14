@@ -3,23 +3,20 @@ using EPiServer.Core;
 using EPiServer.Data;
 using EPiServer.Editor;
 using EPiServer.Filters;
-using EPiServer.Framework.Cache;
 using EPiServer.Framework.Localization;
 using EPiServer.Security;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
 using Foundation.Cms.Extensions;
+using Foundation.Cms.Settings;
 using Foundation.Features.Blocks.MenuItemBlock;
 using Foundation.Features.Home;
+using Foundation.Features.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using EPiServer.Globalization;
-using Foundation.Cms.Settings;
-using Foundation.Cms.Users;
-using Foundation.Features.Settings;
 
 namespace Foundation.Features.Header
 {
@@ -55,7 +52,7 @@ namespace Foundation.Features.Header
         {
             var layoutSettings = _settingsService.GetSiteSettings<LayoutSettings>();
             var viewModel = CreateViewModel(currentContent, homePage);
-           
+
             viewModel.LargeHeaderMenu = layoutSettings?.LargeHeaderMenu ?? true;
             viewModel.LayoutSettings = layoutSettings;
             viewModel.LabelSettings = _settingsService.GetSiteSettings<LabelSettings>();

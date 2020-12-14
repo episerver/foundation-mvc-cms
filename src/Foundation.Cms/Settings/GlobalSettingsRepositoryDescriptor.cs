@@ -5,7 +5,6 @@ using EPiServer.ServiceLocation;
 using EPiServer.Shell;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Foundation.Cms.Settings
 {
@@ -16,12 +15,12 @@ namespace Foundation.Cms.Settings
 
         public override IEnumerable<Type> ContainedTypes => new[] {
             typeof(SettingsBase),
-            typeof(SettingsFolder) 
+            typeof(SettingsFolder)
         };
 
         public override IEnumerable<Type> CreatableTypes => new[] {
             typeof(SettingsBase),
-            typeof(SettingsFolder) 
+            typeof(SettingsFolder)
         };
 
         public override string CustomNavigationWidget => "epi-cms/component/ContentNavigationTree";
@@ -32,7 +31,7 @@ namespace Foundation.Cms.Settings
 
         public override IEnumerable<Type> MainNavigationTypes => new[]
         {
-            typeof(SettingsBase), 
+            typeof(SettingsBase),
             typeof(SettingsFolder)
         };
 
