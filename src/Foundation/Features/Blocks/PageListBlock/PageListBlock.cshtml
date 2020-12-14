@@ -16,7 +16,7 @@
 
             @if (string.IsNullOrEmpty(Model.CurrentBlock.Template) || Model.CurrentBlock.Template == TemplateSelections.Grid)
             {
-                @Html.Partial("_GridTemplate", Model)
+                @Html.Partial("Template/_GridTemplate", Model)
             }
 
             @if (Model.CurrentBlock.Template == TemplateSelections.ImageLeft)
