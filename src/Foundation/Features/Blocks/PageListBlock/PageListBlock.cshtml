@@ -16,37 +16,37 @@
 
             @if (string.IsNullOrEmpty(Model.CurrentBlock.Template) || Model.CurrentBlock.Template == TemplateSelections.Grid)
             {
-                @Html.Partial("Template/_GridTemplate", Model)
+                @Html.Partial("TemplateView/_GridTemplate", Model)
             }
 
             @if (Model.CurrentBlock.Template == TemplateSelections.ImageLeft)
             {
-                @Html.Partial("_LeftImageTemplate", Model)
+                @Html.Partial("TemplateView/_LeftImageTemplate", Model)
             }
 
             @if (Model.CurrentBlock.Template == TemplateSelections.ImageTop)
             {
-                @Html.Partial("_TopImageTemplate", Model)
+                @Html.Partial("TemplateView/_TopImageTemplate", Model)
             }
 
             @if (Model.CurrentBlock.Template == TemplateSelections.NoImage)
             {
-                @Html.Partial("_NoImageTemplate", Model)
+                @Html.Partial("TemplateView/_NoImageTemplate", Model)
             }
 
             @if (Model.CurrentBlock.Template == TemplateSelections.Highlight)
             {
-                @Html.Partial("_HighlightPanelTemplate", Model)
+                @Html.Partial("TemplateView/_HighlightPanelTemplate", Model)
             }
 
             @if (Model.CurrentBlock.Template == TemplateSelections.Card)
             {
-                @Html.Partial("_CardTemplate", Model)
+                @Html.Partial("TemplateView/_CardTemplate", Model)
             }
 
             @if (Model.CurrentBlock.Template == TemplateSelections.Insight)
             {
-                @Html.Partial("_InsightTemplate", Model)
+                @Html.Partial("TemplateView/_InsightTemplate", Model)
             }
         </div>
     </div>
