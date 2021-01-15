@@ -683,6 +683,7 @@
     <Compile Include="Features\Header\IHeaderViewModelFactory.cs" />
     <Compile Include="Features\Header\MegaMenuModel.cs" />
     <Compile Include="Features\Header\MobileHeaderViewModel.cs" />
+    <Compile Include="Features\Header\MyAccountNavigationViewModel.cs" />
     <Compile Include="Features\Home\HomePage.cs" />
     <Compile Include="Features\LandingPages\LandingPage\LandingPage.cs" />
     <Compile Include="Features\LandingPages\ThreeColumnLandingPage\ThreeColumnLandingPage.cs" />
@@ -715,7 +716,12 @@
     <Compile Include="Features\Media\VideoFile.cs" />
     <Compile Include="Features\Media\VideoFileViewModel.cs" />
     <Compile Include="Features\MyAccount\Bookmarks\BookmarksPage.cs" />
+    <Compile Include="Features\MyAccount\IdentityControllerBase.cs" />
+    <Compile Include="Features\MyAccount\MyAccountNavigationController.cs" />
+    <Compile Include="Features\MyAccount\ProfilePage\AccountInformationViewModel.cs" />
     <Compile Include="Features\MyAccount\ProfilePage\ProfilePage.cs" />
+    <Compile Include="Features\MyAccount\ProfilePage\ProfilePageController.cs" />
+    <Compile Include="Features\MyAccount\ProfilePage\ProfilePageViewModel.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ForgotPasswordViewModel.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\MailBasePage.cs" />
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordMailPage.cs" />
@@ -743,6 +749,9 @@
     <Compile Include="Features\MyAccount\ResetPassword\ResetPasswordController.cs" />
     <Compile Include="Features\Blocks\DefaultBlockController.cs" />
     <Compile Include="Features\Home\HomeController.cs" />
+    <Compile Include="Features\ProfileLandingPages\ProfileLandingPage.cs" />
+    <Compile Include="Features\ProfileLandingPages\ProfileLandingPageController.cs" />
+    <Compile Include="Features\ProfileLandingPages\ProfileLandingPageViewModel.cs" />
     <Compile Include="Features\Search\SearchViewModelFactory.cs" />
     <Compile Include="Features\Search\SearchService.cs" />
     <Compile Include="Features\Search\Search\FilterOptionViewModel.cs" />
@@ -992,6 +1001,7 @@
     <Content Include="Assets\js\common\notification-helper.js" />
     <Content Include="Assets\js\common\pdf-preview.js" />
     <Content Include="ClientResources\Styles\fontawesome.min.css" />
+    <Content Include="Features\MyAccount\ProfilePage\my-profile.js" />
     <Content Include="Features\People\people.js" />
     <Content Include="Features\Search\search.js" />
     <Content Include="Features\Search\search-box.js" />
@@ -1425,6 +1435,10 @@
     <Content Include="modules\_protected\episerver-labs-grid-view\episerver-labs-grid-view.zip" />
     <Content Include="modules\_protected\BVNetwork.404Handler\web.config" />
     <Content Include="modules\_protected\BVNetwork.404Handler\BVNetwork.404Handler.zip" />
+    <Content Include="Features\MyAccount\_MyAccountLayout.cshtml" />
+    <Content Include="Features\MyAccount\_ProfileSidebar.cshtml" />
+    <Content Include="Features\MyAccount\ProfilePage\Index.cshtml" />
+    <Content Include="Features\ProfileLandingPages\Index.cshtml" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
