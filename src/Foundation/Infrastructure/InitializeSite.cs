@@ -18,6 +18,7 @@ using Foundation.Cms.Settings;
 using Foundation.Features.Blog.BlogItemPage;
 using Foundation.Features.Header;
 using Foundation.Features.Home;
+using Foundation.Features.Shared;
 using Foundation.Features.Locations.LocationItemPage;
 using Foundation.Features.Locations.LocationListPage;
 using Foundation.Features.Search;
@@ -93,6 +94,9 @@ namespace Foundation.Infrastructure
             _services.AddSingleton<ISchemaDataMapper<BlogItemPage>, BlogItemPageSchemaMapper>();
             _services.AddSingleton<ISchemaDataMapper<HomePage>, HomePageSchemaMapper>();
             _services.AddSingleton<ISchemaDataMapper<LocationItemPage>, LocationItemPageSchemaDataMapper>();
+            // Foundation.Features.Shared
+            _services.AddSingleton<IMailService, MailService>();
+            _services.AddSingleton<IHtmlDownloader, HtmlDownloader>();
         }
 
         public void Initialize(InitializationEngine context)
