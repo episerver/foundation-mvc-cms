@@ -12,5 +12,6 @@ namespace Foundation.Features.MyAccount.ProfilePage
     [ImageUrl("~/assets/icons/cms/pages/elected.png")]
     public class ProfilePage : FoundationPageData
     {
+
     }
 }

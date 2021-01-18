@@ -2,6 +2,7 @@
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Framework.DataAnnotations;
+using EPiServer.ServiceLocation;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
@@ -10,6 +11,7 @@ using Foundation.Features.Blocks.MenuItemBlock;
 using Foundation.Infrastructure;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Foundation.Features.Settings
 {
@@ -88,6 +90,10 @@ namespace Foundation.Features.Settings
 
         [Display(Name = "Logo height (pixels)", GroupName = TabNames.Header, Order = 15)]
         public virtual int LogoHeight { get; set; }
+
+        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
+        [Display(Name = "Header Background Color", GroupName = TabNames.Header, Order = 15)]
+        public virtual string HeaderBackgroundColor { get; set; }
 
         [CultureSpecific]
         [SelectOne(SelectionFactoryType = typeof(HeaderMenuSelectionFactory))]

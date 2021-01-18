@@ -2,12 +2,14 @@
 using EPiServer.Core;
 using EPiServer.DataAnnotations;
 using EPiServer.PlugIn;
+using EPiServer.ServiceLocation;
 using EPiServer.Shell.ObjectEditing;
 using Foundation.Cms;
 using Foundation.Cms.Settings;
 using Foundation.Infrastructure;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Foundation.Features.Settings
 {
@@ -51,7 +53,7 @@ namespace Foundation.Features.Settings
 
         [Display(Name = "Button background colors", GroupName = TabNames.Colors, Order = 50)]
         [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<ColorModel>))]
-        public virtual IList<ColorModel> ButtonBackgrounColor { get; set; }
+        public virtual IList<ColorModel> ButtonBackgroundColor { get; set; }
 
         [Display(Name = "Button text colors", GroupName = TabNames.Colors, Order = 60)]
         [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<ColorModel>))]
@@ -90,5 +92,62 @@ namespace Foundation.Features.Settings
     [PropertyDefinitionTypePlugIn]
     public class SelectionItemProperty : PropertyList<SelectionItem>
     {
+    }
+
+    public class BackgroundColorSelectionFactory : ISelectionFactory
+    {
+        public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+            var backgroundColor = collectionSettings.BackgroundColor;
+
+            if (backgroundColor is null)
+            {
+                return new ISelectItem[] { };
+            }
+            else
+            {
+                return backgroundColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+            }
+        }
+    }
+
+    public class ButtonBackgroundColorSelectionFactory : ISelectionFactory
+    {
+        public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+            var buttonBackgroundColor = collectionSettings.ButtonBackgroundColor;
+
+            if( buttonBackgroundColor is null )
+            {
+                return new ISelectItem[] { };
+            } 
+            else
+            {
+                return buttonBackgroundColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+            }
+        }
+    }
+
+    public class ButtonTextSelectionFactory : ISelectionFactory
+    {
+        public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+            var buttonTextColor = collectionSettings.ButtonTextColor;
+
+            if (buttonTextColor is null)
+            {
+                return new ISelectItem[] { };
+            }
+            else
+            {
+                return buttonTextColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+            }
+        }
     }
 }

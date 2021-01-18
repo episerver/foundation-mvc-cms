@@ -7,6 +7,7 @@ using EPiServer.Shell.ObjectEditing;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using Foundation.Features.Blocks.ButtonBlock;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
 using Geta.EpiCategories;
@@ -164,6 +165,18 @@ namespace Foundation.Features.Shared
         [SelectOne(SelectionFactoryType = typeof(ButtonBlockStyleSelectionFactory))]
         [Display(Name = "Button theme", GroupName = TabNames.Teaser, Order = 700)]
         public virtual string TeaserButtonStyle { get; set; }
+
+        [CultureSpecific]
+        [Searchable(false)]
+        [SelectOne(SelectionFactoryType = typeof(ButtonBackgroundColorSelectionFactory))]
+        [Display(Name = "Button color", GroupName = TabNames.Teaser, Order = 700)]
+        public virtual string TeaserButtonColor { get; set; }
+
+        [CultureSpecific]
+        [Searchable(false)]
+        [SelectOne(SelectionFactoryType = typeof(ButtonTextSelectionFactory))]
+        [Display(Name = "Button text color", GroupName = TabNames.Teaser, Order = 700)]
+        public virtual string TeaserButtonTextColor { get; set; }
 
         [CultureSpecific]
         [Searchable(false)]
