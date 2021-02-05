@@ -14,12 +14,12 @@ set APPCMD=%windir%\system32\inetsrv\appcmd.exe
 
 if "%~1" == "" goto loop
 
-for /f "tokens=1-5*" %%a in ("%*") do (
+for /f "tokens=1-8*" %%a in ("%*") do (
 	set APPNAME=%%a
 	set FOUNDATIONDOMAIN=%%b
 	set LICENSEPATH=%%c
 	set SQLSERVER=%%d
-	set ADDITIONAL_SQLCMD=%%e
+	set ADDITIONAL_SQLCMD=%%e %%f %%g %%h
 )
 goto main
 
