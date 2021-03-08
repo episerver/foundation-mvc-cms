@@ -619,6 +619,58 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
     <Compile Include="Attributes\OnlyAnonymousAttribute.cs" />
+    <Compile Include="Cms\Attributes\AllowDBWriteAttribute.cs" />
+    <Compile Include="Cms\Attributes\ContentImageAttribute.cs" />
+    <Compile Include="Cms\Attributes\EmailAddressAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedCompareAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedDisplayAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedEmailAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedRegularExpressionAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedRequiredAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedStringLengthAttribute.cs" />
+    <Compile Include="Cms\Attributes\MaxElementsAttribute.cs" />
+    <Compile Include="Cms\BulkUpdateController.cs" />
+    <Compile Include="Cms\CmsMenuProvider.cs" />
+    <Compile Include="Cms\ContentLocator.cs" />
+    <Compile Include="Cms\CookieService.cs" />
+    <Compile Include="Cms\DependencyInjection\StructureMapDependencyResolver.cs" />
+    <Compile Include="Cms\DependencyInjection\StructureMapDependencyScope.cs" />
+    <Compile Include="Cms\DependencyInjection\StructureMapResolver.cs" />
+    <Compile Include="Cms\Extensions\AsyncHelpers.cs" />
+    <Compile Include="Cms\Extensions\CategorizableExtensions.cs" />
+    <Compile Include="Cms\Extensions\ContentAreaItemExtensions.cs" />
+    <Compile Include="Cms\Extensions\ContentExtensions.cs" />
+    <Compile Include="Cms\Extensions\ContentReferenceExtensions.cs" />
+    <Compile Include="Cms\Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Cms\Extensions\IAppBuilderExtensions.cs" />
+    <Compile Include="Cms\Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Cms\Extensions\PageTypeExtensions.cs" />
+    <Compile Include="Cms\Extensions\ServiceConfigurationContextExtensions.cs" />
+    <Compile Include="Cms\Extensions\StringExtensions.cs" />
+    <Compile Include="Cms\Extensions\UrlHelpers.cs" />
+    <Compile Include="Cms\Extensions\UrlResolverExtensions.cs" />
+    <Compile Include="Cms\Extensions\XElementExtensions.cs" />
+    <Compile Include="Cms\Identity\ChallengeResult.cs" />
+    <Compile Include="Cms\Identity\SiteUser.cs" />
+    <Compile Include="Cms\Initialize.cs" />
+    <Compile Include="Cms\ISchemaDataMapper.cs" />
+    <Compile Include="Cms\IsInEditModeAccessor.cs" />
+    <Compile Include="Cms\ModelBinders\DecimalModelBinder.cs" />
+    <Compile Include="Cms\ModelBinders\ModelBinderProvider.cs" />
+    <Compile Include="Cms\PagingInfo.cs" />
+    <Compile Include="Cms\SelectionItem.cs" />
+    <Compile Include="Cms\Settings\GlobalSettingsComponent.cs" />
+    <Compile Include="Cms\Settings\GlobalSettingsRepositoryDescriptor.cs" />
+    <Compile Include="Cms\Settings\SettingsBase.cs" />
+    <Compile Include="Cms\Settings\SettingsContentTypeAttribute.cs" />
+    <Compile Include="Cms\Settings\SettingsController.cs" />
+    <Compile Include="Cms\Settings\SettingsFolder.cs" />
+    <Compile Include="Cms\Settings\SettingsService.cs" />
+    <Compile Include="Cms\SiteImageUrl.cs" />
+    <Compile Include="Cms\TrackingCookieManager.cs" />
+    <Compile Include="Cms\Users\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Cms\Users\IUserService.cs" />
+    <Compile Include="Cms\Users\UserService.cs" />
     <Compile Include="Features\Api\AuthorizedApiController.cs" />
     <Compile Include="Features\Api\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Features\Api\PublicApiController.cs" />
@@ -801,6 +853,38 @@
     <Compile Include="Features\ErrorPage\ErrorController.cs" />
     <Compile Include="Features\StandardPage\StandardPageTopPaddingModeSelectionFactory.cs" />
     <Compile Include="Features\StandardPage\StandardPageViewModel.cs" />
+    <Compile Include="Find\Facets\Config\EnumHelpers.cs" />
+    <Compile Include="Find\Facets\Config\EnumSelectionDescriptionAttribute.cs" />
+    <Compile Include="Find\Facets\Config\EnumSelectionFactory.cs" />
+    <Compile Include="Find\Facets\Config\FacetConfigFactory.cs" />
+    <Compile Include="Find\Facets\Config\FacetEnums.cs" />
+    <Compile Include="Find\Facets\Config\FacetFilterConfigurationItem.cs" />
+    <Compile Include="Find\Facets\Config\FacetFilterConfigurationProperty.cs" />
+    <Compile Include="Find\Facets\Config\IFacetConfigFactory.cs" />
+    <Compile Include="Find\Facets\Config\IgnoreCollectionEditorDescriptor.cs" />
+    <Compile Include="Find\Facets\Config\PropertyListBase.cs" />
+    <Compile Include="Find\Facets\Config\SelectOneEnumAttribute.cs" />
+    <Compile Include="Find\Facets\FacetDefinition.cs" />
+    <Compile Include="Find\Facets\FacetFilterRequest.cs" />
+    <Compile Include="Find\Facets\FacetGroupOption.cs" />
+    <Compile Include="Find\Facets\FacetOption.cs" />
+    <Compile Include="Find\Facets\FacetRegistry.cs" />
+    <Compile Include="Find\Facets\FacetStringDefinition.cs" />
+    <Compile Include="Find\Facets\FacetStringListDefinition.cs" />
+    <Compile Include="Find\Facets\IFacetConfiguration.cs" />
+    <Compile Include="Find\Facets\IFacetRegistry.cs" />
+    <Compile Include="Find\Facets\ISelectable.cs" />
+    <Compile Include="Find\Facets\MultiSelectTermCount.cs" />
+    <Compile Include="Find\Facets\RangeFacetFilterRequest.cs" />
+    <Compile Include="Find\Facets\RangeFacetFilterRequestConverter.cs" />
+    <Compile Include="Find\Facets\SelectableNumericRange.cs" />
+    <Compile Include="Find\Facets\SelectableNumericRangeResult.cs" />
+    <Compile Include="Find\Facets\TermsFacetFilterRequest.cs" />
+    <Compile Include="Find\Facets\TermsFacetFilterRequestConverter.cs" />
+    <Compile Include="Find\GeoPosition.cs" />
+    <Compile Include="Find\InitializationEngineExtensions.cs" />
+    <Compile Include="Find\Initialize.cs" />
+    <Compile Include="Find\SearchExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1458,16 +1542,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Foundation.Cms\Foundation.Cms.csproj">
-      <Project>{c9638f52-7402-446d-bf89-993686e26a52}</Project>
-      <Name>Foundation.Cms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Foundation.Find\Foundation.Find.csproj">
-      <Project>{07c19549-7028-4cba-ba73-fadd93be8e5a}</Project>
-      <Name>Foundation.Find</Name>
-    </ProjectReference>
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>

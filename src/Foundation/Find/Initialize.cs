@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Foundation.Find
 {
-    [ModuleDependency(typeof(Foundation.Cms.Initialize))]
+    [ModuleDependency(typeof(Cms.Initialize))]
     public class Initialize : IConfigurableModule
     {
         void IConfigurableModule.ConfigureContainer(ServiceConfigurationContext context)
