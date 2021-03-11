@@ -4,7 +4,6 @@ using EPiServer.ContentApi.Core.Serialization.Models;
 using EPiServer.Core;
 using EPiServer.Data.Entity;
 using EPiServer.DataAbstraction;
-using EPiServer.Shell.Navigation;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -47,7 +46,7 @@ namespace Foundation.Cms
         }
 
         [HttpGet]
-        [MenuItem("/global/foundation/bulkupdate", Text = "Bulk Update", TextResourceKey = "Bulk Update", SortIndex = 15)]
+        //[MenuItem("/global/foundation/bulkupdate", Text = "Bulk Update", TextResourceKey = "Bulk Update", SortIndex = 15)]
         public ActionResult Index()
         {
             return View();

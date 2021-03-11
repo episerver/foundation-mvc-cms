@@ -16,10 +16,10 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery",
-            axios: "axios",
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            axios: 'axios'
         }),
         new MiniCssExtractPlugin({
             filename: "../scss/[name].min.css",

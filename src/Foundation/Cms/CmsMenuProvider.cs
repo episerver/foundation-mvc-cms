@@ -7,16 +7,33 @@ namespace Foundation.Cms
     [MenuProvider]
     public class CmsMenuProvider : IMenuProvider
     {
+        private const string MainMenuPath = MenuPaths.Global + "/extensions";
+
+
+
         public IEnumerable<MenuItem> GetMenuItems()
         {
-            return new MenuItem[]
+            var menuItems = new List<MenuItem>();
+
+
+
+            menuItems.Add(new SectionMenuItem("Extensions", MainMenuPath)
             {
-                new SectionMenuItem("Extensions", "/global/foundation")
-                {
-                    IsAvailable = (_) => PrincipalInfo.CurrentPrincipal.IsInRole("CommerceAdmins"),
-                    SortIndex = 6000
-                }
-            };
+                IsAvailable = (_) => PrincipalInfo.CurrentPrincipal.IsInRole("CommerceAdmins"),
+                SortIndex = 6000
+            });
+
+
+
+            menuItems.Add(new UrlMenuItem("Bulk Update", MainMenuPath + "/bulkupdate", "/bulkupdate")
+            {
+                SortIndex = 100,
+            });
+
+
+
+
+            return menuItems;
         }
     }
 }
