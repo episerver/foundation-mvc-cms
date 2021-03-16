@@ -819,6 +819,8 @@
     <Compile Include="Infrastructure\Display\WebChannel.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Infrastructure\GroupNames.cs" />
+    <Compile Include="Infrastructure\OpenGraph\Extensions\DeterminerExtensions.cs" />
+    <Compile Include="Infrastructure\OpenGraph\Extensions\TypeExtensions.cs" />
     <Compile Include="Infrastructure\PowerSlices\ContentSlices.cs" />
     <Compile Include="Infrastructure\PowerSlices\GeneralSlices.cs" />
     <Compile Include="Infrastructure\SchemaMarkup\BlogItemPageSchemaMapper.cs" />
