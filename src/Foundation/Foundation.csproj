@@ -1083,7 +1083,6 @@
     <Content Include="Assets\js\common\my-profile.js" />
     <Content Include="Assets\js\common\notification-helper.js" />
     <Content Include="Assets\js\common\pdf-preview.js" />
-    <Content Include="Assets\js\extensions\features\bulk-update-with-export.js" />
     <Content Include="Assets\js\extensions\features\bulk-update.js" />
     <Content Include="Assets\js\extensions\features\notify-helper.js" />
     <Content Include="Assets\js\extensions\vendors\axios.min.js" />
