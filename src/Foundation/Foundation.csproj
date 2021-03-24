@@ -59,9 +59,6 @@
     <Reference Include="AddOn.Edit.ContextMenuOpenInNewTab, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\AddOn.Edit.ContextMenuOpenInNewTab.1.2.1\lib\net461\AddOn.Edit.ContextMenuOpenInNewTab.dll</HintPath>
     </Reference>
-    <Reference Include="Advanced.CMS.Forms, Version=0.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Advanced.CMS.Forms.0.2.1\lib\net45\Advanced.CMS.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="AdvancedApprovalReviews, Version=0.8.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Advanced.CMS.AdvancedReviews.0.8.3\lib\net45\AdvancedApprovalReviews.dll</HintPath>
     </Reference>
@@ -98,11 +95,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="EPiBootstrapArea, Version=5.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiBootstrapArea.5.3.1\lib\net461\EPiBootstrapArea.dll</HintPath>
+    <Reference Include="EPiBootstrapArea, Version=5.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiBootstrapArea.5.3.3\lib\net461\EPiBootstrapArea.dll</HintPath>
     </Reference>
-    <Reference Include="EPiBootstrapArea.Forms, Version=5.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiBootstrapArea.Forms.5.3.1\lib\net461\EPiBootstrapArea.Forms.dll</HintPath>
+    <Reference Include="EPiBootstrapArea.Forms, Version=5.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiBootstrapArea.Forms.5.3.3\lib\net461\EPiBootstrapArea.Forms.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer, Version=11.20.5.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.CMS.Core.11.20.5\lib\net461\EPiServer.dll</HintPath>
@@ -125,14 +122,14 @@
     <Reference Include="EPiServer.Cms.AspNet, Version=11.20.5.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.CMS.AspNet.11.20.5\lib\net461\EPiServer.Cms.AspNet.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Cms.Shell.UI, Version=11.33.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.CMS.UI.Core.11.33.0\lib\net461\EPiServer.Cms.Shell.UI.dll</HintPath>
+    <Reference Include="EPiServer.Cms.Shell.UI, Version=11.34.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.CMS.UI.Core.11.34.1\lib\net461\EPiServer.Cms.Shell.UI.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Cms.TinyMce, Version=2.13.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.CMS.TinyMce.2.13.2\lib\net461\EPiServer.Cms.TinyMce.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Cms.UI.AspNetIdentity, Version=11.33.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.CMS.UI.AspNetIdentity.11.33.0\lib\net461\EPiServer.Cms.UI.AspNetIdentity.dll</HintPath>
+    <Reference Include="EPiServer.Cms.UI.AspNetIdentity, Version=11.34.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.CMS.UI.AspNetIdentity.11.34.1\lib\net461\EPiServer.Cms.UI.AspNetIdentity.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Configuration, Version=11.20.5.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.CMS.AspNet.11.20.5\lib\net461\EPiServer.Configuration.dll</HintPath>
@@ -167,26 +164,26 @@
     <Reference Include="EPiServer.Events, Version=11.20.5.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Framework.11.20.5\lib\net461\EPiServer.Events.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Find, Version=13.4.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.13.4.0\lib\net461\EPiServer.Find.dll</HintPath>
+    <Reference Include="EPiServer.Find, Version=13.4.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Find.13.4.2\lib\net461\EPiServer.Find.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Find.Blocks, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.0\lib\net461\EPiServer.Find.Blocks.dll</HintPath>
+      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.2\lib\net461\EPiServer.Find.Blocks.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Find.Cms, Version=13.4.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.0\lib\net461\EPiServer.Find.Cms.dll</HintPath>
+    <Reference Include="EPiServer.Find.Cms, Version=13.4.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.2\lib\net461\EPiServer.Find.Cms.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Find.Framework, Version=13.4.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Framework.13.4.0\lib\net461\EPiServer.Find.Framework.dll</HintPath>
+    <Reference Include="EPiServer.Find.Framework, Version=13.4.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Find.Framework.13.4.2\lib\net461\EPiServer.Find.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Find.Optimizations, Version=13.4.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.0\lib\net461\EPiServer.Find.Optimizations.dll</HintPath>
+    <Reference Include="EPiServer.Find.Optimizations, Version=13.4.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.2\lib\net461\EPiServer.Find.Optimizations.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Find.Statistics, Version=13.4.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.0\lib\net461\EPiServer.Find.Statistics.dll</HintPath>
+    <Reference Include="EPiServer.Find.Statistics, Version=13.4.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.2\lib\net461\EPiServer.Find.Statistics.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Find.UI, Version=13.4.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.0\lib\net461\EPiServer.Find.UI.dll</HintPath>
+    <Reference Include="EPiServer.Find.UI, Version=13.4.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Find.Cms.13.4.2\lib\net461\EPiServer.Find.UI.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Forms, Version=4.30.2.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Forms.4.30.2\lib\EPiServer.Forms.dll</HintPath>
@@ -215,14 +212,14 @@
     <Reference Include="EPiServer.Labs.BlockEnhancements, Version=0.10.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Labs.BlockEnhancements.0.10.0\lib\net45\EPiServer.Labs.BlockEnhancements.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Labs.ContentManager, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Labs.ContentManager.0.5.0\lib\net45\EPiServer.Labs.ContentManager.dll</HintPath>
+    <Reference Include="EPiServer.Labs.ContentManager, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Labs.ContentManager.0.5.2\lib\net45\EPiServer.Labs.ContentManager.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Labs.ContentManager.Core, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Labs.ContentManager.Core.0.5.0\lib\net45\EPiServer.Labs.ContentManager.Core.dll</HintPath>
+    <Reference Include="EPiServer.Labs.ContentManager.Core, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Labs.ContentManager.Core.0.5.2\lib\net45\EPiServer.Labs.ContentManager.Core.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Labs.GridView, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.Labs.GridView.0.5.0\lib\net45\EPiServer.Labs.GridView.dll</HintPath>
+    <Reference Include="EPiServer.Labs.GridView, Version=0.5.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.Labs.GridView.0.5.2\lib\net45\EPiServer.Labs.GridView.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Labs.LanguageManager, Version=4.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Labs.LanguageManager.4.0.1\lib\EPiServer.Labs.LanguageManager.dll</HintPath>
@@ -237,10 +234,10 @@
       <HintPath>..\..\packages\EPiServer.Logging.Log4Net.2.2.2\lib\net461\EPiServer.Logging.Log4Net.dll</HintPath>
     </Reference>
     <Reference Include="Episerver.Marketing.Common, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.ConnectForMarketingAutomation.5.6.2\lib\net461\Episerver.Marketing.Common.dll</HintPath>
+      <HintPath>..\..\packages\EPiServer.ConnectForMarketingAutomation.5.6.3\lib\net461\Episerver.Marketing.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Episerver.Marketing.Connector, Version=5.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.ConnectForMarketingAutomation.5.6.2\lib\net461\Episerver.Marketing.Connector.dll</HintPath>
+    <Reference Include="Episerver.Marketing.Connector, Version=5.6.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.ConnectForMarketingAutomation.5.6.3\lib\net461\Episerver.Marketing.Connector.dll</HintPath>
     </Reference>
     <Reference Include="Episerver.Marketing.Connector.Forms, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Marketing.Automation.Forms.2.3.1\lib\net461\Episerver.Marketing.Connector.Forms.dll</HintPath>
@@ -275,17 +272,17 @@
     <Reference Include="EPiServer.Session, Version=1.0.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Session.1.0.1\lib\net461\EPiServer.Session.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Shell, Version=11.33.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.CMS.UI.Core.11.33.0\lib\net461\EPiServer.Shell.dll</HintPath>
+    <Reference Include="EPiServer.Shell, Version=11.34.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.CMS.UI.Core.11.34.1\lib\net461\EPiServer.Shell.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Shell.UI, Version=11.33.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.CMS.UI.Core.11.33.0\lib\net461\EPiServer.Shell.UI.dll</HintPath>
+    <Reference Include="EPiServer.Shell.UI, Version=11.34.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.CMS.UI.Core.11.34.1\lib\net461\EPiServer.Shell.UI.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Telemetry.UI, Version=1.3.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Telemetry.UI.Core.1.3.0\lib\net45\EPiServer.Telemetry.UI.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.UI, Version=11.33.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\EPiServer.CMS.UI.Core.11.33.0\lib\net461\EPiServer.UI.dll</HintPath>
+    <Reference Include="EPiServer.UI, Version=11.34.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPiServer.CMS.UI.Core.11.34.1\lib\net461\EPiServer.UI.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.VisitorGroupsCriteriaPack, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.VisitorGroupsCriteriaPack.2.0.1\lib\EPiServer.VisitorGroupsCriteriaPack.dll</HintPath>
@@ -619,6 +616,58 @@
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
     <Compile Include="Attributes\OnlyAnonymousAttribute.cs" />
+    <Compile Include="Cms\Attributes\AllowDBWriteAttribute.cs" />
+    <Compile Include="Cms\Attributes\ContentImageAttribute.cs" />
+    <Compile Include="Cms\Attributes\EmailAddressAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedCompareAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedDisplayAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedEmailAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedRegularExpressionAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedRequiredAttribute.cs" />
+    <Compile Include="Cms\Attributes\LocalizedStringLengthAttribute.cs" />
+    <Compile Include="Cms\Attributes\MaxElementsAttribute.cs" />
+    <Compile Include="Cms\BulkUpdateController.cs" />
+    <Compile Include="Cms\CmsMenuProvider.cs" />
+    <Compile Include="Cms\ContentLocator.cs" />
+    <Compile Include="Cms\CookieService.cs" />
+    <Compile Include="Cms\DependencyInjection\StructureMapDependencyResolver.cs" />
+    <Compile Include="Cms\DependencyInjection\StructureMapDependencyScope.cs" />
+    <Compile Include="Cms\DependencyInjection\StructureMapResolver.cs" />
+    <Compile Include="Cms\Extensions\AsyncHelpers.cs" />
+    <Compile Include="Cms\Extensions\CategorizableExtensions.cs" />
+    <Compile Include="Cms\Extensions\ContentAreaItemExtensions.cs" />
+    <Compile Include="Cms\Extensions\ContentExtensions.cs" />
+    <Compile Include="Cms\Extensions\ContentReferenceExtensions.cs" />
+    <Compile Include="Cms\Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Cms\Extensions\IAppBuilderExtensions.cs" />
+    <Compile Include="Cms\Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Cms\Extensions\PageTypeExtensions.cs" />
+    <Compile Include="Cms\Extensions\ServiceConfigurationContextExtensions.cs" />
+    <Compile Include="Cms\Extensions\StringExtensions.cs" />
+    <Compile Include="Cms\Extensions\UrlHelpers.cs" />
+    <Compile Include="Cms\Extensions\UrlResolverExtensions.cs" />
+    <Compile Include="Cms\Extensions\XElementExtensions.cs" />
+    <Compile Include="Cms\Identity\ChallengeResult.cs" />
+    <Compile Include="Cms\Identity\SiteUser.cs" />
+    <Compile Include="Cms\Initialize.cs" />
+    <Compile Include="Cms\ISchemaDataMapper.cs" />
+    <Compile Include="Cms\IsInEditModeAccessor.cs" />
+    <Compile Include="Cms\ModelBinders\DecimalModelBinder.cs" />
+    <Compile Include="Cms\ModelBinders\ModelBinderProvider.cs" />
+    <Compile Include="Cms\PagingInfo.cs" />
+    <Compile Include="Cms\SelectionItem.cs" />
+    <Compile Include="Cms\Settings\GlobalSettingsComponent.cs" />
+    <Compile Include="Cms\Settings\GlobalSettingsRepositoryDescriptor.cs" />
+    <Compile Include="Cms\Settings\SettingsBase.cs" />
+    <Compile Include="Cms\Settings\SettingsContentTypeAttribute.cs" />
+    <Compile Include="Cms\Settings\SettingsController.cs" />
+    <Compile Include="Cms\Settings\SettingsFolder.cs" />
+    <Compile Include="Cms\Settings\SettingsService.cs" />
+    <Compile Include="Cms\SiteImageUrl.cs" />
+    <Compile Include="Cms\TrackingCookieManager.cs" />
+    <Compile Include="Cms\Users\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Cms\Users\IUserService.cs" />
+    <Compile Include="Cms\Users\UserService.cs" />
     <Compile Include="Features\Api\AuthorizedApiController.cs" />
     <Compile Include="Features\Api\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Features\Api\PublicApiController.cs" />
@@ -715,6 +764,8 @@
     <Compile Include="Features\Media\StandardFile.cs" />
     <Compile Include="Features\Media\VideoFile.cs" />
     <Compile Include="Features\Media\VideoFileViewModel.cs" />
+    <Compile Include="Features\Media\VectorImageMediaData.cs" />
+    <Compile Include="Features\Media\WebImageMediaData.cs" />
     <Compile Include="Features\MyAccount\Bookmarks\BookmarksPage.cs" />
     <Compile Include="Features\MyAccount\IdentityControllerBase.cs" />
     <Compile Include="Features\MyAccount\MyAccountNavigationController.cs" />
@@ -801,6 +852,38 @@
     <Compile Include="Features\ErrorPage\ErrorController.cs" />
     <Compile Include="Features\StandardPage\StandardPageTopPaddingModeSelectionFactory.cs" />
     <Compile Include="Features\StandardPage\StandardPageViewModel.cs" />
+    <Compile Include="Find\Facets\Config\EnumHelpers.cs" />
+    <Compile Include="Find\Facets\Config\EnumSelectionDescriptionAttribute.cs" />
+    <Compile Include="Find\Facets\Config\EnumSelectionFactory.cs" />
+    <Compile Include="Find\Facets\Config\FacetConfigFactory.cs" />
+    <Compile Include="Find\Facets\Config\FacetEnums.cs" />
+    <Compile Include="Find\Facets\Config\FacetFilterConfigurationItem.cs" />
+    <Compile Include="Find\Facets\Config\FacetFilterConfigurationProperty.cs" />
+    <Compile Include="Find\Facets\Config\IFacetConfigFactory.cs" />
+    <Compile Include="Find\Facets\Config\IgnoreCollectionEditorDescriptor.cs" />
+    <Compile Include="Find\Facets\Config\PropertyListBase.cs" />
+    <Compile Include="Find\Facets\Config\SelectOneEnumAttribute.cs" />
+    <Compile Include="Find\Facets\FacetDefinition.cs" />
+    <Compile Include="Find\Facets\FacetFilterRequest.cs" />
+    <Compile Include="Find\Facets\FacetGroupOption.cs" />
+    <Compile Include="Find\Facets\FacetOption.cs" />
+    <Compile Include="Find\Facets\FacetRegistry.cs" />
+    <Compile Include="Find\Facets\FacetStringDefinition.cs" />
+    <Compile Include="Find\Facets\FacetStringListDefinition.cs" />
+    <Compile Include="Find\Facets\IFacetConfiguration.cs" />
+    <Compile Include="Find\Facets\IFacetRegistry.cs" />
+    <Compile Include="Find\Facets\ISelectable.cs" />
+    <Compile Include="Find\Facets\MultiSelectTermCount.cs" />
+    <Compile Include="Find\Facets\RangeFacetFilterRequest.cs" />
+    <Compile Include="Find\Facets\RangeFacetFilterRequestConverter.cs" />
+    <Compile Include="Find\Facets\SelectableNumericRange.cs" />
+    <Compile Include="Find\Facets\SelectableNumericRangeResult.cs" />
+    <Compile Include="Find\Facets\TermsFacetFilterRequest.cs" />
+    <Compile Include="Find\Facets\TermsFacetFilterRequestConverter.cs" />
+    <Compile Include="Find\GeoPosition.cs" />
+    <Compile Include="Find\InitializationEngineExtensions.cs" />
+    <Compile Include="Find\Initialize.cs" />
+    <Compile Include="Find\SearchExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1002,6 +1085,39 @@
     <Content Include="Assets\js\common\my-profile.js" />
     <Content Include="Assets\js\common\notification-helper.js" />
     <Content Include="Assets\js\common\pdf-preview.js" />
+    <Content Include="Assets\js\extensions\features\bulk-update.js" />
+    <Content Include="Assets\js\extensions\features\notify-helper.js" />
+    <Content Include="Assets\js\extensions\vendors\axios.min.js" />
+    <Content Include="Assets\js\extensions\vendors\bootstrap.min.js" />
+    <Content Include="Assets\js\extensions\vendors\jquery-3.4.0.min.js" />
+    <Content Include="Assets\js\extensions\vendors\mvc-grid.js" />
+    <Content Include="Assets\js\extensions\vendors\notify.min.js" />
+    <Content Include="Assets\js\extensions\vendors\popper.min.js" />
+    <Content Include="Assets\js\extensions\vendors\spur.js" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\font-awesome-list.json" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-brands-400.eot" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-brands-400.ttf" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-brands-400.woff" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-brands-400.woff2" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-regular-400.eot" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-regular-400.ttf" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-regular-400.woff" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-regular-400.woff2" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-solid-900.eot" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-solid-900.ttf" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-solid-900.woff" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-solid-900.woff2" />
+    <Content Include="Assets\scss\extensions\mvc-grid\Fonts\GridGlyphs.woff" />
+    <Content Include="Assets\scss\features\bulk-update.css" />
+    <Content Include="Assets\scss\features\grid-icons.css" />
+    <Content Include="Assets\scss\extensions\bootstrap.min.css" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\css\all.css" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\css\all.min.css" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-brands-400.svg" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-regular-400.svg" />
+    <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\scss\extensions\mvc-grid\mvc-grid.css" />
+    <Content Include="Assets\scss\extensions\spur.min.css" />
     <Content Include="ClientResources\Styles\fontawesome.min.css" />
     <Content Include="Features\MyAccount\ProfilePage\my-profile.js" />
     <Content Include="Features\People\people.js" />
@@ -1320,10 +1436,7 @@
     <Content Include="Features\ErrorPage\ErrorPage.cshtml" />
     <Content Include="Features\ErrorPage\_error.scss" />
     <Content Include="modules\_protected\AdvancedTask\AdvancedTask.zip" />
-    <Content Include="modules\_protected\advanced-cms-forms\web.config" />
-    <Content Include="modules\_protected\advanced-cms-forms\advanced-cms-forms.zip" />
     <Content Include="modules\_protected\geta-epicategories\geta-epicategories.zip" />
-    <Content Include="modules\_protected\Episerver.Marketing.Connector\module.config" />
     <Content Include="modules\_protected\EPiServer.GoogleAnalytics\Views\Web.config" />
     <Content Include="modules\_protected\EPiServer.GoogleAnalytics\EPiServerGoogleAnalytics.config" />
     <Content Include="modules\_protected\EPiServer.GoogleAnalytics\EPiServer.GoogleAnalytics.zip" />
@@ -1420,8 +1533,6 @@
     <Content Include="modules\_protected\Geta.SEO.Sitemaps\Geta.SEO.Sitemaps.zip" />
     <Content Include="modules\_protected\episerver-telemetry-ui\web.config" />
     <Content Include="modules\_protected\episerver-telemetry-ui\episerver-telemetry-ui.zip" />
-    <Content Include="modules\_protected\episerver-labs-block-enhancements\web.config" />
-    <Content Include="modules\_protected\episerver-labs-block-enhancements\episerver-labs-block-enhancements.zip" />
     <Content Include="modules\_protected\EPiServer.Marketing.Testing\EPiServer.Marketing.Testing.zip" />
     <Content Include="modules\_protected\EPiServer.Forms.UI\module.config" />
     <Content Include="modules\_protected\EPiServer.Forms.UI\EPiServer.Forms.UI.zip" />
@@ -1438,16 +1549,23 @@
     <Content Include="modules\_protected\EPiServer.Forms.Samples\3.7.0\ClientResources\ViewMode\EPiServerFormsSamples.less" />
     <Content Include="modules\_protected\EPiServer.Forms.Samples\3.7.0\ClientResources\epi-formssamples\themes\sleek\images\contenttypes\README.md" />
     <Content Include="modules\_protected\EPiServer.Forms.Samples\3.7.0\ClientResources\epi-formssamples\themes\sleek\FormsSamples.less" />
-    <Content Include="modules\_protected\episerver-labs-content-manager\web.config" />
-    <Content Include="modules\_protected\episerver-labs-content-manager\episerver-labs-content-manager.zip" />
-    <Content Include="modules\_protected\episerver-labs-grid-view\web.config" />
-    <Content Include="modules\_protected\episerver-labs-grid-view\episerver-labs-grid-view.zip" />
+    <Content Include="modules\_protected\EPiServer.Cms.TinyMce\web.config" />
+    <Content Include="modules\_protected\EPiServer.Cms.TinyMce\EPiServer.Cms.TinyMce.zip" />
+    <Content Include="Cms\Views\BulkUpdate\Index.cshtml" />
+    <Content Include="Cms\Views\Shared\_ShellLayout.cshtml" />
+    <Content Include="Cms\Views\Web.config" />
+    <Content Include="Cms\Views\_viewstart.cshtml" />
+    <Content Include="modules\_protected\Episerver.Marketing.Connector\module.config" />
     <Content Include="modules\_protected\Shell\web.config" />
     <Content Include="modules\_protected\Shell\Shell.zip" />
     <Content Include="modules\_protected\CMS\web.config" />
     <Content Include="modules\_protected\CMS\CMS.zip" />
-    <Content Include="modules\_protected\EPiServer.Cms.TinyMce\web.config" />
-    <Content Include="modules\_protected\EPiServer.Cms.TinyMce\EPiServer.Cms.TinyMce.zip" />
+    <Content Include="modules\_protected\episerver-labs-block-enhancements\web.config" />
+    <Content Include="modules\_protected\episerver-labs-block-enhancements\episerver-labs-block-enhancements.zip" />
+    <Content Include="modules\_protected\episerver-labs-content-manager\web.config" />
+    <Content Include="modules\_protected\episerver-labs-content-manager\episerver-labs-content-manager.zip" />
+    <Content Include="modules\_protected\episerver-labs-grid-view\web.config" />
+    <Content Include="modules\_protected\episerver-labs-grid-view\episerver-labs-grid-view.zip" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -1458,16 +1576,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Foundation.Cms\Foundation.Cms.csproj">
-      <Project>{c9638f52-7402-446d-bf89-993686e26a52}</Project>
-      <Name>Foundation.Cms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Foundation.Find\Foundation.Find.csproj">
-      <Project>{07c19549-7028-4cba-ba73-fadd93be8e5a}</Project>
-      <Name>Foundation.Find</Name>
-    </ProjectReference>
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
