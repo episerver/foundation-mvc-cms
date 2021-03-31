@@ -61,37 +61,42 @@ namespace Foundation.Infrastructure
         [Display(Order = 200)]
         public const string Person = "Person";
 
-        [Display(Order = 250)]
+        [Display(Order = 210)]
         public const string Teaser = "Teaser";
 
-        [Display(Order = 260)]
+        [Display(Order = 220)]
         [RequiredAccess(AccessLevel.Edit)]
         public const string MetaData = "Metadata";
 
-        [Display(Name = "Custom settings", Order = 265)]
+        [Display(Name = "Custom settings", Order = 230)]
         public const string CustomSettings = "CustomSettings";
 
-        [Display(Order = 270)]
+        [Display(Order = 240)]
         [RequiredAccess(AccessLevel.Edit)]
         public const string Styles = "Styles";
 
-        [Display(Order = 280)]
+        [Display(Order = 250)]
         [RequiredAccess(AccessLevel.Edit)]
         public const string Scripts = "Scripts";
 
-        [Display(Name = "Background", Order = 283)]
+        [Display(Name = "Text color", Order = 260)]
+        public const string TextColor = "Text Color";
+
+        [Display(Name = "Background", Order = 270)]
         public const string Background = "Background";
 
-        [Display(Name = "Border", Order = 284)]
+        [Display(Name = "Border", Order = 280)]
         public const string Border = "Border";
 
-        [Display(Name = "Block styling", Order = 285)]
+        [Display(Name = "Block styling", Order = 290)]
         public const string BlockStyling = "BlockStyling";
 
-        [Display(Name = "Colors", Order = 289)]
+        [Display(Name = "Colors", Order = 300)]
         public const string Colors = "Colors";
 
-        [Display(Name = "Settings", Order = 290)]
+        [Display(Name = "Settings", Order = 310)]
         public const string Settings = SystemTabNames.Settings;
+
+        
     }
 }
