@@ -34,10 +34,19 @@ namespace Foundation.Features.Blocks.ButtonBlock
         [Display(Name = "Reassuring caption", Order = 40, GroupName = SystemTabNames.Content, Prompt = "Cancel anytime...")]
         public virtual string ButtonCaption { get; set; }
 
+
+
+        #endregion
+
+        #region Button Text
+        [CultureSpecific]
+        [Display(Name = "Use Custom Text Color", GroupName = TabNames.TextColor,
+            Description = "This will determine whether or not to overdride text color", Order = 5)]
+        public virtual bool TextColorOverdrive { get; set; }
         [CultureSpecific]
         [Searchable(false)]
         [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
-        [Display(Name = "Button Text color", GroupName = SystemTabNames.Content, Order = 50)]
+        [Display(Name = "Button Text color", GroupName = TabNames.TextColor, Order = 50)]
         public virtual string ButtonTextColor
         {
             get { return this.GetPropertyValue(page => page.ButtonTextColor) ?? "#000000ff"; }
@@ -47,6 +56,10 @@ namespace Foundation.Features.Blocks.ButtonBlock
         #endregion
 
         #region Button Background
+        [CultureSpecific]
+        [Display(Name = "Use Custom Background Color", GroupName = TabNames.Background,
+            Description = "This will determine whether or not to overdride background color", Order = 5)]
+        public virtual bool BackgroundColorOverdrive { get; set; }
         [CultureSpecific]
         [Display(Name = "Use transparent background", GroupName = TabNames.Background,
             Description = "This will determine whether or not to use transparent background", Order = 10)]
@@ -64,6 +77,10 @@ namespace Foundation.Features.Blocks.ButtonBlock
         #endregion
 
         #region Border
+        [CultureSpecific]
+        [Display(Name = "Use Custom Border", GroupName = TabNames.Border,
+            Description = "This will determine whether or not to overdride border style", Order = 5)]
+        public virtual bool BorderStyleOverdrive { get; set; }
         [CultureSpecific]
         [Display(Name = "Border Styles", GroupName = TabNames.Border, Description = "This will determine whether or not to show border", Order = 10)]
         [SelectOne(SelectionFactoryType = typeof(BorderStyleSelectionFactory))]
@@ -94,6 +111,9 @@ namespace Foundation.Features.Blocks.ButtonBlock
             ShowTransparentBackground = false;
             BorderStyle = "none";
             BorderWidth = 1;
+            BackgroundColorOverdrive = false;
+            TextColorOverdrive = false;
+            BorderStyleOverdrive = false;
         }
 
         public class BorderStyleSelectionFactory : ISelectionFactory
