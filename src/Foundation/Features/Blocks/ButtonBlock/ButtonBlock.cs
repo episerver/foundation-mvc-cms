@@ -34,19 +34,17 @@ namespace Foundation.Features.Blocks.ButtonBlock
         [Display(Name = "Reassuring caption", Order = 40, GroupName = SystemTabNames.Content, Prompt = "Cancel anytime...")]
         public virtual string ButtonCaption { get; set; }
 
-
-
         #endregion
 
         #region Button Text
         [CultureSpecific]
-        [Display(Name = "Use Custom Text Color", GroupName = TabNames.TextColor,
+        [Display(Name = "Use Custom Text Color", GroupName = TabNames.Text,
             Description = "This will determine whether or not to overdride text color", Order = 5)]
         public virtual bool TextColorOverdrive { get; set; }
         [CultureSpecific]
         [Searchable(false)]
         [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
-        [Display(Name = "Button Text color", GroupName = TabNames.TextColor, Order = 50)]
+        [Display(Name = "Button Text color", GroupName = TabNames.Text, Order = 50)]
         public virtual string ButtonTextColor
         {
             get { return this.GetPropertyValue(page => page.ButtonTextColor) ?? "#000000ff"; }
@@ -87,8 +85,7 @@ namespace Foundation.Features.Blocks.ButtonBlock
         public virtual string BorderStyle { get; set; }
 
         [Display(Name = "Border width (px)", GroupName = TabNames.Border, Order = 20)]
-        [RegularExpression("^[+]?\\d*$"
-            , ErrorMessage = "BorderWidth must be non-negative")]
+        [RegularExpression("^[+]?\\d*$", ErrorMessage = "BorderWidth must be non-negative")]
         public virtual int BorderWidth { get; set; }
 
         [CultureSpecific]
