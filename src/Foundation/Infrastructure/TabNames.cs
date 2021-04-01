@@ -61,42 +61,43 @@ namespace Foundation.Infrastructure
         [Display(Order = 200)]
         public const string Person = "Person";
 
-        [Display(Order = 210)]
+        [Display(Order = 250)]
         public const string Teaser = "Teaser";
 
-        [Display(Order = 220)]
+        [Display(Order = 260)]
         [RequiredAccess(AccessLevel.Edit)]
         public const string MetaData = "Metadata";
 
-        [Display(Name = "Custom settings", Order = 230)]
+        [Display(Name = "Custom settings", Order = 265)]
         public const string CustomSettings = "CustomSettings";
 
-        [Display(Order = 240)]
+        [Display(Order = 270)]
         [RequiredAccess(AccessLevel.Edit)]
         public const string Styles = "Styles";
 
-        [Display(Order = 250)]
+        [Display(Order = 280)]
         [RequiredAccess(AccessLevel.Edit)]
         public const string Scripts = "Scripts";
 
-        [Display(Name = "Text color", Order = 260)]
-        public const string TextColor = "Text Color";
+        [Display(Name = "Text", Order = 281)]
+        public const string Text = "Text";
 
-        [Display(Name = "Background", Order = 270)]
+        [Display(Name = "Background", Order = 283)]
         public const string Background = "Background";
 
-        [Display(Name = "Border", Order = 280)]
+        [Display(Name = "Border", Order = 284)]
         public const string Border = "Border";
 
-        [Display(Name = "Block styling", Order = 290)]
-        public const string BlockStyling = "BlockStyling";
-
-        [Display(Name = "Colors", Order = 300)]
+        [Display(Name = "Colors", Order = 285)]
         public const string Colors = "Colors";
 
-        [Display(Name = "Settings", Order = 310)]
-        public const string Settings = SystemTabNames.Settings;
+        [Display(Name = "Image", Order = 286)]
+        public const string Image = "Image";
 
-        
+        [Display(Name = "Block styling", Order = 287)]
+        public const string BlockStyling = "BlockStyling";
+
+        [Display(Name = "Settings", Order = 290)]
+        public const string Settings = SystemTabNames.Settings;
     }
 }
