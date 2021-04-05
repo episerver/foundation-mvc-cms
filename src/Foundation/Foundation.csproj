@@ -816,6 +816,7 @@
     <Compile Include="Features\Settings\LabelSettings.cs" />
     <Compile Include="Features\Settings\LayoutSettings.cs" />
     <Compile Include="Features\Settings\ReferencePageSettings.cs" />
+    <Compile Include="Features\Settings\ScriptInjectionSettings.cs" />
     <Compile Include="Features\Settings\SearchSettings.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\HideContentAreaActionsContainer.cs" />
     <Compile Include="Features\Shared\EditorDescriptors\MoveCategoryEditorDescriptor.cs" />
@@ -1118,6 +1119,7 @@
     <Content Include="Assets\scss\extensions\font-awesome-5.9.0\webfonts\fa-solid-900.svg" />
     <Content Include="Assets\scss\extensions\mvc-grid\mvc-grid.css" />
     <Content Include="Assets\scss\extensions\spur.min.css" />
+    <Content Include="ClientResources\Scripts\ScriptInjectionItems.js" />
     <Content Include="ClientResources\Styles\fontawesome.min.css" />
     <Content Include="Features\MyAccount\ProfilePage\my-profile.js" />
     <Content Include="Features\People\people.js" />
