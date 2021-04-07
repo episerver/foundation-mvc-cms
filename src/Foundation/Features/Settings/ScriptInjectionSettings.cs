@@ -4,8 +4,10 @@ using EPiServer.DataAnnotations;
 using EPiServer.PlugIn;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.SpecializedProperties;
+using EPiServer.Web;
 using Foundation.Cms.Settings;
 using Foundation.Features.Folder;
+using Foundation.Features.Media;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using Newtonsoft.Json;
@@ -26,14 +28,12 @@ namespace Foundation.Features.Settings
         [CultureSpecific]
         [Display(Name = "Header Scripts (Scripts will inject at the bottom of header)", GroupName = TabNames.Scripts, Description = "Scripts will inject at the bottom of header", Order = 10)]
         [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<ScriptInjectionModel>))]
-        [ClientEditor(ClientEditingClass = "foundation/ScriptInjectionItems")]
         public virtual IList<ScriptInjectionModel> HeaderScripts { get; set; }
 
         [JsonIgnore]
         [CultureSpecific]
         [Display(Name = "Footer Scripts (Scripts will inject at the bottom of footer)", GroupName = TabNames.Scripts, Description = "Scripts will inject at the bottom of footer", Order = 20)]
         [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<ScriptInjectionModel>))]
-        [ClientEditor(ClientEditingClass = "foundation/ScriptInjectionItems")]
         public virtual IList<ScriptInjectionModel> FooterScripts { get; set; }
 
         #endregion
@@ -41,13 +41,23 @@ namespace Foundation.Features.Settings
 
     public class ScriptInjectionModel
     {
+        [Required]
         [CultureSpecific]
         [AllowedTypes(typeof(FoundationPageData), typeof(FolderPage))]
         [Display(Name = "Root (Scripts will inject for this page and all children pages)", Description = "Scripts will inject for this page and all children pages", Order = 10)]
         public virtual ContentReference ScriptRoot { get; set; }
 
+        [AllowedTypes(typeof(CodingFile))]
         [Display(Name = "Script files", Order = 20)]
-        public virtual LinkItemCollection ScriptFiles { get; set; }
+        public virtual IList<ContentReference> ScriptFiles { get; set; }
+
+        [UIHint(UIHint.Textarea)]
+        [Display(Name = "External Scripts", Order = 30)]
+        public virtual string ExternalScripts { get; set; }
+
+        [UIHint(UIHint.Textarea)]
+        [Display(Name = "Inline Scripts", Order = 40)]
+        public virtual string InlineScripts { get; set; }
     }
 
     [PropertyDefinitionTypePlugIn]

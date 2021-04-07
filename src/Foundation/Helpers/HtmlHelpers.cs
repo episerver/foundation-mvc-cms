@@ -68,37 +68,34 @@ namespace Foundation.Helpers
             return new MvcHtmlString(outputCss.ToString());
         }
 
-        public static MvcHtmlString RenderExtendedScripts(this HtmlHelper helper, IContent content)
-        {
-            if (content == null || ContentReference.StartPage == PageReference.EmptyReference || !(content is FoundationPageData sitePageData))
-            {
-                return new MvcHtmlString("");
-            }
+        //public static MvcHtmlString RenderExtendedScripts(this HtmlHelper helper, IContent content)
+        //{
+        //    if (content == null || ContentReference.StartPage == PageReference.EmptyReference || !(content is FoundationPageData sitePageData))
+        //    {
+        //        return new MvcHtmlString("");
+        //    }
 
-            var outputScript = new StringBuilder(string.Empty);
-            var startPage = _contentLoader.Value.Get<HomePage>(ContentReference.StartPage);
+        //    var outputScript = new StringBuilder(string.Empty);
+        //    var startPage = _contentLoader.Value.Get<HomePage>(ContentReference.StartPage);
 
-            // Extended Javascript file
-            AppendFiles(startPage.ScriptFiles, outputScript, _scriptFormat);
+        //    // Extended Javascript file
+        //    AppendFiles(startPage.ScriptFiles, outputScript, _scriptFormat);
+        //    if (!(sitePageData is HomePage))
+        //    {
+        //        AppendFiles(sitePageData.ScriptFiles, outputScript, _scriptFormat);
+        //    }
 
-            RenderFooterScripts(content, outputScript);
+        //    // Inline Javascript
+        //    if (!string.IsNullOrWhiteSpace(startPage.Scripts) || !string.IsNullOrWhiteSpace(sitePageData.Scripts))
+        //    {
+        //        outputScript.AppendLine("<script type=\"text/javascript\">");
+        //        outputScript.AppendLine(!string.IsNullOrWhiteSpace(startPage.Scripts) ? startPage.Scripts : "");
+        //        outputScript.AppendLine(!string.IsNullOrWhiteSpace(sitePageData.Scripts) && !(sitePageData is HomePage) ? sitePageData.Scripts : "");
+        //        outputScript.AppendLine("</script>");
+        //    }
 
-            if (!(sitePageData is HomePage))
-            {
-                AppendFiles(sitePageData.ScriptFiles, outputScript, _scriptFormat);
-            }
-
-            // Inline Javascript
-            if (!string.IsNullOrWhiteSpace(startPage.Scripts) || !string.IsNullOrWhiteSpace(sitePageData.Scripts))
-            {
-                outputScript.AppendLine("<script type=\"text/javascript\">");
-                outputScript.AppendLine(!string.IsNullOrWhiteSpace(startPage.Scripts) ? startPage.Scripts : "");
-                outputScript.AppendLine(!string.IsNullOrWhiteSpace(sitePageData.Scripts) && !(sitePageData is HomePage) ? sitePageData.Scripts : "");
-                outputScript.AppendLine("</script>");
-            }
-
-            return new MvcHtmlString(outputScript.ToString());
-        }
+        //    return new MvcHtmlString(outputScript.ToString());
+        //}
 
         public static MvcHtmlString RenderHeaderScripts(this HtmlHelper helper, IContent content)
         {
@@ -109,7 +106,7 @@ namespace Foundation.Helpers
 
             var outputScript = new StringBuilder(string.Empty);
 
-            // Injection Hierarchically Javascript files
+            // Injection Hierarchically Javascript
             var settings = _settingsService.Value.GetSiteSettings<ScriptInjectionSettings>();
             if (settings != null && settings.HeaderScripts != null)
             {
@@ -118,7 +115,22 @@ namespace Foundation.Helpers
                     var pages = _contentLoader.Value.GetDescendents(script.ScriptRoot);
                     if (pages.Any(x => content.ContentLink.ID == x.ID) || content.ContentLink.ID == script.ScriptRoot.ID)
                     {
+                        // Script Files
                         AppendFiles(script.ScriptFiles, outputScript, _scriptFormat);
+
+                        // External Javascript
+                        if (!string.IsNullOrWhiteSpace(script.ExternalScripts))
+                        {
+                            outputScript.AppendLine(script.ExternalScripts);
+                        }
+
+                        // Inline Javascript
+                        if (!string.IsNullOrWhiteSpace(script.InlineScripts))
+                        {
+                            outputScript.AppendLine("<script type=\"text/javascript\">");
+                            outputScript.AppendLine(!string.IsNullOrWhiteSpace(script.InlineScripts) ? script.InlineScripts : "");
+                            outputScript.AppendLine("</script>");
+                        }
                     }
                 }
             }
@@ -126,14 +138,16 @@ namespace Foundation.Helpers
             return new MvcHtmlString(outputScript.ToString());
         }
 
-        private static void RenderFooterScripts(IContent content, StringBuilder outputScript)
+        public static MvcHtmlString RenderFooterScripts(this HtmlHelper helper, IContent content)
         {
             if (content == null || ContentReference.StartPage == PageReference.EmptyReference || !(content is FoundationPageData sitePageData))
             {
-                return;
+                return new MvcHtmlString("");
             }
 
-            // Injection Hierarchically Javascript files
+            var outputScript = new StringBuilder(string.Empty);
+
+            // Injection Hierarchically Javascript
             var settings = _settingsService.Value.GetSiteSettings<ScriptInjectionSettings>();
             if (settings != null && settings.FooterScripts != null)
             {
@@ -142,10 +156,27 @@ namespace Foundation.Helpers
                     var pages = _contentLoader.Value.GetDescendents(script.ScriptRoot);
                     if (pages.Any(x => content.ContentLink.ID == x.ID) || content.ContentLink.ID == script.ScriptRoot.ID)
                     {
+                        // Script Files
                         AppendFiles(script.ScriptFiles, outputScript, _scriptFormat);
+
+                        // External Javascript
+                        if (!string.IsNullOrWhiteSpace(script.ExternalScripts))
+                        {
+                            outputScript.AppendLine(script.ExternalScripts);
+                        }
+
+                        // Inline Javascript
+                        if (!string.IsNullOrWhiteSpace(script.InlineScripts))
+                        {
+                            outputScript.AppendLine("<script type=\"text/javascript\">");
+                            outputScript.AppendLine(!string.IsNullOrWhiteSpace(script.InlineScripts) ? script.InlineScripts : "");
+                            outputScript.AppendLine("</script>");
+                        }
                     }
                 }
             }
+
+            return new MvcHtmlString(outputScript.ToString());
         }
 
         public static MvcHtmlString RenderMetaData(this HtmlHelper helper, IContent content)
@@ -189,6 +220,20 @@ namespace Foundation.Helpers
                 outputString.AppendLine(map == null
                     ? string.Format(formatString, item.GetMappedHref())
                     : string.Format(formatString, _urlResolver.Value.GetUrl(map.ContentReference)));
+            }
+        }
+
+        private static void AppendFiles(IList<ContentReference> files, StringBuilder outputString, string formatString)
+        {
+            if (files == null || files.Count <= 0)
+            {
+                return;
+            }
+
+            foreach (var item in files.Where(item => !string.IsNullOrEmpty(_urlResolver.Value.GetUrl(item))))
+            {
+                var url = _urlResolver.Value.GetUrl(item);
+                outputString.AppendLine(string.Format(formatString, url));
             }
         }
 
