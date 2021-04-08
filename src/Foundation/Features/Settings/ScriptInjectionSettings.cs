@@ -3,7 +3,6 @@ using EPiServer.Core;
 using EPiServer.DataAnnotations;
 using EPiServer.PlugIn;
 using EPiServer.Shell.ObjectEditing;
-using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using Foundation.Cms.Settings;
 using Foundation.Features.Folder;
