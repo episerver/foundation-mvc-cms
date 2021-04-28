@@ -1,51 +1,62 @@
 ﻿using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
+using System.Threading.Tasks;
 
 namespace Foundation.Features.Search
 {
-    public class FilterOptionViewModelBinder : DefaultModelBinder
+    public class FilterOptionViewModelBinder : IModelBinder
     {
         private readonly IContentLoader _contentLoader;
 
         public FilterOptionViewModelBinder(IContentLoader contentLoader) => _contentLoader = contentLoader;
 
-        public override object BindModel(ControllerContext controllerContext, ModelBindingContext bindingContext)
+        public async Task BindModelAsync(ModelBindingContext bindingContext)
         {
-            bindingContext.ModelName = "FilterOption";
-            FilterOptionViewModel model;
-
-            try
+            if (bindingContext == null)
             {
-                model = (FilterOptionViewModel)base.BindModel(controllerContext, bindingContext);
-            }
-            catch
-            {
-                model = new FilterOptionViewModel();
+                throw new ArgumentNullException(nameof(bindingContext));
             }
 
-            if (model == null)
+            var modelName = bindingContext.ModelName = "FilterOption";
+
+            // Try to fetch the value of the argument by name
+            var valueProviderResult = bindingContext.ValueProvider.GetValue(modelName);
+
+            if (valueProviderResult == ValueProviderResult.None)
             {
-                return model;
+                return;
             }
 
-            var contentLink = controllerContext.RequestContext.GetContentLink();
+            bindingContext.ModelState.SetModelValue(modelName, valueProviderResult);
+
+            var value = valueProviderResult.FirstValue;
+
+            // Check if the argument value is null or empty
+            if (string.IsNullOrEmpty(value))
+            {
+                return;
+            }
+
+            var contentLink = bindingContext.ActionContext.HttpContext.GetContentLink();
             IContent content = null;
             if (!ContentReference.IsNullOrEmpty(contentLink))
             {
                 content = _contentLoader.Get<IContent>(contentLink);
             }
 
-            var query = controllerContext.HttpContext.Request.QueryString["search"];
-            var sort = controllerContext.HttpContext.Request.QueryString["sort"];
-            var section = controllerContext.HttpContext.Request.QueryString["t"];
-            var page = controllerContext.HttpContext.Request.QueryString["p"];
-            var confidence = controllerContext.HttpContext.Request.QueryString["confidence"];
+            var query = bindingContext.ActionContext.HttpContext.Request.Query["search"];
+            var sort = bindingContext.ActionContext.HttpContext.Request.Query["sort"];
+            var section = bindingContext.ActionContext.HttpContext.Request.Query["t"];
+            var page = bindingContext.ActionContext.HttpContext.Request.Query["p"];
+            var confidence = bindingContext.ActionContext.HttpContext.Request.Query["confidence"];
 
+            var model = new FilterOptionViewModel();
             SetupModel(model, query, sort, section, page, content, confidence);
-
-            return model;
+            bindingContext.Result = ModelBindingResult.Success(model);
+            await Task.CompletedTask;
         }
 
         protected virtual void SetupModel(FilterOptionViewModel model, string q, string sort, string section, string page, IContent content, string confidence)

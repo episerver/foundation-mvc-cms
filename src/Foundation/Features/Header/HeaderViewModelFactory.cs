@@ -4,19 +4,18 @@ using EPiServer.Data;
 using EPiServer.Editor;
 using EPiServer.Filters;
 using EPiServer.Framework.Localization;
-using EPiServer.Security;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
-using Foundation.Cms.Extensions;
-using Foundation.Cms.Settings;
+using Foundation.Infrastructure.Cms.Extensions;
+using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Features.Blocks.MenuItemBlock;
 using Foundation.Features.Home;
 using Foundation.Features.Settings;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace Foundation.Features.Header
 {
@@ -30,6 +29,7 @@ namespace Foundation.Features.Header
         private readonly IDatabaseMode _databaseMode;
         private readonly ISettingsService _settingsService;
         private readonly IContentVersionRepository _contentVersionRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public HeaderViewModelFactory(LocalizationService localizationService,
             IUrlResolver urlResolver,
@@ -37,7 +37,8 @@ namespace Foundation.Features.Header
             IContentLoader contentLoader,
             IDatabaseMode databaseMode,
             ISettingsService settingsService,
-            IContentVersionRepository contentVersionRepository)
+            IContentVersionRepository contentVersionRepository, 
+            IHttpContextAccessor httpContextAccessor)
         {
             _localizationService = localizationService;
             _urlResolver = urlResolver;
@@ -46,6 +47,7 @@ namespace Foundation.Features.Header
             _databaseMode = databaseMode;
             _settingsService = settingsService;
             _contentVersionRepository = contentVersionRepository;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public virtual HeaderViewModel CreateHeaderViewModel(IContent currentContent, HomePage homePage)
@@ -76,7 +78,7 @@ namespace Foundation.Features.Header
 
         public virtual void AddMyAccountMenu(HomePage homePage, HeaderViewModel viewModel)
         {
-            if (HttpContext.Current != null && !HttpContext.Current.Request.IsAuthenticated)
+            if (_httpContextAccessor.HttpContext != null && !_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
                 viewModel.UserLinks = new LinkItemCollection();
                 return;

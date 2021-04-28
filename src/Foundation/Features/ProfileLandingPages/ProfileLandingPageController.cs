@@ -1,6 +1,6 @@
 using EPiServer.Web.Mvc;
 using Foundation.Features.LandingPages.ProfileLandingPages;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.ProfileLandingPages.ProfileLandingPage
 {

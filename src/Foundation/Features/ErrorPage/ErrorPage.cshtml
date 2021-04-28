@@ -19,7 +19,7 @@
             </div>
             <h1 class="errorpage">500</h1>
             <h2 class="errorpage">Unexpected Error <b>:(</b></h2>
-            @if (System.Web.HttpContext.Current.IsDebuggingEnabled)
+            @if (System.Diagnostics.Debugger.IsAttached)
             {
                 <p>@Model.ErrorMessage</p>
                 <p>@Model.StackTrace</p>

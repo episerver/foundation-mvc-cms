@@ -1,5 +1,7 @@
 ﻿using EPiServer.Web;
-using System.Web;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Wangkanai.Detection;
 
 namespace Foundation.Infrastructure.Display
 {
@@ -10,9 +12,10 @@ namespace Foundation.Infrastructure.Display
     {
         public override string ChannelName => "Web";
 
-        public override bool IsActive(HttpContextBase context)
+        public override bool IsActive(HttpContext context)
         {
-            return !context.Request.Browser.IsMobileDevice;
+            var detection = context.RequestServices.GetRequiredService<IDetection>();
+            return detection.Device.Type == DeviceType.Desktop;
         }
     }
 }

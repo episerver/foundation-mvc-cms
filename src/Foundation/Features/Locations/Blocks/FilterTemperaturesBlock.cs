@@ -1,10 +1,9 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAnnotations;
+﻿using EPiServer.DataAnnotations;
 using EPiServer.Find;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
@@ -28,12 +27,12 @@ namespace Foundation.Features.Locations.Blocks
 
         public ITypeSearch<LocationItemPage.LocationItemPage> AddFilter(ITypeSearch<LocationItemPage.LocationItemPage> query) => query;
 
-        public ITypeSearch<LocationItemPage.LocationItemPage> ApplyFilter(ITypeSearch<LocationItemPage.LocationItemPage> query, NameValueCollection filters)
+        public ITypeSearch<LocationItemPage.LocationItemPage> ApplyFilter(ITypeSearch<LocationItemPage.LocationItemPage> query, IQueryCollection filters)
         {
             var filterString = filters["t"];
             if (!string.IsNullOrWhiteSpace(filterString))
             {
-                var temperatures = filterString.Split(',').ToList();
+                var temperatures = filterString.ToList();
                 if (int.TryParse(temperatures.First(), out var f) && int.TryParse(temperatures.Last(), out var t) && f <= t && f >= -20 && t <= 40)
                 {
                     query = query.Filter(x => x.AvgTempDbl.InRange(f, t));

@@ -1,11 +1,10 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAnnotations;
+﻿using EPiServer.DataAnnotations;
 using EPiServer.Find;
 using EPiServer.Find.Framework;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
@@ -32,12 +31,12 @@ namespace Foundation.Features.Locations.Blocks
             return query.TermsFacetFor(x => x.Continent);
         }
 
-        public ITypeSearch<LocationItemPage.LocationItemPage> ApplyFilter(ITypeSearch<LocationItemPage.LocationItemPage> query, NameValueCollection filters)
+        public ITypeSearch<LocationItemPage.LocationItemPage> ApplyFilter(ITypeSearch<LocationItemPage.LocationItemPage> query, IQueryCollection filters)
         {
             var filterString = filters["c"];
             if (!string.IsNullOrWhiteSpace(filterString))
             {
-                var continents = filterString.Split(',').ToList();
+                var continents = filterString.ToList();
                 var continentsFilter = SearchClient.Instance.BuildFilter<LocationItemPage.LocationItemPage>();
                 continentsFilter = continents.Aggregate(continentsFilter,
                                                         (current, name) => current.Or(x => x.Continent.Match(name)));

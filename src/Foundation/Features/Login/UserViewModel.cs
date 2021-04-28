@@ -1,4 +1,4 @@
-﻿using Foundation.Cms.Users;
+﻿using Foundation.Infrastructure.Cms.Users;
 
 namespace Foundation.Features.Login
 {

@@ -1,12 +1,12 @@
 ﻿using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Core;
-using EPiServer.Personalization;
 using EPiServer.Web.Routing;
-using Foundation.Cms.Identity;
-using Foundation.Cms.Settings;
-
+using Foundation.Infrastructure.Cms.Settings;
+using Foundation.Infrastructure.Cms.Users;
 using Foundation.Features.Settings;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Foundation.Features.MyAccount.ProfilePage
 {
@@ -23,9 +23,9 @@ namespace Foundation.Features.MyAccount.ProfilePage
             _settingsService = settingsService;
         }
 
-        public ActionResult Index(ProfilePage currentPage)
+        public async Task<IActionResult> Index(ProfilePage currentPage)
         {
-            var currentUser = EPiServerProfile.Current;
+            var currentUser = await UserManager.GetUserAsync(User);
             var viewModel = new ProfilePageViewModel(currentPage)
             {
                 CurrentUser = currentUser,

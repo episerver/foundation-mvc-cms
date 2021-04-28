@@ -1,19 +1,17 @@
 using EPiServer;
 using EPiServer.Core;
-using EPiServer.Framework.DataAnnotations;
 using EPiServer.Web.Mvc;
-using Foundation.Cms.Extensions;
+using Foundation.Infrastructure.Cms.Extensions;
 using Foundation.Features.Events.CalendarEvent;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
 
 namespace Foundation.Features.Events.CalendarBlock
 {
-    [TemplateDescriptor(Default = true)]
-    public class CalendarBlockController : BlockController<CalendarBlock>
+    public class CalendarBlockController : BlockComponent<CalendarBlock>
     {
         private readonly IContentLoader _contentLoader;
 
@@ -22,11 +20,11 @@ namespace Foundation.Features.Events.CalendarBlock
             _contentLoader = contentLoader;
         }
 
-        public override ActionResult Index(CalendarBlock currentBlock)
+        public override IViewComponentResult Invoke(CalendarBlock currentBlock)
         {
             var model = new CalendarBlockViewModel(currentBlock);
 
-            return PartialView(model);
+            return View(model);
         }
 
         private IEnumerable<CalendarEventPage> GetEvents(int blockId)

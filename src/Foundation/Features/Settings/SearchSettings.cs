@@ -1,6 +1,6 @@
 ﻿using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
-using Foundation.Cms.Settings;
+using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Infrastructure;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

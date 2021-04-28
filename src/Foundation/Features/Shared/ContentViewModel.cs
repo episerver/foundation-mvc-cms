@@ -3,10 +3,10 @@ using EPiServer.Core;
 using EPiServer.Editor;
 using EPiServer.Globalization;
 using EPiServer.ServiceLocation;
-using Foundation.Cms;
+using Foundation.Infrastructure.Cms;
 using Foundation.Features.Home;
 using Foundation.Infrastructure;
-using System.Web;
+using Microsoft.AspNetCore.Html;
 
 namespace Foundation.Features.Shared
 {
@@ -61,7 +61,7 @@ namespace Foundation.Features.Shared
             }
         }
 
-        public HtmlString SchemaMarkup
+        public IHtmlContent SchemaMarkup
         {
             get
             {

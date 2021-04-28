@@ -2,7 +2,7 @@
 using EPiServer.Framework.DataAnnotations;
 using EPiServer.Framework.Web.Mvc;
 using EPiServer.Web.Mvc;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.Preview
 {
@@ -23,7 +23,7 @@ namespace Foundation.Features.Preview
 
         public ActionResult Index(IContent currentContent)
         {
-            return _previewControllerHelper.RenderResult(currentContent);
+            return _previewControllerHelper.RenderResult(currentContent, HttpContext);
         }
     }
 }

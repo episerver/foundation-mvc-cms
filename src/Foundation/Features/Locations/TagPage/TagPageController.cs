@@ -7,7 +7,7 @@ using EPiServer.Web.Routing;
 using Foundation.Features.Media;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.Locations.TagPage
 {
@@ -24,10 +24,10 @@ namespace Foundation.Features.Locations.TagPage
         {
             var model = new TagsViewModel(currentPage)
             {
-                Continent = ControllerContext.RequestContext.GetCustomRouteData<string>("Continent")
+                Continent = RouteData.Values["Continent"].ToString()
             };
 
-            var addcat = ControllerContext.RequestContext.GetCustomRouteData<string>("Category");
+            var addcat = RouteData.Values["Category"].ToString();
             if (addcat != null)
             {
                 model.AdditionalCategories = addcat.Split(',');

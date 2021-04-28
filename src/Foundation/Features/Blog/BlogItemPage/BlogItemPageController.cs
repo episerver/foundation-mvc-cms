@@ -3,7 +3,7 @@ using EPiServer.Cms.Shell;
 using EPiServer.Core.Html;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Routing;
-using Foundation.Features.Category;
+//using Foundation.Features.Category;
 using Foundation.Features.Shared;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.Blog.BlogItemPage
 {
@@ -55,17 +55,17 @@ namespace Foundation.Features.Blog.BlogItemPage
 
         public IEnumerable<BlogItemPageViewModel.TagItem> GetTags(BlogItemPage currentPage)
         {
-            if (currentPage.Categories != null)
-            {
-                var allCategories = _contentLoader.GetItems(currentPage.Categories, CultureInfo.CurrentUICulture);
-                return allCategories.
-                    Select(cat => new BlogItemPageViewModel.TagItem()
-                    {
-                        Title = cat.Name,
-                        Url = _blogTagFactory.GetTagUrl(currentPage, cat.ContentLink),
-                        DisplayName = (cat as StandardCategory)?.Description,
-                    }).ToList();
-            }
+            //if (currentPage.Categories != null)
+            //{
+            //    var allCategories = _contentLoader.GetItems(currentPage.Categories, CultureInfo.CurrentUICulture);
+            //    return allCategories.
+            //        Select(cat => new BlogItemPageViewModel.TagItem()
+            //        {
+            //            Title = cat.Name,
+            //            Url = _blogTagFactory.GetTagUrl(currentPage, cat.ContentLink),
+            //            DisplayName = (cat as StandardCategory)?.Description,
+            //        }).ToList();
+            //}
             return new List<BlogItemPageViewModel.TagItem>();
         }
 

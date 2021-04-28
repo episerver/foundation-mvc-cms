@@ -1,7 +1,5 @@
-﻿@using ImageProcessor.Web.Episerver
+﻿@model TagsCarouselViewModel
 @using Foundation.Features.Locations.TagPage
-
-@model TagsCarouselViewModel
 
 @if (Model.Items != null)
 {
@@ -21,8 +19,8 @@
                 <div class="@(item.i == 0 ? "carousel-item active" : "carousel-item")">
                     <a href="@Url.ContentUrl(item.value.ItemURL)">
                         <picture class="img-fluid">
-                            <source data-srcset="@Html.ProcessImage(@Url.ContentUrl(item.value.Image)).Resize(1440, 820)?format=webp" type="image/webp">
-                            <img class="img-fluid lazyload" data-src="@Html.ProcessImage(@Url.ContentUrl(item.value.Image)).Resize(1440, 820)" />
+                            <source data-srcset="@Url.WebPFallbackImageUrl(item.value.Image,1440, 820)" type="image/webp">
+                            <img class="img-fluid lazyload" data-src="@Url.WebPFallbackImageUrl(item.value.Image,1440, 820)" />
                         </picture>
                     </a>
                     @if (!string.IsNullOrWhiteSpace(item.value.Heading))

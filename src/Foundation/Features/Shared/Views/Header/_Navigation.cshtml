@@ -20,7 +20,7 @@
                 <div class="navigation__logo @(Model.LayoutSettings.HeaderMenuStyle == "LeftLogo" ? "flex-start" : "flex-center")"
                      style="@(Model.LayoutSettings.HeaderMenuStyle == "LeftLogo" ? "order: -1; width: 75%;" : "")">
                     <a href="/">
-                        @if (PageEditing.PageIsInEditMode)
+                        @if (Html.IsInEditMode())
                         {
                             <div @Html.EditAttributes(x => x.LayoutSettings.SiteLogo)>
                                 <img data-src="@Url.ContentUrl(Model.LayoutSettings.SiteLogo)?format=webp"

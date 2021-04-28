@@ -2,7 +2,7 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.Web.Routing;
-using Foundation.Cms.Extensions;
+using Foundation.Infrastructure.Cms.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

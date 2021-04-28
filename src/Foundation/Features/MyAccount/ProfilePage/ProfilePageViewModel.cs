@@ -1,5 +1,4 @@
-using EPiServer.Personalization;
-using Foundation.Cms.Identity;
+using Foundation.Infrastructure.Cms.Users;
 using Foundation.Features.Shared;
 
 namespace Foundation.Features.MyAccount.ProfilePage
@@ -13,8 +12,7 @@ namespace Foundation.Features.MyAccount.ProfilePage
         public ProfilePageViewModel(ProfilePage profilePage) : base(profilePage)
         {
         }
-        public SiteUser SiteUser { get; set; }
-        public EPiServerProfile CurrentUser { get; set; }
+        public SiteUser CurrentUser { get; set; }
         public string ResetPasswordPage { get; set; }
     }
 }

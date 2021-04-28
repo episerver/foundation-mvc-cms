@@ -1,10 +1,8 @@
 ﻿using Castle.Core.Internal;
-using EPiServer;
 using EPiServer.Core;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Mvc.Html;
-using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.Search.Search
 {
@@ -12,23 +10,16 @@ namespace Foundation.Features.Search.Search
     {
         private readonly ISearchViewModelFactory _viewModelFactory;
         private readonly ISearchService _cmsSearchService;
-        private readonly HttpContextBase _httpContextBase;
-        private readonly IContentLoader _contentLoader;
 
-        public SearchController(
-            ISearchViewModelFactory viewModelFactory,
-            HttpContextBase httpContextBase,
-            IContentLoader contentLoader,
+        public SearchController(ISearchViewModelFactory viewModelFactory,
             ISearchService cmsSearchService)
         {
             _viewModelFactory = viewModelFactory;
-            _httpContextBase = httpContextBase;
-            _contentLoader = contentLoader;
             _cmsSearchService = cmsSearchService;
         }
 
-        [ValidateInput(false)]
-        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        [HttpGet]
+        [HttpPost]
         public ActionResult Index(SearchResultPage currentPage, FilterOptionViewModel filterOptions)
         {
             if (filterOptions == null || filterOptions.Q.IsNullOrEmpty())
@@ -36,14 +27,13 @@ namespace Foundation.Features.Search.Search
                 return Redirect(Url.ContentUrl(ContentReference.StartPage));
             }
 
-            var selectedFacets = HttpContext.Request.QueryString["facets"];
+            var selectedFacets = HttpContext.Request.Query["facets"];
             var viewModel = _viewModelFactory.Create<SearchViewModel<SearchResultPage>, SearchResultPage>(currentPage, selectedFacets, filterOptions);
 
             return View(viewModel);
         }
 
         [HttpPost]
-        [ValidateInput(false)]
         public ActionResult QuickSearch(string search = "")
         {
             var model = new SearchViewModel<SearchResultPage>();
@@ -59,7 +49,6 @@ namespace Foundation.Features.Search.Search
             return View("_QuickSearchContent", model);
         }
 
-        [ChildActionOnly]
         public ActionResult Facet(SearchResultPage currentPage, FilterOptionViewModel viewModel) => PartialView("_Facet", viewModel);
 
         public class AssetPreloadLink

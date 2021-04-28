@@ -9,6 +9,7 @@ using System.Text;
 namespace Foundation.Infrastructure.Jobs
 {
     [ScheduledPlugIn(DisplayName = "Convert File Blobs", Description = "Converts all file blobs into the currently configured blob type", SortIndex = 10000)]
+    [ServiceConfiguration]
     public class BlobJob : ScheduledJobBase
     {
         protected Injected<IBlobFactory> BlobFactory { get; set; }

@@ -2,7 +2,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.PlugIn;
-using Foundation.Cms;
+using Foundation.Infrastructure.Cms;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using System.ComponentModel.DataAnnotations;

@@ -1,13 +1,12 @@
 ﻿using EPiServer;
 using EPiServer.Core;
-using Foundation.Attributes;
 using Foundation.Features.Home;
-using Foundation.Helpers;
-using System.Web.Mvc;
+using Foundation.Infrastructure.Attributes;
+using Foundation.Infrastructure.Helpers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.Login
 {
-    [OnlyAnonymous]
     public class UserController : Controller
     {
         private readonly IContentLoader _contentLoader;
@@ -17,11 +16,13 @@ namespace Foundation.Features.Login
             _contentLoader = contentLoader;
         }
 
+        [OnlyAnonymous]
         public ActionResult Index(string returnUrl)
         {
             return View(Url.GetUserViewModel(returnUrl));
         }
 
+        [OnlyAnonymous]
         public ActionResult Register()
         {
             var model = new UserViewModel();

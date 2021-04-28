@@ -2,9 +2,8 @@
 using EPiServer.Find;
 using EPiServer.Find.Statistics;
 using EPiServer.Framework.Localization;
+using Microsoft.AspNetCore.Http;
 using System.Linq;
-using System.Web;
-using System.Web.WebPages;
 
 namespace Foundation.Features.Search
 {
@@ -19,12 +18,12 @@ namespace Foundation.Features.Search
     {
         private readonly ISearchService _searchService;
         private readonly LocalizationService _localizationService;
-        private readonly HttpContextBase _httpContextBase;
+        private readonly HttpContext _httpContextBase;
         private readonly IClient _findClient;
 
         public SearchViewModelFactory(LocalizationService localizationService,
             ISearchService searchService,
-            HttpContextBase httpContextBase,
+            HttpContext httpContextBase,
             IClient findClient)
         {
             _searchService = searchService;
@@ -52,7 +51,7 @@ namespace Foundation.Features.Search
             model.CurrentContent = currentContent;
             model.FilterOption = filterOption;
             model.Query = filterOption.Q;
-            model.IsMobile = _httpContextBase.GetOverriddenBrowser().IsMobileDevice;
+            //model.IsMobile = _httpContextBase.().IsMobileDevice;
             model.DidYouMeans = string.IsNullOrEmpty(model.FilterOption.Q) ? null : model.ContentSearchResult.Hits.Any() ? null : _findClient.Statistics().GetDidYouMean(model.FilterOption.Q);
 
             return model;

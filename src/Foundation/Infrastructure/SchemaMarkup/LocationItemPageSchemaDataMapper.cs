@@ -1,4 +1,4 @@
-﻿using Foundation.Cms;
+﻿using Foundation.Infrastructure.Cms;
 using Foundation.Features.Locations.LocationItemPage;
 using Schema.NET;
 

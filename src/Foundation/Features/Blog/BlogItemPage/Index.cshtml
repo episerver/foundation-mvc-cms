@@ -4,10 +4,6 @@
 
 @model BlogItemPageViewModel
 
-@{
-    var contentLoader = EPiServer.ServiceLocation.ServiceLocator.Current.GetInstance<EPiServer.IContentLoader>();
-}
-
 @Html.FullRefreshPropertiesMetaData()
 
 <div class="row blog-item">
@@ -16,7 +12,7 @@
         @* Header Image *@
         <div class="row">
             <div class="col-12">
-                @if (PageEditing.PageIsInEditMode)
+                @if (Html.IsInEditMode())
                 {
                     <img class="blog-item__image img-fluid" src="@Url.ContentUrl(Model.CurrentContent.PageImage)" @Html.EditAttributes(x => x.CurrentContent.PageImage) />
                 }

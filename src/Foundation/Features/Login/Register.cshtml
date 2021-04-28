@@ -12,7 +12,6 @@
             @using (Html.BeginForm("RegisterAccount", "PublicApi", FormMethod.Post, new { @role = "form", @class = "login__form" }))
             {
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(x => x.RegisterAccountViewModel.Address.Name)
 
                 if (!string.IsNullOrEmpty(logo))
                 {
@@ -46,62 +45,7 @@
                     </div>
                 </div>
                 <br />
-                <div class="row">
-                    <div class="col-md-6">
-                        @Html.TextBoxFor(x => x.RegisterAccountViewModel.Address.FirstName, new { @class = "login__input", placeholder = "FirstName" })
-                        @Html.ValidationMessageFor(x => x.RegisterAccountViewModel.Address.FirstName)
-                    </div>
-                    <div class="col-md-6">
-                        @Html.TextBoxFor(x => x.RegisterAccountViewModel.Address.LastName, new { @class = "login__input", placeholder = "LastName" })
-                        @Html.ValidationMessageFor(x => x.RegisterAccountViewModel.Address.LastName)
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-12">
-                        @Html.TextBoxFor(x => x.RegisterAccountViewModel.Address.Line1, new { @class = "login__input", placeholder = "Address Line 1" })
-                        @Html.ValidationMessageFor(x => x.RegisterAccountViewModel.Address.Line1)
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-12">
-                        @Html.TextBoxFor(x => x.RegisterAccountViewModel.Address.Line2, new { @class = "login__input", placeholder = "Address Line 2" })
-                        @Html.ValidationMessageFor(x => x.RegisterAccountViewModel.Address.Line2)
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-8">
-                        @Html.TextBoxFor(x => x.RegisterAccountViewModel.Address.City, new { @class = "login__input", placeholder = "City" })
-                        @Html.ValidationMessageFor(x => x.RegisterAccountViewModel.Address.City)
-                    </div>
-                    <div class="col-md-4">
-                        @Html.TextBoxFor(x => x.RegisterAccountViewModel.Address.PostalCode, new { @class = "login__input", placeholder = "PostalCode" })
-                        @Html.ValidationMessageFor(x => x.RegisterAccountViewModel.Address.PostalCode)
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-12">
-                        @Html.LabelFor(x => x.RegisterAccountViewModel.Address.CountryCode, new { @class = "label" })
-                        @Html.DisplayFor(model => model.RegisterAccountViewModel.Address.CountryOptions, "CountryOptions",
-                                                new { SelectItem = Model.RegisterAccountViewModel.Address.CountryCode, Name = "RegisterAccountViewModel.Address.CountryCode" })
-                        @Html.ValidationMessageFor(x => x.RegisterAccountViewModel.Address.CountryCode)
-                        @Html.Hidden("address-htmlfieldprefix", "RegisterAccountViewModel.Address")
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-12 jsCountryRegionContainer">
-                        @{
-                            var viewData = new ViewDataDictionary();
-                            var regionName = new KeyValuePair<string, object>("RegionName", "RegisterAccountViewModel.Address.CountryRegion.Region");
-                            viewData.Add(regionName);
-                        }
-                        @Html.Partial("_AddressRegion", Model.RegisterAccountViewModel.Address.CountryRegion, viewData)
-                    </div>
-                </div>
+              
                 <br />
                 <div class="row">
                     <div class="col-12">

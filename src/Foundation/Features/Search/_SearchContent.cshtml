@@ -61,11 +61,11 @@
                                         </a>
                                     </li>
 
-                                    @foreach (var page in Model.ContentSearchResult.FilterOption.Pages)
+                                    @foreach (var pageNo in Model.ContentSearchResult.FilterOption.Pages)
                                     {
-                                        <li class="jsChangePageContent @(Model.ContentSearchResult.FilterOption.Page == page ? "active" : "")" page="@page">
+                                        <li class="jsChangePageContent @(Model.ContentSearchResult.FilterOption.Page == pageNo ? "active" : "")" page="@pageNo">
                                             <a href="javascript:void(0)">
-                                                @page.ToString()
+                                                @pageNo.ToString()
                                             </a>
                                         </li>
                                     }
@@ -92,7 +92,7 @@
                     @{ var first = true; }
                     @foreach (var item in Model.DidYouMeans.Hits)
                     {
-                        var suggestion = HttpUtility.HtmlEncode(item.Suggestion);
+                        var suggestion = WebUtility.HtmlEncode(item.Suggestion);
                         if (!first)
                         {
                             <text>@Html.TranslateFallback("/Shared/Or", "or")</text>

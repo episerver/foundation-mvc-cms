@@ -1,11 +1,10 @@
-﻿using EPiServer.Core;
-using EPiServer.DataAnnotations;
+﻿using EPiServer.DataAnnotations;
 using EPiServer.Find;
 using EPiServer.Find.Framework;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
+using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -33,12 +32,12 @@ namespace Foundation.Features.Locations.Blocks
             return query.TermsFacetFor(x => x.TagString(), facet => facet.Size = 25);
         }
 
-        public ITypeSearch<LocationItemPage.LocationItemPage> ApplyFilter(ITypeSearch<LocationItemPage.LocationItemPage> query, NameValueCollection filters)
+        public ITypeSearch<LocationItemPage.LocationItemPage> ApplyFilter(ITypeSearch<LocationItemPage.LocationItemPage> query, IQueryCollection filters)
         {
             var filterString = filters["a"];
             if (!string.IsNullOrWhiteSpace(filterString))
             {
-                var activities = filters["a"].Split(',').ToList();
+                var activities = filters["a"].ToList();
                 var activitiesFilter = SearchClient.Instance.BuildFilter<LocationItemPage.LocationItemPage>();
                 activitiesFilter = activities.Aggregate(activitiesFilter,
                         (current, name) => current.Or(x => x.TagString().Match(HttpUtility.UrlDecode(name)))

@@ -2,12 +2,12 @@
 using EPiServer.Core;
 using EPiServer.Web.Routing;
 using Foundation.Features.MyAccount.ResetPassword;
-using Microsoft.AspNet.Identity;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Extensions;
 using System;
 using System.Collections.Specialized;
 using System.Net.Mail;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace Foundation.Features.Shared
 {
@@ -15,15 +15,15 @@ namespace Foundation.Features.Shared
     {
         private readonly IContentLoader _contentLoader;
         private readonly IHtmlDownloader _htmlDownloader;
-        private readonly HttpContextBase _httpContextBase;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UrlResolver _urlResolver;
 
-        public MailService(HttpContextBase httpContextBase,
+        public MailService(IHttpContextAccessor httpContextAccessor,
             UrlResolver urlResolver,
             IContentLoader contentLoader,
             IHtmlDownloader htmlDownloader)
         {
-            _httpContextBase = httpContextBase;
+            _httpContextAccessor = httpContextAccessor;
             _urlResolver = urlResolver;
             _contentLoader = contentLoader;
             _htmlDownloader = htmlDownloader;
@@ -50,7 +50,7 @@ namespace Foundation.Features.Shared
                 QueryCollection = nameValueCollection
             };
 
-            var basePath = _httpContextBase.Request.Url.GetLeftPart(UriPartial.Authority);
+            var basePath = new Uri(_httpContextAccessor.HttpContext.Request.GetDisplayUrl()).GetLeftPart(UriPartial.Authority);
             var relativePath = urlBuilder.ToString();
 
             if (relativePath.StartsWith(basePath))
@@ -91,19 +91,6 @@ namespace Foundation.Features.Shared
             {
                 await client.SendMailAsync(message);
             }
-        }
-
-        public async Task SendAsync(IdentityMessage message)
-        {
-            var msg = new MailMessage
-            {
-                Subject = message.Subject,
-                Body = message.Body,
-                IsBodyHtml = true
-            };
-
-            msg.To.Add(message.Destination);
-            await SendAsync(msg);
         }
     }
 }

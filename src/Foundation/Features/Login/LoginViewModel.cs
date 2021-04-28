@@ -1,7 +1,7 @@
 using EPiServer.Core;
-using Foundation.Cms.Attributes;
+using Foundation.Infrastructure.Cms.Attributes;
 
-namespace Foundation.Cms.Users
+namespace Foundation.Infrastructure.Cms.Users
 {
     public class LoginViewModel
     {

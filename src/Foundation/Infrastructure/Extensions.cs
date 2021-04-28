@@ -1,20 +1,14 @@
 ﻿using EPiServer;
 using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using EPiServer.Enterprise;
-using EPiServer.Logging;
-using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
-using Foundation.Cms.Settings;
 using Foundation.Features.Folder;
 using Foundation.Features.Home;
+using Foundation.Infrastructure.Cms.Extensions;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Web.Hosting;
 
 namespace Foundation.Infrastructure
 {
@@ -25,12 +19,6 @@ namespace Foundation.Infrastructure
 
         private static readonly Lazy<IUrlResolver> _urlResolver =
             new Lazy<IUrlResolver>(() => ServiceLocator.Current.GetInstance<IUrlResolver>());
-
-        private static readonly Lazy<ISiteDefinitionRepository> _siteDefinitionRepository =
-            new Lazy<ISiteDefinitionRepository>(() => ServiceLocator.Current.GetInstance<ISiteDefinitionRepository>());
-
-        private static readonly Lazy<ContentRootService> _contentRootService =
-            new Lazy<ContentRootService>(() => ServiceLocator.Current.GetInstance<ContentRootService>());
 
         public static ContentReference GetRelativeStartPage(this IContent content)
         {
@@ -60,135 +48,27 @@ namespace Foundation.Infrastructure
             }
         }
 
-        public static void InstallDefaultContent()
+        public static string GetPublicUrl(this ContentReference contentLink, string language = null)
         {
-            if (_siteDefinitionRepository.Value.List().Any() || Type.GetType("Foundation.Features.Setup.SetupController, Foundation") != null)
+            if (ContentReference.IsNullOrEmpty(contentLink))
             {
-                return;
+                return string.Empty;
             }
 
-            var siteDefinition = new SiteDefinition
+            var content = language != null ? contentLink.Get<IContent>(language) : contentLink.Get<IContent>();
+            if (content == null || !PublishedStateAssessor.IsPublished(content))
             {
-                Name = "foundation-mvc-cms",
-                SiteUrl = new Uri($"http://{HostingEnvironment.SiteName}/"),
-            };
-
-            siteDefinition.Hosts.Add(new HostDefinition()
-            {
-                Name = HostingEnvironment.SiteName,
-                Type = HostDefinitionType.Primary
-            });
-
-            siteDefinition.Hosts.Add(new HostDefinition()
-            {
-                Name = HostDefinition.WildcardHostName,
-                Type = HostDefinitionType.Undefined
-            });
-
-            var registeredRoots = _contentRepository.Value.GetItems(_contentRootService.Value.List(), new LoaderOptions());
-            var settingsRootRegistered = registeredRoots.Any(x => x.ContentGuid == SettingsFolder.SettingsRootGuid && x.Name.Equals(SettingsFolder.SettingsRootName));
-
-            if (!settingsRootRegistered)
-            {
-                _contentRootService.Value.Register<SettingsFolder>(SettingsFolder.SettingsRootName + "IMPORT", SettingsFolder.SettingsRootGuid, ContentReference.RootPage);
+                return string.Empty;
             }
 
-            CreateSite(new FileStream(
-                    HostingEnvironment.MapPath("~/App_Data/foundation.episerverdata") ?? throw new InvalidOperationException(),
-                    FileMode.Open,
-                    FileAccess.Read,
-                    FileShare.Read),
-                siteDefinition,
-                ContentReference.RootPage);
-
-            RunIndexJob(ServiceLocator.Current.GetInstance<IScheduledJobExecutor>(),
-                    ServiceLocator.Current.GetInstance<IScheduledJobRepository>(), new Guid("8EB257F9-FF22-40EC-9958-C1C5BA8C2A53"));
+            return _urlResolver.Value.GetUrl(contentLink, language);
         }
 
-        private static void RunIndexJob(IScheduledJobExecutor scheduledJobExecutor, IScheduledJobRepository scheduledJobRepository, Guid jobId)
+       
+        public static string GetPublicUrl(this Guid contentGuid, string language)
         {
-            var job = scheduledJobRepository.Get(jobId);
-            if (job == null)
-            {
-                return;
-            }
-
-            scheduledJobExecutor.StartAsync(job, new JobExecutionOptions { Trigger = ScheduledJobTrigger.User });
-        }
-
-        private static void CreateSite(Stream stream, SiteDefinition siteDefinition, ContentReference startPage)
-        {
-            EPiServer.Find.Cms.EventedIndexingSettings.Instance.EventedIndexingEnabled = false;
-            EPiServer.Find.Cms.EventedIndexingSettings.Instance.ScheduledPageQueueEnabled = false;
-            ImportEpiserverContent(stream, startPage, ServiceLocator.Current.GetInstance<IDataImporter>(), siteDefinition);
-            EPiServer.Find.Cms.EventedIndexingSettings.Instance.EventedIndexingEnabled = true;
-            EPiServer.Find.Cms.EventedIndexingSettings.Instance.ScheduledPageQueueEnabled = true;
-        }
-
-        public static bool ImportEpiserverContent(Stream stream,
-            ContentReference destinationRoot,
-            IDataImporter importer,
-            SiteDefinition siteDefinition = null)
-        {
-            var success = false;
-            try
-            {
-                var log = importer.Import(stream, destinationRoot, new ImportOptions
-                {
-                    KeepIdentity = true,
-                    EnsureContentNameUniqueness = false
-                });
-
-                var status = importer.Status;
-
-                if (status == null)
-                {
-                    return false;
-                }
-
-                UpdateLanguageBranches(status);
-                if (siteDefinition != null && !ContentReference.IsNullOrEmpty(status.ImportedRoot))
-                {
-                    siteDefinition.StartPage = status.ImportedRoot;
-                    _siteDefinitionRepository.Value.Save(siteDefinition);
-                    SiteDefinition.Current = siteDefinition;
-                    success = true;
-                }
-            }
-            catch (Exception exception)
-            {
-                LogManager.GetLogger().Error(exception.Message, exception);
-                success = false;
-            }
-
-            return success;
-        }
-
-        private static void UpdateLanguageBranches(IImportStatus status)
-        {
-            var languageBranchRepository = ServiceLocator.Current.GetInstance<ILanguageBranchRepository>();
-
-            if (status.ContentLanguages == null)
-            {
-                return;
-            }
-
-            foreach (var languageId in status.ContentLanguages)
-            {
-                var languageBranch = languageBranchRepository.Load(languageId);
-
-                if (languageBranch == null)
-                {
-                    languageBranch = new LanguageBranch(languageId);
-                    languageBranchRepository.Save(languageBranch);
-                }
-                else if (!languageBranch.Enabled)
-                {
-                    languageBranch = languageBranch.CreateWritableClone();
-                    languageBranch.Enabled = true;
-                    languageBranchRepository.Save(languageBranch);
-                }
-            }
+            var contentLink = PermanentLinkUtility.FindContentReference(contentGuid);
+            return GetPublicUrl(contentLink, language);
         }
     }
 }

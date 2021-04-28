@@ -1,7 +1,7 @@
 ﻿using EPiServer.Web;
-using Foundation.Cms;
-using Foundation.Cms.Extensions;
-using Foundation.Cms.Settings;
+using Foundation.Infrastructure.Cms;
+using Foundation.Infrastructure.Cms.Extensions;
+using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Features.Home;
 using Foundation.Features.Settings;
 using Schema.NET;

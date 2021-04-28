@@ -1,7 +1,6 @@
 ﻿using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
-using EPiServer.Labs.ContentManager.Cards;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
 using Foundation.Features.Shared;
@@ -48,10 +47,10 @@ namespace Foundation.Features.People.PersonItemPage
         [Display(GroupName = SystemTabNames.Content, Order = 7)]
         public virtual XhtmlString About { get; set; }
 
-        public override void SetItem(ItemModel itemModel)
-        {
-            itemModel.Description = About?.ToHtmlString();
-            itemModel.Image = Image;
-        }
+        //public override void SetItem(ItemModel itemModel)
+        //{
+        //    itemModel.Description = About?.ToHtmlString();
+        //    itemModel.Image = Image;
+        //}
     }
 }

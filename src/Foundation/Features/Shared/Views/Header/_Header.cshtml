@@ -15,7 +15,7 @@ else
                     <div class="top-header__banner-text">
                         @Html.PropertyFor(x => x.LayoutSettings.BannerText)
                     </div>
-                    @if (!Request.IsAuthenticated)
+                    @if (!ViewContext.HttpContext.User.Identity.IsAuthenticated)
                     {
                         <div class="login-button">
                             <a class="login-url" href="/episerver">

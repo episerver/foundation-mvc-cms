@@ -2,10 +2,10 @@
 using EPiServer.Core;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
-using Foundation.Cms.Extensions;
-using Foundation.Cms.Identity;
+using Foundation.Infrastructure.Cms.Extensions;
+using Foundation.Infrastructure.Cms.Users;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Web.Mvc;
 
 namespace Foundation.Features.MyAccount
 {
@@ -68,11 +68,6 @@ namespace Foundation.Features.MyAccount
             if (UserManager != null)
             {
                 UserManager.Dispose();
-            }
-
-            if (SignInManager != null)
-            {
-                SignInManager.Dispose();
             }
 
             base.Dispose(disposing);

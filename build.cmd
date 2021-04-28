@@ -22,18 +22,19 @@ for %%v in (15.0, 14.0) do (
 :finish
 
 echo msbuild.exe path: %InstallDir%%msBuildPath%
-echo ## Restoring Nuget packages ##
-.\build\nuget restore %ROOTPATH%\Foundation.sln
 REM Set Release or Debug configuration.
 IF "%1"=="Release" (set CONFIGURATION=Release) ELSE (set CONFIGURATION=Debug)
 ECHO Building in %CONFIGURATION%
 
 echo ## Clean and build ##
-"%InstallDir%""%msBuildPath%" %ROOTPATH%\Foundation.sln /t:Clean,Build /property:Configuration=%CONFIGURATION%
+"%InstallDir%%msBuildPath%" "%ROOTPATH%\Foundation.sln" /p:Configuration=Release /t:Clean,Build,Publish 
 IF %errorlevel% NEQ 0 EXIT /B %errorlevel%
 
+
 REM Build Client
-IF "%CONFIGURATION%"=="Release" ( call gulp -b "%SOURCEPATH%\Foundation" --color --gulpfile "%SOURCEPATH%\Foundation\Gulpfile.js" ) ELSE ( call gulp -b "%SOURCEPATH%\Foundation" --color --gulpfile "%SOURCEPATH%\Foundation\Gulpfile.js" )
+cd %SOURCEPATH%\Foundation
+IF "%CONFIGURATION%"=="Release" ( CALL npm run prod ) ELSE ( CALL npm run dev )
+cd %ROOTPATH%
 IF %errorlevel% NEQ 0 EXIT /B %errorlevel%
 
 pause

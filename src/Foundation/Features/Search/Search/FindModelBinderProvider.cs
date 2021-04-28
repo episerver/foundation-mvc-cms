@@ -1,6 +1,7 @@
-﻿using System;
+﻿using EPiServer.ServiceLocation;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
-using System.Web.Mvc;
 
 namespace Foundation.Features.Search
 {
@@ -11,11 +12,11 @@ namespace Foundation.Features.Search
             {typeof(FilterOptionViewModel), typeof(FilterOptionViewModelBinder)},
         };
 
-        public IModelBinder GetBinder(Type modelType)
+        public IModelBinder GetBinder(ModelBinderProviderContext modelBinderProviderContext)
         {
-            if (ModelBinderTypeMappings.ContainsKey(modelType))
+            if (ModelBinderTypeMappings.ContainsKey(modelBinderProviderContext.Metadata.ModelType))
             {
-                return DependencyResolver.Current.GetService(ModelBinderTypeMappings[modelType]) as IModelBinder;
+                return ServiceLocator.Current.GetService(ModelBinderTypeMappings[modelBinderProviderContext.Metadata.ModelType]) as IModelBinder;
             }
             return null;
         }

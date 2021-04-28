@@ -3,9 +3,9 @@ using EPiServer.Core;
 using EPiServer.Framework.Web;
 using EPiServer.Web;
 using Foundation.Features.Home;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace Foundation.Features.Preview
 {
@@ -17,17 +17,15 @@ namespace Foundation.Features.Preview
         private readonly IContentLoader _contentLoader;
         private readonly TemplateResolver _templateResolver;
         private readonly DisplayOptions _displayOptions;
-        private readonly HttpContextBase _httpContext;
 
-        public PreviewControllerHelper(IContentLoader contentLoader, TemplateResolver templateResolver, DisplayOptions displayOptions, HttpContextBase httpContext)
+        public PreviewControllerHelper(IContentLoader contentLoader, TemplateResolver templateResolver, DisplayOptions displayOptions)
         {
             _contentLoader = contentLoader;
             _templateResolver = templateResolver;
             _displayOptions = displayOptions;
-            _httpContext = httpContext;
         }
 
-        public ActionResult RenderResult(IContent currentContent)
+        public ActionResult RenderResult(IContent currentContent, HttpContext httpContext)
         {
             //As the layout requires a page for title etc we "borrow" the start page
             var startPage = _contentLoader.Get<HomePage>(ContentReference.StartPage);
@@ -39,7 +37,7 @@ namespace Foundation.Features.Preview
                 {
                     x.Tag,
                     x.Name,
-                    Supported = SupportsTag(currentContent, x.Tag)
+                    Supported = SupportsTag(currentContent, x.Tag, httpContext)
                 }).ToList();
 
             if (!supportedDisplayOptions.Any(x => x.Supported))
@@ -75,9 +73,9 @@ namespace Foundation.Features.Preview
             };
         }
 
-        private bool SupportsTag(IContent content, string tag)
+        private bool SupportsTag(IContent content, string tag, HttpContext httpContext)
         {
-            var templateModel = _templateResolver.Resolve(_httpContext,
+            var templateModel = _templateResolver.Resolve(httpContext,
                 content.GetOriginalType(),
                 content,
                 TemplateTypeCategories.MvcPartial,

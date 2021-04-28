@@ -1,6 +1,6 @@
 using EPiServer.Core;
 using Foundation.Features.Home;
-using System.Web;
+using Microsoft.AspNetCore.Html;
 
 namespace Foundation.Features.Shared
 {
@@ -8,6 +8,6 @@ namespace Foundation.Features.Shared
     {
         TContent CurrentContent { get; }
         HomePage StartPage { get; }
-        HtmlString SchemaMarkup { get; }
+        IHtmlContent SchemaMarkup { get; }
     }
 }

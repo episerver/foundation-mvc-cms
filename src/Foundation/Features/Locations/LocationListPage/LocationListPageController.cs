@@ -5,8 +5,8 @@ using EPiServer.Find.Cms;
 using EPiServer.Find.Framework;
 using EPiServer.Personalization;
 using EPiServer.Web.Mvc;
-using Foundation.Find;
-using System.Web.Mvc;
+using Foundation.Infrastructure.Find;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.Locations.LocationListPage
 {
@@ -41,7 +41,7 @@ namespace Foundation.Features.Locations.LocationListPage
                     var b = _contentLoader.Get<BlockData>(filterBlock.ContentLink) as IFilterBlock;
                     if (b != null)
                     {
-                        query = b.ApplyFilter(query, Request.QueryString);
+                        query = b.ApplyFilter(query, Request.Query);
                     }
                 }
             }
@@ -55,7 +55,7 @@ namespace Foundation.Features.Locations.LocationListPage
                 Locations = locations,
                 MapCenter = GetMapCenter(),
                 UserLocation = GeoPosition.GetUsersLocation(),
-                QueryString = Request.QueryString
+                QueryString = Request.Query
             };
 
             return View(model);

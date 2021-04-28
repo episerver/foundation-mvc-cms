@@ -15,19 +15,19 @@
                 if (area.Supported)
                 {
                     <div class="clearfix preview_supported">
-                        @Html.Partial("TemplateHint", string.Format(Html.TranslateFallback("/preview/heading", "The content '{0}' when displayed as '{1}'"), Model.PreviewContent.Name, Html.Translate(area.AreaName)))
+                        @await Html.PartialAsync("TemplateHint", string.Format(Html.TranslateFallback("/preview/heading", "The content '{0}' when displayed as '{1}'").ToString(), Model.PreviewContent.Name, Html.Translate(area.AreaName)))
                         @Html.DisplayFor(x => area.ContentArea, new { Tag = area.AreaTag })
                     </div>
                 }
                 else
                 {
-                    @Html.Partial("TemplateHint", string.Format(Html.TranslateFallback("/preview/norenderer", "The content '{0}' cannot be displayed as {1}"), Model.PreviewContent.Name, area.AreaName))
+                    @await Html.PartialAsync("TemplateHint", string.Format(Html.TranslateFallback("/preview/norenderer", "The content '{0}' cannot be displayed as {1}").ToString(), Model.PreviewContent.Name, area.AreaName))
                 }
             }
 
             @if (!Model.Areas.Any())
             {
-                @Html.Partial("TemplateHint", string.Format(Html.TranslateFallback("/preview/norendereratall", "No renderer found for '{0}'"), Model.PreviewContent.Name))
+                @await Html.PartialAsync("TemplateHint", string.Format(Html.TranslateFallback("/preview/norendereratall", "No renderer found for '{0}'").ToString(), Model.PreviewContent.Name))
             }
         </div>
     </div>

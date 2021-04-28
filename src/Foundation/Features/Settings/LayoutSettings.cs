@@ -5,7 +5,7 @@ using EPiServer.Framework.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
-using Foundation.Cms.Settings;
+using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Features.Blocks.MenuItemBlock;
 using Foundation.Infrastructure;
 using System.Collections.Generic;
