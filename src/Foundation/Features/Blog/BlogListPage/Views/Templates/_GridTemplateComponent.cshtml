@@ -4,7 +4,7 @@
     <div class="w-100">
         @if (!ContentReference.IsNullOrEmpty(Model.CurrentContent.PageImage))
         {
-            <img data-src="@Url.WebPFallbackImageUrl(Model.CurrentContent.PageImage, 1200)"
+            <img data-src="@Url.ContentUrl(Model.CurrentContent.PageImage)"
                  class="lazyload h-100 w-100" />
         }
     </div>

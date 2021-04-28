@@ -15,7 +15,7 @@
         <div class="row no-gutters">
             <div class="navigation" style="height: @(navigationHeight)px">
                 <div class="navigation__left" @Html.EditAttributes(x => x.LayoutSettings.MainMenu)>
-                    @Html.Partial("_Menu", Model.MenuItems ?? new List<MenuItemViewModel>())
+                    @await Html.PartialAsync("_Menu", Model.MenuItems ?? new List<MenuItemViewModel>())
                 </div>
                 <div class="navigation__logo @(Model.LayoutSettings.HeaderMenuStyle == "LeftLogo" ? "flex-start" : "flex-center")"
                      style="@(Model.LayoutSettings.HeaderMenuStyle == "LeftLogo" ? "order: -1; width: 75%;" : "")">

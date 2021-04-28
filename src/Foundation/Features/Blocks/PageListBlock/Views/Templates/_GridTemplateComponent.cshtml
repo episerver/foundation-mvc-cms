@@ -29,7 +29,7 @@
             {
                 if (page != null && !ContentReference.IsNullOrEmpty(page.PageImage))
                 {
-                    <img class="lazyload h-100" data-src="@Url.WebPFallbackImageUrl(page.PageImage, 1200)" />
+                    <img class="lazyload h-100" data-src="@Url.ContentUrl(page.PageImage)" />
                 }
             }
         </div>

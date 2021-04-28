@@ -20,7 +20,7 @@
                         <div class="card--top">
                             @if (!ContentReference.IsNullOrEmpty(blog.CurrentContent.PageImage))
                             {
-                                <img data-src="@Url.WebPFallbackImageUrl(blog.CurrentContent.PageImage,1200)" class="lazyload" />
+                                <img data-src="@Url.ContentUrl(blog.CurrentContent.PageImage)" class="lazyload" />
                             }
                         </div>
                         <div class="card--bottom">

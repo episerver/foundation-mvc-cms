@@ -3,6 +3,7 @@ using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
+using EPiServer.Web.Mvc.Html;
 using Foundation.Features.Blog.BlogItemPage;
 using Foundation.Features.Header;
 using Foundation.Features.Home;
@@ -105,9 +106,8 @@ namespace Foundation.Infrastructure
 
         private void ContextOnInitComplete(object sender, EventArgs eventArgs)
         {
-            var i = 0;
-            //_services.AddTransient<ContentAreaRenderer, FoundationContentAreaRenderer>();
-            
+            //var i = 0;
+            //_services.AddTransient<ContentAreaRenderer, FoundationContentAreaRenderer>();          
         }
     }
 }

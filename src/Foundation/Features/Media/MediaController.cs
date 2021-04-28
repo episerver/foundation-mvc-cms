@@ -1,4 +1,6 @@
 ﻿using EPiServer.Core;
+using EPiServer.Framework.DataAnnotations;
+using EPiServer.Framework.Web;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
 using EPiServer.Web.Routing;
@@ -6,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.Media
 {
+    [TemplateDescriptor(TemplateTypeCategory = TemplateTypeCategories.MvcPartialComponent, Inherited = true)]
     public class MediaController : PartialContentComponent<MediaData>
     {
         private readonly UrlResolver _urlResolver;

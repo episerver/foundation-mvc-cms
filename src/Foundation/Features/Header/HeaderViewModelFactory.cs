@@ -30,6 +30,7 @@ namespace Foundation.Features.Header
         private readonly ISettingsService _settingsService;
         private readonly IContentVersionRepository _contentVersionRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IContextModeResolver _contextModeResolver;
 
         public HeaderViewModelFactory(LocalizationService localizationService,
             IUrlResolver urlResolver,
@@ -38,7 +39,8 @@ namespace Foundation.Features.Header
             IDatabaseMode databaseMode,
             ISettingsService settingsService,
             IContentVersionRepository contentVersionRepository, 
-            IHttpContextAccessor httpContextAccessor)
+            IHttpContextAccessor httpContextAccessor,
+            IContextModeResolver contextModeResolver)
         {
             _localizationService = localizationService;
             _urlResolver = urlResolver;
@@ -48,6 +50,7 @@ namespace Foundation.Features.Header
             _settingsService = settingsService;
             _contentVersionRepository = contentVersionRepository;
             _httpContextAccessor = httpContextAccessor;
+            _contextModeResolver = contextModeResolver;
         }
 
         public virtual HeaderViewModel CreateHeaderViewModel(IContent currentContent, HomePage homePage)
@@ -178,7 +181,7 @@ namespace Foundation.Features.Header
                     };
                 }
 
-                if (!PageEditing.PageIsInEditMode)
+                if (!_contextModeResolver.CurrentMode.EditOrPreview())
                 {
                     var keyDependency = new List<string>
                     {

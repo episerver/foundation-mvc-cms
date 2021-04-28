@@ -34,7 +34,7 @@
     <div class="col-12 standard-page__container">
         <div class="standard-page__box @boxClass">
             <div class="article__title">
-                @if (!Model.CategoryName.IsEmpty())
+                @if (!Model.CategoryName.IsNullOrEmpty())
                 {
                     <h4 class="small" style="@textColor">@Model.CategoryName</h4>
                 }

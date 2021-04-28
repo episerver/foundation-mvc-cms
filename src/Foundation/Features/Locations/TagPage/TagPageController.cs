@@ -24,10 +24,10 @@ namespace Foundation.Features.Locations.TagPage
         {
             var model = new TagsViewModel(currentPage)
             {
-                Continent = RouteData.Values["Continent"].ToString()
+                Continent = RouteData.Values["Continent"]?.ToString()
             };
 
-            var addcat = RouteData.Values["Category"].ToString();
+            var addcat = RouteData.Values["Category"]?.ToString();
             if (addcat != null)
             {
                 model.AdditionalCategories = addcat.Split(',');
