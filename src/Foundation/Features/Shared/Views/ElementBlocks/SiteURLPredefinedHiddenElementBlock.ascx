@@ -14,7 +14,7 @@
     var extraCSSClass = isViewModeInvisibleElement ? ConstantsFormsUI.CSS_InvisibleElement : string.Empty;
     var formElement = Model.FormElement;
 
-    if (EPiServer.Editor.PageEditing.PageIsInEditMode) { %>
+    if (ViewContext.IsInEditMode()) { %>
 <span class="Form__Element FormHidden <%:extraCSSClass %> "><%: Model.EditViewFriendlyTitle %></span>
 <% } else { %>
 

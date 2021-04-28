@@ -21,7 +21,7 @@ goto main
 :loop
 set SQLSERVER=
 set ADDITIONAL_SQLCMD=
-set /p APPNAME=Enter your database name (required):
+set /p APPNAME=Enter your app name (required):
 set /p SQLSERVER=Enter your SQL server name (optional, press Enter for default (.) local server):
 set /p ADDITIONAL_SQLCMD=Enter your sqlcmd command (optional, press Enter for default (-E) windows auth):
 
@@ -89,12 +89,12 @@ md "%ROOTPATH%\Build\Logs" 2>nul
 echo ## NPM Install ##  
 echo ## NPM Install > Build\Logs\Build.log
 cd %SOURCEPATH%\Foundation
-::CALL npm ci
+CALL npm ci
 IF %errorlevel% NEQ 0 (
 	set errorMessage=%errorlevel%
 	goto error
 )
-::CALL npm run dev
+CALL npm run dev
 cd %ROOTPATH%
 
 echo ## Clean and build ##

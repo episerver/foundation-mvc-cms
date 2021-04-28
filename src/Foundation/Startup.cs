@@ -45,6 +45,7 @@ namespace Foundation
                 .AddRazorOptions(ro => ro.ConfigureFeatureFolders());
 
             services.AddCms();
+            services.AddDisplay();
             services.AddTinyMce();
             services.AddFindUI(_configuration);
             services.ConfigureApplicationCookie(options =>

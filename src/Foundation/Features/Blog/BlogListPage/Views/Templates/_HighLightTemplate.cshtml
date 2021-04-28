@@ -65,7 +65,7 @@ else
                 <div class="w-100">
                     @if (!ContentReference.IsNullOrEmpty(Model.CurrentContent.PageImage))
                     {
-                        <img data-src="@Url.WebPFallbackImageUrl(Model.CurrentContent.PageImage,1200)" class="img-fluid preview--image-top__image lazyload" />
+                        <img data-src="@Url.ContentUrl(Model.CurrentContent.PageImage)" class="img-fluid preview--image-top__image lazyload" />
                     }
                 </div>
             </div>

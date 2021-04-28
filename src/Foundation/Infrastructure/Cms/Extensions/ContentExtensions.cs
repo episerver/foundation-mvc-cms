@@ -34,7 +34,7 @@ namespace Foundation.Infrastructure.Cms.Extensions
             if (requirePageTemplate)
             {
                 var templateFilter = ServiceLocator.Current.GetInstance<FilterTemplate>();
-                templateFilter.TemplateTypeCategories = TemplateTypeCategories.Page;
+                templateFilter.TemplateTypeCategories = TemplateTypeCategories.Request;
                 contents = contents.Where(x => !templateFilter.ShouldFilter(x));
             }
 

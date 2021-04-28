@@ -28,7 +28,7 @@ namespace Foundation.Infrastructure.Cms.Extensions
             var values = first.Union(urlHelper.ActionContext.RouteData.Values);
 
             values[RoutingConstants.ActionKey] = "index";
-            values[RoutingConstants.NodeKey] = contentLink;
+            values[RoutingConstants.ContentLinkKey] = contentLink;
             return values;
         }
 

@@ -31,7 +31,7 @@ else
 
 <header class="header @(Model.LayoutSettings.StickyTopHeader ? "sticky-top" : "")"> 
     <div class="header__wrapper">
-        @Html.Partial("_MobileNavigation", Model)
-        @Html.Partial("_Navigation", Model)
+        @await Html.PartialAsync("_MobileNavigation", Model)
+        @await Html.PartialAsync("_Navigation", Model)
     </div>
 </header>

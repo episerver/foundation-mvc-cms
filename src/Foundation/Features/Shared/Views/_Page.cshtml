@@ -59,7 +59,7 @@
 <div class="@Model.Padding @Model.Margin">
     <div class="teaser @Model.ThemeCssClass @Model.AlignmentCssClass @(Model.ApplyHoverEffect && !Html.IsInEditMode() ? "teaser--hover-effect" : "teaser--show-details")" style="@teaserRatio">
         <div class="teaser__image" @Html.EditAttributes(m => m.PageImage)
-             style="background-image: url('@Url.WebPFallbackImageUrl(Model.PageImage, 1440, null)')">
+             style="background-image: url('@Url.ContentUrl(Model.PageImage)')">
         </div>
         @if (!ContentReference.IsNullOrEmpty(Model.TeaserVideo) && ContentReference.IsNullOrEmpty(Model.PageImage))
         {

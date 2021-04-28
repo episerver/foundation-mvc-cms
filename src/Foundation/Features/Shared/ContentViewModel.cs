@@ -7,6 +7,8 @@ using Foundation.Infrastructure.Cms;
 using Foundation.Features.Home;
 using Foundation.Infrastructure;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using EPiServer.Web;
 
 namespace Foundation.Features.Shared
 {
@@ -14,6 +16,7 @@ namespace Foundation.Features.Shared
     {
         private Injected<IContentLoader> _contentLoader;
         private Injected<IContentVersionRepository> _contentVersion;
+        private Injected<IContextModeResolver> _contextModeResolver;
         private HomePage _startPage;
 
         public ContentViewModel() : this(default)
@@ -39,7 +42,7 @@ namespace Foundation.Features.Shared
                         currentStartPageLink = CurrentContent.GetRelativeStartPage();
                     }
 
-                    if (PageEditing.PageIsInEditMode)
+                    if (_contextModeResolver.Service.CurrentMode.EditOrPreview())
                     {
                         var startPageRef = _contentVersion.Service.LoadCommonDraft(currentStartPageLink, ContentLanguage.PreferredCulture.Name);
                         if (startPageRef == null)

@@ -42,7 +42,6 @@
     <Compile Remove="Infrastructure\Cms\BulkUpdateController.cs" />
     <Compile Remove="Features\Media\FoundationPdfFile.cs" />
     <Compile Remove="Features\Media\FoundationPdfFileViewModel.cs" />
-    <Compile Remove="Infrastructure\Display\FoundationContentAreaRenderer.cs" />
     <Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
     <Compile Remove="Infrastructure\Kpi\FilledInFormKpi.cs" />
     <Compile Remove="Infrastructure\PowerSlices\ContentSlices.cs" />
