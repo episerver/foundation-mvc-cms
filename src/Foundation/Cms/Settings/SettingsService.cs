@@ -2,7 +2,9 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAccess;
+using EPiServer.Editor;
 using EPiServer.Framework.TypeScanner;
+using EPiServer.Globalization;
 using EPiServer.Logging;
 using EPiServer.Security;
 using EPiServer.ServiceLocation;
@@ -18,11 +20,11 @@ namespace Foundation.Cms.Settings
     public interface ISettingsService
     {
         ContentReference GlobalSettingsRoot { get; set; }
-        ConcurrentDictionary<Guid, Dictionary<Type, object>> SiteSettings { get; }
+        ConcurrentDictionary<string, Dictionary<Type, object>> SiteSettings { get; }
         T GetSiteSettings<T>(Guid? siteId = null);
         void InitializeSettings();
         void UnintializeSettings();
-        void UpdateSettings(Guid siteId, IContent content);
+        void UpdateSettings(Guid siteId, IContent content, bool isContentNotPublished);
         void UpdateSettings();
     }
 
@@ -51,6 +53,7 @@ namespace Foundation.Cms.Settings
     public class SettingsService : ISettingsService
     {
         public const string GlobalSettingsRootName = "Global Settings Root";
+        private readonly IContentVersionRepository _contentVersionRepository;
         private readonly IContentRepository _contentRepository;
         private readonly ContentRootService _contentRootService;
         private readonly IContentTypeRepository _contentTypeRepository;
@@ -63,6 +66,7 @@ namespace Foundation.Cms.Settings
         private readonly ServiceAccessor<HttpContextBase> _httpContext;
 
         public SettingsService(
+            IContentVersionRepository contentVersionRepository,
             IContentRepository contentRepository,
             ContentRootService contentRootService,
             ITypeScannerLookup typeScannerLookup,
@@ -73,6 +77,7 @@ namespace Foundation.Cms.Settings
             ISiteDefinitionResolver siteDefinitionResolver,
             ServiceAccessor<HttpContextBase> httpContext)
         {
+            _contentVersionRepository = contentVersionRepository;
             _contentRepository = contentRepository;
             _contentRootService = contentRootService;
             _typeScannerLookup = typeScannerLookup;
@@ -84,12 +89,13 @@ namespace Foundation.Cms.Settings
             _httpContext = httpContext;
         }
 
-        public ConcurrentDictionary<Guid, Dictionary<Type, object>> SiteSettings { get; } = new ConcurrentDictionary<Guid, Dictionary<Type, object>>();
+        public ConcurrentDictionary<string, Dictionary<Type, object>> SiteSettings { get; } = new ConcurrentDictionary<string, Dictionary<Type, object>>();
 
         public ContentReference GlobalSettingsRoot { get; set; }
 
         public T GetSiteSettings<T>(Guid? siteId = null)
         {
+            var contentLanguage = ContentLanguage.PreferredCulture.Name;
             if (!siteId.HasValue)
             {
                 siteId = ResolveSiteId();
@@ -100,9 +106,33 @@ namespace Foundation.Cms.Settings
             }
             try
             {
-                if (SiteSettings.TryGetValue(siteId.Value, out var siteSettings) && siteSettings.TryGetValue(typeof(T), out var setting))
+                if (PageEditing.PageIsInEditMode)
                 {
-                    return (T)setting;
+                    if (SiteSettings.TryGetValue(siteId.Value.ToString() + $"-common-draft-{contentLanguage}", out var siteSettings))
+                    {
+                        if (siteSettings.TryGetValue(typeof(T), out var setting))
+                        {
+                            return (T)setting;
+                        }
+                    }
+                    if (SiteSettings.TryGetValue(siteId.Value.ToString() + "-common-draft-default", out var defaultSiteSettings))
+                    {
+                        if (defaultSiteSettings.TryGetValue(typeof(T), out var defaultSetting))
+                        {
+                            return (T)defaultSetting;
+                        }
+                    }
+                }
+                else
+                {
+                    if (SiteSettings.TryGetValue(siteId.Value.ToString() + $"-{contentLanguage}", out var siteSettings) && siteSettings.TryGetValue(typeof(T), out var setting))
+                    {
+                        return (T)setting;
+                    }
+                    if (SiteSettings.TryGetValue(siteId.Value.ToString() + "-default", out var defaultSiteSettings) && defaultSiteSettings.TryGetValue(typeof(T), out var defaultSetting))
+                    {
+                        return (T)defaultSetting;
+                    }
                 }
             }
             catch (KeyNotFoundException keyNotFoundException)
@@ -117,17 +147,58 @@ namespace Foundation.Cms.Settings
             return default;
         }
 
-        public void UpdateSettings(Guid siteId, IContent content)
+        public void UpdateSettings(Guid siteId, IContent content, bool isContentNotPublished)
         {
             var contentType = content.GetOriginalType();
+            var contentLanguage = ContentLanguage.PreferredCulture.Name;
             try
             {
-                if (!SiteSettings.ContainsKey(siteId))
+                if (isContentNotPublished)
                 {
-                    SiteSettings[siteId] = new Dictionary<Type, object>();
-                }
+                    if(!SiteSettings.ContainsKey(siteId.ToString() + $"-default"))
+                    {
+                        SiteSettings[$"{siteId}-common-draft-default"] = new Dictionary<Type, object>();
+                    }
 
-                SiteSettings[siteId][contentType] = content;
+                    if(!SiteSettings[$"{siteId}-common-draft-default"].ContainsKey(contentType))
+                    {
+                        SiteSettings[$"{siteId}-common-draft-default"][contentType] = content;
+                    }
+
+                    if (!SiteSettings.ContainsKey(siteId.ToString() + $"-{contentLanguage}"))
+                    {
+                        SiteSettings[$"{siteId}-common-draft-{contentLanguage}"] = new Dictionary<Type, object>();
+                    }
+
+                    SiteSettings[$"{siteId}-common-draft-{contentLanguage}"][contentType] = content;
+                }
+                else
+                {
+                    if (!SiteSettings.ContainsKey(siteId.ToString() + $"-default"))
+                    {
+                        SiteSettings[siteId.ToString() + $"-default"] = new Dictionary<Type, object>();
+                        SiteSettings[$"{siteId}-common-draft-default"] = new Dictionary<Type, object>();
+                    }
+
+                    if (!SiteSettings[$"{siteId}-default"].ContainsKey(contentType))
+                    {
+                        SiteSettings[$"{siteId}-default"][contentType] = content;
+                    }
+
+                    if (!SiteSettings[$"{siteId}-common-draft-default"].ContainsKey(contentType))
+                    {
+                        SiteSettings[$"{siteId}-common-draft-default"][contentType] = content;
+                    }
+
+                    if (!SiteSettings.ContainsKey(siteId.ToString() + $"-{contentLanguage}"))
+                    {
+                        SiteSettings[siteId.ToString() + $"-{contentLanguage}"] = new Dictionary<Type, object>();
+                        SiteSettings[$"{siteId}-common-draft-{contentLanguage}"] = new Dictionary<Type, object>();
+                    }
+
+                    SiteSettings[siteId.ToString() + $"-{contentLanguage}"][contentType] = content;
+                    SiteSettings[$"{siteId}-common-draft-{contentLanguage}"][contentType] = content;
+                }
             }
             catch (KeyNotFoundException keyNotFoundException)
             {
@@ -152,6 +223,7 @@ namespace Foundation.Cms.Settings
             }
 
             _contentEvents.PublishedContent += PublishedContent;
+            _contentEvents.SavedContent += SavedContent;
             _siteDefinitionEvents.SiteCreated += SiteCreated;
             _siteDefinitionEvents.SiteUpdated += SiteUpdated;
             _siteDefinitionEvents.SiteDeleted += SiteDeleted;
@@ -160,6 +232,7 @@ namespace Foundation.Cms.Settings
         public void UnintializeSettings()
         {
             _contentEvents.PublishedContent -= PublishedContent;
+            _contentEvents.SavedContent -= SavedContent;
             _siteDefinitionEvents.SiteCreated -= SiteCreated;
             _siteDefinitionEvents.SiteUpdated -= SiteUpdated;
             _siteDefinitionEvents.SiteDeleted -= SiteDeleted;
@@ -184,7 +257,15 @@ namespace Foundation.Cms.Settings
                 {
                     foreach (var child in _contentRepository.GetChildren<SettingsBase>(folder.ContentLink))
                     {
-                        UpdateSettings(site.Id, child);
+                        UpdateSettings(site.Id, child, false);
+
+                        // add draft (not published version) settings
+                        var darftContentLink = _contentVersionRepository.LoadCommonDraft(child.ContentLink, ContentLanguage.PreferredCulture.Name);
+                        if (darftContentLink != null)
+                        {
+                            var settingsDraft = _contentRepository.Get<SettingsBase>(darftContentLink.ContentLink);
+                            UpdateSettings(site.Id, settingsDraft, true);
+                        }
                     }
                     continue;
                 }
@@ -226,7 +307,7 @@ namespace Foundation.Cms.Settings
                 var newSettings = _contentRepository.GetDefault<IContent>(reference, contentType.ID);
                 newSettings.Name = attribute.SettingsName;
                 _contentRepository.Save(newSettings, SaveAction.Publish, AccessLevel.NoAccess);
-                UpdateSettings(siteDefinition.Id, newSettings);
+                UpdateSettings(siteDefinition.Id, newSettings, false);
             }
         }
 
@@ -260,8 +341,7 @@ namespace Foundation.Cms.Settings
             var prevSite = updatedArgs.PreviousSite;
             var updatedSite = updatedArgs.Site;
             var settingsRoot = GlobalSettingsRoot;
-            var currentSettingsFolder = _contentRepository.GetChildren<IContent>(settingsRoot)
-                .FirstOrDefault(x => x.Name.Equals(prevSite.Name, StringComparison.InvariantCultureIgnoreCase)) as ContentFolder;
+            var currentSettingsFolder = _contentRepository.GetChildren<IContent>(settingsRoot).FirstOrDefault(x => x.Name.Equals(prevSite.Name, StringComparison.InvariantCultureIgnoreCase)) as ContentFolder;
             if (currentSettingsFolder != null)
             {
                 var cloneFolder = currentSettingsFolder.CreateWritableClone();
@@ -269,7 +349,6 @@ namespace Foundation.Cms.Settings
                 _contentRepository.Save(cloneFolder);
                 return;
             }
-
 
             CreateSiteFolder(e.Site);
         }
@@ -291,7 +370,25 @@ namespace Foundation.Cms.Settings
                 {
                     return;
                 }
-                UpdateSettings(id.Value, e.Content);
+                UpdateSettings(id.Value, e.Content, false);
+            }
+        }
+
+        private void SavedContent(object sender, ContentEventArgs e)
+        {
+            if (e == null)
+            {
+                return;
+            }
+
+            if (e.Content is SettingsBase)
+            {
+                var id = ResolveSiteId();
+                if (id == Guid.Empty)
+                {
+                    return;
+                }
+                UpdateSettings(id, e.Content, true);
             }
         }
 
