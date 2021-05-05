@@ -24,5 +24,11 @@ namespace Foundation.Features.Header
             var content = _contentRouteHelper.Content;
             return PartialView("_Header", _headerViewModelFactory.CreateHeaderViewModel(content, homePage));
         }
+
+        [ChildActionOnly]
+        public ActionResult GetHeaderLogoOnly()
+        {
+            return PartialView("_HeaderLogo", _headerViewModelFactory.CreateHeaderLogoViewModel());
+        }
     }
 }

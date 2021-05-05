@@ -14,12 +14,14 @@ using EPiServer.Web.PageExtensions;
 using EPiServer.Web.Routing;
 using Foundation.Cms;
 using Foundation.Cms.Extensions;
+using Foundation.Cms.Settings;
 using Foundation.Features.Blog.BlogItemPage;
 using Foundation.Features.Header;
 using Foundation.Features.Home;
 using Foundation.Features.Locations.LocationItemPage;
 using Foundation.Features.Locations.LocationListPage;
 using Foundation.Features.Search;
+using Foundation.Features.Shared;
 using Foundation.Find;
 using Foundation.Infrastructure.Display;
 using Foundation.Infrastructure.PowerSlices;
@@ -49,8 +51,7 @@ namespace Foundation.Infrastructure
             _services.Configure<ContentApiConfiguration>(c =>
             {
                 c.EnablePreviewFeatures = true;
-                c.Default(RestVersion.Version_3_0).SetMinimumRoles(string.Empty).SetRequiredRole(string.Empty);
-                c.Default(RestVersion.Version_2_0).SetMinimumRoles(string.Empty).SetRequiredRole(string.Empty);
+                c.Default().SetMinimumRoles(string.Empty).SetRequiredRole(string.Empty);
             });
 
             _services.Configure<ContentApiSearchConfiguration>(config =>
@@ -93,6 +94,9 @@ namespace Foundation.Infrastructure
             _services.AddSingleton<ISchemaDataMapper<BlogItemPage>, BlogItemPageSchemaMapper>();
             _services.AddSingleton<ISchemaDataMapper<HomePage>, HomePageSchemaMapper>();
             _services.AddSingleton<ISchemaDataMapper<LocationItemPage>, LocationItemPageSchemaDataMapper>();
+            // Foundation.Features.Shared
+            _services.AddSingleton<IMailService, MailService>();
+            _services.AddSingleton<IHtmlDownloader, HtmlDownloader>();
         }
 
         public void Initialize(InitializationEngine context)
@@ -125,6 +129,8 @@ namespace Foundation.Infrastructure
         private void ContextOnInitComplete(object sender, EventArgs eventArgs)
         {
             _services.AddTransient<ContentAreaRenderer, FoundationContentAreaRenderer>();
+            Extensions.InstallDefaultContent();
+            ServiceLocator.Current.GetInstance<ISettingsService>().InitializeSettings();
         }
     }
 }

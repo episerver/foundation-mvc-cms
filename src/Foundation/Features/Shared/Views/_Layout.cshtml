@@ -1,3 +1,4 @@
+@using EPiServer.Framework.Web.Mvc.Html
 @model IContentViewModel<IContent>
 
 @{
@@ -19,6 +20,11 @@
 {
     { Html.RenderAction("GetHeader", "Header", new { homePage = Model.StartPage }); }
 }
+else
+{
+    Html.RenderAction("GetHeaderLogoOnly", "Header");
+}
+
 
 <div class="container">
     @RenderBody()
@@ -26,12 +32,12 @@
 
 @if (!foundationPageData?.HideSiteFooter ?? false)
 {
-    @Html.Partial("_Footer", Model)
+    @Html.Partial("_Footer", Html.GetLayoutSettings())
 }
 
 <script src="~/Assets/js/main.min.js"></script>
 
 @RenderSection("AdditionalScripts", required: false)
 @Html.RequiredClientResources("Footer")
-@Html.RenderExtendedScripts(Model.CurrentContent)
+@Html.RenderFooterScripts(Model.CurrentContent)
 @Model.SchemaMarkup

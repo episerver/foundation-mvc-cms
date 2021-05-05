@@ -8,6 +8,7 @@ using EPiServer.Web;
 using Foundation.Features.Folder;
 using Foundation.Features.Shared;
 using Foundation.Features.Shared.SelectionFactories;
+using Foundation.Infrastructure;
 using Geta.EpiCategories.DataAnnotations;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -19,8 +20,8 @@ namespace Foundation.Features.Blocks.PageListBlock
     [ContentType(DisplayName = "Page List Block",
         GUID = "30685434-33DE-42AF-88A7-3126B936AEAD",
         Description = "A block that lists a bunch of pages",
-        GroupName = SystemTabNames.Content)]
-    [ImageUrl("~/assets/icons/cms/blocks/CMS-icon-block-26.png")]
+        GroupName = GroupNames.Content)]
+    [ImageUrl("~/assets/icons/cms/blocks/CMS-icon-block-18.png")]
     public class PageListBlock : FoundationBlockData
     {
         [CultureSpecific]
@@ -64,15 +65,15 @@ namespace Foundation.Features.Blocks.PageListBlock
         [SelectOne(SelectionFactoryType = typeof(TemplateListSelectionFactory))]
         public virtual string Template { get; set; }
 
-        [Display(Name = "Preview option (not available in the Grid template)", GroupName = SystemTabNames.Content, Order = 110)]
+        [Display(Name = "Preview option (not available in the Grid, Insight templates)", GroupName = SystemTabNames.Content, Order = 110)]
         [SelectOne(SelectionFactoryType = typeof(PreviewOptionSelectionFactory))]
         public virtual string PreviewOption { get; set; }
 
-        [Display(Name = "Overlay color (hex or rgba)", Description = "Apply for Card template", GroupName = SystemTabNames.Content, Order = 120)]
+        [Display(Name = "Overlay color (only for Card template)", Description = "Apply for Card template", GroupName = SystemTabNames.Content, Order = 120)]
         [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
         public virtual string OverlayColor { get; set; }
 
-        [Display(Name = "Overlay text color (hex or rgba)", Description = "Apply for Card template", GroupName = SystemTabNames.Content, Order = 130)]
+        [Display(Name = "Overlay text color (only for Card template)", Description = "Apply for Card template", GroupName = SystemTabNames.Content, Order = 130)]
         [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
         public virtual string OverlayTextColor { get; set; }
 
@@ -95,15 +96,15 @@ namespace Foundation.Features.Blocks.PageListBlock
     {
         public IEnumerable<ValidationError> Validate(PageListBlock block)
         {
-            if (block.Template == TemplateSelections.Card || block.Template == TemplateSelections.Insight)
+            if (block.Template == TemplateSelections.Insight)
             {
-                if (block.Count % 6 != 0)
+                if (block.Count % 3 != 0)
                 {
                     return new ValidationError[]
                     {
                         new ValidationError()
                         {
-                             ErrorMessage = "The property Count must be divisible by 6 (with Template is Card or Insight)",
+                             ErrorMessage = "The property Number of results must be divisible by 3 if Template is Insight",
                              PropertyName = block.GetPropertyName(p => p.Count),
                              Severity = ValidationErrorSeverity.Error,
                              ValidationType = ValidationErrorType.StorageValidation

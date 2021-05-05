@@ -1,6 +1,5 @@
 ﻿using EPiServer;
 using EPiServer.Core;
-using EPiServer.Web.Mvc.Html;
 using Foundation.Attributes;
 using Foundation.Features.Home;
 using Foundation.Helpers;
@@ -27,7 +26,7 @@ namespace Foundation.Features.Login
         {
             var model = new UserViewModel();
             var homePage = _contentLoader.Get<PageData>(ContentReference.StartPage) as HomePage;
-            model.Logo = Url.ContentUrl(homePage?.SiteLogo);
+            // model.Logo = Url.ContentUrl(homePage?.SiteLogo);
             model.Title = "Register";
             return View(model);
         }

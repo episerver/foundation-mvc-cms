@@ -6,7 +6,9 @@ using EPiServer.Web.Mvc;
 using Foundation.Cms.Attributes;
 using Foundation.Cms.Extensions;
 using Foundation.Cms.Identity;
+using Foundation.Cms.Settings;
 using Foundation.Features.Home;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,14 +24,17 @@ namespace Foundation.Features.MyAccount.ResetPassword
         private readonly LocalizationService _localizationService;
         private readonly ApplicationSignInManager<SiteUser> _signinManager;
         private readonly ApplicationUserManager<SiteUser> _userManager;
+        private readonly ISettingsService _settingsService;
 
         public ResetPasswordController(ApplicationSignInManager<SiteUser> signinManager,
             ApplicationUserManager<SiteUser> userManager,
             IContentLoader contentLoader,
             IMailService mailService,
-            LocalizationService localizationService)
+            LocalizationService localizationService,
+            ISettingsService settingsService)
         {
             _contentLoader = contentLoader;
+            _settingsService = settingsService;
             _mailService = mailService;
             _localizationService = localizationService;
             _signinManager = signinManager;
@@ -59,10 +64,10 @@ namespace Foundation.Features.MyAccount.ResetPassword
                 // Don't reveal that the user does not exist or is not confirmed
                 return RedirectToAction("ForgotPasswordConfirmation");
             }
-
+            var referencePages = _settingsService.GetSiteSettings<ReferencePageSettings>();
             var startPage = _contentLoader.Get<HomePage>(ContentReference.StartPage);
             //var body = _mailService.GetHtmlBodyForMail(startPage.ResetPasswordMail, new NameValueCollection(), language);
-            var mailPage = _contentLoader.Get<MailBasePage>(startPage.ResetPasswordMail);
+            var mailPage = _contentLoader.Get<MailBasePage>(referencePages?.ResetPasswordMail);
             var body = mailPage.MainBody.ToHtmlString();
             var code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
             var url = Url.Action("ResetPassword", "ResetPassword", new { userId = user.Id, code = HttpUtility.UrlEncode(code), language }, Request.Url.Scheme);

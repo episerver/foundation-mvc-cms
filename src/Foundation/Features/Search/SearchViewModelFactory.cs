@@ -2,7 +2,6 @@
 using EPiServer.Find;
 using EPiServer.Find.Statistics;
 using EPiServer.Framework.Localization;
-using Foundation.Cms.Extensions;
 using System.Linq;
 using System.Web;
 using System.Web.WebPages;
@@ -54,11 +53,7 @@ namespace Foundation.Features.Search
             model.FilterOption = filterOption;
             model.Query = filterOption.Q;
             model.IsMobile = _httpContextBase.GetOverriddenBrowser().IsMobileDevice;
-
-            if (!model.ContentSearchResult.Hits.Any() && model.FilterOption.Q.IsNullOrEmpty())
-            {
-                model.DidYouMeans = _findClient.Statistics().GetDidYouMean(model.FilterOption.Q);
-            }
+            model.DidYouMeans = string.IsNullOrEmpty(model.FilterOption.Q) ? null : model.ContentSearchResult.Hits.Any() ? null : _findClient.Statistics().GetDidYouMean(model.FilterOption.Q);
 
             return model;
         }

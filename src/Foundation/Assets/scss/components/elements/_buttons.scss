@@ -42,6 +42,10 @@
     }
 }
 
+.button-origin {
+    @extend %button-base;
+}
+
 .button-transparent-black {
     @extend %button-base;
     background: transparent;
@@ -60,36 +64,30 @@
     border-color: white;
 
     &:hover {
-        border-color: white;
-        color: black;
-        background-color: white;
+        border-color: white !important;
+        color: black !important;
+        background-color: white !important;
     }
 }
 
 .button-black {
     @extend %button-base;
-    background-color: #61A0A8;
+    background-color: black;
     color: white;
 
     &--icon {
         @extend .button-black;
         @extend %button-base--icon;
     }
-    &:hover {
-        background: #004564;
-    }
 }
-
 
 .button-white {
     @extend %button-base;
     background: white;
-    color: #004564;
+    color: black;
 
     &:hover {
-        border-color: none;
-        background: #61A0A8;
-        color: white;
+        border-color: white !important;
     }
 }
 
@@ -100,9 +98,9 @@
     color: $color-white;
 
     &:hover {
-        background: $color-black;
-        border: 1px solid $color-black;
-        color: $color-white;
+        background: $color-black !important;
+        border: 1px solid $color-black !important;
+        color: $color-white !important;
     }
 }
 
@@ -113,9 +111,9 @@
     color: $color-white;
 
     &:hover {
-        background: $color-white;
-        border: 1px solid $color-white;
-        color: $color-black;
+        background: $color-white !important;
+        border: 1px solid $color-white !important;
+        color: $color-black !important;
     }
 }
 

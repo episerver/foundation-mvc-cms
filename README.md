@@ -125,15 +125,15 @@ Or clone project using Git
 ```
 
 
-5.	When the installation is finished, a setup page is opened in your browser. If not, enter the URL http://_yourdomainname_/ manually.
-6.	If the setup page throws an error, open your host file, found under **C:\Windows\System32\drivers\etc**, and add the one domain name you entered during the installation. Reload the page in your browser.
+5.	When the installation is finished, a start page is opened in your browser. If not, enter the URL http://_yourdomainname_/ manually.
+6.	If the start page throws an error, open your host file, found under **C:\Windows\System32\drivers\etc**, and add the one domain name you entered during the installation. Reload the page in your browser.
 ![Example host file](https://i.ibb.co/Ss79b55/Host-File-Example.png)
 
 7.	Log in with user: **admin@example.com** and password: **store** to access the Episerver user interface.  
 
 > **_Note:_** A **resetup.cmd** file has been created in your project which you can run to re-install the database.
 
-1.  Developer licenses for evaluation purposes can be obtained from the [Episerver License Center](https://license.episerver.com/). Place the **License.config** file in your webroot. 
+8.  Developer licenses for evaluation purposes can be obtained from the [Episerver License Center](https://license.episerver.com/). Place the **License.config** file in your webroot. 
 
 ## Troubleshooting
 ### The installation fails

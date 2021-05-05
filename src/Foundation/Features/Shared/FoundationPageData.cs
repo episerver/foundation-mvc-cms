@@ -7,6 +7,7 @@ using EPiServer.Shell.ObjectEditing;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using Foundation.Features.Blocks.ButtonBlock;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
 using Geta.EpiCategories;
@@ -167,6 +168,18 @@ namespace Foundation.Features.Shared
 
         [CultureSpecific]
         [Searchable(false)]
+        [SelectOne(SelectionFactoryType = typeof(ButtonBackgroundColorSelectionFactory))]
+        [Display(Name = "Button color", GroupName = TabNames.Teaser, Order = 700)]
+        public virtual string TeaserButtonColor { get; set; }
+
+        [CultureSpecific]
+        [Searchable(false)]
+        [SelectOne(SelectionFactoryType = typeof(ButtonTextSelectionFactory))]
+        [Display(Name = "Button text color", GroupName = TabNames.Teaser, Order = 700)]
+        public virtual string TeaserButtonTextColor { get; set; }
+
+        [CultureSpecific]
+        [Searchable(false)]
         [Display(Name = "Display hover effect", GroupName = TabNames.Teaser, Order = 800)]
         public virtual bool ApplyHoverEffect { get; set; }
 
@@ -241,23 +254,14 @@ namespace Foundation.Features.Shared
 
         #region Styles
 
+        [Searchable(false)]
         [Display(Name = "CSS files", GroupName = TabNames.Styles, Order = 100)]
         public virtual LinkItemCollection CssFiles { get; set; }
 
+        [Searchable(false)]
+        [UIHint(UIHint.Textarea)]
         [Display(Name = "CSS", GroupName = TabNames.Styles, Order = 200)]
-        [UIHint(UIHint.Textarea)]
         public virtual string Css { get; set; }
-
-        #endregion
-
-        #region Scripts
-
-        [Display(Name = "Script files", GroupName = TabNames.Scripts, Order = 100)]
-        public virtual LinkItemCollection ScriptFiles { get; set; }
-
-        [UIHint(UIHint.Textarea)]
-        [Display(GroupName = TabNames.Scripts, Order = 200)]
-        public virtual string Scripts { get; set; }
 
         #endregion
 

@@ -1,4 +1,6 @@
-﻿export default class SearchBox {
+﻿import Popper from "popper.js";
+
+export default class SearchBox {
     constructor() {
         this.apiUrl = "https://eastus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Description";
         this.authKey = "38192ad9dc5647d1b4d6328d420ac505";
@@ -19,21 +21,37 @@
         $("#js-searchbutton").click(function () {
             inst.expandSearchBox();
         });
+
         $("#js-searchbox-close").click(function () {
             inst.collapseSearchBox();
         });
+
         $(".jsSearchText").each(function (i, e) {
             inst.boxContent = $($(e).data('result-container'))[0];
-
-            inst.autoSearch(e);
-            $(e).on("keyup", function () {
-                clearTimeout(typingTimer);
-                const val = $(this).val();
-                typingTimer = setTimeout(function () {
-                    var e = $.Event("keypress", { which: 13 });
-                    $('#js-searchbox-input').trigger(e);
-                }, 5000);
-            });
+            if ($("#searchOption").val() != "QuickSearch") {
+                inst.autoSearch(e);
+                $(e).on("keyup", function () {
+                    clearTimeout(typingTimer);
+                    const val = $(this).val();
+                    typingTimer = setTimeout(function () {
+                        var e = $.Event("keypress", { which: 13 });
+                        $('#js-searchbox-input').trigger(e);
+                    }, 5000);
+                });
+            } else {
+                $(e).on("keyup", function () {
+                    clearTimeout(typingTimer);
+                    const val = $(this).val();
+                    const container = $(this).data('result-container');
+                    const divParent = "#" + $(this).parent().attr('id');
+                    if (val != "") {
+                        typingTimer = setTimeout(function () {
+                            console.log(inst);
+                            inst.Search(val, divParent, container);
+                        }, 1000);
+                    }
+                });
+            }
 
             $(e).on('keypress',
                 function (e) {
@@ -45,10 +63,10 @@
                             var confidence = $('#searchConfidence').val();
                             url += "&Confidence=" + confidence;
                         }
-
                         location.href = url;
                     }
-                });
+                }
+            );
         });
 
         document.addEventListener("click", function (e) {
@@ -56,7 +74,6 @@
                 if (inst.box.contains(e.target) || inst.btn.contains(e.target) || inst.boxContent.contains(e.target)) {
                     return;
                 }
-
                 inst.hidePopover();
                 inst.collapseSearchBox();
             }
@@ -83,7 +100,7 @@
         );
     }
 
-    search(val, divInputElement, containerPopover) {
+    Search(val, divInputElement, containerPopover) {
         var waitTimer;
         clearTimeout(waitTimer);
         waitTimer = setTimeout(function () {
@@ -141,7 +158,6 @@
                         $(containerPopover + ' .loading-cart').hide();
                     }
                 });
-
             this.showPopover(containerPopover);
         } else {
             this.hidePopover();

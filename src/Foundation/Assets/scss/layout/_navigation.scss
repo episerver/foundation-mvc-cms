@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
 
-    &__main {
+    &__left {
         padding-left: 0;
         width: 40%;
         display: flex;
@@ -27,7 +27,7 @@
 
     &__right {
         margin: 0;
-        width: 10%;
+        width: 40%;
         display: flex;
         position: relative;
         justify-content: flex-end;
@@ -68,6 +68,7 @@
             padding-right: 15px;
             line-height: $navigation-height;
             cursor: pointer;
+            white-space: nowrap;
         }
     }
 }
@@ -267,4 +268,8 @@
             }
         }
     }
+}
+
+.navigation__main--menu {
+    display: flex;
 }

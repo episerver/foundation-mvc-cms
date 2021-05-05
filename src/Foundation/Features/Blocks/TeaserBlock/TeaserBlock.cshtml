@@ -9,8 +9,7 @@
     Model.CurrentBlock.Heading))
 {
     <div class="teaser-block @(Model.CurrentBlock.Padding + " " + Model.CurrentBlock.Margin)"
-         style="text-align: @Model.CurrentBlock.ElementsAlignment;
-        background-color: @Model.CurrentBlock.BackgroundColor; color: @Model.CurrentBlock.HeadingColor;
+         style="background-color: @Model.CurrentBlock.BackgroundColor; color: @Model.CurrentBlock.HeadingColor;
         opacity:@Model.CurrentBlock.BlockOpacity; height: @(Model.CurrentBlock.Height)px;">
 
         @if (!Model.CurrentBlock.Description.IsNullOrEmpty())

@@ -32,11 +32,11 @@ namespace Foundation.Features.Shared
             set { this.SetPropertyValue(page => page.Margin, value); }
         }
 
-        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
         [Display(Name = "Background color", GroupName = TabNames.BlockStyling, Order = 3)]
+        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
         public virtual string BackgroundColor
         {
-            get { return this.GetPropertyValue(page => page.BackgroundColor) ?? "transparent"; }
+            get { return this.GetPropertyValue(page => page.BackgroundColor) ?? "#00000000"; }
             set { this.SetPropertyValue(page => page.BackgroundColor, value); }
         }
 
@@ -52,7 +52,7 @@ namespace Foundation.Features.Shared
         {
             Padding = "p-1";
             Margin = "m-0";
-            BackgroundColor = "transparent";
+            BackgroundColor = "#00000000";
             BlockOpacity = 1;
             base.SetDefaultValues(contentType);
         }

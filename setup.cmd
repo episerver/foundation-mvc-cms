@@ -14,13 +14,11 @@ set APPCMD=%windir%\system32\inetsrv\appcmd.exe
 
 if "%~1" == "" goto loop
 
-for /f "tokens=1-5*" %%a in ("%*") do (
-	set APPNAME=%%a
-	set FOUNDATIONDOMAIN=%%b
-	set LICENSEPATH=%%c
-	set SQLSERVER=%%d
-	set ADDITIONAL_SQLCMD=%%e
-)
+set APPNAME=%~1
+set FOUNDATIONDOMAIN=%~2
+set LICENSEPATH=%~3
+set SQLSERVER=%~4
+set ADDITIONAL_SQLCMD=%~5
 goto main
 
 :loop
@@ -283,6 +281,6 @@ echo echo #       Crtl+C NOW if you are unsure!                                #
 echo echo #                                                                    # >> resetup.cmd
 echo echo ###################################################################### >> resetup.cmd
 echo pause >> resetup.cmd
-echo setup %APPNAME% %FOUNDATIONDOMAIN% %LICENSEPATH% %SQLSERVER% %ADDITIONAL_SQLCMD% >> resetup.cmd
+echo setup %APPNAME% %FOUNDATIONDOMAIN% %LICENSEPATH% %SQLSERVER% "%ADDITIONAL_SQLCMD%" >> resetup.cmd
 
 pause
