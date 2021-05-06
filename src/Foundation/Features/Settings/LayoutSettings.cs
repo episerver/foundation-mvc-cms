@@ -18,7 +18,7 @@ namespace Foundation.Features.Settings
         Description = "Header settings, footer settings, menu settings",
         AvailableInEditMode = true,
         SettingsName = "Layout Settings")]
-    [ImageUrl("~/assets/icons/cms/pages/CMS-icon-page-layout-settings.png")]
+    [ImageUrl("/icons/cms/pages/CMS-icon-page-layout-settings.png")]
     public class LayoutSettings : SettingsBase
     {
         #region Footer

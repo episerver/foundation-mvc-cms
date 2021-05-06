@@ -11,7 +11,7 @@ namespace Foundation.Features.LandingPages.TwoColumnLandingPage
        GUID = "F94571B0-65C4-4E49-8A88-5930D045E19D",
        Description = "Two column landing page with properties to determine column size",
        GroupName = SystemTabNames.Content)]
-    [ImageUrl("~/assets/icons/gfx/page-type-thumbnail-landingpage-twocol.png")]
+    [ImageUrl("/icons/gfx/page-type-thumbnail-landingpage-twocol.png")]
     public class TwoColumnLandingPage : LandingPage.LandingPage
     {
         [CultureSpecific]

@@ -14,7 +14,7 @@ namespace Foundation.Features.People.PersonItemPage
         Description = "Used to show info of specific person",
         GroupName = TabNames.Person)]
     [AvailableContentTypes(Availability.Specific, Exclude = new[] { typeof(PageData) })]
-    [ImageUrl("~/assets/icons/cms/blocks/contact.png")]
+    [ImageUrl("/icons/cms/blocks/contact.png")]
     public class PersonPage : FoundationPageData
     {
         [CultureSpecific]

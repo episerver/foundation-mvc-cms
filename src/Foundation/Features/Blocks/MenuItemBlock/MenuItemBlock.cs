@@ -18,7 +18,7 @@ namespace Foundation.Features.Blocks.MenuItemBlock
         GUID = "a6d0242a-3946-4a80-9eec-4d9b2e5fc2d0",
         Description = "Used to create a menu item",
         GroupName = GroupNames.Content)]
-    [ImageUrl("~/assets/icons/cms/blocks/CMS-icon-block-23.png")]
+    [ImageUrl("/icons/cms/blocks/CMS-icon-block-23.png")]
     public class MenuItemBlock : BlockData
     {
         [CultureSpecific]

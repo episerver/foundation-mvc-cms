@@ -21,7 +21,7 @@ namespace Foundation.Features.Blocks.PageListBlock
         GUID = "30685434-33DE-42AF-88A7-3126B936AEAD",
         Description = "A block that lists a bunch of pages",
         GroupName = GroupNames.Content)]
-    [ImageUrl("~/assets/icons/cms/blocks/CMS-icon-block-18.png")]
+    [ImageUrl("/icons/cms/blocks/CMS-icon-block-18.png")]
     public class PageListBlock : FoundationBlockData
     {
         [CultureSpecific]

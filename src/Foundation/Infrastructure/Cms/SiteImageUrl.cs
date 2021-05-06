@@ -10,7 +10,7 @@ namespace Foundation.Infrastructure.Cms
         /// <summary>
         /// The parameterless constructor will initialize a SiteImageUrl attribute with a default thumbnail
         /// </summary>
-        public SiteImageUrl() : base("~/assets/icons/gfx/page-type-thumbnail.png")
+        public SiteImageUrl() : base("/icons/gfx/page-type-thumbnail.png")
         {
 
         }

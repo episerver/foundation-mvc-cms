@@ -11,7 +11,7 @@ namespace Foundation.Features.Blocks.YouTubeBlock
         GUID = "67429E0D-9365-407C-8A49-69489382BBDC",
         Description = "Display YouTube video",
         GroupName = GroupNames.Content)]
-    [ImageUrl("~/assets/icons/cms/blocks/video.png")]
+    [ImageUrl("/icons/cms/blocks/video.png")]
     public class YouTubeBlock : FoundationBlockData
     {
         [Required]

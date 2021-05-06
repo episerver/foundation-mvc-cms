@@ -11,7 +11,7 @@ namespace Foundation.Features.LandingPages.ThreeColumnLandingPage
        GUID = "947EDF31-8C8C-4595-8591-A17DEF75685E",
        Description = "Three column landing page with properties to determin column size",
        GroupName = SystemTabNames.Content)]
-    [ImageUrl("~/assets/icons/gfx/page-type-thumbnail-landingpage-threecol.png")]
+    [ImageUrl("/icons/gfx/page-type-thumbnail-landingpage-threecol.png")]
     public class ThreeColumnLandingPage : LandingPage.LandingPage
     {
         [CultureSpecific]

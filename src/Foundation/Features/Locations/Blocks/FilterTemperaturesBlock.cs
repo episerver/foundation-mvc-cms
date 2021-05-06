@@ -13,7 +13,7 @@ namespace Foundation.Features.Locations.Blocks
         GUID = "28629b4b-9475-4c44-9c15-31961391f166",
         Description = "Temperature slider for locations",
         GroupName = TabNames.Location)]
-    [ImageUrl("~/assets/icons/cms/blocks/map.png")]
+    [ImageUrl("/icons/cms/blocks/map.png")]
     [AvailableContentTypes(Include = new Type[] { typeof(LocationListPage.LocationListPage) })]
     public class FilterTemperaturesBlock : FoundationBlockData, IFilterBlock
     {

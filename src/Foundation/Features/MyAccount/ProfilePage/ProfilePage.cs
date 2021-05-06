@@ -9,7 +9,7 @@ namespace Foundation.Features.MyAccount.ProfilePage
         Description = "Page to show and manage profile information",
         GroupName = SystemTabNames.Content,
         AvailableInEditMode = false)]
-    [ImageUrl("~/assets/icons/cms/pages/elected.png")]
+    [ImageUrl("/icons/cms/pages/elected.png")]
     public class ProfilePage : FoundationPageData
     {
 
