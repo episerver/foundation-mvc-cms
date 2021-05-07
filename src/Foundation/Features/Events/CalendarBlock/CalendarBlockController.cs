@@ -1,17 +1,18 @@
 using EPiServer;
 using EPiServer.Core;
-using EPiServer.Web.Mvc;
 using Foundation.Infrastructure.Cms.Extensions;
 using Foundation.Features.Events.CalendarEvent;
-using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Foundation.Features.Events.CalendarBlock
 {
-    public class CalendarBlockController : BlockComponent<CalendarBlock>
+    [ApiController]
+    [Route("[controller]")]
+    public class CalendarBlockController : ControllerBase
     {
         private readonly IContentLoader _contentLoader;
 
@@ -20,17 +21,12 @@ namespace Foundation.Features.Events.CalendarBlock
             _contentLoader = contentLoader;
         }
 
-        public override IViewComponentResult Invoke(CalendarBlock currentBlock)
-        {
-            var model = new CalendarBlockViewModel(currentBlock);
-
-            return View(model);
-        }
-
         private IEnumerable<CalendarEventPage> GetEvents(int blockId)
         {
-            var currentBlock = _contentLoader.Get<CalendarBlock>(new ContentReference(blockId));
+            var contentRef = new ContentReference(blockId);
+            var currentBlock = _contentLoader.Get<CalendarBlock>(contentRef);
             IEnumerable<CalendarEventPage> events;
+
             var root = currentBlock.EventsRoot;
             if (currentBlock.Recursive)
             {
@@ -52,8 +48,10 @@ namespace Foundation.Features.Events.CalendarBlock
         }
 
         [HttpPost]
-        public ContentResult CalendarEvents(int blockId)
+        [Route("CalendarEvents")]
+        public ContentResult CalendarEvents(CalendarBlockData calendarBlockData)
         {
+            var blockId = calendarBlockData.BlockId;
             var events = GetEvents(blockId);
             var result = events.Select(x => new
             {
@@ -71,8 +69,10 @@ namespace Foundation.Features.Events.CalendarBlock
         }
 
         [HttpPost]
-        public ContentResult UpcomingEvents(int blockId)
+        [Route("UpcomingEvents")]
+        public ContentResult UpcomingEvents(CalendarBlockData calendarBlockData)
         {
+            var blockId = calendarBlockData.BlockId;
             var events = GetEvents(blockId);
             var result = events.Where(x => x.EventStartDate >= DateTime.Now)
                 .OrderBy(x => x.EventStartDate)
@@ -90,5 +90,7 @@ namespace Foundation.Features.Events.CalendarBlock
                 ContentType = "application/json",
             };
         }
+
+
     }
 }
