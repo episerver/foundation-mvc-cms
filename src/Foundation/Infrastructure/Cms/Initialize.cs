@@ -20,7 +20,7 @@ namespace Foundation.Infrastructure.Cms
             context.Services.AddSingleton<ServiceAccessor<IContentRouteHelper>>(locator => locator.GetInstance<IContentRouteHelper>);
             context.Services.AddTransient<IModelBinderProvider, ModelBinderProvider>();
             context.Services.AddSingleton<IUserService, UserService>();
-            context.Services.AddTransient<CookieService>();
+            context.Services.AddTransient<ICookieService, CookieService>();
             context.Services.AddSingleton<ISettingsService, SettingsService>();
         }
 

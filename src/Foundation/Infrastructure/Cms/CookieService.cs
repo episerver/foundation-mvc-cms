@@ -3,7 +3,16 @@ using System;
 
 namespace Foundation.Infrastructure.Cms
 {
-    public class CookieService
+    public interface ICookieService
+    {
+        string Get(string cookie);
+
+        void Set(string cookie, string value, bool sessionCookie = false);
+
+        void Remove(string cookie);
+    }
+
+    public class CookieService : ICookieService
     {
         private IHttpContextAccessor _httpContextAccessor;
 

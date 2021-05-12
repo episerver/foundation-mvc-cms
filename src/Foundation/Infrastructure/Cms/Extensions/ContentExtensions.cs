@@ -12,7 +12,7 @@ namespace Foundation.Infrastructure.Cms.Extensions
 {
     public static class ContentExtensions
     {
-        private static readonly Lazy<CookieService> _cookieService = new Lazy<CookieService>(() => ServiceLocator.Current.GetInstance<CookieService>());
+        private static readonly Lazy<ICookieService> _cookieService = new Lazy<ICookieService>(() => ServiceLocator.Current.GetInstance<ICookieService>());
         private static readonly Lazy<IContentLoader> _contentLoader = new Lazy<IContentLoader>(() => ServiceLocator.Current.GetInstance<IContentLoader>());
         private const string Delimiter = "^!!^";
 
