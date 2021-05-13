@@ -1,9 +1,9 @@
 ﻿using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Core;
 using EPiServer.Web.Routing;
+using Foundation.Features.Settings;
 using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Infrastructure.Cms.Users;
-using Foundation.Features.Settings;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

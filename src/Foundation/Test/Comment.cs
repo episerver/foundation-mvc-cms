@@ -1,6 +1,6 @@
-﻿using System;
-using EPiServer.Core;
+﻿using EPiServer.Core;
 using EPiServer.DataAnnotations;
+using System;
 
 namespace Foundation.Test
 {

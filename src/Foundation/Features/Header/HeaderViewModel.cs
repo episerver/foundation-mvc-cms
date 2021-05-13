@@ -1,9 +1,9 @@
 ﻿using EPiServer.Core;
 using EPiServer.SpecializedProperties;
-using Foundation.Infrastructure.Cms.Users;
 using Foundation.Features.Blocks.MenuItemBlock;
 using Foundation.Features.Home;
 using Foundation.Features.Settings;
+using Foundation.Infrastructure.Cms.Users;
 using System;
 using System.Collections.Generic;
 

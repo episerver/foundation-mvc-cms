@@ -1,5 +1,4 @@
 ﻿using EPiServer.DataAnnotations;
-using System.Linq;
 
 namespace Foundation.Infrastructure.Cms.Attributes
 {

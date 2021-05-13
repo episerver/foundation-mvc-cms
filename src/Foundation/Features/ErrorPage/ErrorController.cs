@@ -1,6 +1,6 @@
 ﻿using Foundation.Infrastructure.Helpers;
-using System;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Foundation.Features.ErrorPage
 {

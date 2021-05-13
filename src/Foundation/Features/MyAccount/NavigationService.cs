@@ -1,8 +1,8 @@
 ﻿using EPiServer.ServiceLocation;
 using EPiServer.SpecializedProperties;
-using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Features.Header;
 using Foundation.Features.Settings;
+using Foundation.Infrastructure.Cms.Settings;
 
 namespace Foundation.Features.MyAccount
 {

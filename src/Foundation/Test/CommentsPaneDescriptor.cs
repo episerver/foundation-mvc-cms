@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using EPiServer.Core;
+﻿using EPiServer.Core;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Foundation.Test
 {

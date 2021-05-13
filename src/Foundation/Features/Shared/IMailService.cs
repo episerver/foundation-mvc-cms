@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Foundation.Features.Shared
 {
-    public interface IMailService 
+    public interface IMailService
     {
         void Send(string subject, string body, string toEmail);
         void Send(MailMessage message);

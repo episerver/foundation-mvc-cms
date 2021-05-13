@@ -5,9 +5,9 @@ using EPiServer.Find.Framework.Statistics;
 using EPiServer.Find.UnifiedSearch;
 using EPiServer.Globalization;
 using EPiServer.Web;
-using Foundation.Infrastructure.Cms.Extensions;
 using Foundation.Features.Media;
 using Foundation.Features.Shared;
+using Foundation.Infrastructure.Cms.Extensions;
 using Microsoft.AspNetCore.Http;
 
 namespace Foundation.Features.Search

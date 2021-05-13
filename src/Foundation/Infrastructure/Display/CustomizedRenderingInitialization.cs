@@ -2,8 +2,8 @@
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
-using Microsoft.Extensions.DependencyInjection;
 using EPiServer.Web.Mvc.Html;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Foundation.Infrastructure.Display
 {

@@ -2,12 +2,12 @@
 using EPiServer.Core;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Mvc.Html;
-using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Features.Home;
 using Foundation.Features.Login;
 using Foundation.Features.Settings;
-using System;
+using Foundation.Infrastructure.Cms.Settings;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Foundation.Infrastructure.Helpers
 {

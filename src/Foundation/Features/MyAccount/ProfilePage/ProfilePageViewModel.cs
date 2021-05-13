@@ -1,5 +1,5 @@
-using Foundation.Infrastructure.Cms.Users;
 using Foundation.Features.Shared;
+using Foundation.Infrastructure.Cms.Users;
 
 namespace Foundation.Features.MyAccount.ProfilePage
 {

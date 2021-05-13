@@ -1,17 +1,16 @@
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Data;
-using EPiServer.Editor;
 using EPiServer.Filters;
 using EPiServer.Framework.Localization;
 using EPiServer.SpecializedProperties;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
-using Foundation.Infrastructure.Cms.Extensions;
-using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Features.Blocks.MenuItemBlock;
 using Foundation.Features.Home;
 using Foundation.Features.Settings;
+using Foundation.Infrastructure.Cms.Extensions;
+using Foundation.Infrastructure.Cms.Settings;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -38,7 +37,7 @@ namespace Foundation.Features.Header
             IContentLoader contentLoader,
             IDatabaseMode databaseMode,
             ISettingsService settingsService,
-            IContentVersionRepository contentVersionRepository, 
+            IContentVersionRepository contentVersionRepository,
             IHttpContextAccessor httpContextAccessor,
             IContextModeResolver contextModeResolver)
         {

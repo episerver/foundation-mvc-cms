@@ -65,7 +65,7 @@ namespace Foundation.Infrastructure.Cms
                 Secure = _httpContextAccessor.HttpContext.Request.IsHttps,
                 Expires = DateTime.Now.AddDays(-1),
             };
-            
+
             _httpContextAccessor.HttpContext.Response.Cookies.Append(cookie, "", options);
         }
     }

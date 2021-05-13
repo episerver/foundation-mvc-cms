@@ -1,5 +1,4 @@
-﻿using EPiServer.Cms.UI.AspNetIdentity;
-using EPiServer.Data;
+﻿using EPiServer.Data;
 using EPiServer.DependencyInjection;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
@@ -47,7 +46,7 @@ namespace Foundation
             services.AddCms();
             services.AddDisplay();
             services.AddTinyMce();
-            services.AddFindUI(_configuration);
+            services.AddFind();
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/util/Login";
@@ -79,7 +78,7 @@ namespace Foundation
                 endpoints.MapRazorPages();
             });
 
-           
+
         }
     }
 }

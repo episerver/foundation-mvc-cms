@@ -2,12 +2,10 @@
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
-using EPiServer.Framework.Internal;
+using EPiServer.Globalization;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
-using Foundation.Infrastructure.Cms.Extensions;
-using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Features.Blog.BlogItemPage;
 using Foundation.Features.Home;
 using Foundation.Features.Locations.LocationItemPage;
@@ -15,13 +13,14 @@ using Foundation.Features.Locations.TagPage;
 using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using Foundation.Features.StandardPage;
+using Foundation.Infrastructure.Cms.Extensions;
+using Foundation.Infrastructure.Cms.Settings;
 using Foundation.Infrastructure.OpenGraph;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using EPiServer.Globalization;
 
 namespace Foundation.Infrastructure.Helpers
 {

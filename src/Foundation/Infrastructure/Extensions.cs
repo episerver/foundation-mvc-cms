@@ -64,7 +64,7 @@ namespace Foundation.Infrastructure
             return _urlResolver.Value.GetUrl(contentLink, language);
         }
 
-       
+
         public static string GetPublicUrl(this Guid contentGuid, string language)
         {
             var contentLink = PermanentLinkUtility.FindContentReference(contentGuid);

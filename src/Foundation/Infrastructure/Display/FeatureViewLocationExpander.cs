@@ -53,5 +53,5 @@ namespace Foundation.Infrastructure.Display
                 yield return location.Replace("{3}", featureName);
             }
         }
-   }
+    }
 }
