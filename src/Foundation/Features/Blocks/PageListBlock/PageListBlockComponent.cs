@@ -41,7 +41,7 @@ namespace Foundation.Features.Blocks.PageListBlock
             ViewData.GetEditHints<PageListBlockViewModel, PageListBlock>()
                 .AddConnection(x => x.Heading, x => x.Heading);
 
-            return View("~/Features/Blocks/PageListBlock/Views/PageListBlock.cshtml", model);
+            return await Task.FromResult(View("~/Features/Blocks/PageListBlock/Views/PageListBlock.cshtml", model));
         }
 
         private IEnumerable<PageData> FindPages(PageListBlock currentBlock)

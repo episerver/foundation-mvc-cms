@@ -6,6 +6,7 @@ using Foundation.Infrastructure.Cms.Extensions;
 using Foundation.Infrastructure.Cms.Users;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Foundation.Features.MyAccount
 {
@@ -44,8 +45,9 @@ namespace Foundation.Features.MyAccount
         }
 
         [HttpGet]
-        public ActionResult SignOut()
+        public async Task<ActionResult> SignOut()
         {
+            await SignInManager.SignOutAsync();
             return RedirectToAction("Index", new { node = ContentReference.StartPage });
         }
 

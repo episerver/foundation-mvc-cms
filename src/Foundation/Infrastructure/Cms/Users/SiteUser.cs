@@ -21,23 +21,23 @@ namespace Foundation.Infrastructure.Cms.Users
 
         public bool NewsLetter { get; set; }
 
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<SiteUser> manager)
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(IUserClaimsPrincipalFactory<SiteUser> manager)
         {
-            //// Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            //var userIdentity = await manager.(this);
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateAsync(this);
+            var claimsIdentity = (ClaimsIdentity)userIdentity.Identity;
+            // Add custom user claims here
+            claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, Email));
 
-            //// Add custom user claims here
-            //userIdentity.AddClaim(new Claim(ClaimTypes.Email, Email));
+            if (!string.IsNullOrEmpty(FirstName))
+            {
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.GivenName, FirstName));
+            }
 
-            //if (!string.IsNullOrEmpty(FirstName))
-            //{
-            //    userIdentity.AddClaim(new Claim(ClaimTypes.GivenName, FirstName));
-            //}
-
-            //if (!string.IsNullOrEmpty(LastName))
-            //{
-            //    userIdentity.AddClaim(new Claim(ClaimTypes.Surname, LastName));
-            //}
+            if (!string.IsNullOrEmpty(LastName))
+            {
+                claimsIdentity.AddClaim(new Claim(ClaimTypes.Surname, LastName));
+            }
 
             return null;
         }
