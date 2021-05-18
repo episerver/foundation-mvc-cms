@@ -31,7 +31,7 @@ namespace Foundation.Features.Api
         {
             await _userService.SignOut();
             TrackingCookieManager.SetTrackingCookie(Guid.NewGuid().ToString());
-            return RedirectToAction("Index", new { node = ContentReference.StartPage });
+            return Redirect("~/");
         }
 
         [HttpPost]
