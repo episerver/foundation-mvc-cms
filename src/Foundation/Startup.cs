@@ -1,5 +1,5 @@
-﻿using EPiServer.Data;
-using EPiServer.DependencyInjection;
+﻿using EPiServer.Cms.TinyMce;
+using EPiServer.Data;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
@@ -77,8 +77,6 @@ namespace Foundation
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
-
-
         }
     }
 }

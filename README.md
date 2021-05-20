@@ -1,150 +1,73 @@
 <a href="https://github.com/episerver/Foundation-light"><img src="http://ux.episerver.com/images/logo.png" title="Foundation" alt="Foundation"></a>
 
-## Foundation
+## Foundation Net Core
 
-Foundation offers a starting point that is intuitive, well-structured and modular allowing developers to select Episerver products as projects to include or exclude from their solution. 
-Including as of now projects for CMS, Commerce, Personalization, Find and Social, with the rest to follow.
-
-
-[![License](http://img.shields.io/:license-apache-blue.svg?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0.html)
+This preview repository is early access to the latest Episerver packages targeting .NET 5.
 
 ---
 
-## Table of Contents
+## The Solution
 
-- [Foundation](#foundation)
-- [Table of Contents](#table-of-contents)
-- [- Troubleshooting](#ul-litroubleshootingli-ul)
-- [System requirements](#system-requirements)
-- [Pre-installation set-up](#pre-installation-set-up)
-  - [SQL server](#sql-server)
-  - [IIS settings](#iis-settings)
-- [Installation](#installation)
-- [Troubleshooting](#troubleshooting)
-  - [The installation fails](#the-installation-fails)
----
-
-## System requirements
-
-* Visual Studio 2017 or higher - [Download](https://visualstudio.microsoft.com/downloads/)
-* SQL Server Express or Developer or SQL Azure Server - [Download](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) (If using SQL Azure [download sqlcmd](https://docs.microsoft.com/en-us/sql/tools/sqlcmd-utility?view=sql-server-2017))
-* Microsoft SQL Server Management Studio - [Download](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)
-* Nodejs - [Download](https://nodejs.org/en/download/)
-* Microsoft Internet Information Server (IIS) - [Download](https://www.iis.net/downloads)
-
-See also the general [Episerver system requirements](https://world.episerver.com/documentation/system-requirements/) on Episerver World.
-
----
-
-## Pre-installation set-up
-
-### SQL server
-
-1. In Microsoft SQL Server Management Studio, connect to your SQL server:
-![SQL server login](https://i.ibb.co/dW5n5wQ/SQLServer-Log-In.png)
-2. Right-click on your server and select Properties.
-3. Under **Security**, make sure that **SQL Server and Windows Authentication mode** is selected:
-![SQL server authentication](https://i.ibb.co/2Sktyrb/SQLServer-Authentication.png")
-
-### IIS settings
-
-How to find the IIS settings depends on the system where you are running IIS.
-
-1.	Go to your IIS settings. If you are running IIS locally on your Windows machine, you find these under **Control Panel** > **Programs** > **Programs and Features** > **Turn Windows features on or off**. 
-2.	Check that the following features have been enabled:
-  *	Under Application Development:
-    *	ASP .NET
-    * NET Extensibility
-    * ASP
-    * ISAPI Extensions
-    *	ISAPI Filters
-  *	Common HTTP Features (Installed) node (all are required):
-    *	Static Content (Installed)
-    *	Default Document (Installed)
-    *	Directory Browsing (Installed
-    *	HTTP Errors (Installed) (Installed)
-    *	HTTP Redirection
-  *	Under the Performance (Installed) node:
-    *	Static Content Compression (Installed)
-    *	Dynamic Content Compression (Installed)
-  *	Under the Security (Installed) node:
-    *	URL Authorization (Installed)
-
-![IIS settings](https://i.ibb.co/cNTmzc2/ISSSettings.png)
+`Foundation has a default username and password of admin@example.com / Episerver123!`
 
 ---
 
 ## Installation
 
-The installation files on GitHub contain a batch file that will install the Foundation project with all products and set up an empty demo site. After the installation, you can fetch demo content from a remote repository to create a Mosey demo site, a fictitious fashion retail company.
+The installation files contain a batch file that will install the Foundation project and create database.
 
-1.	Download the ZIP file from the Foundation project's **master** branch on GitHub and extract the files, or clone the project from GitHub to a local folder using the command prompt and the git command ```git clone https://github.com/episerver/Foundation foundation  ``` (the _foundation_ part specifies the folder where to put the files):
+Right-click on the batch file called **setup.cmd** and select **Run as administrator**
 
-Download ZIP file
+---
 
-![Download Zip file](https://i.ibb.co/SB38p3z/Git-Hub-Zip.png)
+## Configuration
 
-Or clone project using Git
+Most of the configuration has been moved to options classes.  The options classes can be configured through code or the appsettings.json configuration file.  For option classes to be automatically configured from `appsettings.json`, please use the `EPiServer.ServiceLocation.OptionsAttribute`.  There is a configuration section which maps to the leaf node in the JSON.
 
-![Clone project](https://i.ibb.co/23tJmNm/Git-Cloning.png)
+To utilize legacy configuration sections you can install the `EPiServer.Cms.AspNetCore.Migration` package. This is available to ease migration, however we encourage to update the use options or `appsettings.json` if possible.
 
-> **_Note:_** It is recommended that you store the project in a folder directly under C:, in a folder where your user has full access rights:
+---
 
-![Folder access rights](https://i.ibb.co/Wkcbr9m/Folder-Access-Rights.png)
+## Startup extensibility
 
-2.	Right-click on the batch file called **setup.cmd** and select **Run as administrator**:
+### Program.cs
+EPiServer will by default use the built-in Dependency Injection framework (DI) in .NET 5. To connect the DI framework with EPiServer you need to call extension method `IHostBuilder.ConfigureCmsDefault()` in Program.cs. <br/>
+To configure the application (including EPiServer) to use another DI framework you should call the extension method `IHostBuilder.UseServiceProviderFactory`. The example below shows how to configure the application to use Autofac:
 
-![Run batch file](https://i.ibb.co/SBFfLzt/Run-Batch-File.png)
-
-3.	The installation starts and you are asked to provide the following parameters:
-
-| Parameter | Description |
-|-----------|-------------|
-|Application name: | The name of the application. Note: The application name should contain only letters and numbers as it used as the prefix to create the website and database components.|
-|Public domain name for foundation:| Domain name for the application, for example, foundation.com.|
-|License path:| If you have a license file, add the path to it. Otherwise you can add that later.|
-|SQL server name:| SQL server instance name. Add the same server name as the one you connected to in the [Pre-installation set-up](#pre-installation-set-up) steps for the SQL server. If using Azure SQL, provide the full dns name for your Azure SQL instance |
-|sqlcmd command: | SQL command to execute, by default ```-S . -E ```. This can generally be left as is. If using Azure SQL, pass username and password as ```-U <user> -P <password>```|
-
-![Build parameters](https://i.ibb.co/WcKGLVh/Build-Parameters.png)
-
-4.	The build process executes a number of steps and logs both to the console and to the log files. The automatic build steps are:
 ```
-•	Set permissions on the folder to everyone full control
-•	Restore NuGet packages
-•	npm install
-•	gulp Saas task
-•	Build solution
-•	Install Databases
-•	Create one application pool
-•	Create one website
-•	Update host file
-•	Copy License file
-•	create connectionstrings file
-•	Start the site to finish setup in browser
+host.UseServiceProviderFactory(context => new  ServiceLocatorProviderFactoryFacade<ContainerBuilder>(context,
+    new AutofacServiceProviderFactory()));
 ```
 
+### Startup.cs
+There are some added extensibility points when interacting with the Startup class.
+  1.  `services.AddCms();` - This configures than CMS and needs to be called to function properly.
+  2.  `endpoints.MapContent();` - This registers EPiServer content routing with the endpoint routing feature.
+  3.  `IEndpointRoutingExtension` - Access to the `IEndpointRouteBuilder` to register routes. Convience method `services.AddEndpointRoutingExtension<T>()`
+  4.  `IStartupFilter` - Access to IApplicationBuilder if you need to register middleware for instance.  Convience method `services.AddStartupFilter<T>()`
+  5.  `IBlockingFirstRequestInitializer` - Use this if you need to do something before the first request
+  6.  `IRedirectingFirstRequestInitializer` - Use this if you need to redirect to a page until some type of initialization takes place.
 
-5.	When the installation is finished, a start page is opened in your browser. If not, enter the URL http://_yourdomainname_/ manually.
-6.	If the start page throws an error, open your host file, found under **C:\Windows\System32\drivers\etc**, and add the one domain name you entered during the installation. Reload the page in your browser.
-![Example host file](https://i.ibb.co/Ss79b55/Host-File-Example.png)
+---
 
-7.	Log in with user: **admin@example.com** and password: **store** to access the Episerver user interface.  
+## Compiled Views for Shell Modules
 
-> **_Note:_** A **resetup.cmd** file has been created in your project which you can run to re-install the database.
+For addon developers, we have added a default location expander that will look for compiled views in a certain location or based on configuration value.
+  1.  /{ShellModuleName}/Views/
+  2.  The folder defined in the module.config viewFolder attribute on module element.
 
-8.  Developer licenses for evaluation purposes can be obtained from the [Episerver License Center](https://license.episerver.com/). Place the **License.config** file in your webroot. 
+---
 
-## Troubleshooting
-### The installation fails
-* Check that you have full access rights to the project folder.
-* Check that you meet [the system requirements](#system-requirements).
-* Check your SQL authentication settings as described in [SQL Server](#sql-server).
-* Check your IIS settings so that they match those specified in [IIS settings](#iis-settings).
-* Check the log files:
-  ```
-  Build\Logs\Build.log
-  Build\Logs\Database.log
-  Build\Logs\IIS.log
-  ```
+## Preview links to documentation
 
+### CMS
+
+* [CMS 12 Breaking changes](https://world.episerver.com/externalContentView/2f46e48e-19d5-4735-a0fa-f9b193a78eb7 "CMS 12 Breaking changes")
+* [Configuration](https://world.episerver.com/externalContentView/91e3ad6f-ec40-44c4-a667-7d48e2f1c2f0 "Configuration")
+* [Dependency injection](https://world.episerver.com/externalContentView/a798288a-90af-44ff-b495-68e827403903 "Dependency injection")
+* [File Providers](https://world.episerver.com/externalContentView/c10509ac-40b4-4c0e-92d5-016b4e37081b "File Providers")
+* [Logging](https://world.episerver.com/externalContentView/ac48d781-f9f6-4f16-8677-8281bacdaffa "Logging")
+* [Routing](https://world.episerver.com/externalContentView/968f52c2-8a0f-4111-a34a-d51450d62b1e "Routing")
+* [Security](https://world.episerver.com/externalContentView/bf63f0a1-da67-4a0c-8b71-d753099956d0 "Security")
+* [Upgrade assistant - overview](https://world.episerver.com/externalContentView/01ad2880-18c2-4898-90d0-9fa99a6fdbe1 "Upgrade assistant - overview")
+* [Upgrade assistant - installation and running](https://world.episerver.com/externalContentView/f5838f07-fc03-464a-9bff-724272e6bf1e "Upgrade assistant - installation and running")
