@@ -38,10 +38,12 @@ namespace Foundation.Features.Blocks.TeaserBlock
         [Display(Name = "Heading size", GroupName = TabNames.Header, Order = 11)]
         public virtual int HeadingSize { get; set; }
 
+        [Searchable(false)]
         [SelectOne(SelectionFactoryType = typeof(TeaserBlockHeadingStyleSelectionFactory))]
         [Display(Name = "Heading style", GroupName = TabNames.Header, Order = 12)]
         public virtual string HeadingStyle { get; set; }
 
+        [Searchable(false)]
         [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
         [Display(Name = "Heading color", GroupName = TabNames.Header, Order = 13)]
         public virtual string HeadingColor
@@ -52,7 +54,8 @@ namespace Foundation.Features.Blocks.TeaserBlock
         #endregion
 
         #region Text
-        [CultureSpecific]
+
+        [Searchable(false)]
         [Display(GroupName = TabNames.Text, Order = 30)]
         public virtual XhtmlString Text { get; set; }
         [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
@@ -65,7 +68,7 @@ namespace Foundation.Features.Blocks.TeaserBlock
         #endregion
 
         #region Image
-        [CultureSpecific]
+
         [UIHint(UIHint.Image)]
         [Display(GroupName = TabNames.Image, Order = 40)]
         public virtual ContentReference Image { get; set; }
@@ -74,7 +77,6 @@ namespace Foundation.Features.Blocks.TeaserBlock
         [Display(Name = "Image size (%)", GroupName = TabNames.Image, Order = 41)]
         public virtual int ImageSize { get; set; }
 
-        [CultureSpecific]
         [UIHint(UIHint.Image)]
         [Display(Name = "Second Image", GroupName = TabNames.Image, Order = 45)]
         public virtual ContentReference SecondImage { get; set; }

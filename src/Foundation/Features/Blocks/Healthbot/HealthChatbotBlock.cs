@@ -23,6 +23,7 @@ namespace Foundation.Features.Blocks.Healthbot
             GroupName = SystemTabNames.Content)]
         public virtual XhtmlString HeaderText { get; set; }
 
+        [Searchable(false)]
         [Display(
             Name = "Direct Line Token",
             Description = "The token that is used to connect to the bot framework. Get this from > Health Bot Service > Integration > Channels > DirectLine",
