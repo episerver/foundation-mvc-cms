@@ -12,7 +12,6 @@ namespace Foundation.Features.Settings
         SettingsName = "Search Settings")]
     public class SearchSettings : SettingsBase
     {
-        [CultureSpecific]
         [SelectOne(SelectionFactoryType = typeof(SearchOptionSelectionFactory))]
         [Display(Name = "Search option", GroupName = TabNames.SearchSettings, Order = 50)]
         public virtual string SearchOption { get; set; }
