@@ -3,6 +3,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using System.Collections.Generic;
@@ -44,13 +45,9 @@ namespace Foundation.Features.Blocks.ButtonBlock
         public virtual bool TextColorOverdrive { get; set; }
 
         [Searchable(false)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(ButtonTextColorsSelectionFactory))]
         [Display(Name = "Button Text color", GroupName = TabNames.Text, Order = 50)]
-        public virtual string ButtonTextColor
-        {
-            get { return this.GetPropertyValue(page => page.ButtonTextColor) ?? "#000000ff"; }
-            set { this.SetPropertyValue(page => page.ButtonTextColor, value); }
-        }
+        public virtual string ButtonTextColor { get; set; }
 
         #endregion
 
@@ -90,13 +87,9 @@ namespace Foundation.Features.Blocks.ButtonBlock
         public virtual int BorderWidth { get; set; }
 
         [Searchable(false)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(ButtonTextColorsSelectionFactory))]
         [Display(Name = "Button Border color", GroupName = TabNames.Border, Order = 30)]
-        public virtual string ButtonBorderColor
-        {
-            get { return this.GetPropertyValue(page => page.ButtonBorderColor) ?? "#ffffffff"; }
-            set { this.SetPropertyValue(page => page.ButtonBorderColor, value); }
-        }
+        public virtual string ButtonBorderColor { get; set; }
 
         #endregion
         public override void SetDefaultValues(ContentType contentType)

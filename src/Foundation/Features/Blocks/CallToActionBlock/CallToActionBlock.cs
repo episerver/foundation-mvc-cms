@@ -5,6 +5,7 @@ using EPiServer.Labs.ContentManager.Cards;
 using EPiServer.Labs.ContentManager.Dashboard;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using System.ComponentModel.DataAnnotations;
@@ -29,7 +30,7 @@ namespace Foundation.Features.Blocks.CallToActionBlock
 
         [Searchable(false)]
         [Display(Name = "Text color", GroupName = SystemTabNames.Content, Order = 30)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(TextColorsSelectionFactory))]
         public virtual string TextColor { get; set; }
         #endregion
 

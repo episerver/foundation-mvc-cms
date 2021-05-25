@@ -87,7 +87,7 @@ namespace Foundation.Features.Settings
         [Display(Name = "Logo height (pixels)", GroupName = TabNames.Header, Order = 15)]
         public virtual int LogoHeight { get; set; }
 
-        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
+        [SelectOne(SelectionFactoryType = typeof(HeadingColorsSelectionFactory))]
         [Display(Name = "Header Background Color", GroupName = TabNames.Header, Order = 15)]
         public virtual string HeaderBackgroundColor { get; set; }
 

@@ -98,54 +98,113 @@ namespace Foundation.Features.Settings
         {
             ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
             var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
-            var backgroundColor = collectionSettings.BackgroundColor;
+            var colors = collectionSettings.BackgroundColor;
 
-            if (backgroundColor is null)
+            if (colors is null)
             {
                 return new ISelectItem[] { };
             }
             else
             {
-                return backgroundColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+                return colors.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode }));
             }
         }
     }
 
-    public class ButtonBackgroundColorSelectionFactory : ISelectionFactory
+    public class HeadingColorsSelectionFactory : ISelectionFactory
     {
         public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
         {
             ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
             var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
-            var buttonBackgroundColor = collectionSettings.ButtonBackgroundColor;
+            var colors = collectionSettings.HeadingColor;
 
-            if (buttonBackgroundColor is null)
+            if (colors is null)
             {
                 return new ISelectItem[] { };
             }
             else
             {
-                return buttonBackgroundColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+                return colors.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode }));
             }
         }
     }
 
-    public class ButtonTextSelectionFactory : ISelectionFactory
+    public class ButtonBackgroundColorsSelectionFactory : ISelectionFactory
     {
         public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
         {
             ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
             var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
-            var buttonTextColor = collectionSettings.ButtonTextColor;
+            var colors = collectionSettings.ButtonBackgroundColor;
 
-            if (buttonTextColor is null)
+            if (colors is null)
             {
                 return new ISelectItem[] { };
             }
             else
             {
-                return buttonTextColor.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+                return colors.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
             }
         }
     }
+
+    public class ButtonTextColorsSelectionFactory : ISelectionFactory
+    {
+        public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+            var colors = collectionSettings.ButtonTextColor;
+
+            if (colors is null)
+            {
+                return new ISelectItem[] { };
+            }
+            else
+            {
+                return colors.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+            }
+        }
+    }
+
+    public class TextColorsSelectionFactory : ISelectionFactory
+    {
+        public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+            var colors = collectionSettings.TextColor;
+
+            if (colors is null)
+            {
+                return new ISelectItem[] { };
+            }
+            else
+            {
+                return colors.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+            }
+        }
+    }
+
+    public class OpacityBackgroundColorsSelectionFactory : ISelectionFactory
+    {
+        public virtual IEnumerable<ISelectItem> GetSelections(ExtendedMetadata metadata)
+        {
+            ISettingsService _settingService = ServiceLocator.Current.GetInstance<ISettingsService>();
+            var collectionSettings = _settingService.GetSiteSettings<CollectionSettings>();
+            var colors = collectionSettings.OpacityBackgrounColor;
+
+            if (colors is null)
+            {
+                return new ISelectItem[] { };
+            }
+            else
+            {
+                return colors.Select(d => (new SelectItem() { Text = d.ColorName, Value = d.ColorCode })).ToList();
+            }
+        }
+    }
+
 }
+

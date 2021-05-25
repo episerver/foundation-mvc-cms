@@ -6,6 +6,7 @@ using EPiServer.Labs.ContentManager.Cards;
 using EPiServer.Labs.ContentManager.Dashboard;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using Foundation.Infrastructure;
 using System.ComponentModel.DataAnnotations;
@@ -44,13 +45,9 @@ namespace Foundation.Features.Blocks.TeaserBlock
         public virtual string HeadingStyle { get; set; }
 
         [Searchable(false)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(HeadingColorsSelectionFactory))]
         [Display(Name = "Heading color", GroupName = TabNames.Header, Order = 13)]
-        public virtual string HeadingColor
-        {
-            get { return this.GetPropertyValue(page => page.HeadingColor) ?? "#000000ff"; }
-            set { this.SetPropertyValue(page => page.HeadingColor, value); }
-        }
+        public virtual string HeadingColor { get; set; }
         #endregion
 
         #region Text
@@ -58,13 +55,10 @@ namespace Foundation.Features.Blocks.TeaserBlock
         [Searchable(false)]
         [Display(GroupName = TabNames.Text, Order = 30)]
         public virtual XhtmlString Text { get; set; }
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        
+        [SelectOne(SelectionFactoryType = typeof(TextColorsSelectionFactory))]
         [Display(Name = "Text color", GroupName = TabNames.Text, Order = 50)]
-        public virtual string TextColor
-        {
-            get { return this.GetPropertyValue(page => page.TextColor) ?? "#000000ff"; }
-            set { this.SetPropertyValue(page => page.TextColor, value); }
-        }
+        public virtual string TextColor { get; set; }
         #endregion
 
         #region Image

@@ -6,6 +6,7 @@ using EPiServer.Labs.ContentManager.Cards;
 using EPiServer.Labs.ContentManager.Dashboard;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
@@ -67,12 +68,12 @@ namespace Foundation.Features.Blocks.HeroBlock
         public virtual string CalloutContentAlignment { get; set; }
 
         [Searchable(false)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(TextColorsSelectionFactory))]
         [Display(Name = "Text color", Description = "Sets text color of callout content", Order = 30)]
         public virtual string CalloutTextColor { get; set; }
 
         [Searchable(false)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
         [Display(Name = "Background color", Order = 40)]
         public virtual string BackgroundColor { get; set; }
 

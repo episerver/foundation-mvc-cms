@@ -157,12 +157,12 @@ namespace Foundation.Features.Shared
         public virtual string TeaserButtonStyle { get; set; }
 
         [Searchable(false)]
-        [SelectOne(SelectionFactoryType = typeof(ButtonBackgroundColorSelectionFactory))]
+        [SelectOne(SelectionFactoryType = typeof(ButtonBackgroundColorsSelectionFactory))]
         [Display(Name = "Button color", GroupName = TabNames.Teaser, Order = 700)]
         public virtual string TeaserButtonColor { get; set; }
 
         [Searchable(false)]
-        [SelectOne(SelectionFactoryType = typeof(ButtonTextSelectionFactory))]
+        [SelectOne(SelectionFactoryType = typeof(ButtonTextColorsSelectionFactory))]
         [Display(Name = "Button text color", GroupName = TabNames.Teaser, Order = 700)]
         public virtual string TeaserButtonTextColor { get; set; }
 

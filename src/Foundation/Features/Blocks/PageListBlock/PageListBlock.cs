@@ -6,6 +6,7 @@ using EPiServer.Shell.ObjectEditing;
 using EPiServer.Validation;
 using EPiServer.Web;
 using Foundation.Features.Folder;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
@@ -73,12 +74,12 @@ namespace Foundation.Features.Blocks.PageListBlock
 
         [Searchable(false)]
         [Display(Name = "Overlay color (only for Card template)", Description = "Apply for Card template", GroupName = SystemTabNames.Content, Order = 120)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
         public virtual string OverlayColor { get; set; }
 
         [Searchable(false)]
         [Display(Name = "Overlay text color (only for Card template)", Description = "Apply for Card template", GroupName = SystemTabNames.Content, Order = 130)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(TextColorsSelectionFactory))]
         public virtual string OverlayTextColor { get; set; }
 
         public override void SetDefaultValues(ContentType contentType)

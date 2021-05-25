@@ -842,7 +842,6 @@
     <Compile Include="Features\Shared\IContentViewModel.cs" />
     <Compile Include="Features\Shared\IFoundationContent.cs" />
     <Compile Include="Features\Shared\SelectionFactories\AvailablePageTypesSelectionFactory.cs" />
-    <Compile Include="Features\Shared\SelectionFactories\BackgroundColorSelectionFactory.cs" />
     <Compile Include="Features\Shared\SelectionFactories\BlockRatioSelectionFactory.cs" />
     <Compile Include="Features\Shared\SelectionFactories\InclusionOrderingSelectionFactory.cs" />
     <Compile Include="Features\Shared\SelectionFactories\MarginSelectionFactory.cs" />

@@ -3,6 +3,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
 using EPiServer.Web;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using System.ComponentModel.DataAnnotations;
 
@@ -16,22 +17,14 @@ namespace Foundation.Features.StandardPage
     public class StandardPage : FoundationPageData
     {
         [Searchable(false)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(TextColorsSelectionFactory))]
         [Display(Name = "Title color", GroupName = SystemTabNames.Content, Order = 210)]
-        public virtual string TitleColor
-        {
-            get { return this.GetPropertyValue(page => page.TitleColor) ?? "#ffffffff"; }
-            set { this.SetPropertyValue(page => page.TitleColor, value); }
-        }
+        public virtual string TitleColor { get; set; }
 
         [Searchable(false)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
         [Display(Name = "Background color", GroupName = SystemTabNames.Content, Order = 220)]
-        public virtual string BackgroundColor
-        {
-            get { return this.GetPropertyValue(page => page.BackgroundColor) ?? "#ffffffff"; }
-            set { this.SetPropertyValue(page => page.BackgroundColor, value); }
-        }
+        public virtual string BackgroundColor { get; set; }
 
         [Range(0, 1.0, ErrorMessage = "Opacity only allows value between 0 and 1")]
         [Display(Name = "Title opacity (0 to 1)", GroupName = SystemTabNames.Content, Order = 230)]

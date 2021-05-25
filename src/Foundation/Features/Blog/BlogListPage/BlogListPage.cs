@@ -3,6 +3,7 @@ using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Filters;
 using EPiServer.Shell.ObjectEditing;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared;
 using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
@@ -62,12 +63,12 @@ namespace Foundation.Features.Blog.BlogListPage
 
         [Searchable(false)]
         [Display(Name = "Overlay color (hex or rgba)", Description = "Apply for Card template", GroupName = TabNames.BlogList, Order = 100)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
         public virtual string OverlayColor { get; set; }
 
         [Searchable(false)]
         [Display(Name = "Overlay text color (hex or rgba)", Description = "Apply for Card template", GroupName = TabNames.BlogList, Order = 110)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
+        [SelectOne(SelectionFactoryType = typeof(TextColorsSelectionFactory))]
         public virtual string OverlayTextColor { get; set; }
 
         public override void SetDefaultValues(ContentType contentType)

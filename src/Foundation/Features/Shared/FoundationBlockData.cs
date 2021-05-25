@@ -2,6 +2,7 @@ using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAnnotations;
 using EPiServer.Shell.ObjectEditing;
+using Foundation.Features.Settings;
 using Foundation.Features.Shared.SelectionFactories;
 using Foundation.Infrastructure;
 using Geta.EpiCategories;
@@ -36,8 +37,8 @@ namespace Foundation.Features.Shared
         }
 
         [Searchable(false)]
+        [SelectOne(SelectionFactoryType = typeof(BackgroundColorSelectionFactory))]
         [Display(Name = "Background color", GroupName = TabNames.BlockStyling, Order = 3)]
-        [ClientEditor(ClientEditingClass = "foundation/editors/ColorPicker")]
         public virtual string BackgroundColor
         {
             get { return this.GetPropertyValue(page => page.BackgroundColor) ?? "#00000000"; }
