@@ -155,12 +155,12 @@ namespace Foundation.Cms.Settings
             {
                 if (isContentNotPublished)
                 {
-                    if(!SiteSettings.ContainsKey(siteId.ToString() + $"-default"))
+                    if (!SiteSettings.ContainsKey(siteId.ToString() + $"-default"))
                     {
                         SiteSettings[$"{siteId}-common-draft-default"] = new Dictionary<Type, object>();
                     }
 
-                    if(!SiteSettings[$"{siteId}-common-draft-default"].ContainsKey(contentType))
+                    if (!SiteSettings[$"{siteId}-common-draft-default"].ContainsKey(contentType))
                     {
                         SiteSettings[$"{siteId}-common-draft-default"][contentType] = content;
                     }

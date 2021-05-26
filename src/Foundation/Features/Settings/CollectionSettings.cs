@@ -1,6 +1,5 @@
 ﻿using EPiServer.Cms.Shell.UI.ObjectEditing.EditorDescriptors;
 using EPiServer.Core;
-using EPiServer.DataAnnotations;
 using EPiServer.PlugIn;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.ObjectEditing;

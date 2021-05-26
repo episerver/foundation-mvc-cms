@@ -17,7 +17,7 @@ namespace Foundation.Features.Blocks.BreadcrumbBlock
     {
         [Display(Name = "Destination page", Order = 10, GroupName = SystemTabNames.Content)]
         public virtual PageReference DestinationPage { get; set; }
-        
+
         [Searchable(false)]
         [Display(Name = "Breadcrumb separator", Order = 20, GroupName = SystemTabNames.Content)]
         [SelectOne(SelectionFactoryType = typeof(BreadcrumbSeparatorSelectionFactory))]
