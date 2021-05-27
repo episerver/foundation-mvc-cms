@@ -93,16 +93,13 @@ namespace Foundation.Features.Settings
         [Display(Name = "Header Background Color", GroupName = TabNames.Header, Order = 15)]
         public virtual string HeaderBackgroundColor { get; set; }
 
-        [CultureSpecific]
         [SelectOne(SelectionFactoryType = typeof(HeaderMenuSelectionFactory))]
         [Display(Name = "Menu style", GroupName = TabNames.Header, Order = 30)]
         public virtual string HeaderMenuStyle { get; set; }
 
-        [CultureSpecific]
         [Display(Name = "Large header menu", GroupName = TabNames.Header, Order = 35)]
         public virtual bool LargeHeaderMenu { get; set; }
 
-        [CultureSpecific]
         [Display(Name = "Sticky header", GroupName = TabNames.Header, Order = 50)]
         public virtual bool StickyTopHeader { get; set; }
 

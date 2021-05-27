@@ -1,5 +1,4 @@
-﻿using EPiServer.DataAnnotations;
-using EPiServer.Shell.ObjectEditing;
+﻿using EPiServer.Shell.ObjectEditing;
 using Foundation.Cms.Settings;
 using Foundation.Infrastructure;
 using System.Collections.Generic;
@@ -12,7 +11,6 @@ namespace Foundation.Features.Settings
         SettingsName = "Search Settings")]
     public class SearchSettings : SettingsBase
     {
-        [CultureSpecific]
         [SelectOne(SelectionFactoryType = typeof(SearchOptionSelectionFactory))]
         [Display(Name = "Search option", GroupName = TabNames.SearchSettings, Order = 50)]
         public virtual string SearchOption { get; set; }

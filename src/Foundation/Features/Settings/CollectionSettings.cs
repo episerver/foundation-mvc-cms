@@ -1,6 +1,5 @@
 ﻿using EPiServer.Cms.Shell.UI.ObjectEditing.EditorDescriptors;
 using EPiServer.Core;
-using EPiServer.DataAnnotations;
 using EPiServer.PlugIn;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.ObjectEditing;
@@ -21,12 +20,10 @@ namespace Foundation.Features.Settings
     {
         #region Person settings
 
-        [CultureSpecific]
         [Display(GroupName = TabNames.CustomSettings, Order = 100)]
         [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<SelectionItem>))]
         public virtual IList<SelectionItem> Sectors { get; set; }
 
-        [CultureSpecific]
         [Display(GroupName = TabNames.CustomSettings, Order = 200)]
         [EditorDescriptor(EditorDescriptorType = typeof(CollectionEditorDescriptor<SelectionItem>))]
         public virtual IList<SelectionItem> Locations { get; set; }
