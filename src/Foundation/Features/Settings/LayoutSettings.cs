@@ -71,6 +71,7 @@ namespace Foundation.Features.Settings
         [Display(Name = "Main menu", GroupName = TabNames.Menu, Order = 10)]
         public virtual ContentArea MainMenu { get; set; }
 
+        [CultureSpecific]
         [Display(Name = "My account menu",
             GroupName = TabNames.Menu,
             Order = 40)]
@@ -80,6 +81,7 @@ namespace Foundation.Features.Settings
 
         #region Header
 
+        [CultureSpecific]
         [UIHint(UIHint.Image)]
         [Display(Name = "Site logo", GroupName = TabNames.Header, Order = 10)]
         public virtual ContentReference SiteLogo { get; set; }
