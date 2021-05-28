@@ -22,6 +22,14 @@ namespace Foundation.Cms.Settings
         ContentReference GlobalSettingsRoot { get; set; }
         ConcurrentDictionary<string, Dictionary<Type, object>> SiteSettings { get; }
         T GetSiteSettings<T>(Guid? siteId = null);
+
+        /// <summary>
+        /// Simplified method to retrieve site settings for the current site from the service, used when accessing the settings from within JavaScript.
+        /// </summary>
+        /// <param name="typeName">The name (without namespace) of the settings type to fetch</param>
+        /// <returns>The stored site settings</returns>
+        SettingsBase GetSiteSettings(string typeName);
+
         void InitializeSettings();
         void UnintializeSettings();
         void UpdateSettings(Guid siteId, IContent content, bool isContentNotPublished);
@@ -143,6 +151,33 @@ namespace Foundation.Cms.Settings
             {
                 _log.Error($"[Settings] {argumentNullException.Message}", exception: argumentNullException);
             }
+
+            return default;
+        }
+
+        public SettingsBase GetSiteSettings(string typeName)
+        {
+            var contentLanguage = ContentLanguage.PreferredCulture.Name;
+            var siteId = ResolveSiteId();
+            if (siteId == Guid.Empty)
+                return default;
+
+            var txtSiteId = siteId.ToString();
+            var modeId = PageEditing.PageIsInEditMode ? "-common-draft-" : "-";
+
+            var settings = (new string[] { $"{txtSiteId}{modeId}{contentLanguage}", $"{txtSiteId}{modeId}default" }).Select(x => SiteSettings.TryGetValue(x, out var siteSettings) ? siteSettings : default ).Where(x => x != null).FirstOrDefault();
+            if (settings == null)
+                return default;
+
+            var settingGroups = settings.Where(x => x.Key.Name.Equals(typeName));
+            if (settingGroups.Count() == 0)
+                return default;
+
+            if (settingGroups.Count() > 1)
+                throw new Exception("Multiple setting groups match this name");
+
+            if (settingGroups.First().Value is SettingsBase contentData)
+                return contentData;
 
             return default;
         }
