@@ -165,7 +165,7 @@ namespace Foundation.Cms.Settings
             var txtSiteId = siteId.ToString();
             var modeId = PageEditing.PageIsInEditMode ? "-common-draft-" : "-";
 
-            var settings = (new string[] { $"{txtSiteId}{modeId}{contentLanguage}", $"{txtSiteId}{modeId}default" }).Select(x => SiteSettings.TryGetValue(x, out var siteSettings) ? siteSettings : default ).Where(x => x != null).FirstOrDefault();
+            var settings = (new string[] { $"{txtSiteId}{modeId}{contentLanguage}", $"{txtSiteId}{modeId}default" }).Select(x => SiteSettings.TryGetValue(x, out var siteSettings) ? siteSettings : default).Where(x => x != null).FirstOrDefault();
             if (settings == null)
                 return default;
 

@@ -1,21 +1,18 @@
-﻿using System;
+﻿using EPiServer.ContentApi.Core.ContentResult;
+using EPiServer.ContentApi.Core.Internal;
+using EPiServer.ContentApi.Core.Security.Internal;
+using EPiServer.ContentApi.Core.Serialization;
+using EPiServer.ContentApi.Core.Serialization.Models;
+using EPiServer.Editor;
+using EPiServer.Globalization;
+using EPiServer.Web;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Web.Http.ValueProviders;
 using System.Web.Routing;
-using EPiServer;
-using EPiServer.ContentApi.Core.ContentResult;
-using EPiServer.ContentApi.Core.Internal;
-using EPiServer.ContentApi.Core.Security.Internal;
-using EPiServer.ContentApi.Core.Serialization;
-using EPiServer.ContentApi.Core.Serialization.Models;
-using EPiServer.Core;
-using EPiServer.Editor;
-using EPiServer.Globalization;
-using EPiServer.ServiceLocation;
-using EPiServer.Web;
 
 namespace Foundation.Cms.Settings
 {
@@ -35,7 +32,8 @@ namespace Foundation.Cms.Settings
             IContentModelMapper contentModelMapper,
             ContentResultService contentResultService,
             ISiteDefinitionResolver siteDefinitionResolver
-        ) {
+        )
+        {
             SettingsService = settingsService;
             ContentModelMapper = contentModelMapper;
             ContentResultService = contentResultService;
@@ -98,7 +96,7 @@ namespace Foundation.Cms.Settings
             return new EPiServer.ContentApi.Core.ContentResult.Internal.ContentApiResult<ContentApiModel>(contentModel, HttpStatusCode.OK);
         }
 
-        protected Dictionary<Type, object> GetSiteSettings(Guid siteId, string contentLanguage )
+        protected Dictionary<Type, object> GetSiteSettings(Guid siteId, string contentLanguage)
         {
             if (string.IsNullOrWhiteSpace(contentLanguage))
                 contentLanguage = ContentLanguage.PreferredCulture.Name;
