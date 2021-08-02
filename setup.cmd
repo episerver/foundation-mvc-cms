@@ -45,7 +45,7 @@ echo Your SQLCMD command is: sqlcmd -S %SQLSERVER% %ADDITIONAL_SQLCMD%
 timeout 15
 
 set cms_db=%APPNAME%.Cms
-set user=%cms_db%User
+set user=%APPNAME%.User
 set password=Episerver123!
 set errorMessage = "" 
 
@@ -114,7 +114,9 @@ echo ## Dropping user ##
 echo ## Dropping user ## >> Build\Logs\Database.log
 %sql% -Q "if exists (select loginname from master.dbo.syslogins where name = '%user%') EXEC sp_droplogin @loginame='%user%'" >> Build\Logs\Database.log
 
-powershell -command "&{.\build\build.ps1 -server %SQLSERVER% -additionalSQL %ADDITIONAL_SQLCMD% -appName %APPNAME% "}"  
+powershell -command "&{.\build\build.ps1 -server %SQLSERVER% -additionalSQL %ADDITIONAL_SQLCMD% -appName %APPNAME% "}" 
+
+::call "%ROOTDIR%\build\jrepl" "\" "\\" /f "%SOURCEPATH%\Foundation\appsettings.json" /L /o -
 
 :error
 if NOT "%errorMessage%"=="" echo %errorMessage%

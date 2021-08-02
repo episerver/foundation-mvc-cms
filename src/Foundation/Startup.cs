@@ -1,5 +1,7 @@
 ﻿using EPiServer.Cms.TinyMce;
 using EPiServer.Data;
+using EPiServer.Find.UI;
+using EPiServer.Framework.Web.Resources;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Routing;
@@ -41,7 +43,12 @@ namespace Foundation
             });
 
             services.AddMvc(o => o.Conventions.Add(new FeatureConvention()))
-                .AddRazorOptions(ro => ro.ConfigureFeatureFolders());
+                .AddRazorOptions(ro => ro.ViewLocationExpanders.Add(new FeatureViewLocationExpander()));
+
+            if (_webHostingEnvironment.IsDevelopment())
+            {
+                services.Configure<ClientResourceOptions>(uiOptions => uiOptions.Debug = true);
+            }
 
             services.AddCms();
             services.AddDisplay();
@@ -55,6 +62,8 @@ namespace Foundation
             });
             services.TryAddEnumerable(Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton(typeof(IFirstRequestInitializer), typeof(ContentInstaller)));
             services.AddDetection();
+            services.Configure<FindUIOptions>(x => x.ClientSideResourceBaseUrl = "https://stage.dl.episerver.net/$version$/");
+
         }
 
 

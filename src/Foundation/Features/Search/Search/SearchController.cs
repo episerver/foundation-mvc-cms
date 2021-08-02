@@ -34,7 +34,7 @@ namespace Foundation.Features.Search.Search
         }
 
         [HttpPost]
-        public ActionResult QuickSearch(string search = "")
+        public ActionResult QuickSearch([FromQuery] string search = "")
         {
             var model = new SearchViewModel<SearchResultPage>();
             var contentResult = _cmsSearchService.SearchContent(new FilterOptionViewModel()

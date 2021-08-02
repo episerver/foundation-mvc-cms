@@ -1,48 +1,52 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
-		<VersionPrefix>2021.04.1.0</VersionPrefix>
-		<VersionSuffix></VersionSuffix>
-		<PackageVersion Condition=" '$(PackageVersion)' == '' ">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
-	</PropertyGroup>
-	<ItemGroup>
-		<PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="5.1.0" />
-		<PackageReference Include="EPiServer.CMS" Version="12.0.0-inte-021244" />
-		<PackageReference Include="EPiServer.CMS.UI.AspNetIdentity" Version="12.0.0-inte-021244" />
-		<PackageReference Include="EPiServer.Find.Cms" Version="14.0.0-inte-020197" />
-		<PackageReference Include="EPiServer.Forms" Version="5.0.0-inte-020030" />
-		<PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.4" />
-		<PackageReference Include="Schema.NET" Version="8.0.0" />
-		<PackageReference Include="Shorthand.ImageSharp.WebP" Version="2.2.1" />
-		<PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.2" />
-		<PackageReference Include="Wangkanai.Detection" Version="2.0.1" />
-		<PackageReference Include="Serilog" Version="2.10.0" />
-		<PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
-		<PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
-	</ItemGroup>
-	<ItemGroup>
-		<EmbeddedResource Include="lang\**\*" />
-		<None Include="wwwroot\**\*.*" />
-		<Compile Remove="Features\Forms\**" />
-		<Compile Remove="Infrastructure\Cms\Views\**" />
-		<Content Remove="Features\Forms\**" />
-		<Content Remove="Infrastructure\Cms\Views\**" />
-		<EmbeddedResource Remove="Features\Forms\**" />
-		<EmbeddedResource Remove="Infrastructure\Cms\Views\**" />
-		<None Remove="Features\Forms\**" />
-		<None Remove="Infrastructure\Cms\Views\**" />
-		<Compile Remove="Infrastructure\Cms\BulkUpdateController.cs" />
-		<Compile Remove="Features\Media\FoundationPdfFile.cs" />
-		<Compile Remove="Features\Media\FoundationPdfFileViewModel.cs" />
-		<Compile Remove="Infrastructure\Cms\CmsMenuProvider.cs" />
-		<Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
-		<Compile Remove="Infrastructure\Kpi\FilledInFormKpi.cs" />
-		<Compile Remove="Infrastructure\PowerSlices\ContentSlices.cs" />
-		<Compile Remove="Infrastructure\PowerSlices\GeneralSlices.cs" />
-		<Content Remove="Features\Media\PdfFile.cshtml" />
-		<Content Remove="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
-	</ItemGroup>
-	<ItemGroup>
-		<None Include="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
-	</ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <VersionPrefix>2021.04.1.0</VersionPrefix>
+    <VersionSuffix></VersionSuffix>
+    <PackageVersion Condition=" '$(PackageVersion)' == '' ">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
+    <UserSecretsId>470af002-8e88-4bbb-a89f-c02b14f8f64b</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="5.1.0" />
+    <PackageReference Include="EPiServer.CMS" Version="12.0.1-pre-022064" />
+    <PackageReference Include="EPiServer.Find.Cms" Version="14.0.0-pre-020304" />
+    <PackageReference Include="EPiServer.Forms" Version="5.0.0-pre-020047" />
+    <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.0.0-pre-020043" />
+    <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.4" />
+    <PackageReference Include="Schema.NET" Version="8.0.0" />
+    <PackageReference Include="Shorthand.ImageSharp.WebP" Version="2.2.1" />
+    <PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.2" />
+    <PackageReference Include="Wangkanai.Detection" Version="2.0.1" />
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="lang\**\*" />
+    <None Include="wwwroot\**\*.*" />
+    <Compile Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+    <Compile Remove="Features\Forms\**" />
+    <Compile Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+    <Content Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+    <Content Remove="Features\Forms\**" />
+    <Content Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+    <EmbeddedResource Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+    <EmbeddedResource Remove="Features\Forms\**" />
+    <EmbeddedResource Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+    <None Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+    <None Remove="Features\Forms\**" />
+    <None Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+    <Compile Remove="Infrastructure\Cms\BulkUpdateController.cs" />
+    <Compile Remove="Features\Media\FoundationPdfFile.cs" />
+    <Compile Remove="Features\Media\FoundationPdfFileViewModel.cs" />
+    <Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
+    <Compile Remove="Infrastructure\Kpi\FilledInFormKpi.cs" />
+    <Compile Remove="Infrastructure\PowerSlices\ContentSlices.cs" />
+    <Compile Remove="Infrastructure\PowerSlices\GeneralSlices.cs" />
+    <Content Remove="Features\Media\PdfFile.cshtml" />
+    <Content Remove="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
+  </ItemGroup>
 </Project>

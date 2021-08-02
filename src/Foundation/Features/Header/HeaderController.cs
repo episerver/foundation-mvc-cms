@@ -1,6 +1,7 @@
 ﻿using EPiServer.Web.Routing;
 using Foundation.Features.Home;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Foundation.Features.Header
 {
@@ -16,15 +17,15 @@ namespace Foundation.Features.Header
             _contentRouteHelper = contentRouteHelper;
         }
 
-        public ActionResult GetHeader(HomePage homePage)
+        public async Task<ActionResult> GetHeader(HomePage homePage)
         {
             var content = _contentRouteHelper.Content;
-            return PartialView("_Header", _headerViewModelFactory.CreateHeaderViewModel(content, homePage));
+            return await Task.FromResult(PartialView("_Header", _headerViewModelFactory.CreateHeaderViewModel(content, homePage)));
         }
 
-        public ActionResult GetHeaderLogoOnly()
+        public async Task<ActionResult> GetHeaderLogoOnly()
         {
-            return PartialView("_HeaderLogo", _headerViewModelFactory.CreateHeaderLogoViewModel());
+            return await Task.FromResult(PartialView("_HeaderLogo", _headerViewModelFactory.CreateHeaderLogoViewModel()));
         }
     }
 }

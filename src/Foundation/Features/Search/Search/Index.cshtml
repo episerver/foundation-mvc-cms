@@ -27,14 +27,14 @@
     </div>
         <div class="row">
             <div class="col-lg-3">
-                @{ await Html.RenderPartialAsync("_FacetContent", Model); }
+                @await Html.PartialAsync("_FacetContent", Model)
             </div>
             <div class="col-lg-9">
                 @{
                     ViewDataDictionary values = new ViewDataDictionary(ViewData);
                     values.Add(new KeyValuePair<string, object>("SearchLabel", "Contents"));
                     values.Add(new KeyValuePair<string, object>("FilterId", "SearchContent"));
-                    await Html.RenderPartialAsync("_SearchContent", Model, values);
+                    await Html.PartialAsync("_SearchContent", Model, values);
                 }
             </div>
         </div>

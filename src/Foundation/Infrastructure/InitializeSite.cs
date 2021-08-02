@@ -17,6 +17,7 @@ using Foundation.Infrastructure.Find;
 using Foundation.Infrastructure.SchemaMarkup;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 //using PowerSlice;
 using System;
 
@@ -55,7 +56,6 @@ namespace Foundation.Infrastructure
             _services.AddSingleton<BlogTagFactory>();
             _services.AddSingleton<ISearchService, SearchService>();
             _services.AddSingleton<ISearchViewModelFactory, SearchViewModelFactory>();
-            _services.AddSingleton<IModelBinderProvider, FindModelBinderProvider>();
             //_services.AddTransient<IContentQuery, LandingPagesSlice>();
             //_services.AddTransient<IContentSlice, LandingPagesSlice>();
             //_services.AddTransient<IContentQuery, StandardPagesSlice>();

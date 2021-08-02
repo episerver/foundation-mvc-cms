@@ -20,33 +20,6 @@ namespace Foundation.Features.Search
                 throw new ArgumentNullException(nameof(bindingContext));
             }
 
-            var modelName = bindingContext.ModelName = "FilterOption";
-
-            // Try to fetch the value of the argument by name
-            var valueProviderResult = bindingContext.ValueProvider.GetValue(modelName);
-
-            if (valueProviderResult == ValueProviderResult.None)
-            {
-                return;
-            }
-
-            bindingContext.ModelState.SetModelValue(modelName, valueProviderResult);
-
-            var value = valueProviderResult.FirstValue;
-
-            // Check if the argument value is null or empty
-            if (string.IsNullOrEmpty(value))
-            {
-                return;
-            }
-
-            var contentLink = bindingContext.ActionContext.HttpContext.GetContentLink();
-            IContent content = null;
-            if (!ContentReference.IsNullOrEmpty(contentLink))
-            {
-                content = _contentLoader.Get<IContent>(contentLink);
-            }
-
             var query = bindingContext.ActionContext.HttpContext.Request.Query["search"];
             var sort = bindingContext.ActionContext.HttpContext.Request.Query["sort"];
             var section = bindingContext.ActionContext.HttpContext.Request.Query["t"];
@@ -54,12 +27,12 @@ namespace Foundation.Features.Search
             var confidence = bindingContext.ActionContext.HttpContext.Request.Query["confidence"];
 
             var model = new FilterOptionViewModel();
-            SetupModel(model, query, sort, section, page, content, confidence);
+            SetupModel(model, query, sort, section, page, confidence);
             bindingContext.Result = ModelBindingResult.Success(model);
             await Task.CompletedTask;
         }
 
-        protected virtual void SetupModel(FilterOptionViewModel model, string q, string sort, string section, string page, IContent content, string confidence)
+        protected virtual void SetupModel(FilterOptionViewModel model, string q, string sort, string section, string page, string confidence)
         {
             EnsurePage(model, page);
             EnsureQ(model, q);
