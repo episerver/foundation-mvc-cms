@@ -12,7 +12,7 @@ namespace Foundation.Features.Blocks
     [TemplateDescriptor(Inherited = true)]
     public class DefaultBlockComponent : AsyncBlockComponent<FoundationBlockData>
     {
-        public override async Task<IViewComponentResult> InvokeAsync(FoundationBlockData currentBlock)
+        protected override async Task<IViewComponentResult> InvokeComponentAsync(FoundationBlockData currentBlock)
         {
             var model = CreateModel(currentBlock);
             var blockName = currentBlock.GetOriginalType().Name;

@@ -1,6 +1,4 @@
 ﻿using EPiServer.Cms.TinyMce;
-using EPiServer.Data;
-using EPiServer.Find.UI;
 using EPiServer.Framework.Web.Resources;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
@@ -21,27 +19,15 @@ namespace Foundation
     public class Startup
     {
         private readonly IWebHostEnvironment _webHostingEnvironment;
-        private readonly IConfiguration _configuration;
 
-        public Startup(IWebHostEnvironment webHostingEnvironment, IConfiguration configuration)
+        public Startup(IWebHostEnvironment webHostingEnvironment)
         {
             _webHostingEnvironment = webHostingEnvironment;
-            _configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCmsAspNetIdentity<SiteUser>(o =>
-            {
-                if (string.IsNullOrEmpty(o.ConnectionStringOptions?.ConnectionString))
-                {
-                    o.ConnectionStringOptions = new ConnectionStringOptions()
-                    {
-                        ConnectionString = _configuration.GetConnectionString("EPiServerDB")
-                    };
-                }
-            });
-
+            services.AddCmsAspNetIdentity<SiteUser>();
             services.AddMvc(o => o.Conventions.Add(new FeatureConvention()))
                 .AddRazorOptions(ro => ro.ViewLocationExpanders.Add(new FeatureViewLocationExpander()));
 
@@ -62,8 +48,6 @@ namespace Foundation
             });
             services.TryAddEnumerable(Microsoft.Extensions.DependencyInjection.ServiceDescriptor.Singleton(typeof(IFirstRequestInitializer), typeof(ContentInstaller)));
             services.AddDetection();
-            services.Configure<FindUIOptions>(x => x.ClientSideResourceBaseUrl = "https://stage.dl.episerver.net/$version$/");
-
         }
 
 

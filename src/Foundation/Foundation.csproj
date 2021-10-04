@@ -8,10 +8,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="5.1.0" />
-    <PackageReference Include="EPiServer.CMS" Version="12.0.1-pre-022064" />
-    <PackageReference Include="EPiServer.Find.Cms" Version="14.0.0-pre-020304" />
-    <PackageReference Include="EPiServer.Forms" Version="5.0.0-pre-020047" />
-    <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.0.0-pre-020043" />
+    <PackageReference Include="EPiServer.CMS" Version="12.0.2" />
+    <PackageReference Include="EPiServer.Find.Cms" Version="14.0.2" />
+    <PackageReference Include="EPiServer.Forms" Version="5.0.0" />
+    <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.0.0" />
     <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.4" />
     <PackageReference Include="Schema.NET" Version="8.0.0" />
     <PackageReference Include="Shorthand.ImageSharp.WebP" Version="2.2.1" />
@@ -48,5 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="App_Data\foundation.episerverdata">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\GeoLite2-City-Locations-en.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="App_Data\GeoLite2-City.mmdb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
