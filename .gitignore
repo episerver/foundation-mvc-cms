@@ -92,3 +92,10 @@ src/Foundation/modules/
 /src/Foundation/wwwroot/scss/main.min.css
 /src/Foundation/wwwroot/scss/main.min.css.map
 /log.txt
+.DS_Store
+.idea/.idea.Foundation/.idea/.name
+.idea/.idea.Foundation/.idea/indexLayout.xml
+.idea/.idea.Foundation/.idea/vcs.xml
+src/Foundation/.env
+src/Foundation/Nuget.config
+src/Foundation/wwwroot/vendors/*

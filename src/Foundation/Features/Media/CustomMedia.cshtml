@@ -1,0 +1,17 @@
+@using Foundation.Features.Media
+
+@model CustomMediaViewModel
+
+
+<div style="display: flex; flex-wrap:wrap; border: 1px solid">
+    <h4>Custom media file:</h4>
+    <div class="col-12">
+        @Html.PropertyFor(x => x.Title)
+    </div>
+    <div class="col-12">
+        @Html.PropertyFor(x => x.Description)
+    </div>
+    <div class="col-12">
+        @Html.PropertyFor(x => x.FileSize)
+    </div>
+</div>

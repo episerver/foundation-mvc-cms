@@ -1,0 +1,24 @@
+@using Foundation.Features.FileUploadPage
+
+@model ContentViewModel<FileUploadPage>
+
+<div class="row">
+    <div class="col-12">
+        @using (Html.BeginForm("FileUploadLocal", "FileUploadPage", FormMethod.Post, new 
+        { enctype = "multipart/form-data" }))
+        {
+            <label>Local:</label>
+            <input type="file" name="file" />
+            <input class="btn" type="submit" value="Upload">
+        }
+    </div>
+    <div class="col-12">
+        @using (Html.BeginForm("FileUploadGlobal", "FileUploadPage", FormMethod.Post, new 
+        { enctype = "multipart/form-data" }))
+        {
+            <label>Global:</label>
+            <input type="file" name="file" />
+            <input class="btn" type="submit" value="Upload">
+        }
+    </div>
+</div>

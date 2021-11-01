@@ -1,0 +1,27 @@
+version: "3"
+services:
+  sql:
+    build:
+      dockerfile: ./docker/Sql.Dockerfile
+      context: .
+    # comment out below lines if you want to expose sql server port for using with other tool like sql server management studio
+    ports:
+      - "1549:1433"
+    environment:
+      SA_PASSWORD: ${sa_password}
+      ACCEPT_EULA: "Y"
+      DATABASE_NAME: ${database_name}
+    image: foundation/db:${sql_tag}
+  web:
+    build:
+      dockerfile: ./docker/Web.Dockerfile
+      context: .
+    ports:
+      - "${site_port}:80"
+    environment:
+      ConnectionStrings__EPiServerDB: "Data Source=sql;Database=${database_name};User Id=netcoreUser;Password=epi#Server7Local;MultipleActiveResultSets=True;"
+      site_port: ${site_port}
+      ASPNETCORE_ENVIRONMENT: "Development"
+    depends_on:
+      - sql
+    image: foundation/web:${web_tag}

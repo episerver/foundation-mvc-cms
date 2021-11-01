@@ -1,0 +1,11 @@
+@using Foundation.Features.Blocks.NpmPackageViewerBlock
+
+@model IBlockViewModel<NpmPackageViewerBlock>
+
+<div style="height: 500px">
+    <iframe height="100%"
+            frameborder="0"
+            class="border-0 w-100"
+            src="https://unpkg.com/browse/@(Model.CurrentBlock.PackageName)/" allowfullscreen>
+    </iframe>
+</div>

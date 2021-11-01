@@ -70,6 +70,8 @@ namespace Foundation
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
+            
+            Console.WriteLine("Hello World!");
         }
     }
 }

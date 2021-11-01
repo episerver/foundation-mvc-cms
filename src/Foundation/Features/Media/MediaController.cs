@@ -67,6 +67,16 @@ namespace Foundation.Features.Media
                     }
 
                     return await Task.FromResult(View("~/Features/Media/ImageMedia.cshtml", imageViewModel));
+                
+                case CustomMediaData data:
+                    var customMediaModel = new CustomMediaViewModel
+                    {
+                        Title = data.Title,
+                        Description = data.Description,
+                        FileSize = data.FileSize,
+                    };
+
+                    return await Task.FromResult(View("~/Features/Media/CustomMedia.cshtml", customMediaModel));
                 //case FoundationPdfFile pdfFile:
                 //    var pdfViewModel = new FoundationPdfFileViewModel
                 //    {
