@@ -7,36 +7,39 @@
     <UserSecretsId>470af002-8e88-4bbb-a89f-c02b14f8f64b</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+		<PackageReference Include="Baaijte.Optimizely.ImageSharp.Web" Version="1.0.6" />
     <PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="5.1.0" />
-    <PackageReference Include="EPiServer.CMS" Version="12.0.2" />
-    <PackageReference Include="EPiServer.Find.Cms" Version="14.0.2" />
-    <PackageReference Include="EPiServer.Forms" Version="5.0.0" />
-    <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.0.0" />
+		<PackageReference Include="EPiServer.ContentDefinitionsApi" Version="3.0.1" />
+		<PackageReference Include="EPiServer.ContentDeliveryApi.Cms" Version="3.0.1" />
+		<PackageReference Include="EPiServer.ContentManagementApi" Version="3.0.1" />
+    <PackageReference Include="EPiServer.CMS" Version="12.2.1" />
+		<PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.2.0" />
+    <PackageReference Include="EPiServer.Find.Cms" Version="14.0.4" />
+    <PackageReference Include="EPiServer.Forms" Version="5.0.1" />
+		<PackageReference Include="EPiServer.Framework" Version="12.2.0" />
+		<PackageReference Include="EPiServer.Hosting" Version="12.2.0" />
+    <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.0.2" />
+		<PackageReference Include="EPiServer.Marketing.Automation.Forms" Version="3.0.0" />
+		<PackageReference Include="EPiServer.OpenIDConnect.UI" Version="3.0.1" />
+		<PackageReference Include="EPiServer.Telemetry.UI" Version="2.0.1" />
+		<PackageReference Include="Geta.NotFoundHandler.Optimizely" Version="1.0.4" />
+		<PackageReference Include="Jhoose.Security.Admin" Version="1.1.0.79" />
     <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.4" />
-    <PackageReference Include="Schema.NET" Version="8.0.0" />
+    <PackageReference Include="Schema.NET" Version="11.0.0" />
     <PackageReference Include="Shorthand.ImageSharp.WebP" Version="2.2.1" />
-    <PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.2" />
-    <PackageReference Include="Wangkanai.Detection" Version="2.0.1" />
+    <PackageReference Include="Wangkanai.Detection" Version="4.0.0" />
     <PackageReference Include="Serilog" Version="2.10.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
-    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="lang\**\*" />
-    <None Include="wwwroot\**\*.*" />
-    <Compile Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
+		<None Update="App_Data\**" CopyToOutputDirectory="PreserveNewest" />
+		<None Update="modules\_protected\Foundation\**" CopyToOutputDirectory="PreserveNewest" />
     <Compile Remove="Features\Forms\**" />
-    <Compile Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
-    <Content Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
     <Content Remove="Features\Forms\**" />
-    <Content Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
-    <EmbeddedResource Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
     <EmbeddedResource Remove="Features\Forms\**" />
-    <EmbeddedResource Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
-    <None Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
     <None Remove="Features\Forms\**" />
-    <None Remove="Infrastructure\Cms\Views\BulkUpdate\**" />
-    <Compile Remove="Infrastructure\Cms\BulkUpdateController.cs" />
     <Compile Remove="Features\Media\FoundationPdfFile.cs" />
     <Compile Remove="Features\Media\FoundationPdfFileViewModel.cs" />
     <Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
@@ -45,19 +48,6 @@
     <Compile Remove="Infrastructure\PowerSlices\GeneralSlices.cs" />
     <Content Remove="Features\Media\PdfFile.cshtml" />
     <Content Remove="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="App_Data\foundation.episerverdata">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\GeoLite2-City-Locations-en.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="App_Data\GeoLite2-City.mmdb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

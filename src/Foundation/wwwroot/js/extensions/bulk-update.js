@@ -7,15 +7,15 @@
         this.getContentTypes();
         this.getLanguages();
         $('.content-group-filter').on('change', { inst: this }, this.getContentTypes);
-        $('.content-type-filter').on('change', this.getProperties);
+        $('.content-type-filter').on('change', { inst: this }, this.getProperties);
         $('.button-apply-filters').on('click', { inst: this }, this.applyFilters);
     }
-    
+
     getContentTypes(e) {
         var inst = typeof (e) !== 'undefined' ? e.data.inst : this;
         $('.loading-box').show();
         let filter = $('.content-group-filter').val();
-        axios.get("bulkupdate/getcontenttypes/?type=" + filter)
+        axios.get("/episerver/foundation/bulkupdate/getcontenttypes/" + filter)
             .then(function (result) {
                 $('.content-type-filter').empty();
                 $.each(result.data,
@@ -40,7 +40,8 @@
     }
 
     getProperties(e) {
-        axios.get("bulkupdate/getproperties/" + e.currentTarget.value)
+        var inst = e.data.inst;
+        axios.get("/episerver/foundation/bulkupdate/getproperties/" + e.currentTarget.value)
             .then(function (result) {
                 $('.table-content-info').empty();
                 $('.table-content-info').append('<div style="text-align: center;"><h4>Click <b>"Apply Filter"</b> to get Bulk Update Contents</h4></div>');
@@ -55,15 +56,17 @@
                 });
             })
             .catch(function (error) {
-                notification.error(error);
+                var options = inst.setOptions("error");
+                $.notify(error, options);
             })
             .finally(function () {
-               
+
             });
     }
 
     getDefaultProperties(id) {
-        axios.get("bulkupdate/getproperties/" + id)
+        let inst = this;
+        axios.get("/episerver/foundation/bulkupdate/getproperties/" + id)
             .then(function (result) {
                 $('.checkbox-content-properties').empty();
                 $.each(result.data, function (index, entry) {
@@ -76,7 +79,8 @@
                 });
             })
             .catch(function (error) {
-                notification.error(error);
+                var options = inst.setOptions("error");
+                $.notify(error, options);
             })
             .finally(function () {
 
@@ -84,8 +88,9 @@
     }
 
     getLanguages() {
+        let inst = this;
         $('.loading-box').show();
-        axios.get("bulkupdate/getlanguages")
+        axios.get("/episerver/foundation/bulkupdate/getlanguages")
             .then(function (result) {
                 $.each(result.data, function (index, entry) {
                     if (entry.DisplayName != null) {
@@ -97,7 +102,8 @@
                 });
             })
             .catch(function (error) {
-                notification.error(error);
+                var options = inst.setOptions("error");
+                $.notify(error, options);
             })
             .finally(function () {
                 $('.loading-box').hide();
@@ -115,7 +121,7 @@
         var language = $('.content-language-filter').val();
         var keyword = $('.content-name-filter').val();
 
-        axios.get("bulkupdate/get?contentTypeId=" + contentTypeId + "&language=" + language + "&properties=" + properties.join() + "&keyword=" + keyword)
+        axios.get("/episerver/foundation/bulkupdate/getContent?contentTypeId=" + contentTypeId + "&language=" + language + "&properties=" + properties.join() + "&keyword=" + keyword)
             .then(function (result) {
                 inst.contents = result.data;
                 if (result.data.length > 0) {
@@ -179,7 +185,9 @@
                 }
             })
             .catch(function (error) {
-                notification.error(error);
+                var options = inst.setOptions("error");
+                $.notify(error, options);
+
                 console.log(error);
             })
             .finally(function () {
@@ -262,7 +270,7 @@
                 Contents: inst.contents,
                 Properties: properties.join()
             };
-            axios.post("bulkupdate/updateContent", data)
+            axios.post("/episerver/foundation/bulkupdate/updateContent", data)
                 .then(function (result) {
                     $.each(result, function (index, entry) {
                         if (entry.DisplayName != null) {
@@ -274,11 +282,26 @@
                     });
                 })
                 .catch(function (error) {
-                    notification.error(error);
+                    var options = inst.setOptions("error");
+                    $.notify(error, options);
                 })
                 .finally(function () {
                     $('.loading-box').hide();
                 });
         }
     }
-}; 
+
+    setOptions(className, encodeMess) {
+        var options = {
+            className: className
+        }
+
+        if (encodeMess != undefined) {
+            options.encodeMess = encodeMess;
+        } else {
+            options.encodeMess = true;
+        }
+
+        return options;
+    }
+};

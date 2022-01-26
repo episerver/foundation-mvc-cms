@@ -114,10 +114,9 @@ echo ## Dropping user ##
 echo ## Dropping user ## >> Build\Logs\Database.log
 %sql% -Q "if exists (select loginname from master.dbo.syslogins where name = '%user%') EXEC sp_droplogin @loginame='%user%'" >> Build\Logs\Database.log
 
-powershell -command "&{.\build\build.ps1 -server %SQLSERVER% -additionalSQL %ADDITIONAL_SQLCMD% -appName %APPNAME% "}" 
 
-::call "%ROOTDIR%\build\jrepl" "\" "\\" /f "%SOURCEPATH%\Foundation\appsettings.json" /L /o -
-
+dotnet tool install EPiServer.Net.Cli --global --add-source https://nuget.optimizely.com/feed/packages.svc/
+dotnet-episerver create-cms-database ".\src\Foundation\Foundation.csproj" -S "%SQLSERVER%" %ADDITIONAL_SQLCMD%  --database-name "%APPNAME%.Cms"
 :error
 if NOT "%errorMessage%"=="" echo %errorMessage%
 

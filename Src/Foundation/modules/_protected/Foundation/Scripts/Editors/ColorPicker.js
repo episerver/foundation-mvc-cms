@@ -22,21 +22,23 @@
     ) {
         return declare("foundation/editors/ColorPicker", [_Widget, _TemplatedMixin, _WidgetsInTemplateMixin, _CssStateMixin, _ValueRequiredMixin],
             {
-                templateString: 
+                templateString:
                     `<div style="min-width: 250px" 
                         data-dojo-attach-point=\"pickerElement\" class=\"dijitInline\" tabindex=\"-1\" role=\"presentation\">
                         <div data-dojo-attach-point=\"stateNode, tooltipNode\" class="hidden">
                             <input style="display: none"  data-dojo-attach-point=\"colorPicker\" data-dojo-type=\"dijit.form.TextBox\"></input>
                         </div>\
                     </div>`,
-                
+
                 intermediateChanges: false,
 
                 value: null,
                 picker: null,
+
                 onClick: function () {
                     this.picker.openHandler();
                 },
+
                 onChange: function (value) {
                     this._set("value", value);
                     this.colorPicker.set("value", value);
@@ -48,7 +50,8 @@
                     var inst = this;
                     this.picker = new Picker({
                         parent: parentBasic, color: this.value,
-                        popup: false });
+                        popup: false
+                    });
                     this.picker.onChange = function (color) {
                         inst._onColorPickerChanged(color);
                     };

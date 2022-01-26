@@ -9,8 +9,7 @@ namespace Foundation
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Information()
-                .WriteTo.File("app_data/log.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.Console()
                 .CreateLogger();
 
             CreateHostBuilder(args).Build().Run();

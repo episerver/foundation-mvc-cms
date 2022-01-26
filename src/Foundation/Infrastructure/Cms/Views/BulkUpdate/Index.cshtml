@@ -1,6 +1,5 @@
 ﻿@using EPiServer.Shell
 @using EPiServer.Shell.Navigation
-@inherits WebViewPage
 <title>Bulk Update</title>
 <main class="dash-content">
     <div class="container-fluid">
@@ -22,10 +21,6 @@
                                         <option value="Page">Page</option>
                                         <option value="Block">Block</option>
                                         <option value="Media">Media</option>
-                                        <option value="Node">Node</option>
-                                        <option value="Entry">Entry</option>
-                                        <option value="Camapign">Campaign</option>
-                                        <option value="Discount">Discount</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -78,8 +73,8 @@
 </main>
 
 @section AdditionalScripts {
-    <script src="~/Assets/js/vendors/gijgo/gijgo.min.js" type="text/javascript"></script>
-    <script src="~/Assets/js/extensions/features/bulk-update.js" type="text/javascript"></script>
+    <script src="~/js/vendors/gijgo/gijgo.min.js" type="text/javascript"></script>
+    <script src="~/js/extensions/bulk-update.js" type="text/javascript"></script>
     <script>
         $(document).ready(function () {
             var bulk = new BulkUpdate();
@@ -89,6 +84,6 @@
 }
 
 @section AdditionalStyles {
-    <link href="~/Assets/scss/vendors/gijgo/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Assets/scss/extensions/bulk-update.css" rel="stylesheet" type="text/css" />
+    <link href="~/scss/vendors/gijgo/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/scss/extensions/bulk-update.css" rel="stylesheet" type="text/css" />
 }
