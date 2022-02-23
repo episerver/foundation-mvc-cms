@@ -36,9 +36,9 @@ Windows
 
 ```
 open command prompt as administrator
-git clone git@github.com:episerver/foundation-mvc-cms.git
+git clone https://github.com/episerver/foundation-mvc-cms.git
 cd foundation-mvc-cms
-git checkout main
+git checkout net5
 setup.cmd 
 dotnet run
 ```
@@ -47,9 +47,9 @@ dotnet run
 
 ```
 Open a Terminal window
-git clone git@github.com:episerver/foundation-mvc-cms.git
+git clone https://github.com/episerver/foundation-mvc-cms.git
 cd foundation-mvc-cms
-git checkout main
+git checkout net5
 chmod u+x setup.sh
 ./setup.sh
 dotnet run
@@ -59,9 +59,9 @@ dotnet run
 
 ```
 Open a bash terminal window
-git clone git@github.com:episerver/foundation-mvc-cms.git
+git clone https://github.com/episerver/foundation-mvc-cms.git
 cd foundation-mvc-cms
-git checkout main
+git checkout net5
 chmod u+x setup.sh
 ./setup.sh
 dotnet run
