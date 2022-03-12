@@ -7,7 +7,9 @@ add_sql_container()
     if [ $( docker ps -a | grep sql_server_optimizely | wc -l ) -gt 0 ]; then
         echo "sql_server_optimizely exists"
     else
-        docker run -d --name sql_server_optimizely -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Episerver123!' -p 1433:1433 mcr.microsoft.com/mssql/server:2019-latest
+        sudo docker run -d --name sql_server_optimizely -h $1 -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Episerver123!' \
+           -p 1433:1433 mcr.microsoft.com/mssql/server:2019-latest
+        docker cp ./build sql_server_optimizely:/build
     fi
 }
 
@@ -19,19 +21,19 @@ read -p "Enter your SQL server name [localhost]: " SQLSERVER
 SQLSERVER=${SQLSERVER:-localhost}
 
 dotnet new -i EPiServer.Net.Templates --nuget-source https://nuget.optimizely.com/feed/packages.svc/ --force
-dotnet tool install EPiServer.Net.Cli --global --add-source https://nuget.optimizely.com/feed/packages.svc/
-dotnet nuget add source https://nuget.episerver.com/feed/packages.svc -n Optimizely
+dotnet tool update EPiServer.Net.Cli --global --add-source https://nuget.optimizely.com/feed/packages.svc/
+dotnet nuget add source https://nuget.optimizely.com/feed/packages.svc -n Optimizely
 dotnet dev-certs https --trust
 
 dotnet build
-add_sql_container
+add_sql_container "$SQLSERVER"
 
 cms_db=$APPNAME.Cms
 user=$APPNAME.User
 password=Episerver123!
 errorMessage="" 
 
-mkdir "$ROOTPATH/Build/Logs" 2>nul
+mkdir "$ROOTPATH/build/logs"
 
 cd src/Foundation/
 npm ci
@@ -42,6 +44,6 @@ docker exec -it sql_server_optimizely /opt/mssql-tools/bin/sqlcmd -S $SQLSERVER 
 docker exec -it sql_server_optimizely /opt/mssql-tools/bin/sqlcmd -S $SQLSERVER -U SA -P $password -Q "if db_id('$cms_db') is not null ALTER DATABASE [$cms_db] SET SINGLE_USER WITH ROLLBACK IMMEDIATE"
 docker exec -it sql_server_optimizely /opt/mssql-tools/bin/sqlcmd -S $SQLSERVER -U SA -P $password -Q "if db_id('$cms_db') is not null DROP DATABASE [$cms_db]"
 
-dotnet-episerver create-cms-database "./src/Foundation/Foundation.csproj" -S "$SQLSERVER" -U sa -P $password --database-name "$APPNAME.Cms"  --database-user "$user" --database-password $password
+dotnet-episerver create-cms-database "./src/Foundation/Foundation.csproj" -S $SQLSERVER -U sa -P $password --database-name "$cms_db"  --database-user $user --database-password $password
 
 #dotnet run --project src/Foundation/Foundation.csproj
