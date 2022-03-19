@@ -139,7 +139,7 @@ namespace Foundation.Infrastructure
                 _contentRootService.Register<SettingsFolder>(SettingsFolder.SettingsRootName + "IMPORT", SettingsFolder.SettingsRootGuid, ContentReference.RootPage);
             }
 
-            CreateSite(new FileStream(Path.Combine(_webHostEnvironment.ContentRootPath, "App_Data/foundation.episerverdata"),
+            CreateSite(new FileStream(Path.Combine(_webHostEnvironment.ContentRootPath, "App_Data", "foundation.episerverdata"),
                     FileMode.Open,
                     FileAccess.Read,
                     FileShare.Read),
