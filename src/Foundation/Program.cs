@@ -9,8 +9,8 @@ namespace Foundation
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.Console()
-                .CreateLogger();
+               .WriteTo.File("app_data/log.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit:5)
+               .CreateLogger();
 
             CreateHostBuilder(args).Build().Run();
         }
@@ -19,9 +19,6 @@ namespace Foundation
             Host.CreateDefaultBuilder(args)
                 .ConfigureCmsDefaults()
                 .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
     }
 }

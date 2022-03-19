@@ -12,18 +12,21 @@
 		<PackageReference Include="EPiServer.ContentDefinitionsApi" Version="3.0.1" />
 		<PackageReference Include="EPiServer.ContentDeliveryApi.Cms" Version="3.0.1" />
 		<PackageReference Include="EPiServer.ContentManagementApi" Version="3.0.1" />
-    <PackageReference Include="EPiServer.CMS" Version="12.2.1" />
-		<PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.2.0" />
+    <PackageReference Include="EPiServer.CMS" Version="12.3.2" />
+		<PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.4.1" />
     <PackageReference Include="EPiServer.Find.Cms" Version="14.0.4" />
-    <PackageReference Include="EPiServer.Forms" Version="5.0.1" />
-		<PackageReference Include="EPiServer.Framework" Version="12.2.0" />
-		<PackageReference Include="EPiServer.Hosting" Version="12.2.0" />
+    <PackageReference Include="EPiServer.Forms" Version="5.1.0" />
+		<PackageReference Include="EPiServer.Framework" Version="12.4.1" />
+		<PackageReference Include="EPiServer.Hosting" Version="12.4.1" />
+		<!--<PackageReference Include="EPiServer.Labs.ContentManager" Version="1.0.1" />
+		<PackageReference Include="EPiServer.Labs.ContentManager.Core.FindQuery" Version="1.0.1" />
+		<PackageReference Include="EPiServer.Labs.GridView" Version="1.0.1" />-->
     <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.0.2" />
 		<PackageReference Include="EPiServer.Marketing.Automation.Forms" Version="3.0.0" />
 		<PackageReference Include="EPiServer.OpenIDConnect.UI" Version="3.0.1" />
 		<PackageReference Include="EPiServer.Telemetry.UI" Version="2.0.1" />
 		<PackageReference Include="Geta.NotFoundHandler.Optimizely" Version="1.0.4" />
-		<PackageReference Include="Jhoose.Security.Admin" Version="1.1.0.79" />
+		<PackageReference Include="Jhoose.Security.Admin" Version="1.1.2.91" />
     <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.4" />
     <PackageReference Include="Schema.NET" Version="11.0.0" />
     <PackageReference Include="Shorthand.ImageSharp.WebP" Version="2.2.1" />
@@ -46,6 +49,7 @@
     <Compile Remove="Infrastructure\Kpi\FilledInFormKpi.cs" />
     <Compile Remove="Infrastructure\PowerSlices\ContentSlices.cs" />
     <Compile Remove="Infrastructure\PowerSlices\GeneralSlices.cs" />
+    <Content Remove="C:\Users\mark\.nuget\packages\jhoose.security.admin\1.1.2.91\contentFiles\any\net5.0\nuget.config" />
     <Content Remove="Features\Media\PdfFile.cshtml" />
     <Content Remove="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
     <None Include="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />

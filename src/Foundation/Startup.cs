@@ -1,6 +1,7 @@
-﻿using EPiServer.Cms.TinyMce;
-using EPiServer.ContentApi.Cms.Internal;
+﻿using EPiServer.Authorization;
+using EPiServer.Cms.TinyMce;
 using EPiServer.ContentApi.Cms;
+using EPiServer.ContentApi.Cms.Internal;
 using EPiServer.ContentDefinitionsApi;
 using EPiServer.ContentManagementApi;
 using EPiServer.Find;
@@ -24,7 +25,6 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Linq;
-using EPiServer.Authorization;
 
 namespace Foundation
 {
@@ -56,6 +56,7 @@ namespace Foundation
             services.AddDisplay();
             services.AddTinyMce();
             services.AddFind();
+            
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = "/util/Login";
@@ -120,6 +121,9 @@ namespace Foundation
             services.AddNotFoundHandler(o => o.UseSqlServer(_configuration.GetConnectionString("EPiServerDB")), policy => policy.RequireRole(Roles.CmsAdmins));
             services.AddOptimizelyNotFoundHandler();
             services.AddJhooseSecurity(_configuration);
+            //services.AddContentManager();
+            //services.AddGridView();
+
             services.Configure<ProtectedModuleOptions>(x =>
             {
                 if (!x.Items.Any(x => x.Name.Equals("Foundation")))

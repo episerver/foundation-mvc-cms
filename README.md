@@ -4,7 +4,9 @@
 
 Foundation offers a starting point that is intuitive, well-structured and modular allowing developers to explore CMS, Search amd Navigaion, Data Platform and Experimentation.
 
-For an instance of Foundation that includes commerce: <a href="https://github.com/episerver/Foundation">https://github.com/episerver/foundation-mvc-cms</a>
+For an instance of Foundation that includes commerce: <a href="https://github.com/episerver/Foundation">https://github.com/episerver/foundation</a>
+
+This version is built for net5.0, net6.0. For the legacy framework version please use the [master branch](https://github.com/episerver/Foundation/tree/master)
 
 ---
 
@@ -40,7 +42,7 @@ Windows
 open command prompt as administrator
 git clone https://github.com/episerver/foundation-mvc-cms.git
 cd foundation-mvc-cms
-git checkout net5
+git checkout main
 setup.cmd 
 dotnet run --project .\src\Foundation\Foundation.csproj
 ```
@@ -51,7 +53,7 @@ dotnet run --project .\src\Foundation\Foundation.csproj
 Open a Terminal window
 git clone https://github.com/episerver/foundation-mvc-cms.git
 cd foundation-mvc-cms
-git checkout net5
+git checkout main
 chmod u+x setup.sh
 ./setup.sh
 dotnet run --project ./src/Foundation/Foundation.csproj
@@ -63,7 +65,7 @@ dotnet run --project ./src/Foundation/Foundation.csproj
 Open a bash terminal window
 git clone https://github.com/episerver/foundation-mvc-cms.git
 cd foundation-mvc-cms
-git checkout net5
+git checkout main
 chmod u+x setup.sh
 ./setup.sh
 dotnet run --project ./src/Foundation/Foundation.csproj
