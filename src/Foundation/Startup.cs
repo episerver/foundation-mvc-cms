@@ -50,8 +50,6 @@ namespace Foundation
                 services.Configure<ClientResourceOptions>(uiOptions => uiOptions.Debug = true);
             }
 
-            services.PostConfigure<FindOptions>(x => x.DefaultIndex = "test");
-
             services.AddCms();
             services.AddDisplay();
             services.AddTinyMce();
