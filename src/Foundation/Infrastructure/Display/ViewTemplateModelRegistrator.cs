@@ -3,6 +3,7 @@ using EPiServer.Framework.Web;
 using EPiServer.ServiceLocation;
 using EPiServer.Web;
 using EPiServer.Web.Mvc;
+using Foundation.Features.Blocks.ButtonBlock;
 using Foundation.Features.Shared;
 
 namespace Foundation.Infrastructure.Display
@@ -27,6 +28,15 @@ namespace Foundation.Infrastructure.Display
                 TemplateTypeCategory = TemplateTypeCategories.MvcPartialView,
                 Path = $"{FoundationFolder}_Page.cshtml"
             });
+
+            //viewTemplateModelRegistrator.Add(typeof(ButtonBlock), new TemplateModel
+            //{
+            //    Name = "ButtonBlock",
+            //    Inherit = true,
+            //    AvailableWithoutTag = true,
+            //    TemplateTypeCategory = TemplateTypeCategories.MvcPartialView,
+            //    Path = "~/Features/Blocks/ButtonBlock/ButtonBlock.cshtml"
+            //});
         }
     }
 }

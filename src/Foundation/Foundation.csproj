@@ -9,25 +9,28 @@
   <ItemGroup>
 		<PackageReference Include="Baaijte.Optimizely.ImageSharp.Web" Version="1.0.6" />
     <PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="5.1.0" />
+    <PackageReference Include="EPiServer.CMS.UI.Core" Version="12.6.0" />
 		<PackageReference Include="EPiServer.ContentDefinitionsApi" Version="3.0.1" />
-		<PackageReference Include="EPiServer.ContentDeliveryApi.Cms" Version="3.0.1" />
-		<PackageReference Include="EPiServer.ContentManagementApi" Version="3.0.1" />
-    <PackageReference Include="EPiServer.CMS" Version="12.3.2" />
-		<PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.4.1" />
+		<PackageReference Include="EPiServer.ContentDeliveryApi.Cms" Version="3.3.0" />
+		<PackageReference Include="EPiServer.ContentDeliveryApi.Core" Version="3.4.0-inte-003931" />
+		<PackageReference Include="EPiServer.ContentManagementApi" Version="3.3.0" />
+    <PackageReference Include="EPiServer.CMS" Version="12.6.0" />
+		<PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.5.0" />
     <PackageReference Include="EPiServer.Find.Cms" Version="14.0.4" />
     <PackageReference Include="EPiServer.Forms" Version="5.1.0" />
-		<PackageReference Include="EPiServer.Framework" Version="12.4.1" />
-		<PackageReference Include="EPiServer.Hosting" Version="12.4.1" />
+		<PackageReference Include="EPiServer.Framework" Version="12.5.0" />
+		<PackageReference Include="EPiServer.Hosting" Version="12.5.0" />
 		<!--<PackageReference Include="EPiServer.Labs.ContentManager" Version="1.0.1" />
 		<PackageReference Include="EPiServer.Labs.ContentManager.Core.FindQuery" Version="1.0.1" />
 		<PackageReference Include="EPiServer.Labs.GridView" Version="1.0.1" />-->
     <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.0.2" />
 		<PackageReference Include="EPiServer.Marketing.Automation.Forms" Version="3.0.0" />
 		<PackageReference Include="EPiServer.OpenIDConnect.UI" Version="3.0.1" />
-		<PackageReference Include="EPiServer.Telemetry.UI" Version="2.0.1" />
+		<PackageReference Include="EPiServer.Telemetry.UI" Version="2.2.0" />
 		<PackageReference Include="Geta.NotFoundHandler.Optimizely" Version="1.0.4" />
 		<PackageReference Include="Jhoose.Security.Admin" Version="1.1.2.91" />
     <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.4" />
+    <PackageReference Include="Optimizely.Query.Synchronizer" Version="0.7.0-pre-41351" />
     <PackageReference Include="Schema.NET" Version="11.0.0" />
     <PackageReference Include="Shorthand.ImageSharp.WebP" Version="2.2.1" />
     <PackageReference Include="Wangkanai.Detection" Version="4.0.0" />

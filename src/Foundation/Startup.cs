@@ -4,6 +4,7 @@ using EPiServer.ContentApi.Cms;
 using EPiServer.ContentApi.Cms.Internal;
 using EPiServer.ContentDefinitionsApi;
 using EPiServer.ContentManagementApi;
+using EPiServer.DependencyInjection;
 using EPiServer.Find;
 using EPiServer.Framework.Web.Resources;
 using EPiServer.OpenIDConnect;
@@ -121,6 +122,8 @@ namespace Foundation
             services.AddJhooseSecurity(_configuration);
             //services.AddContentManager();
             //services.AddGridView();
+
+            services.AddContentGraph(_configuration);
 
             services.Configure<ProtectedModuleOptions>(x =>
             {
