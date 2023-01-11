@@ -4,8 +4,10 @@ using EPiServer.ContentApi.Cms;
 using EPiServer.ContentApi.Cms.Internal;
 using EPiServer.ContentDefinitionsApi;
 using EPiServer.ContentManagementApi;
-using EPiServer.Find;
 using EPiServer.Framework.Web.Resources;
+using EPiServer.Labs.ContentManager;
+using EPiServer.Labs.GridView;
+using EPiServer.Marketing.Testing.Web.Initializers;
 using EPiServer.OpenIDConnect;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.Modules;
@@ -15,8 +17,8 @@ using Foundation.Infrastructure;
 using Foundation.Infrastructure.Cms.Users;
 using Foundation.Infrastructure.Display;
 using Geta.NotFoundHandler.Infrastructure.Configuration;
-using Geta.NotFoundHandler.Optimizely;
-using Jhoose.Security.DependencyInjection;
+using Geta.NotFoundHandler.Infrastructure.Initialization;
+using Geta.NotFoundHandler.Optimizely.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -90,7 +92,7 @@ namespace Foundation
                 // Accept anonymous calls
                 c.DisableScopeValidation = true;
             });
-            services.AddOpenIDConnect<SiteUser>(options =>
+            services.AddOpenIDConnect<SiteUser>(true, null, null, true, options =>
             {
                 //options.RequireHttps = !_webHostingEnvironment.IsDevelopment();
                 var application = new OpenIDConnectApplication()
@@ -118,10 +120,10 @@ namespace Foundation
 
             services.AddNotFoundHandler(o => o.UseSqlServer(_configuration.GetConnectionString("EPiServerDB")), policy => policy.RequireRole(Roles.CmsAdmins));
             services.AddOptimizelyNotFoundHandler();
-            services.AddJhooseSecurity(_configuration);
-            //services.AddContentManager();
-            //services.AddGridView();
-
+            
+            services.AddContentManager();
+            services.AddGridView();
+            services.AddABTesting(_configuration.GetConnectionString("EPiServerDB"));
             services.Configure<ProtectedModuleOptions>(x =>
             {
                 if (!x.Items.Any(x => x.Name.Equals("Foundation")))
@@ -138,11 +140,12 @@ namespace Foundation
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseNotFoundHandler();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseStaticFiles();
             app.UseRouting();
             app.UseAuthentication();

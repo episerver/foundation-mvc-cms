@@ -5,6 +5,7 @@ using EPiServer.Forms.Core.Events;
 using EPiServer.Framework.Localization;
 using EPiServer.Marketing.KPI.Exceptions;
 using EPiServer.Marketing.KPI.Results;
+using EPiServer.ServiceLocation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +27,10 @@ namespace Foundation.Infrastructure.Kpi
         //This is needed by the KPI engine
         public FilledInFormKpi()
         {
-            _formRepository = _servicelocator.GetInstance<IFormRepository>();
-            _contentRepository = _servicelocator.GetInstance<IContentRepository>();
-            _formsConfig = _servicelocator.GetInstance<IEPiServerFormsCoreConfig>();
-            _localization = _servicelocator.GetInstance<LocalizationService>();
+            _formRepository = ServiceLocator.Current.GetInstance<IFormRepository>();
+            _contentRepository = ServiceLocator.Current.GetInstance<IContentRepository>();
+            _formsConfig = ServiceLocator.Current.GetInstance<IEPiServerFormsCoreConfig>();
+            _localization = ServiceLocator.Current.GetInstance<LocalizationService>();
         }
 
         public FilledInFormKpi(

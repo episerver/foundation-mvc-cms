@@ -6,9 +6,9 @@ using EPiServer.Find;
 using EPiServer.Shell.Rest;
 using EPiServer.Shell.Services.Rest;
 using Foundation.Features.Shared;
+using Microsoft.AspNetCore.Http;
 using PowerSlice;
 using System.Linq;
-using System.Web;
 
 namespace Foundation.Infrastructure.PowerSlices
 {
@@ -21,11 +21,18 @@ namespace Foundation.Infrastructure.PowerSlices
 
     public class MyContentSlice : ContentSliceBase<IContent>
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public MyContentSlice(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
         public override string Name => "My content";
 
         protected override ITypeSearch<IContent> Filter(ITypeSearch<IContent> searchRequest, ContentQueryParameters parameters)
         {
-            var userName = HttpContext.Current.User.Identity.Name;
+            var userName = _httpContextAccessor.HttpContext.User.Identity.Name;
             return searchRequest.Filter(x => x.MatchTypeHierarchy(typeof(IChangeTrackable)) & ((IChangeTrackable)x).CreatedBy.Match(userName));
         }
 
@@ -34,11 +41,17 @@ namespace Foundation.Infrastructure.PowerSlices
 
     public class MyPagesSlice : ContentSliceBase<FoundationPageData>
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public MyPagesSlice(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
         public override string Name => "My pages";
 
         protected override ITypeSearch<FoundationPageData> Filter(ITypeSearch<FoundationPageData> searchRequest, ContentQueryParameters parameters)
         {
-            var userName = HttpContext.Current.User.Identity.Name;
+            var userName = _httpContextAccessor.HttpContext.User.Identity.Name;
             return searchRequest.Filter(x => x.MatchTypeHierarchy(typeof(IChangeTrackable)) & ((IChangeTrackable)x).CreatedBy.Match(userName));
         }
 
@@ -62,7 +75,7 @@ namespace Foundation.Infrastructure.PowerSlices
             var originalContentRange = base.ExecuteQuery(parameters);
             var filteredResults = originalContentRange.Items.Where(IsNotReferenced).ToList();
 
-            var itemRange = new ItemRange
+            var itemRange = new EPiServer.Shell.Services.Rest.ItemRange
             {
                 Total = filteredResults.Count,
                 Start = parameters.Range.Start,
@@ -72,10 +85,7 @@ namespace Foundation.Infrastructure.PowerSlices
             return new ContentRange(filteredResults, itemRange);
         }
 
-        protected bool IsNotReferenced(IContent content)
-        {
-            return !ContentRepository.GetReferencesToContent(content.ContentLink, false).Any();
-        }
+        protected bool IsNotReferenced(IContent content) => !ContentRepository.GetReferencesToContent(content.ContentLink, false).Any();
 
         public override int SortOrder => 200;
     }
@@ -96,7 +106,7 @@ namespace Foundation.Infrastructure.PowerSlices
             var originalContentRange = base.ExecuteQuery(parameters);
             var filteredResults = originalContentRange.Items.Where(IsNotReferenced).ToList();
 
-            var itemRange = new ItemRange
+            var itemRange = new EPiServer.Shell.Services.Rest.ItemRange
             {
                 Total = filteredResults.Count,
                 Start = parameters.Range.Start,
@@ -106,12 +116,8 @@ namespace Foundation.Infrastructure.PowerSlices
             return new ContentRange(filteredResults, itemRange);
         }
 
-        protected bool IsNotReferenced(IContent content)
-        {
-            return !ContentRepository.GetReferencesToContent(content.ContentLink, false).Any();
-        }
+        protected bool IsNotReferenced(IContent content) => !ContentRepository.GetReferencesToContent(content.ContentLink, false).Any();
 
         public override int SortOrder => 201;
-
     }
 }

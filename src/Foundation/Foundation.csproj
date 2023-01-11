@@ -1,57 +1,48 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <VersionPrefix>2021.04.1.0</VersionPrefix>
-    <VersionSuffix></VersionSuffix>
-    <PackageVersion Condition=" '$(PackageVersion)' == '' ">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
-    <UserSecretsId>470af002-8e88-4bbb-a89f-c02b14f8f64b</UserSecretsId>
-  </PropertyGroup>
-  <ItemGroup>
-		<PackageReference Include="Baaijte.Optimizely.ImageSharp.Web" Version="1.0.6" />
-    <PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="5.1.0" />
-		<PackageReference Include="EPiServer.ContentDefinitionsApi" Version="3.0.1" />
-		<PackageReference Include="EPiServer.ContentDeliveryApi.Cms" Version="3.0.1" />
-		<PackageReference Include="EPiServer.ContentManagementApi" Version="3.0.1" />
-    <PackageReference Include="EPiServer.CMS" Version="12.3.2" />
-		<PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.4.1" />
-    <PackageReference Include="EPiServer.Find.Cms" Version="14.0.4" />
-    <PackageReference Include="EPiServer.Forms" Version="5.1.0" />
-		<PackageReference Include="EPiServer.Framework" Version="12.4.1" />
-		<PackageReference Include="EPiServer.Hosting" Version="12.4.1" />
-		<!--<PackageReference Include="EPiServer.Labs.ContentManager" Version="1.0.1" />
-		<PackageReference Include="EPiServer.Labs.ContentManager.Core.FindQuery" Version="1.0.1" />
-		<PackageReference Include="EPiServer.Labs.GridView" Version="1.0.1" />-->
-    <PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.0.2" />
-		<PackageReference Include="EPiServer.Marketing.Automation.Forms" Version="3.0.0" />
-		<PackageReference Include="EPiServer.OpenIDConnect.UI" Version="3.0.1" />
-		<PackageReference Include="EPiServer.Telemetry.UI" Version="2.0.1" />
-		<PackageReference Include="Geta.NotFoundHandler.Optimizely" Version="1.0.4" />
-		<PackageReference Include="Jhoose.Security.Admin" Version="1.1.2.91" />
-    <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.4" />
-    <PackageReference Include="Schema.NET" Version="11.0.0" />
-    <PackageReference Include="Shorthand.ImageSharp.WebP" Version="2.2.1" />
-    <PackageReference Include="Wangkanai.Detection" Version="4.0.0" />
-    <PackageReference Include="Serilog" Version="2.10.0" />
-    <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
-    <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="lang\**\*" />
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<VersionPrefix>2021.04.1.0</VersionPrefix>
+		<VersionSuffix></VersionSuffix>
+		<PackageVersion Condition=" '$(PackageVersion)' == '' ">$(VersionPrefix)$(VersionSuffix)</PackageVersion>
+		<UserSecretsId>470af002-8e88-4bbb-a89f-c02b14f8f64b</UserSecretsId>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Baaijte.Optimizely.ImageSharp.Web" Version="2.1.2" />
+		<PackageReference Include="Boxed.AspNetCore.TagHelpers" Version="6.0.0" />
+		<PackageReference Include="EPiServer.ContentDefinitionsApi" Version="3.6.0" />
+		<PackageReference Include="EPiServer.ContentDeliveryApi.Cms" Version="3.6.0" />
+		<PackageReference Include="EPiServer.ContentManagementApi" Version="3.6.0" />
+		<PackageReference Include="EPiServer.CMS" Version="12.15.1" />
+		<PackageReference Include="EPiServer.CMS.AspNetCore.HtmlHelpers" Version="12.11.0" />
+		<PackageReference Include="EPiServer.Find.Cms" Version="14.2.4" />
+		<PackageReference Include="EPiServer.Forms" Version="5.3.1" />
+		<PackageReference Include="EPiServer.Forms.Samples" Version="4.0.0" />
+		<PackageReference Include="EPiServer.Framework" Version="12.11.0" />
+		<PackageReference Include="EPiServer.Hosting" Version="12.11.0" />
+		<PackageReference Include="EPiServer.Labs.ContentManager" Version="1.1.0" />
+		<PackageReference Include="EPiServer.Labs.ContentManager.Core.FindQuery" Version="1.1.0" />
+		<PackageReference Include="EPiServer.Labs.GridView" Version="1.1.0" />
+		<PackageReference Include="EPiServer.Labs.LanguageManager" Version="5.1.2" />
+		<PackageReference Include="EPiServer.Marketing.Automation.Forms" Version="3.1.2" />
+		<PackageReference Include="EPiServer.Marketing.KPI" Version="3.1.1" />
+		<PackageReference Include="EPiServer.Marketing.Testing" Version="3.1.1" />
+		<PackageReference Include="EPiServer.OpenIDConnect.UI" Version="3.6.0" />
+		<PackageReference Include="EPiServer.PdfPreview" Version="2.1.2" />
+		<PackageReference Include="EPiServer.Telemetry.UI" Version="2.2.1" />
+		<PackageReference Include="Geta.NotFoundHandler.Optimizely" Version="5.0.4" />
+		<PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.4" />
+		<PackageReference Include="PowerSlice" Version="5.1.0" />
+		<PackageReference Include="Schema.NET" Version="11.0.1" />
+		<PackageReference Include="Shorthand.ImageSharp.WebP" Version="2.2.1" />
+		<PackageReference Include="Wangkanai.Detection" Version="6.11.3" />
+		<PackageReference Include="Serilog" Version="2.12.0" />
+		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="lang\**\*" />
+		<Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
 		<None Update="App_Data\**" CopyToOutputDirectory="PreserveNewest" />
 		<None Update="modules\_protected\Foundation\**" CopyToOutputDirectory="PreserveNewest" />
-    <Compile Remove="Features\Forms\**" />
-    <Content Remove="Features\Forms\**" />
-    <EmbeddedResource Remove="Features\Forms\**" />
-    <None Remove="Features\Forms\**" />
-    <Compile Remove="Features\Media\FoundationPdfFile.cs" />
-    <Compile Remove="Features\Media\FoundationPdfFileViewModel.cs" />
-    <Compile Remove="Infrastructure\Display\FoundationDisplayModeProvider.cs" />
-    <Compile Remove="Infrastructure\Kpi\FilledInFormKpi.cs" />
-    <Compile Remove="Infrastructure\PowerSlices\ContentSlices.cs" />
-    <Compile Remove="Infrastructure\PowerSlices\GeneralSlices.cs" />
-    <Content Remove="C:\Users\mark\.nuget\packages\jhoose.security.admin\1.1.2.91\contentFiles\any\net5.0\nuget.config" />
-    <Content Remove="Features\Media\PdfFile.cshtml" />
-    <Content Remove="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
-    <None Include="Features\Shared\Views\ElementBlocks\ChoiceElementBlock.cshtml" />
-  </ItemGroup>
+	</ItemGroup>
 </Project>

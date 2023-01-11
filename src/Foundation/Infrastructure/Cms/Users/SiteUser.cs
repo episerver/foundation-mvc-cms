@@ -9,16 +9,21 @@ namespace Foundation.Infrastructure.Cms.Users
 {
     public class SiteUser : ApplicationUser
     {
+        [NotMapped]
         public string FirstName { get; set; }
 
+        [NotMapped]
         public string LastName { get; set; }
 
+        [NotMapped]
         public DateTime? BirthDate { get; set; }
 
+        [NotMapped]
         public string RegistrationSource { get; set; }
 
         [NotMapped] public string Password { get; set; }
 
+        [NotMapped]
         public bool NewsLetter { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(IUserClaimsPrincipalFactory<SiteUser> manager)
